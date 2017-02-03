@@ -22,6 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Peach BGGr full" translatesAutoresizingMaskIntoConstraints="NO" id="Y2A-hk-ofx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottomView" translatesAutoresizingMaskIntoConstraints="NO" id="LjQ-MM-C5J">
                                 <rect key="frame" x="0.0" y="387" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -85,21 +88,32 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUf-ET-bkU">
-                                <rect key="frame" x="84" y="121" width="207" height="207"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3T-q3-kVu">
+                                <rect key="frame" x="84" y="106" width="207" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.49266909246575341" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="0.3438302654109589" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="200"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.3438302654109589" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PvV-lr-K4h" firstAttribute="top" secondItem="2av-ho-CL3" secondAttribute="bottom" constant="64" id="ATc-Ce-18B"/>
+                            <constraint firstAttribute="trailing" secondItem="Y2A-hk-ofx" secondAttribute="trailing" id="Lab-wX-JLx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2av-ho-CL3" secondAttribute="trailing" constant="20" id="Q2s-BI-f38"/>
+                            <constraint firstItem="PvV-lr-K4h" firstAttribute="top" secondItem="Y2A-hk-ofx" secondAttribute="bottom" id="bik-Fu-fbj"/>
+                            <constraint firstItem="Y2A-hk-ofx" firstAttribute="top" secondItem="71e-w8-YUg" secondAttribute="top" id="qF4-dq-bnC"/>
                             <constraint firstItem="2av-ho-CL3" firstAttribute="leading" secondItem="71e-w8-YUg" secondAttribute="leadingMargin" constant="20" id="qPE-d7-9Yo"/>
+                            <constraint firstItem="Y2A-hk-ofx" firstAttribute="leading" secondItem="71e-w8-YUg" secondAttribute="leading" id="w01-73-4aZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sCQ-E1-AQ1"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="addButton" destination="W3T-q3-kVu" id="4GB-Kd-BA4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PnK-GA-GWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,6 +139,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Peach BGGr full" width="375" height="667"/>
         <image name="bottomView" width="375" height="280"/>
     </resources>
 </document>

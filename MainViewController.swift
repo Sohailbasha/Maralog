@@ -12,11 +12,14 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setCornersForAddButton()
     }
 
-
+    
+    @IBOutlet weak var addButton: UIButton!
+    
+    
+    
     
 
     /*
@@ -29,4 +32,16 @@ class MainViewController: UIViewController {
     }
     */
 
+}
+
+
+
+
+//UI
+
+extension MainViewController {
+    func setCornersForAddButton() {
+        self.addButton.layer.cornerRadius = 20
+        addButton.clipsToBounds = true
+    }
 }
