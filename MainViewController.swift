@@ -9,19 +9,62 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.setCornersForAddButton()
-        self.transparentNavBar()
-    }
-
     
+    // MARK: - Outlets
+    
+    
+    // buttons
     @IBOutlet weak var addButton: UIButton!
     
     
+    // UIContainer View's
+    @IBOutlet var allContactsTableViewList: UIView!
+    @IBOutlet var recentlyAddedTableViewList: UIView!
     
+    // Constraints
+    @IBOutlet var listViewConstraint: NSLayoutConstraint!
+    @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setUpButton()
+        self.transparentNavBar()
+    }
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - Actions
+    
+    
+    @IBAction func contactsButtonTapped(_ sender: Any) {
+        self.menuShowing()
+        allContactsTableViewList.isHidden = true
+        recentlyAddedTableViewList.isHidden = false
+    }
+   
+    
+    @IBAction func recentlyAddedButtonTapped(_ sender: Any) {
+        self.menuShowing()
+        allContactsTableViewList.isHidden = false
+        recentlyAddedTableViewList.isHidden = true
+    }
+    
+    
+    @IBAction func homeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 1) { 
+            self.listViewConstraint.constant = 504
+            self.bottomImageViewConstraint.constant = 478
+            self.addButton.alpha = 1
+            self.view.layoutIfNeeded()
+            
+        }
+    }
     
     
     
@@ -38,12 +81,16 @@ class MainViewController: UIViewController {
 }
 
 
+// MARK: - Asthetics & Animation
 
 extension MainViewController {
     
-    func setCornersForAddButton() {
-        self.addButton.layer.cornerRadius = 7
-        addButton.clipsToBounds = true
+    
+    func setUpButton() {
+        self.addButton.center.x = self.view.center.x
+        self.addButton.alpha = 1
+        self.addButton.layer.cornerRadius = 3
+        self.addButton.clipsToBounds = true
     }
     
     func transparentNavBar() {
@@ -51,6 +98,14 @@ extension MainViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
+    func menuShowing() {
+        UIView.animate(withDuration: 1) { 
+            self.listViewConstraint.constant = -8
+            self.bottomImageViewConstraint.constant = -400
+            self.view.layoutIfNeeded()
+        }
     }
     
 }

@@ -7,14 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD16C98D1E490AEB00237631 /* Maralog.xcdatamodeld */; };
+		FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9911E490C6600237631 /* CoreDataStack.swift */; };
+		FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9931E490C9500237631 /* Contact + Convenience.swift */; };
+		FD16C9961E490F6100237631 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9951E490F6100237631 /* ContactController.swift */; };
+		FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9981E49120F00237631 /* AddContactsViewController.swift */; };
+		FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C99A1E491F3200237631 /* ContactsListViewController.swift */; };
 		FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30BFF51E43FFA100759ECB /* AppDelegate.swift */; };
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
 		FD30C0001E43FFA100759ECB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */; };
 		FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30C0071E440AAD00759ECB /* MainViewController.swift */; };
+		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD16C98E1E490AEB00237631 /* Maralog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Maralog.xcdatamodel; sourceTree = "<group>"; };
+		FD16C9911E490C6600237631 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FD16C9931E490C9500237631 /* Contact + Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact + Convenience.swift"; sourceTree = "<group>"; };
+		FD16C9951E490F6100237631 /* ContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
+		FD16C9981E49120F00237631 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
+		FD16C99A1E491F3200237631 /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
 		FD30BFF21E43FFA100759ECB /* Maralog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maralog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30BFF51E43FFA100759ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30BFFA1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -22,6 +35,7 @@
 		FD30BFFF1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD30C0011E43FFA100759ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD30C0071E440AAD00759ECB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
+		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +49,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD16C98B1E490ACA00237631 /* Story Board */ = {
+			isa = PBXGroup;
+			children = (
+				FD30BFF91E43FFA100759ECB /* Main.storyboard */,
+				FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */,
+			);
+			name = "Story Board";
+			sourceTree = "<group>";
+		};
+		FD16C98C1E490AD500237631 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FD30C0071E440AAD00759ECB /* MainViewController.swift */,
+				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
+				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
+				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		FD16C9901E490AF200237631 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FD16C98D1E490AEB00237631 /* Maralog.xcdatamodeld */,
+				FD16C9911E490C6600237631 /* CoreDataStack.swift */,
+				FD16C9931E490C9500237631 /* Contact + Convenience.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FD16C9971E490F6600237631 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FD16C9951E490F6100237631 /* ContactController.swift */,
+			);
+			name = "Model Controller";
+			sourceTree = "<group>";
+		};
 		FD30BFE91E43FFA100759ECB = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +106,13 @@
 		FD30BFF41E43FFA100759ECB /* Maralog */ = {
 			isa = PBXGroup;
 			children = (
-				FD30BFF91E43FFA100759ECB /* Main.storyboard */,
-				FD30C0071E440AAD00759ECB /* MainViewController.swift */,
+				FD16C9901E490AF200237631 /* Model */,
+				FD16C9971E490F6600237631 /* Model Controller */,
+				FD16C98C1E490AD500237631 /* View Controller */,
+				FD16C98B1E490ACA00237631 /* Story Board */,
+				FD30C0011E43FFA100759ECB /* Info.plist */,
 				FD30BFFC1E43FFA100759ECB /* Assets.xcassets */,
 				FD30BFF51E43FFA100759ECB /* AppDelegate.swift */,
-				FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */,
-				FD30C0011E43FFA100759ECB /* Info.plist */,
 			);
 			path = Maralog;
 			sourceTree = "<group>";
@@ -137,8 +190,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
+				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
+				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
+				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
+				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
 				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,
+				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
+				FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,8 +360,22 @@
 				FD30C0061E43FFA100759ECB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FD16C98D1E490AEB00237631 /* Maralog.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FD16C98E1E490AEB00237631 /* Maralog.xcdatamodel */,
+			);
+			currentVersion = FD16C98E1E490AEB00237631 /* Maralog.xcdatamodel */;
+			path = Maralog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FD30BFEA1E43FFA100759ECB /* Project object */;
 }
