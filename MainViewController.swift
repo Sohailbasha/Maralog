@@ -12,11 +12,15 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setCornersForAddButton()
+        self.transparentNavBar()
     }
 
     
     @IBOutlet weak var addButton: UIButton!
+    
+    
     
     
     
@@ -31,17 +35,22 @@ class MainViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 
 
-
-//UI
-
 extension MainViewController {
+    
     func setCornersForAddButton() {
-        self.addButton.layer.cornerRadius = 20
+        self.addButton.layer.cornerRadius = 7
         addButton.clipsToBounds = true
     }
+    
+    func transparentNavBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+    }
+    
 }
