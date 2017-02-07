@@ -88,49 +88,16 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
 extension RecentlyAddedViewController {
     
     // MARK: - Helper Method
-   
-    
-    /*
-     /////////////////////////////////////////////////////////////////
-     func removeExpiredContacts(contact: Contact) {
-        let today = Date()
-        let threeDaysAgo = today.addingTimeInterval(-259200)
-        let twoMinutesAgo = today.addingTimeInterval(-120)
-        
-        if let timeStamp = contact.timeStamp {
-            if timeStamp.isEqual(to: twoMinutesAgo) {
-                
-            }
-        }
-    }
-    /////////////////////////////////////////////////////////////////
- */
     
     func updateData() {
         tableView.reloadData()
     }
     
     
-    
     // MARK: - Fetched Results Delegates
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
-    }
-    
-    
-    //when we delete/create a new section this functuion will run. Uneccessary if your app doesn't have sections.
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
-            
-        case .delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .automatic)
-            
-        default:
-            break
-        }
     }
     
     
