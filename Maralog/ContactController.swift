@@ -16,10 +16,7 @@ class ContactController {
     // Mock Data
     
     var mockData: [Contact] {
-        let john = Contact(firstName: "John", lastName: "Doe", phoneNumber: "9999999999")
-        let tammy = Contact(firstName: "Tammy", lastName: "Pyle", phoneNumber: "5405405400")
-        let daquan = Contact(firstName: "Daquan", lastName: "Dalante", phoneNumber: "2029996464")
-        return [john, tammy, daquan]
+        return contacts
     }
     
     static let sharedInstance = ContactController()
@@ -37,6 +34,7 @@ class ContactController {
         if let moc = contact.managedObjectContext {
             moc.delete(contact)
         }
+        saveToMemory()
     }
     
     
@@ -51,3 +49,4 @@ class ContactController {
     }
 
 }
+

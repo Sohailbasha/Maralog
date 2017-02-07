@@ -35,20 +35,23 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate {
             let phoneNumber = phoneNumberTextField.text else { return }
         
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-        
         ContactController.sharedInstance.addContact(contact: contact)
-    
-        _ = navigationController?.popToRootViewController(animated: true)
         
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update"), object: nil)
+        
+        _ = navigationController?.popToRootViewController(animated: true)
     }
     
     
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.transparentNavBar()
         self.detailLabelsAreInvisible()
+        
     }
     
     

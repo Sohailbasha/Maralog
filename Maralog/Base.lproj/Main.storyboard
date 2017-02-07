@@ -152,10 +152,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addButton" destination="W3T-q3-kVu" id="4GB-Kd-BA4"/>
-                        <outlet property="allContactsTableViewList" destination="EVo-fH-wsd" id="jJz-WO-9IT"/>
+                        <outlet property="allContactsView" destination="BP4-Ac-ooE" id="cNn-aN-PVA"/>
                         <outlet property="bottomImageViewConstraint" destination="Xdg-5A-x85" id="UyE-I2-DD3"/>
                         <outlet property="listViewConstraint" destination="Oey-lX-Jiu" id="Diu-BP-HJP"/>
-                        <outlet property="recentlyAddedTableViewList" destination="BP4-Ac-ooE" id="0GE-mZ-LHn"/>
+                        <outlet property="recentlyAddedView" destination="EVo-fH-wsd" id="Iyo-0R-uWm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PnK-GA-GWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,11 +309,11 @@
                                 <color key="backgroundColor" red="0.25506764650000002" green="0.25528970359999997" blue="0.25510203840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="0.28165132710000002" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recentlyAddedCell" id="Uyw-LY-vrq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recentlyAdded" id="Uyw-LY-vrq">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uyw-LY-vrq" id="6dj-mD-pjx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -333,6 +333,9 @@
                             <constraint firstAttribute="trailing" secondItem="mKF-iF-On7" secondAttribute="trailing" id="vcn-CJ-NZg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="mKF-iF-On7" id="QCf-PL-PTv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUL-Sz-NgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -359,7 +362,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i3q-fg-QLo" id="3BT-Q8-ULa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -379,6 +382,9 @@
                             <constraint firstAttribute="bottom" secondItem="2uj-wg-hFV" secondAttribute="bottom" id="gzK-uD-bLr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="2uj-wg-hFV" id="7yL-gu-ecL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eJ-lZ-ZLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

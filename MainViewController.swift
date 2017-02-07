@@ -18,8 +18,8 @@ class MainViewController: UIViewController {
     
     
     // UIContainer View's
-    @IBOutlet var allContactsTableViewList: UIView!
-    @IBOutlet var recentlyAddedTableViewList: UIView!
+    @IBOutlet var recentlyAddedView: UIView!
+    @IBOutlet var allContactsView: UIView!
     
     // Constraints
     @IBOutlet var listViewConstraint: NSLayoutConstraint!
@@ -44,15 +44,17 @@ class MainViewController: UIViewController {
     
     @IBAction func contactsButtonTapped(_ sender: Any) {
         self.menuShowing()
-        allContactsTableViewList.isHidden = true
-        recentlyAddedTableViewList.isHidden = false
+        self.view.bringSubview(toFront: allContactsView)
+        recentlyAddedView.isHidden = true
+        allContactsView.isHidden = false
     }
    
     
     @IBAction func recentlyAddedButtonTapped(_ sender: Any) {
         self.menuShowing()
-        allContactsTableViewList.isHidden = false
-        recentlyAddedTableViewList.isHidden = true
+        self.view.bringSubview(toFront: recentlyAddedView)
+        recentlyAddedView.isHidden = false
+        allContactsView.isHidden = true
     }
     
     
