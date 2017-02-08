@@ -15,14 +15,7 @@ class ContactController {
     
     // Mock Data
     
-    var mockData: [Contact] {
-        return contacts
-    }
-    
     static let sharedInstance = ContactController()
-    
-    
-    var contacts: [Contact] = []
     
     
     func addContact(contact: Contact) {

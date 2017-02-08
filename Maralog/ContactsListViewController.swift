@@ -67,12 +67,9 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Fetched Results Controller
     
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
-        
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
-        
         let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: CoreDataStack.context,
                                           sectionNameKeyPath: nil,

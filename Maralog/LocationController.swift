@@ -10,28 +10,73 @@ import Foundation
 import CoreData
 import CoreLocation
 
-class LocationController {
+
+class LocationController: NSObject, UpdateContactDelegate {
     
+    static let sharedInstance = LocationController()
     
+    var delegate = AddContactsViewController()
     
-    // sharedInstance in AddContactVC
+    var contact: Contact?
     
-        
-    
-    func createCoordinate(location: Location) -> CLLocationCoordinate2D {
-        let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-        return coordinate
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        self.contact = delegate.contact
     }
     
+    var locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    
+    
+    func requestCurrentLocation() {
+        locationManager.requestLocation()
+    }
+    
+    
+    func updateContact(contact: Contact){
+        self.contact = contact
+    }
 
-    func removeLocation(location: Location, of contact: Contact) {
-        if let moc = contact.managedObjectContext {
-            moc.delete(location)
+}
+
+
+extension LocationController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = locations.first
+        
+        if let currentLocation = currentLocation {
+            
+            let geoCoder = CLGeocoder()
+            geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) in
+                if error != nil {
+                    print("Reverse geocoder failed with error: \(error?.localizedDescription)")
+                }
+                guard let placemarks = placemarks else { return }
+                if placemarks.count > 0 {
+                    self.locationManager.stopUpdatingLocation()
+                    let pm = placemarks[0] as CLPlacemark
+                    if let currentLocation = pm.locality {
+                        print(currentLocation)
+                    }
+                }
+            })
         }
     }
     
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error: \(error.localizedDescription)")
+    }
     
     
-    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
 }
+
+
+

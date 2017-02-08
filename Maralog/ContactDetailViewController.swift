@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ContactDetailViewController: UIViewController {
     
     var contact: Contact?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,17 +23,47 @@ class ContactDetailViewController: UIViewController {
     
     
     func updateWithContact(contact: Contact) {
-        guard let firstName = contact.firstName,
-            let lastName = contact.lastName,
-            let number = contact.phoneNumber,
-            let timeStamp = contact.timeStamp else { return }
+        
+        guard let firstName = contact.firstName as String?,
+            let lastName = contact.lastName as String?,
+            let number = contact.phoneNumber as String?,
+            let timeStamp = contact.timeStamp as? Date else { return }
         
         
+//        
+//        guard let location = contact.location else {
+//            return
+//        }
+//        
+//        let coordinate = LocationController.sharedInstance.createCoordinate(location: location)
+//        
+//        let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+//        
+//        let geocoder = CLGeocoder()
+//        geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+//            
+//            if let error = error {
+//                print("Error reverse geocoding: \(error)")
+//                return
+//            }
+//            
+//            if let placemarks = placemarks {
+//                
+//                if placemarks.count > 0 {
+//                    guard let placemark = placemarks.first else { return }
+//                    self.locationMetLabel.text = placemark.locality
+//                }
+//                
+//            }
+//            
+//        }
+//        
         
         fullName.text = "\(firstName) \(lastName)"
         phoneNumber.text = number
-        timeMetLabel.text = "added \(formatter.string(from: timeStamp as Date))"
+        timeMetLabel.text = "added \(formatter.string(from: timeStamp))"
     }
+    
     
     
     let formatter: DateFormatter = {
@@ -42,10 +73,11 @@ class ContactDetailViewController: UIViewController {
         formatter.doesRelativeDateFormatting = true
         return formatter
     } ()
-
     
-
-    // MARK: - Outlets 
+    
+    
+    
+    // MARK: - Outlets
     
     @IBOutlet var fullName: UILabel!
     @IBOutlet var phoneNumber: UILabel!
