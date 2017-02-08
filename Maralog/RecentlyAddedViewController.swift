@@ -48,6 +48,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         if editingStyle == .delete {
             if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
                 ContactController.sharedInstance.removeContact(contact: contact)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
     }
