@@ -22,6 +22,9 @@ class ContactController {
         saveToMemory()
     }
     
+    func add(location: Location, with contact: Contact) {
+        saveToMemory()
+    }
     
     func removeContact(contact: Contact) {
         if let moc = contact.managedObjectContext {

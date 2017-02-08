@@ -15,18 +15,12 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Outlets
     @IBOutlet var tableView: UITableView!
     
-    var contacts: [Contact]? {
-        return fetchedResultsController.fetchedObjects
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchedResultsController.delegate = self
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }
-        
     }
     
     
@@ -44,7 +38,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
-    
+    /*
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
@@ -53,7 +47,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    
+    */
     
     // MARK: - Navigation
     
@@ -90,12 +84,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
 }
 
 extension RecentlyAddedViewController {
-    
-    // MARK: - Helper Method
-    
-    func updateData() {
-        tableView.reloadData()
-    }
     
     
     // MARK: - Fetched Results Delegates

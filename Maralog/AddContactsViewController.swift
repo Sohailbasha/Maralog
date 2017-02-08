@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import CoreLocation
 import MapKit
 
@@ -15,6 +14,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         coreLocationManager.startUpdatingLocation()
@@ -29,6 +29,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     // MARK: - Properties
     
     var coreLocationManager: CLLocationManager!
+    var clCurrentLocation: CLLocation?
     var currentLocation: Location?
     
     
@@ -58,13 +59,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
-            
             currentLocation = Location(latitude: Double(location.coordinate.latitude), longitude: Double(location.coordinate.longitude), name: "")
-            
-            //currentLocation = CustomAnnotation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, name: "My Location")
-//            if let currentLocation = currentLocation {
-//                mapView.showAnnotations([favoriteCity, currentLocation], animated: true)
-//            }
         }
     }
     
@@ -76,16 +71,18 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         guard let firstName = firstNameTextField.text,
             let lastName = lastNameTextField.text,
-            let phoneNumber = phoneNumberTextField.text else { return }
+            let phoneNumber = phoneNumberTextField.text as String? else { return }
         
         if uiSwitch.isOn {
             if let location = currentLocation {
-                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: Date(), location: location, context: CoreDataStack.context)
+                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
                 
-                LocationController.sharedInstance.saveLocation(location: location)
-                ContactController.sharedInstance.addContact(contact: contact)
+                //LocationController.sharedInstance.add(location: location, with: contact)
+                ContactController.sharedInstance.add(location: location, with: contact)
             }
+            
         } else {
+            
             let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)
         }
