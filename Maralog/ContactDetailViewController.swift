@@ -12,7 +12,7 @@ import CoreLocation
 class ContactDetailViewController: UIViewController {
     
     var contact: Contact?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,41 +27,44 @@ class ContactDetailViewController: UIViewController {
         guard let firstName = contact.firstName as String?,
             let lastName = contact.lastName as String?,
             let number = contact.phoneNumber as String?,
-            let timeStamp = contact.timeStamp as? Date else { return }
+            let timeStamp = contact.timeStamp as? Date,
+            let location = contact.location as Location? else { return }
         
         
-//        
-//        guard let location = contact.location else {
-//            return
-//        }
-//        
-//        let coordinate = LocationController.sharedInstance.createCoordinate(location: location)
-//        
-//        let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-//        
-//        let geocoder = CLGeocoder()
-//        geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
-//            
-//            if let error = error {
-//                print("Error reverse geocoding: \(error)")
-//                return
-//            }
-//            
-//            if let placemarks = placemarks {
-//                
-//                if placemarks.count > 0 {
-//                    guard let placemark = placemarks.first else { return }
-//                    self.locationMetLabel.text = placemark.locality
-//                }
-//                
-//            }
-//            
-//        }
-//        
         
-        fullName.text = "\(firstName) \(lastName)"
-        phoneNumber.text = number
-        timeMetLabel.text = "added \(formatter.string(from: timeStamp))"
+        let coordinate = LocationController.sharedInstance.getCoordinates(contact: contact)
+        
+        let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        let geocoder = CLGeocoder()
+        
+        
+        
+        if contact.location == nil {
+            fullName.text = "\(firstName) \(lastName)"
+            phoneNumber.text = number
+            timeMetLabel.text = "added \(formatter.string(from: timeStamp))"
+        } else {
+            geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+                if let error = error {
+                    print("Reverse geocoder failed with error: \(error.localizedDescription)")
+                }
+                
+                guard let placemarks = placemarks else { return }
+                if placemarks.count > 0 {
+                    let pm = placemarks[0] as CLPlacemark
+                    if let currentLocation = pm.locality {
+                        self.locationMetLabel.text = currentLocation
+                    }
+                }
+            }
+            
+            fullName.text = "\(firstName) \(lastName)"
+            phoneNumber.text = number
+            timeMetLabel.text = "added \(formatter.string(from: timeStamp))"
+        }
+        
+        
     }
     
     

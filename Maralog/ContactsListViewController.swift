@@ -22,7 +22,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         } catch {
             print("Error starting fetched results controller: \(error)")
         }
-        
     }
     
     

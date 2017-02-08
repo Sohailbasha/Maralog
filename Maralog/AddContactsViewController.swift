@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import CoreLocation
 import MapKit
 
@@ -14,9 +15,10 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        coreLocationManager = CLLocationManager()
-//        coreLocationManager.delegate = self
-//        coreLocationManager.requestWhenInUseAuthorization()
+        coreLocationManager = CLLocationManager()
+        coreLocationManager.delegate = self
+        coreLocationManager.startUpdatingLocation()
+        coreLocationManager.requestWhenInUseAuthorization()
         
         self.transparentNavBar()
         self.detailLabelsAreInvisible()
@@ -26,11 +28,8 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     // MARK: - Properties
     
-//    var coreLocationManager: CLLocationManager!
-//    var currentLocation: Location?
-    
-    
-    var contact: Contact?
+    var coreLocationManager: CLLocationManager!
+    var currentLocation: Location?
     
     
     
@@ -49,19 +48,43 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     @IBOutlet var uiSwitch: UISwitch!
     
     
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            coreLocationManager.startUpdatingLocation()
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            
+            currentLocation = Location(latitude: Double(location.coordinate.latitude), longitude: Double(location.coordinate.longitude), name: "")
+            
+            //currentLocation = CustomAnnotation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, name: "My Location")
+//            if let currentLocation = currentLocation {
+//                mapView.showAnnotations([favoriteCity, currentLocation], animated: true)
+//            }
+        }
+    }
+    
+    
+    
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        //coreLocationManager.startUpdatingLocation()
-
+        
         guard let firstName = firstNameTextField.text,
             let lastName = lastNameTextField.text,
             let phoneNumber = phoneNumberTextField.text else { return }
         
-        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-
-        ContactController.sharedInstance.addContact(contact: contact)
-        
+        if uiSwitch.isOn {
+            let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: Date(), location: currentLocation, context: CoreDataStack.context)
+            ContactController.sharedInstance.addContact(contact: contact)
+        } else {
+            let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+            ContactController.sharedInstance.addContact(contact: contact)
+        }
         
         _ = navigationController?.popToRootViewController(animated: true)
     }

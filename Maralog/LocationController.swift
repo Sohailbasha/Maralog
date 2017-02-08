@@ -11,7 +11,7 @@ import CoreData
 import CoreLocation
 
 
-class LocationController: NSObject, UpdateContactDelegate {
+class LocationController: NSObject {
     
     static let sharedInstance = LocationController()
     
@@ -22,7 +22,6 @@ class LocationController: NSObject, UpdateContactDelegate {
     override init() {
         super.init()
         locationManager.delegate = self
-        self.contact = delegate.contact
     }
     
     var locationManager = CLLocationManager()
@@ -37,22 +36,38 @@ class LocationController: NSObject, UpdateContactDelegate {
     func updateContact(contact: Contact){
         self.contact = contact
     }
-
+    
+    
+    func getCoordinates(contact: Contact) -> CLLocationCoordinate2D {
+        var coordinates = CLLocationCoordinate2D()
+        
+        if let lat = contact.location?.latitude, let long = contact.location?.longitude {
+            let latitude = CLLocationDegrees(lat)
+            let longitude = CLLocationDegrees(long)
+            coordinates.latitude = latitude
+            coordinates.longitude = longitude
+        }
+        
+        return coordinates
+    }
+    
 }
 
 
 extension LocationController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = locations.first
+        currentLocation = locations.last
         
         if let currentLocation = currentLocation {
             
             let geoCoder = CLGeocoder()
+            
             geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) in
                 if error != nil {
                     print("Reverse geocoder failed with error: \(error?.localizedDescription)")
                 }
+                
                 guard let placemarks = placemarks else { return }
                 if placemarks.count > 0 {
                     self.locationManager.stopUpdatingLocation()
