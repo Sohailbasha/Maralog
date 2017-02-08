@@ -20,10 +20,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,12 +27,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateData),
-                                               name: NSNotification.Name(rawValue: "update"),
-                                               object: nil)
     }
-    
     
     
     // MARK: - Datasource
@@ -54,22 +45,25 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let destinationVC = segue.destination as? ContactDetailViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+                    destinationVC.contact = contact
+                }
+            }
+        }
+    }
     
     
     // MARK: - Fetched Results Controller
     
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
         let threeDaysAgo = Date().addingTimeInterval(-259200)
-
+        
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         
         let predicate = NSPredicate(format: "timeStamp > %@", threeDaysAgo as CVarArg)
@@ -126,6 +120,4 @@ extension RecentlyAddedViewController {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-
-
 }

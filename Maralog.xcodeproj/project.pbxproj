@@ -18,6 +18,10 @@
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
 		FD30C0001E43FFA100759ECB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */; };
 		FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30C0071E440AAD00759ECB /* MainViewController.swift */; };
+		FD3B146E1E4A39EA00506CC1 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B146D1E4A39EA00506CC1 /* ContactDetailViewController.swift */; };
+		FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14921E4A819700506CC1 /* Location + Convenience.swift */; };
+		FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14941E4A830300506CC1 /* LocationController.swift */; };
+		FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14971E4A83C900506CC1 /* CoreLocation.framework */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +39,10 @@
 		FD30BFFF1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD30C0011E43FFA100759ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD30C0071E440AAD00759ECB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
+		FD3B146D1E4A39EA00506CC1 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		FD3B14921E4A819700506CC1 /* Location + Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location + Convenience.swift"; sourceTree = "<group>"; };
+		FD3B14941E4A830300506CC1 /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		FD3B14971E4A83C900506CC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,7 @@
 				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
 				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
+				FD3B146D1E4A39EA00506CC1 /* ContactDetailViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -75,6 +85,7 @@
 				FD16C98D1E490AEB00237631 /* Maralog.xcdatamodeld */,
 				FD16C9911E490C6600237631 /* CoreDataStack.swift */,
 				FD16C9931E490C9500237631 /* Contact + Convenience.swift */,
+				FD3B14921E4A819700506CC1 /* Location + Convenience.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -83,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				FD16C9951E490F6100237631 /* ContactController.swift */,
+				FD3B14941E4A830300506CC1 /* LocationController.swift */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -92,6 +104,7 @@
 			children = (
 				FD30BFF41E43FFA100759ECB /* Maralog */,
 				FD30BFF31E43FFA100759ECB /* Products */,
+				FD3B14961E4A83C900506CC1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +128,14 @@
 				FD30BFF51E43FFA100759ECB /* AppDelegate.swift */,
 			);
 			path = Maralog;
+			sourceTree = "<group>";
+		};
+		FD3B14961E4A83C900506CC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD3B14971E4A83C900506CC1 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,8 +215,11 @@
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
+				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
+				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
+				FD3B146E1E4A39EA00506CC1 /* ContactDetailViewController.swift in Sources */,
 				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
 				FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */,

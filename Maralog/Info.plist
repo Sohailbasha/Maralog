@@ -32,5 +32,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs location data to show you when and where you meet new friends</string>
 </dict>
 </plist>

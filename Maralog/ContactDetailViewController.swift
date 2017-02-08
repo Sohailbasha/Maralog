@@ -9,27 +9,46 @@
 import UIKit
 
 class ContactDetailViewController: UIViewController {
-
+    
+    var contact: Contact?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        if let contact = self.contact {
+            self.updateWithContact(contact: contact)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func updateWithContact(contact: Contact) {
+        guard let firstName = contact.firstName,
+            let lastName = contact.lastName,
+            let number = contact.phoneNumber,
+            let timeStamp = contact.timeStamp else { return }
+        
+        
+        
+        fullName.text = "\(firstName) \(lastName)"
+        phoneNumber.text = number
+        timeMetLabel.text = "added \(formatter.string(from: timeStamp as Date))"
     }
-    */
+    
+    
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    } ()
 
+    
+
+    // MARK: - Outlets 
+    
+    @IBOutlet var fullName: UILabel!
+    @IBOutlet var phoneNumber: UILabel!
+    @IBOutlet var locationMetLabel: UILabel!
+    @IBOutlet var timeMetLabel: UILabel!
 }

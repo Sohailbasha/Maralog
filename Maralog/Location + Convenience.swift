@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import CoreData
+
+extension Location {
+    
+    convenience init(latitude: Double, longitude: Double, name: String, contact: Contact, context: NSManagedObjectContext = CoreDataStack.context) {
+        self.init(context: context)
+        self.latitude = latitude
+        self.longitude = longitude
+        self.name = name
+        self.contact = contact
+    }
+    
+}

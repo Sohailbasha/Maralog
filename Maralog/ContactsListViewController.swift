@@ -23,10 +23,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
             print("Error starting fetched results controller: \(error)")
         }
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateData),
-                                               name: NSNotification.Name(rawValue: "update"),
-                                               object: nil)
     }
     
     
@@ -34,14 +30,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
-    
-    
-    
-    // MARK: - NSNotification
-    
-       func updateData() {
-        tableView.reloadData()
-    }
     
     
     
@@ -60,25 +48,26 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
- 
     
+    // MARK: - Navigation
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showContactDetail" {
+            if let destinationVC = segue.destination as? ContactDetailViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+                    destinationVC.contact = contact
+                }
+            }
+        }
+    }
     
     
     
     // MARK: - Fetched Results Controller
     
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
-      
+        
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         
         let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
@@ -93,11 +82,14 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     }()
 }
 
+
 extension ContactsListViewController {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
+    
+    
     
     //when we delete/create a new section this functuion will run. Uneccessary if your app doesn't have sections.
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
@@ -112,6 +104,7 @@ extension ContactsListViewController {
             break
         }
     }
+    
     
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -136,8 +129,9 @@ extension ContactsListViewController {
     }
     
     
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-
+    
 }

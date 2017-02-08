@@ -7,12 +7,33 @@
 //
 
 import UIKit
+import CoreLocation
 
-class AddContactsViewController: UIViewController, UITextFieldDelegate {
+class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        coreLocationManager = CLLocationManager()
+        coreLocationManager.delegate = self
+        coreLocationManager.requestWhenInUseAuthorization()
+        coreLocationManager.startUpdatingLocation()
+        
+        self.transparentNavBar()
+        self.detailLabelsAreInvisible()
+    }
+    
+    
+    
+    // MARK: - Properties
+    
+    let sharedInstance = LocationController()
+    var coreLocationManager: CLLocationManager!
+    var currentLocation: Location?
+    
+    var contact: Contact?
     
     
     // MARK: - Outlets
-    
     
     // text fields
     @IBOutlet var phoneNumberTextField: UITextField!
@@ -37,24 +58,32 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate {
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         ContactController.sharedInstance.addContact(contact: contact)
         
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update"), object: nil)
-        
-        _ = navigationController?.popToRootViewController(animated: true)
     }
     
     
-    
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        self.transparentNavBar()
-        self.detailLabelsAreInvisible()
-        
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            coreLocationManager.startUpdatingLocation()
+        }
     }
+
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            guard let contact = self.contact else { return }
+            currentLocation = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.latitude, name: "My Location", contact: contact)
+        }
+    }
+  
     
+    func setContact() {
+        guard let firstName = firstNameTextField.text,
+            let lastName = lastNameTextField.text,
+            let phoneNumber = phoneNumberTextField.text else { return }
+        
+        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+        self.contact = contact
+    }
     
 }
 
@@ -80,5 +109,6 @@ extension AddContactsViewController {
         self.labelOfLastName.alpha = 0
     }
     
+
     
 }

@@ -11,7 +11,7 @@ import CoreData
 
 extension Contact {
     
-    convenience init(firstName: String, lastName: String, phoneNumber: String, timeStamp: Date = Date(), context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(firstName: String, lastName: String, phoneNumber: String, timeStamp: Date = Date(),context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.firstName = firstName
         self.lastName = lastName
