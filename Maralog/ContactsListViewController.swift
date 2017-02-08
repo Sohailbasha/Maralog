@@ -16,7 +16,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         fetchedResultsController.delegate = self
-        
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -44,6 +43,15 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
         cell.textLabel?.text = contact?.firstName
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
+                ContactController.sharedInstance.removeContact(contact: contact)
+            }
+        }
     }
     
     
@@ -86,8 +94,6 @@ extension ContactsListViewController {
     }
     
     
-    
-    //when we delete/create a new section this functuion will run. Uneccessary if your app doesn't have sections.
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
@@ -100,7 +106,6 @@ extension ContactsListViewController {
             break
         }
     }
-    
     
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -123,7 +128,6 @@ extension ContactsListViewController {
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
-    
     
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

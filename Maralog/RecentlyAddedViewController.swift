@@ -43,7 +43,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         if editingStyle == .delete {
             if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
                 ContactController.sharedInstance.removeContact(contact: contact)
-                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
     }
@@ -66,16 +65,12 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Fetched Results Controller
     
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
-        let threeDaysAgo = Date().addingTimeInterval(-259200)
-        
+        let threeDaysAgo = Date().addingTimeInterval(-259200) // How to make recent contacts last 3 days.
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
-        
         let predicate = NSPredicate(format: "timeStamp > %@", threeDaysAgo as CVarArg)
         fetchRequest.predicate = predicate
-        
         let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: CoreDataStack.context,
                                           sectionNameKeyPath: nil,
