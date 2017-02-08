@@ -30,10 +30,7 @@ class LocationController {
         locationManager.requestLocation()
     }
 */
-    
-    func add(location: Location, with contact: Contact) {
-        ContactController.sharedInstance.saveToMemory()
-    }
+
     
         
 

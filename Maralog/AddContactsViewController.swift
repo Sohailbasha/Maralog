@@ -29,8 +29,8 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     // MARK: - Properties
     
     var coreLocationManager: CLLocationManager!
-    var clCurrentLocation: CLLocation?
-    var currentLocation: Location?
+    var currentLocation: CLLocation?
+    var usersLocation: Location?
     
     
     
@@ -58,8 +58,12 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            currentLocation = Location(latitude: Double(location.coordinate.latitude), longitude: Double(location.coordinate.longitude), name: "")
+        if let location = locations.first {
+            currentLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            
+            if let currentLocation = currentLocation {
+                usersLocation = Location(latitude: Double(currentLocation.coordinate.latitude), longitude: Double(currentLocation.coordinate.longitude), name: "")
+            }
         }
     }
     
@@ -74,10 +78,12 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
         if uiSwitch.isOn {
-            if let location = currentLocation {
+        
+
+            if let location = usersLocation {
                 let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
                 
-                //LocationController.sharedInstance.add(location: location, with: contact)
+                
                 ContactController.sharedInstance.add(location: location, with: contact)
             }
             

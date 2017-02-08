@@ -38,7 +38,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
-    /*
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
@@ -47,7 +47,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    */
+
     
     // MARK: - Navigation
     

@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
     // buttons
     @IBOutlet weak var addButton: UIButton!
     
-    
     // UIContainer View's
     @IBOutlet var recentlyAddedView: UIView!
     @IBOutlet var allContactsView: UIView!
@@ -26,16 +25,13 @@ class MainViewController: UIViewController {
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setUpButton()
         self.transparentNavBar()
     }
-    
-    
-    
-    
     
     
     
@@ -59,7 +55,7 @@ class MainViewController: UIViewController {
     
     
     @IBAction func homeButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 1) { 
+        UIView.animate(withDuration: 0.5) {
             self.listViewConstraint.constant = 504
             self.bottomImageViewConstraint.constant = 478
             self.addButton.alpha = 1
@@ -70,7 +66,6 @@ class MainViewController: UIViewController {
     
     
     
-
     /*
     // MARK: - Navigation
 
@@ -103,7 +98,7 @@ extension MainViewController {
     }
     
     func menuShowing() {
-        UIView.animate(withDuration: 1) { 
+        UIView.animate(withDuration: 0.5) {
             self.listViewConstraint.constant = -8
             self.bottomImageViewConstraint.constant = -400
             self.view.layoutIfNeeded()

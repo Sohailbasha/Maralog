@@ -57,15 +57,19 @@ class ContactDetailViewController: UIViewController {
                     
                     if placemarks.count > 0 {
                         let pm = placemarks[0] as CLPlacemark
-                        if let currentLocation = pm.locality {
-                            self.locationMetLabel.text = currentLocation
+                        if let city = pm.locality,
+                            let state = pm.administrativeArea,
+                            let street = pm.thoroughfare,
+                            let zipcode = pm.postalCode {
+                            
+                            self.locationMetLabel.text = "location met: \(street). \(city), \(state) \(zipcode)"
                         }
                     }
                 }
                 
                 fullName.text = "\(firstName) \(lastName)"
                 phoneNumber.text = number
-                timeMetLabel.text = "added \(formatter.string(from: timeStamp))"
+                timeMetLabel.text = "\(formatter.string(from: timeStamp))"
             }
         }
         
