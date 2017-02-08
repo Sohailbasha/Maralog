@@ -26,7 +26,10 @@ class LocationController: NSObject {
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    
+
+    func saveLocation(location: Location) {
+        ContactController.sharedInstance.saveToMemory()
+    }
     
     func requestCurrentLocation() {
         locationManager.requestLocation()
@@ -49,6 +52,13 @@ class LocationController: NSObject {
         }
         
         return coordinates
+    }
+    
+    
+    func getLocationCoordinates(location: Location) -> CLLocationCoordinate2D {
+        let latitude = CLLocationDegrees(location.latitude)
+        let longitude = CLLocationDegrees(location.longitude)
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
 }
