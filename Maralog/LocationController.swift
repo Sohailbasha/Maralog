@@ -11,34 +11,32 @@ import CoreData
 import CoreLocation
 
 
-class LocationController: NSObject {
+class LocationController {
     
     static let sharedInstance = LocationController()
     
-    var delegate = AddContactsViewController()
     
-    var contact: Contact?
-    
+/*
     override init() {
         super.init()
         locationManager.delegate = self
     }
+
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
 
+    func requestCurrentLocation() {
+        locationManager.requestLocation()
+    }
+*/
+    
     func saveLocation(location: Location) {
         ContactController.sharedInstance.saveToMemory()
     }
     
-    func requestCurrentLocation() {
-        locationManager.requestLocation()
-    }
-    
-    
-    func updateContact(contact: Contact){
-        self.contact = contact
-    }
+        
+
     
     
     func getCoordinates(contact: Contact) -> CLLocationCoordinate2D {
@@ -63,7 +61,7 @@ class LocationController: NSObject {
     
 }
 
-
+/*
 extension LocationController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -103,5 +101,5 @@ extension LocationController: CLLocationManagerDelegate {
     }
 }
 
-
+*/
 

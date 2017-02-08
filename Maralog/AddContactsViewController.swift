@@ -80,7 +80,9 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         if uiSwitch.isOn {
             if let location = currentLocation {
-                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: Date(), location: location)
+                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: Date(), location: location, context: CoreDataStack.context)
+                
+                LocationController.sharedInstance.saveLocation(location: location)
                 ContactController.sharedInstance.addContact(contact: contact)
             }
         } else {
