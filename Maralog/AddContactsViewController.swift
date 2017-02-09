@@ -99,7 +99,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
 
 
 
-
 //MARK: - Asthetics & Animation
 
 extension AddContactsViewController {
