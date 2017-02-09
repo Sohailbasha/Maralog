@@ -81,9 +81,8 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
                                           managedObjectContext: CoreDataStack.context,
                                           sectionNameKeyPath: nil,
                                           cacheName: nil)
-        
-        
     }()
+    
 }
 
 

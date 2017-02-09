@@ -25,31 +25,42 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         catch { print("Error starting fetched results controller: \(error)") }
     }
     
+    var contacts: [Contact]? {
+        return fetchedResultsController.fetchedObjects
+    }
+    
     
     
     // MARK: - Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        //return fetchedResultsController.fetchedObjects?.count ?? 0
+        return contacts?.count ?? 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentlyAdded", for: indexPath) as UITableViewCell
-        let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+        //let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+        let contact = contacts?[indexPath.row]
         cell.textLabel?.text = contact?.firstName
         return cell
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
-                ContactController.sharedInstance.removeContact(contact: contact)
-            }
-        }
-    }
-
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            
+//            if let contact = contacts?[indexPath.row] {
+//                contacts?.remove(at: contact)
+//            }
+//            
+//                        if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
+//                            ContactController.sharedInstance.removeContact(contact: contact)
+//                        }
+//        }
+//    }
+    
     
     
     // MARK: - Navigation

@@ -45,7 +45,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     @IBOutlet var labelOfPhoneNumber: UILabel!
     @IBOutlet var labelOfFirstName: UILabel!
     @IBOutlet var labelOfLastName: UILabel!
- 
+    
     @IBOutlet var uiSwitch: UISwitch!
     
     
@@ -78,8 +78,8 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
         if uiSwitch.isOn {
-        
-
+            
+            
             if let location = usersLocation {
                 let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
                 
