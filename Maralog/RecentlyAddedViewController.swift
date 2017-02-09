@@ -12,7 +12,9 @@ import CoreData
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     
+    
     // MARK: - Outlets
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -22,6 +24,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }
     }
+    
     
     
     // MARK: - Datasource
@@ -48,6 +51,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,6 +64,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
+    
     
     
     // MARK: - Fetched Results Controller
