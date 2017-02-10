@@ -22,11 +22,6 @@ class ContactDetailViewController: UIViewController {
     }
     
     
-    
-    
-    
-    
-    
     func updateWithContact(contact: Contact) {
         guard let firstName = contact.firstName as String?,
             let lastName = contact.lastName as String?,

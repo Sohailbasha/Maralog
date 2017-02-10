@@ -14,38 +14,16 @@ import CoreLocation
 class LocationController {
     
     static let sharedInstance = LocationController()
-    
-    
-/*
-    override init() {
-        super.init()
-        locationManager.delegate = self
-    }
 
-    
-    var locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
-
-    func requestCurrentLocation() {
-        locationManager.requestLocation()
-    }
-*/
-
-    
-        
-
-    
     
     func getCoordinates(contact: Contact) -> CLLocationCoordinate2D {
         var coordinates = CLLocationCoordinate2D()
-        
         if let lat = contact.location?.latitude, let long = contact.location?.longitude {
             let latitude = CLLocationDegrees(lat)
             let longitude = CLLocationDegrees(long)
             coordinates.latitude = latitude
             coordinates.longitude = longitude
         }
-        
         return coordinates
     }
     
@@ -57,46 +35,3 @@ class LocationController {
     }
     
 }
-
-/*
-extension LocationController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = locations.last
-        
-        if let currentLocation = currentLocation {
-            
-            let geoCoder = CLGeocoder()
-            
-            geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) in
-                if error != nil {
-                    print("Reverse geocoder failed with error: \(error?.localizedDescription)")
-                }
-                
-                guard let placemarks = placemarks else { return }
-                if placemarks.count > 0 {
-                    self.locationManager.stopUpdatingLocation()
-                    let pm = placemarks[0] as CLPlacemark
-                    if let currentLocation = pm.locality {
-                        print(currentLocation)
-                    }
-                }
-            })
-        }
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error: \(error.localizedDescription)")
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
-    }
-}
-
-*/
-

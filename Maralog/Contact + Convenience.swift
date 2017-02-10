@@ -19,4 +19,10 @@ extension Contact {
         self.timeStamp = timeStamp as NSDate
         self.location = location
     }
+    
+    var firstLetter: String {
+        guard let firstName = firstName else { return "" }
+        let sectionHeader = (String(firstName[firstName.index(firstName.startIndex, offsetBy: 0)]).uppercased())
+        return sectionHeader
+    }
 }

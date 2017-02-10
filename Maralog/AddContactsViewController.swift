@@ -23,9 +23,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
-        let letters = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z #"
-        let sections = letters.components(separatedBy: " ")
-        
     }
     
     

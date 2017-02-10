@@ -41,25 +41,39 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentlyAdded", for: indexPath) as UITableViewCell
-        //let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+        
         let contact = contacts?[indexPath.row]
+        var dateString = ""
+        
+        if let timeStamp = contact?.timeStamp {
+            let dateAdded = FormattingDate.sharedInstance.formatter.string(from: timeStamp as Date)
+            dateString = dateAdded
+        }
+        
         cell.textLabel?.text = contact?.firstName
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
+        if contact?.location != nil {
+            cell.detailTextLabel?.text = "added \(dateString)"
+            cell.detailTextLabel?.textColor = .white
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightUltraLight)
+        }
         return cell
     }
     
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            
-//            if let contact = contacts?[indexPath.row] {
-//                contacts?.remove(at: contact)
-//            }
-//            
-//                        if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
-//                            ContactController.sharedInstance.removeContact(contact: contact)
-//                        }
-//        }
-//    }
+    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    //        if editingStyle == .delete {
+    //
+    //            if let contact = contacts?[indexPath.row] {
+    //                contacts?.remove(at: contact)
+    //            }
+    //
+    //                        if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
+    //                            ContactController.sharedInstance.removeContact(contact: contact)
+    //                        }
+    //        }
+    //    }
     
     
     

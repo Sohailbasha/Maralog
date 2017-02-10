@@ -24,6 +24,8 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
+    var contacts = [Contact]()
+    
     
     // MARK: - Outlets
     
@@ -33,27 +35,40 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Datasource
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController.sections?.count ?? 0
+    }
+    
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sectionInfo = fetchedResultsController.sections?[section] else { return "" }
+        return sectionInfo.name
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        guard let sectionInfo = fetchedResultsController.sections?[section] else { return 0 }
+        return sectionInfo.numberOfObjects
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as UITableViewCell
-        let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
-        cell.textLabel?.text = contact?.firstName
+        let contact = fetchedResultsController.object(at: indexPath)
+        cell.textLabel?.text = contact.firstName
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
-                ContactController.sharedInstance.removeContact(contact: contact)
-            }
+            let contact = fetchedResultsController.object(at: indexPath)
+            ContactController.sharedInstance.removeContact(contact: contact)
         }
     }
-    
     
     
     // MARK: - Navigation
@@ -62,7 +77,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         if segue.identifier == "showContactDetail" {
             if let destinationVC = segue.destination as? ContactDetailViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
-                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+                    let contact = fetchedResultsController.object(at: indexPath)
                     destinationVC.contact = contact
                 }
             }
@@ -74,17 +89,22 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Fetched Results Controller
     
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
+        
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+        
         fetchRequest.sortDescriptors = [sortDescriptor]
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: CoreDataStack.context,
-                                          sectionNameKeyPath: nil,
+                                          sectionNameKeyPath: "firstLetter",
                                           cacheName: nil)
     }()
     
+ 
+
 }
 
+// MARK: - NSFetched Results Controller
 
 extension ContactsListViewController {
     
