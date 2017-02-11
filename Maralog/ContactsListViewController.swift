@@ -16,21 +16,15 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         fetchedResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print("Error starting fetched results controller: \(error)")
-        }
+        do { try fetchedResultsController.performFetch() }
+        catch { print("Error starting fetched results controller: \(error)") }
+
     }
-    
-    
-    var contacts = [Contact]()
     
     
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
-    
     
     
     // MARK: - Datasource
@@ -44,7 +38,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         guard let sectionInfo = fetchedResultsController.sections?[section] else { return "" }
         return sectionInfo.name
     }
-    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +64,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,18 +85,18 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
         
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
-        
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fNameSortDescriptors = NSSortDescriptor(key: "firstName", ascending: true)
+        fetchRequest.sortDescriptors = [fNameSortDescriptors]
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: CoreDataStack.context,
                                           sectionNameKeyPath: "firstLetter",
                                           cacheName: nil)
     }()
     
- 
-
+    
 }
+
+
 
 // MARK: - NSFetched Results Controller
 

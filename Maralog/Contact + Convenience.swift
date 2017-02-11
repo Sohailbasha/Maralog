@@ -26,3 +26,19 @@ extension Contact {
         return sectionHeader
     }
 }
+
+
+extension Contact: SearchableContact {
+    
+    func matchesSearchTerm(with term: String) -> Bool {
+        guard let fNameTerm = firstName?.lowercased().components(separatedBy: " "),
+            let lNameTerm = lastName?.lowercased().components(separatedBy: " ") else { return false }
+
+        if(fNameTerm.contains(term.lowercased()) || lNameTerm.contains(term.lowercased())) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+}

@@ -20,10 +20,10 @@ class MainViewController: UIViewController {
     @IBOutlet var recentlyAddedView: UIView!
     @IBOutlet var allContactsView: UIView!
     
+
     // Constraints
     @IBOutlet var listViewConstraint: NSLayoutConstraint!
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
-    
     
     
     override func viewDidLoad() {
@@ -36,7 +36,6 @@ class MainViewController: UIViewController {
     
     
     // MARK: - Actions
-    
     
     @IBAction func contactsButtonTapped(_ sender: Any) {
         self.menuShowing()
@@ -65,7 +64,6 @@ class MainViewController: UIViewController {
     }
     
     
-    
     /*
     // MARK: - Navigation
 
@@ -90,12 +88,14 @@ extension MainViewController {
         self.addButton.clipsToBounds = true
     }
     
+    
     func transparentNavBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = UIColor.clear
     }
+    
     
     func menuShowing() {
         UIView.animate(withDuration: 0.5) {
