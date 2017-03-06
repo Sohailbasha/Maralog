@@ -67,7 +67,6 @@ class ContactDetailViewController: UIViewController {
     }
     
     
-    
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -98,17 +97,24 @@ class ContactDetailViewController: UIViewController {
     
     
     @IBAction func saveMenuButtonTapped(_ sender: Any) {
+        guard let firstName = editFirstNameTextField.text,
+            let lastName = editLastNameTextField.text,
+            let number = editPhoneTextField.text else {
+                return}
+        
         if let contact = contact {
-            guard let firstName = editFirstNameTextField.text,
-                let lastName = editLastNameTextField.text,
-                let number = editPhoneTextField.text,
-                let userLocation = self.usersLocation else {
-                    return}
+            if contact.location == nil {
+                ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number)
+                fullName.text = "\(firstName) \(lastName)"
+                phoneNumber.text = number
+            } else {
+                guard let timeStamp = contact.timeStamp as? Date, let location = contact.location else {
+                    return }
+                ContactController.sharedInstance.updateContactWithLocation(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number, timeStamp: timeStamp, location: location)
+            }
             
-            ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number)
-            fullName.text = "\(firstName) \(lastName)"
-            phoneNumber.text = number
         }
+        
         removeMenuView()
     }
     

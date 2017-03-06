@@ -50,7 +50,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as UITableViewCell
         let contact = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = contact.firstName
+        cell.textLabel?.text = contact.fullName
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
         return cell

@@ -13,34 +13,24 @@ class ContactController {
     
     //MARK: - C R U D methods
     
-
+    
     static let sharedInstance = ContactController()
-
     
     func addContact(contact: Contact) {
         saveToMemory()
     }
-    
-    func add(location: Location, with contact: Contact) {
-        contact.location = location
+
+    func update(contact: Contact, firstName: String, lastName: String, phoneNumber: String) {
+        removeContact(contact: contact)
+        let _ = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         saveToMemory()
     }
     
-    func update(contact: Contact, firstName: String, lastName: String, phoneNumber: String) {
-
-        if contact.location == nil {
-            removeContact(contact: contact)
-            let _ = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-        } else {
-            if let location = contact.location {
-                removeContact(contact: contact)
-                let newContact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-                add(location: location, with: newContact)
-            }
-        }
+    func updateContactWithLocation(contact: Contact, firstName: String, lastName: String, phoneNumber: String, timeStamp: Date, location: Location) {
+        removeContact(contact: contact)
         
-        
-        saveToMemory()
+        let newContact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: timeStamp, location: location)
+        addContact(contact: newContact)
     }
     
     func removeContact(contact: Contact) {
@@ -59,6 +49,11 @@ class ContactController {
             print("unable to save: \(error)")
         }
     }
-
+    
+    //    func add(location: Location, with contact: Contact) {
+    //        contact.location = location
+    //        saveToMemory()
+    //    }
+    //
 }
 

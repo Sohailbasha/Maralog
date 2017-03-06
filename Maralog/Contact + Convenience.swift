@@ -30,7 +30,6 @@ extension Contact {
         guard let firstName = firstName, let lastName = lastName else {
             return ""
         }
-        
         let full = "\(firstName) \(lastName)"
         return full
     }
