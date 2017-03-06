@@ -60,10 +60,13 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            currentLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            currentLocation = CLLocation(latitude: location.coordinate.latitude,
+                                         longitude: location.coordinate.longitude)
             
             if let currentLocation = currentLocation {
-                usersLocation = Location(latitude: Double(currentLocation.coordinate.latitude), longitude: Double(currentLocation.coordinate.longitude), name: "")
+                usersLocation = Location(latitude: Double(currentLocation.coordinate.latitude),
+                                         longitude: Double(currentLocation.coordinate.longitude),
+                                         name: "")
             }
         }
     }
@@ -77,21 +80,18 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         guard let firstName = firstNameTextField.text,
             let lastName = lastNameTextField.text,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
-            let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         
         if uiSwitch.isOn {
             
-            
             if let location = usersLocation {
-                contact.location = location
-                //ContactController.sharedInstance.add(location: location, with: contact)
+                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+                ContactController.sharedInstance.addContact(contact: contact)
             }
-    
-        } else {
             
+        } else {
+            let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)
         }
-        
         _ = navigationController?.popToRootViewController(animated: true)
     }
 }

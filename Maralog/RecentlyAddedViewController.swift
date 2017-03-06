@@ -34,14 +34,13 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return fetchedResultsController.fetchedObjects?.count ?? 0
         return contacts?.count ?? 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentlyAdded", for: indexPath) as UITableViewCell
-        
+        cell.detailTextLabel?.text = ""
         let contact = contacts?[indexPath.row]
         var dateString = ""
         

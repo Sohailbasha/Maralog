@@ -13,12 +13,15 @@ class ContactDetailViewController: UIViewController {
     
     var contact: Contact?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-       self.updateViews()
+    var usersLocation: Location? {
+        return contact?.location
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+       self.updateViews()
+    }
     
     func updateViews() {
         guard let contact = self.contact,
@@ -27,12 +30,15 @@ class ContactDetailViewController: UIViewController {
             let number = contact.phoneNumber as String?,
             let timeStamp = contact.timeStamp as? Date else { return }
         
-        if contact.location == nil {
+        
             fullName.text = "\(firstName) \(lastName)"
             phoneNumber.text = number
             timeMetLabel.text = ""
             locationMetLabel.text = ""
-        } else {
+        
+        
+        if contact.location != nil {
+    
             if let location = contact.location {
                 let coordinate = LocationController.sharedInstance.getLocationCoordinates(location: location)
                 let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -52,16 +58,12 @@ class ContactDetailViewController: UIViewController {
                             let street = pm.thoroughfare,
                             let zipcode = pm.postalCode {
                             self.locationMetLabel.text = "location met: \(street). \(city), \(state) \(zipcode)"
+                            self.timeMetLabel.text = "\(self.formatter.string(from: timeStamp))"
                         }
                     }
                 }
-                
-                fullName.text = "\(firstName) \(lastName)"
-                phoneNumber.text = number
-                timeMetLabel.text = "\(formatter.string(from: timeStamp))"
             }
         }
-        //ContactController.sharedInstance.saveToMemory()
     }
     
     
@@ -77,7 +79,6 @@ class ContactDetailViewController: UIViewController {
     
     
     // MARK: - Actions
-    
     
     @IBAction func callButtonTapped(_ sender: Any) {
         let callNumber: String = phoneNumber.text ?? ""
@@ -96,6 +97,7 @@ class ContactDetailViewController: UIViewController {
         editMenuView.frame.origin.x = 380
         editMenuView.center.y = self.view.center.y
         self.view.addSubview(editMenuView)
+
         UIView.animate(withDuration: 0.75) {
             self.editMenuView.center.x = self.view.center.x
         }
@@ -107,14 +109,16 @@ class ContactDetailViewController: UIViewController {
 
     @IBAction func saveMenuButtonTapped(_ sender: Any) {
         if let contact = contact {
-            guard let firstName = editFirstNameTextField.text, let lastName = editLastNameTextField.text, let phoneNumber = editPhoneTextField.text else {
+            guard let firstName = editFirstNameTextField.text,
+                let lastName = editLastNameTextField.text,
+                let number = editPhoneTextField.text,
+                let userLocation = self.usersLocation else {
                 return}
-            ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-//            contact.firstName = editFirstNameTextField.text
-//            contact.lastName = editLastNameTextField.text
-//            contact.phoneNumber = editPhoneTextField.text
-//            updateWithContact(contact: contact)
-//            ContactController.sharedInstance.saveToMemory()
+            
+            
+            ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number, location: userLocation)
+            fullName.text = "\(firstName) \(lastName)"
+            phoneNumber.text = number
         }
         removeMenuView()
     }
