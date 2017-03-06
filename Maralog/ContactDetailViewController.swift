@@ -16,14 +16,13 @@ class ContactDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let contact = self.contact {
-            self.updateWithContact(contact: contact)
-        }
+       self.updateViews()
     }
     
     
-    func updateWithContact(contact: Contact) {
-        guard let firstName = contact.firstName as String?,
+    func updateViews() {
+        guard let contact = self.contact,
+            let firstName = contact.firstName as String?,
             let lastName = contact.lastName as String?,
             let number = contact.phoneNumber as String?,
             let timeStamp = contact.timeStamp as? Date else { return }
@@ -31,10 +30,9 @@ class ContactDetailViewController: UIViewController {
         if contact.location == nil {
             fullName.text = "\(firstName) \(lastName)"
             phoneNumber.text = number
-            timeMetLabel.text = "added \(formatter.string(from: timeStamp))"
-            
+            timeMetLabel.text = ""
+            locationMetLabel.text = ""
         } else {
-            
             if let location = contact.location {
                 let coordinate = LocationController.sharedInstance.getLocationCoordinates(location: location)
                 let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -63,6 +61,7 @@ class ContactDetailViewController: UIViewController {
                 timeMetLabel.text = "\(formatter.string(from: timeStamp))"
             }
         }
+        //ContactController.sharedInstance.saveToMemory()
     }
     
     
@@ -103,17 +102,19 @@ class ContactDetailViewController: UIViewController {
         editPhoneTextField.text = contact?.phoneNumber
         editFirstNameTextField.text = contact?.firstName
         editLastNameTextField.text = contact?.lastName
-        
     }
     
 
     @IBAction func saveMenuButtonTapped(_ sender: Any) {
         if let contact = contact {
-            contact.firstName = editFirstNameTextField.text
-            contact.lastName = editLastNameTextField.text
-            contact.phoneNumber = editPhoneTextField.text
-            updateWithContact(contact: contact)
-            ContactController.sharedInstance.saveToMemory()
+            guard let firstName = editFirstNameTextField.text, let lastName = editLastNameTextField.text, let phoneNumber = editPhoneTextField.text else {
+                return}
+            ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+//            contact.firstName = editFirstNameTextField.text
+//            contact.lastName = editLastNameTextField.text
+//            contact.phoneNumber = editPhoneTextField.text
+//            updateWithContact(contact: contact)
+//            ContactController.sharedInstance.saveToMemory()
         }
         removeMenuView()
     }
@@ -134,11 +135,9 @@ class ContactDetailViewController: UIViewController {
     
     // edit contact view
     @IBOutlet var editMenuView: UIView!
-    
     @IBOutlet var editPhoneTextField: UITextField!
     @IBOutlet var editFirstNameTextField: UITextField!
     @IBOutlet var editLastNameTextField: UITextField!
-    
 }
 
 extension ContactDetailViewController {

@@ -25,4 +25,6 @@ extension Contact {
         let sectionHeader = (String(firstName[firstName.index(firstName.startIndex, offsetBy: 0)]).uppercased())
         return sectionHeader
     }
+    
+    
 }
