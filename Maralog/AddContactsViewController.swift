@@ -85,7 +85,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             
             if let location = usersLocation {
                 let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
-                
                 ContactController.sharedInstance.addContact(contact: contact)
             }
             

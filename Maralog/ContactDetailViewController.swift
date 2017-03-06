@@ -102,19 +102,23 @@ class ContactDetailViewController: UIViewController {
             let number = editPhoneTextField.text else {
                 return}
         
+        
         if let contact = contact {
+            
             if contact.location == nil {
                 ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number)
                 fullName.text = "\(firstName) \(lastName)"
                 phoneNumber.text = number
+                
             } else {
-                guard let timeStamp = contact.timeStamp as? Date, let location = contact.location else {
+                
+                guard let timeStamp = contact.timeStamp as? Date else {
                     return }
-                ContactController.sharedInstance.updateContactWithLocation(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number, timeStamp: timeStamp, location: location)
+                fullName.text = "\(firstName) \(lastName)"
+                phoneNumber.text = number
+                ContactController.sharedInstance.updateContactWithLocation(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number, timeStamp: timeStamp, location: contact.location)
             }
-            
         }
-        
         removeMenuView()
     }
     

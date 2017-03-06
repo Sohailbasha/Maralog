@@ -11,8 +11,8 @@ import CoreData
 
 class ContactController {
     
-    //MARK: - C R U D methods
     
+    //MARK: - C R U D methods
     
     static let sharedInstance = ContactController()
     
@@ -26,11 +26,10 @@ class ContactController {
         saveToMemory()
     }
     
-    func updateContactWithLocation(contact: Contact, firstName: String, lastName: String, phoneNumber: String, timeStamp: Date, location: Location) {
-        removeContact(contact: contact)
-        
+    func updateContactWithLocation(contact: Contact, firstName: String, lastName: String, phoneNumber: String, timeStamp: Date, location: Location?) {
         let newContact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: timeStamp, location: location)
         addContact(contact: newContact)
+        removeContact(contact: contact)
     }
     
     func removeContact(contact: Contact) {
@@ -42,7 +41,6 @@ class ContactController {
     
     func saveToMemory() {
         let moc = CoreDataStack.context
-        
         do {
             try moc.save()
         } catch {

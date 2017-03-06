@@ -16,6 +16,7 @@ class LocationController {
     static let sharedInstance = LocationController()
 
     
+    
     func getCoordinates(contact: Contact) -> CLLocationCoordinate2D {
         var coordinates = CLLocationCoordinate2D()
         if let lat = contact.location?.latitude, let long = contact.location?.longitude {
@@ -33,5 +34,7 @@ class LocationController {
         let longitude = CLLocationDegrees(location.longitude)
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    
+    
     
 }
