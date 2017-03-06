@@ -14,10 +14,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
@@ -25,6 +21,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
             print("Error starting fetched results controller: \(error)")
         }
     }
+    
     
     // MARK: - Outlets
     

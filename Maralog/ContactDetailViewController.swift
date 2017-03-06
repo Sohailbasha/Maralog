@@ -19,8 +19,8 @@ class ContactDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       self.updateViews()
+        
+        self.updateViews()
     }
     
     func updateViews() {
@@ -31,14 +31,14 @@ class ContactDetailViewController: UIViewController {
             let timeStamp = contact.timeStamp as? Date else { return }
         
         
-            fullName.text = "\(firstName) \(lastName)"
-            phoneNumber.text = number
-            timeMetLabel.text = ""
-            locationMetLabel.text = ""
+        fullName.text = "\(firstName) \(lastName)"
+        phoneNumber.text = number
+        timeMetLabel.text = ""
+        locationMetLabel.text = ""
         
         
         if contact.location != nil {
-    
+            
             if let location = contact.location {
                 let coordinate = LocationController.sharedInstance.getLocationCoordinates(location: location)
                 let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -77,7 +77,6 @@ class ContactDetailViewController: UIViewController {
     } ()
     
     
-    
     // MARK: - Actions
     
     @IBAction func callButtonTapped(_ sender: Any) {
@@ -94,40 +93,29 @@ class ContactDetailViewController: UIViewController {
     // menu actions
     
     @IBAction func editContact(_ sender: Any) {
-        editMenuView.frame.origin.x = 380
-        editMenuView.center.y = self.view.center.y
-        self.view.addSubview(editMenuView)
-
-        UIView.animate(withDuration: 0.75) {
-            self.editMenuView.center.x = self.view.center.x
-        }
-        editPhoneTextField.text = contact?.phoneNumber
-        editFirstNameTextField.text = contact?.firstName
-        editLastNameTextField.text = contact?.lastName
+        setupMenu()
     }
     
-
+    
     @IBAction func saveMenuButtonTapped(_ sender: Any) {
         if let contact = contact {
             guard let firstName = editFirstNameTextField.text,
                 let lastName = editLastNameTextField.text,
                 let number = editPhoneTextField.text,
                 let userLocation = self.usersLocation else {
-                return}
+                    return}
             
-            
-            ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number, location: userLocation)
+            ContactController.sharedInstance.update(contact: contact, firstName: firstName, lastName: lastName, phoneNumber: number)
             fullName.text = "\(firstName) \(lastName)"
             phoneNumber.text = number
         }
         removeMenuView()
     }
-
+    
     
     @IBAction func exitButtonTapped(_ sender: Any) {
         removeMenuView()
     }
-    
     
     
     // MARK: - Outlets
@@ -144,7 +132,22 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet var editLastNameTextField: UITextField!
 }
 
+
 extension ContactDetailViewController {
+    
+    func setupMenu() {
+        editMenuView.frame.origin.x = 380
+        editMenuView.center.y = self.view.center.y
+        self.view.addSubview(editMenuView)
+        
+        UIView.animate(withDuration: 0.75) {
+            self.editMenuView.center.x = self.view.center.x
+        }
+        editPhoneTextField.text = contact?.phoneNumber
+        editFirstNameTextField.text = contact?.firstName
+        editLastNameTextField.text = contact?.lastName
+    }
+    
     func removeMenuView() {
         UIView.animate(withDuration: 0.75, animations: {
             self.editMenuView.frame.origin.x = -400

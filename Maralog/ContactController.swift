@@ -21,14 +21,25 @@ class ContactController {
         saveToMemory()
     }
     
-//    func add(location: Location, with contact: Contact) {
-//        saveToMemory()
-//    }
+    func add(location: Location, with contact: Contact) {
+        contact.location = location
+        saveToMemory()
+    }
     
-    func update(contact: Contact, firstName: String, lastName: String, phoneNumber: String, location: Location?) {
+    func update(contact: Contact, firstName: String, lastName: String, phoneNumber: String) {
 
-        removeContact(contact: contact)
-        let _ = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+        if contact.location == nil {
+            removeContact(contact: contact)
+            let _ = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+        } else {
+            if let location = contact.location {
+                removeContact(contact: contact)
+                let newContact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+                add(location: location, with: newContact)
+            }
+        }
+        
+        
         saveToMemory()
     }
     

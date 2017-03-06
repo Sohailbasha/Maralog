@@ -26,5 +26,14 @@ extension Contact {
         return sectionHeader
     }
     
+    var fullName: String {
+        guard let firstName = firstName, let lastName = lastName else {
+            return ""
+        }
+        
+        let full = "\(firstName) \(lastName)"
+        return full
+    }
+    
     
 }
