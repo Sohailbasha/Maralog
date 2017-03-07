@@ -88,7 +88,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
                 ContactController.sharedInstance.addContact(contact: contact)
             }
         } else {
-            let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+            let contact = Contact(firstName: firstName.capitalized, lastName: lastName.capitalized, phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)
         }
         _ = navigationController?.popToRootViewController(animated: true)
