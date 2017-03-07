@@ -156,6 +156,7 @@
                         <outlet property="addButton" destination="W3T-q3-kVu" id="4GB-Kd-BA4"/>
                         <outlet property="allContactsView" destination="BP4-Ac-ooE" id="cNn-aN-PVA"/>
                         <outlet property="bottomImageViewConstraint" destination="Xdg-5A-x85" id="UyE-I2-DD3"/>
+                        <outlet property="listViewBottomConstraint" destination="97v-Pd-M2c" id="QUs-1T-O6V"/>
                         <outlet property="listViewConstraint" destination="Oey-lX-Jiu" id="Diu-BP-HJP"/>
                         <outlet property="recentlyAddedView" destination="EVo-fH-wsd" id="Iyo-0R-uWm"/>
                     </connections>
@@ -279,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169" y="-205"/>
+            <point key="canvasLocation" x="2169" y="-206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OAU-lB-6sa">
@@ -366,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUL-Sz-NgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2170" y="1068"/>
+            <point key="canvasLocation" x="2151" y="999"/>
         </scene>
         <!--Contact Detail View Controller-->
         <scene sceneID="hrf-BG-DRa">
@@ -669,6 +670,6 @@
         <image name="bottomView" width="375" height="280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="stV-7U-iR9"/>
+        <segue reference="Q7I-3E-yCI"/>
     </inferredMetricsTieBreakers>
 </document>

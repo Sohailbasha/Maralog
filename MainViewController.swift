@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
     @IBOutlet var listViewConstraint: NSLayoutConstraint!
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet var listViewBottomConstraint: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
@@ -58,6 +59,7 @@ class MainViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.listViewConstraint.constant = 504
             self.bottomImageViewConstraint.constant = 478
+            self.listViewBottomConstraint.constant = -568
             self.addButton.alpha = 1
             self.view.layoutIfNeeded()
             
@@ -101,6 +103,7 @@ extension MainViewController {
         UIView.animate(withDuration: 0.5) {
             self.listViewConstraint.constant = -8
             self.bottomImageViewConstraint.constant = -400
+            self.listViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
     }

@@ -16,6 +16,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+    
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()
