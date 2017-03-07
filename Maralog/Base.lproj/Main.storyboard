@@ -42,7 +42,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomView" translatesAutoresizingMaskIntoConstraints="NO" id="LjQ-MM-C5J">
                                 <rect key="frame" x="0.0" y="576" width="375" height="91"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="91" id="3WW-dl-MF1"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="91" id="3WW-dl-MF1"/>
                                     <constraint firstAttribute="width" constant="375" id="Fsp-uf-tAH"/>
                                 </constraints>
                             </imageView>

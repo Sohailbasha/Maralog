@@ -23,7 +23,6 @@ class MainViewController: UIViewController {
     // Constraints
     @IBOutlet var listViewConstraint: NSLayoutConstraint!
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
-    
     @IBOutlet var listViewBottomConstraint: NSLayoutConstraint!
     
     
@@ -57,16 +56,13 @@ class MainViewController: UIViewController {
     
     @IBAction func homeButtonTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.5) {
-            self.listViewConstraint.constant = 504
-            self.bottomImageViewConstraint.constant = 478
+            self.listViewConstraint.constant = 0
+            self.bottomImageViewConstraint.constant = 0
             self.listViewBottomConstraint.constant = -568
             self.addButton.alpha = 1
             self.view.layoutIfNeeded()
-            
         }
     }
-    
-    
     
     /*
     // MARK: - Navigation
@@ -83,8 +79,6 @@ class MainViewController: UIViewController {
 // MARK: - Asthetics & Animation
 
 extension MainViewController {
-    
-    
     func setUpButton() {
         self.addButton.center.x = self.view.center.x
         self.addButton.alpha = 1
@@ -101,11 +95,11 @@ extension MainViewController {
     
     func menuShowing() {
         UIView.animate(withDuration: 0.5) {
-            self.listViewConstraint.constant = -400
-            self.bottomImageViewConstraint.constant = -400
+            let height = self.view.frame.height
+            self.listViewConstraint.constant = -height + 144
+            self.bottomImageViewConstraint.constant = -height - 200
             self.listViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
     }
-    
 }
