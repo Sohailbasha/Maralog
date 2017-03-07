@@ -101,7 +101,7 @@ extension MainViewController {
     
     func menuShowing() {
         UIView.animate(withDuration: 0.5) {
-            self.listViewConstraint.constant = -8
+            self.listViewConstraint.constant = -400
             self.bottomImageViewConstraint.constant = -400
             self.listViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
