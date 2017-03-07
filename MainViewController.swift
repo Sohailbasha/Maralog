@@ -25,12 +25,21 @@ class MainViewController: UIViewController {
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
     @IBOutlet var listViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var listViewHeightConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let viewHeight = self.view.frame.height
         
         self.setUpButton()
         self.transparentNavBar()
+        
+        self.listViewHeightConstraint.constant = viewHeight
+        self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
+        self.listViewConstraint.constant = (viewHeight / 1.15)
+        
+        self.view.layoutIfNeeded()
     }
     
     
@@ -56,8 +65,9 @@ class MainViewController: UIViewController {
     
     @IBAction func homeButtonTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.5) {
-            self.listViewConstraint.constant = 0
-            self.bottomImageViewConstraint.constant = 0
+            let viewHeight = self.view.frame.height
+            self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
+            self.listViewConstraint.constant = (viewHeight / 1.15)
             self.listViewBottomConstraint.constant = -568
             self.addButton.alpha = 1
             self.view.layoutIfNeeded()
@@ -95,9 +105,11 @@ extension MainViewController {
     
     func menuShowing() {
         UIView.animate(withDuration: 0.5) {
-            let height = self.view.frame.height
-            self.listViewConstraint.constant = -height + 144
-            self.bottomImageViewConstraint.constant = -height - 200
+            let viewHeight = self.view.frame.height
+            
+            self.listViewConstraint.constant = (viewHeight / 9.9)
+
+            self.bottomImageViewConstraint.constant = (-viewHeight)
             self.listViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
