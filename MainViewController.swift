@@ -92,7 +92,7 @@ extension MainViewController {
     func setUpButton() {
         self.addButton.center.x = self.view.center.x
         self.addButton.alpha = 1
-        self.addButton.layer.cornerRadius = 3
+        self.addButton.layer.cornerRadius = 7
         self.addButton.clipsToBounds = true
     }
     
