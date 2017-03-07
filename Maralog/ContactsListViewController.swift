@@ -14,6 +14,8 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         fetchedResultsController.delegate = self
         do {
             try fetchedResultsController.performFetch()

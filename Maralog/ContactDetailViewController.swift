@@ -35,7 +35,7 @@ class ContactDetailViewController: UIViewController {
         phoneNumber.text = number
         timeMetLabel.text = ""
         locationMetLabel.text = ""
-        
+        let timeStampFormatted = FormattingDate.sharedInstance.formatter.string(from: timeStamp)
         
         if contact.location != nil {
             
@@ -58,7 +58,7 @@ class ContactDetailViewController: UIViewController {
                             let street = pm.thoroughfare,
                             let zipcode = pm.postalCode {
                             self.locationMetLabel.text = "location met: \(street). \(city), \(state) \(zipcode)"
-                            self.timeMetLabel.text = "\(self.formatter.string(from: timeStamp))"
+                            self.timeMetLabel.text = timeStampFormatted
                         }
                     }
                 }
@@ -85,6 +85,17 @@ class ContactDetailViewController: UIViewController {
             if application.canOpenURL(phoneURL) {
                 application.open(phoneURL, options: [:], completionHandler: nil)
             }
+        }
+    }
+    
+    @IBAction func textButtonTapped(_ sender: Any) {
+        let callNumber: String = phoneNumber.text ?? ""
+        if(MessageSender.sharedInstance.canSendText()) {
+            MessageSender.sharedInstance.recepients.append(callNumber)
+            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+            present(messageComposerVC, animated: true, completion: { 
+                MessageSender.sharedInstance.recepients.removeAll()
+            })
         }
     }
     
