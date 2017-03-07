@@ -278,6 +278,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="autoTextSwitch" destination="wVv-vT-qpx" id="dia-Fa-Bjj"/>
                         <outlet property="firstNameTextField" destination="ANx-2R-crX" id="osQ-Z1-MVZ"/>
                         <outlet property="labelOfFirstName" destination="cim-u8-10V" id="XWx-vK-wNe"/>
                         <outlet property="labelOfLastName" destination="XA5-Iy-YNO" id="9bO-1Q-aZk"/>

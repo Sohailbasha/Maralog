@@ -49,6 +49,9 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     @IBOutlet var uiSwitch: UISwitch!
     
+    @IBOutlet var autoTextSwitch: UISwitch!
+    
+    
     
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -82,7 +85,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
         if uiSwitch.isOn {
-            
             if let location = usersLocation {
                 let contact = Contact(firstName: firstName.capitalized, lastName: lastName.capitalized, phoneNumber: phoneNumber, location: location)
                 ContactController.sharedInstance.addContact(contact: contact)
@@ -91,7 +93,20 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             let contact = Contact(firstName: firstName.capitalized, lastName: lastName.capitalized, phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)
         }
-        _ = navigationController?.popToRootViewController(animated: true)
+        
+        if autoTextSwitch.isOn {
+            let callNumber: String = phoneNumber
+            if(MessageSender.sharedInstance.canSendText()) {
+                MessageSender.sharedInstance.recepients.append(callNumber)
+                MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized) it's"
+                let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+                present(messageComposerVC, animated: true, completion: {
+                    MessageSender.sharedInstance.recepients.removeAll()
+                    MessageSender.sharedInstance.textBody = ""
+                    _ = self.navigationController?.popToRootViewController(animated: true)
+                })
+            }
+        }
     }
 }
 
