@@ -49,7 +49,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             dateString = dateAdded
         }
         
-        cell.textLabel?.text = contact?.firstName
+        cell.textLabel?.text = contact?.fullName
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
         if contact?.location != nil {

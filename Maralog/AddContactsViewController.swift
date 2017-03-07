@@ -77,17 +77,16 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        guard let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text,
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces),
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces),
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
         if uiSwitch.isOn {
             
             if let location = usersLocation {
-                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+                let contact = Contact(firstName: firstName.capitalized, lastName: lastName.capitalized, phoneNumber: phoneNumber, location: location)
                 ContactController.sharedInstance.addContact(contact: contact)
             }
-            
         } else {
             let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)

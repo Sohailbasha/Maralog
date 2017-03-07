@@ -47,11 +47,5 @@ class ContactController {
             print("unable to save: \(error)")
         }
     }
-    
-    //    func add(location: Location, with contact: Contact) {
-    //        contact.location = location
-    //        saveToMemory()
-    //    }
-    //
 }
 

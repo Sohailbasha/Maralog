@@ -21,13 +21,15 @@ extension Contact {
     }
     
     var firstLetter: String {
-        guard let firstName = firstName else { return "" }
+        guard let firstName = firstName?.trimmingCharacters(in: .whitespaces) else { return "" }
+        
         let sectionHeader = (String(firstName[firstName.index(firstName.startIndex, offsetBy: 0)]).uppercased())
         return sectionHeader
     }
     
     var fullName: String {
-        guard let firstName = firstName, let lastName = lastName else {
+        guard let firstName = firstName?.trimmingCharacters(in: .whitespaces),
+            let lastName = lastName?.trimmingCharacters(in: .whitespaces) else {
             return ""
         }
         let full = "\(firstName) \(lastName)"

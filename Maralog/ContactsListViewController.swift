@@ -113,7 +113,6 @@ extension ContactsListViewController {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
         switch type {
         case .delete:
             guard let indexPath = indexPath else {return}
@@ -123,10 +122,20 @@ extension ContactsListViewController {
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         case .move:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
-            tableView.moveRow(at: indexPath, to: newIndexPath)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
         case .update:
-            guard let indexPath = indexPath else {return}
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+//        case .move:
+//            guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
+//            tableView.moveRow(at: indexPath, to: newIndexPath)
+//        case .update:
+//            guard let indexPath = indexPath else {return}
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
