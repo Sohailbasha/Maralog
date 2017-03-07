@@ -10,12 +10,7 @@ import UIKit
 import CoreData
 
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-    
-    
-    
-    // MARK: - Outlets
-    
-    @IBOutlet var tableView: UITableView!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +21,25 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }
     }
+
+    
+    // MARK: - Outlets
+    
+    @IBOutlet var tableView: UITableView!
+    
+    
+    // MARK: - Properties 
     
     var contacts: [Contact]? {
         return fetchedResultsController.fetchedObjects
     }
     
-    
-    
+   
     // MARK: - Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts?.count ?? 0
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentlyAdded", for: indexPath) as UITableViewCell
@@ -63,21 +64,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //
-    //            if let contact = contacts?[indexPath.row] {
-    //                contacts?.remove(at: contact)
-    //            }
-    //
-    //                        if let contact = fetchedResultsController.fetchedObjects?[indexPath.row] {
-    //                            ContactController.sharedInstance.removeContact(contact: contact)
-    //                        }
-    //        }
-    //    }
-    
-    
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,7 +76,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    
     
     
     // MARK: - Fetched Results Controller
@@ -109,6 +94,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     }()
 }
 
+// MARK: - NSFetched Results Controller Delegate Methods
 extension RecentlyAddedViewController {
     
     
@@ -117,7 +103,6 @@ extension RecentlyAddedViewController {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
@@ -139,7 +124,6 @@ extension RecentlyAddedViewController {
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
-    
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()

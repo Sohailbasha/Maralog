@@ -11,6 +11,15 @@ import UIKit
 class MainViewController: UIViewController {
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setUpButton()
+        self.transparentNavBar()
+        self.setMenuConstraints()
+    }
+    
+    
     // MARK: - Properties
     
     var menuShowing: Bool {
@@ -32,16 +41,7 @@ class MainViewController: UIViewController {
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
     @IBOutlet var listViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var listViewHeightConstraint: NSLayoutConstraint!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.setUpButton()
-        self.transparentNavBar()
-        self.setMenuConstraints()
-    }
-    
+
     
     // MARK: - Actions
     

@@ -37,20 +37,19 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     // MARK: - Outlets
     
-    // text fields
+    // Text Fields
     @IBOutlet var phoneNumberTextField: UITextField!
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     
-    // labels for textfields
+    // Labels for each Text Field
     @IBOutlet var labelOfPhoneNumber: UILabel!
     @IBOutlet var labelOfFirstName: UILabel!
     @IBOutlet var labelOfLastName: UILabel!
     
+    // Switches
     @IBOutlet var uiSwitch: UISwitch!
-    
     @IBOutlet var autoTextSwitch: UISwitch!
-    
     
     
     
@@ -60,12 +59,10 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         }
     }
     
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             currentLocation = CLLocation(latitude: location.coordinate.latitude,
                                          longitude: location.coordinate.longitude)
-            
             if let currentLocation = currentLocation {
                 usersLocation = Location(latitude: Double(currentLocation.coordinate.latitude),
                                          longitude: Double(currentLocation.coordinate.longitude),
@@ -95,24 +92,16 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         }
         
         if autoTextSwitch.isOn {
-            let callNumber: String = phoneNumber
-            if(MessageSender.sharedInstance.canSendText()) {
-                MessageSender.sharedInstance.recepients.append(callNumber)
-                MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized) it's"
-                let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-                present(messageComposerVC, animated: true, completion: {
-                    MessageSender.sharedInstance.recepients.removeAll()
-                    MessageSender.sharedInstance.textBody = ""
-                    _ = self.navigationController?.popToRootViewController(animated: true)
-                })
-            }
+            sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+        } else {
+            _ = navigationController?.popToRootViewController(animated: true)
         }
     }
 }
 
 
 
-//MARK: - Asthetics & Animation
+//MARK: - Helper Methods
 
 extension AddContactsViewController {
     
@@ -124,13 +113,25 @@ extension AddContactsViewController {
         self.navigationController?.view.backgroundColor = UIColor.clear
     }
     
-    
     func detailLabelsAreInvisible() {
         self.labelOfPhoneNumber.alpha = 0
         self.labelOfFirstName.alpha = 0
         self.labelOfLastName.alpha = 0
     }
     
+    func sendAutoTextTo(phoneNumber: String, firstName: String) {
+        if(MessageSender.sharedInstance.canSendText()) {
+            MessageSender.sharedInstance.recepients.append(phoneNumber)
+            MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized) it's"
+            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+            present(messageComposerVC, animated: true,
+                    completion: {
+                MessageSender.sharedInstance.recepients.removeAll()
+                MessageSender.sharedInstance.textBody = ""
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            })
+        }
+    }
     
 }
 
