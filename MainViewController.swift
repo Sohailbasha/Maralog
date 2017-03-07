@@ -10,10 +10,17 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    
+    // MARK: - Properties
+    
+    var menuShowing: Bool {
+        return listViewBottomConstraint.constant == 0
+    }
+    
+    
     // MARK: - Outlets
-    
-    
-    // buttons
+
+    // Buttons
     @IBOutlet weak var addButton: UIButton!
     
     // UIContainer View's
@@ -24,71 +31,42 @@ class MainViewController: UIViewController {
     @IBOutlet var listViewConstraint: NSLayoutConstraint!
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
     @IBOutlet var listViewBottomConstraint: NSLayoutConstraint!
-    
     @IBOutlet var listViewHeightConstraint: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewHeight = self.view.frame.height
         
         self.setUpButton()
         self.transparentNavBar()
-        
-        self.listViewHeightConstraint.constant = viewHeight
-        self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
-        self.listViewConstraint.constant = (viewHeight / 1.15)
-        
-        self.view.layoutIfNeeded()
+        self.setMenuConstraints()
     }
-    
     
     
     // MARK: - Actions
     
-    
     @IBAction func contactsButtonTapped(_ sender: Any) {
-        self.menuShowing()
+        self.showContactsMenu()
         self.view.bringSubview(toFront: allContactsView)
         recentlyAddedView.isHidden = true
         allContactsView.isHidden = false
+        setUpGestures()
     }
    
-    
     @IBAction func recentlyAddedButtonTapped(_ sender: Any) {
-        self.menuShowing()
+        self.showContactsMenu()
         self.view.bringSubview(toFront: recentlyAddedView)
         recentlyAddedView.isHidden = false
         allContactsView.isHidden = true
+        setUpGestures()
     }
-    
-    
-    @IBAction func homeButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.5) {
-            let viewHeight = self.view.frame.height
-            self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
-            self.listViewConstraint.constant = (viewHeight / 1.15)
-            self.listViewBottomConstraint.constant = -568
-            self.addButton.alpha = 1
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 
-// MARK: - Asthetics & Animation
+// MARK: - Helper Methods
 
 extension MainViewController {
+    
     func setUpButton() {
         self.addButton.center.x = self.view.center.x
         self.addButton.alpha = 1
@@ -103,15 +81,54 @@ extension MainViewController {
         self.navigationController?.view.backgroundColor = UIColor.clear
     }
     
-    func menuShowing() {
+    func setMenuConstraints() {
+        let viewHeight = self.view.frame.height
+        self.listViewHeightConstraint.constant = viewHeight
+        self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
+        self.listViewConstraint.constant = (viewHeight / 1.15)
+        self.view.layoutIfNeeded()
+    }
+    
+    func showContactsMenu() {
         UIView.animate(withDuration: 0.5) {
             let viewHeight = self.view.frame.height
-            
             self.listViewConstraint.constant = (viewHeight / 9.9)
-
             self.bottomImageViewConstraint.constant = (-viewHeight)
             self.listViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
     }
+    
+    func hideContactsMenu() {
+        UIView.animate(withDuration: 0.5) {
+            let viewHeight = self.view.frame.height
+            self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
+            self.listViewConstraint.constant = (viewHeight / 1.15)
+            self.listViewBottomConstraint.constant = -568
+            self.addButton.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func setUpGestures() {
+        
+        let swipeDown = UISwipeGestureRecognizer()
+        swipeDown.direction = .down
+        swipeDown.addTarget(self, action: #selector(hideContactsMenu))
+        menuShowing == true ? self.view.addGestureRecognizer(swipeDown) : self.view.removeGestureRecognizer(swipeDown)
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
