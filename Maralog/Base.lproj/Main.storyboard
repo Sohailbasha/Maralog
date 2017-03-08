@@ -136,9 +136,12 @@
                         <outlet property="addButton" destination="W3T-q3-kVu" id="4GB-Kd-BA4"/>
                         <outlet property="allContactsView" destination="BP4-Ac-ooE" id="cNn-aN-PVA"/>
                         <outlet property="bottomImageViewConstraint" destination="EWG-Js-G07" id="o6a-C2-3YM"/>
+                        <outlet property="listView" destination="1Rh-D6-oER" id="Fgb-Kj-zj7"/>
                         <outlet property="listViewBottomConstraint" destination="97v-Pd-M2c" id="QUs-1T-O6V"/>
                         <outlet property="listViewConstraint" destination="OWz-he-O45" id="d23-ri-Si9"/>
                         <outlet property="listViewHeightConstraint" destination="71u-WQ-66B" id="P9V-tT-yNT"/>
+                        <outlet property="numContacts" destination="rxy-gD-MaN" id="xWe-7S-wPY"/>
+                        <outlet property="numRecAdded" destination="wiM-r9-WWy" id="a7V-me-fk7"/>
                         <outlet property="recentlyAddedView" destination="EVo-fH-wsd" id="Iyo-0R-uWm"/>
                     </connections>
                 </viewController>

@@ -11,18 +11,21 @@ import CoreLocation
 
 class ContactDetailViewController: UIViewController {
     
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.updateViews()
+    }
+    
+    
+    // MARK: - Properties
+    
     var contact: Contact?
     
     var usersLocation: Location? {
         return contact?.location
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.updateViews()
-    }
-    
     func updateViews() {
         guard let contact = self.contact,
             let firstName = contact.firstName as String?,

@@ -37,18 +37,15 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         return fetchedResultsController.sections?.count ?? 0
     }
     
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let sectionInfo = fetchedResultsController.sections?[section] else { return "" }
         return sectionInfo.name
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sectionInfo = fetchedResultsController.sections?[section] else { return 0 }
         return sectionInfo.numberOfObjects
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as UITableViewCell
@@ -58,7 +55,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -132,13 +128,6 @@ extension ContactsListViewController {
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
-            
-//        case .move:
-//            guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
-//            tableView.moveRow(at: indexPath, to: newIndexPath)
-//        case .update:
-//            guard let indexPath = indexPath else {return}
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     

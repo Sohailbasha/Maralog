@@ -17,6 +17,8 @@ class MainViewController: UIViewController {
         self.setUpButton()
         self.transparentNavBar()
         self.setMenuConstraints()
+        numContacts.text = ""
+        numRecAdded.text = ""
     }
     
     
@@ -26,13 +28,20 @@ class MainViewController: UIViewController {
         return listViewBottomConstraint.constant == 0
     }
     
+    let image = UIImageView()
+
     
     // MARK: - Outlets
 
     // Buttons
     @IBOutlet weak var addButton: UIButton!
     
+    // Labels
+    @IBOutlet var numContacts: UILabel!
+    @IBOutlet var numRecAdded: UILabel!
+    
     // UIContainer View's
+    @IBOutlet var listView: UIView!
     @IBOutlet var recentlyAddedView: UIView!
     @IBOutlet var allContactsView: UIView!
     
@@ -46,7 +55,7 @@ class MainViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func contactsButtonTapped(_ sender: Any) {
-        self.showContactsMenu()
+        showContactsMenu()
         self.view.bringSubview(toFront: allContactsView)
         recentlyAddedView.isHidden = true
         allContactsView.isHidden = false
@@ -54,7 +63,7 @@ class MainViewController: UIViewController {
     }
    
     @IBAction func recentlyAddedButtonTapped(_ sender: Any) {
-        self.showContactsMenu()
+        showContactsMenu()
         self.view.bringSubview(toFront: recentlyAddedView)
         recentlyAddedView.isHidden = false
         allContactsView.isHidden = true
@@ -91,6 +100,10 @@ extension MainViewController {
     
     func showContactsMenu() {
         UIView.animate(withDuration: 0.5) {
+            self.swipeDownIcon()
+            self.image.center.x = self.listView.center.x
+            self.image.center.y = 60
+            
             let viewHeight = self.view.frame.height
             self.listViewConstraint.constant = (viewHeight / 9.9)
             self.bottomImageViewConstraint.constant = (-viewHeight)
@@ -102,6 +115,8 @@ extension MainViewController {
     func hideContactsMenu() {
         UIView.animate(withDuration: 0.5) {
             let viewHeight = self.view.frame.height
+            self.image.removeFromSuperview()
+            
             self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
             self.listViewConstraint.constant = (viewHeight / 1.15)
             self.listViewBottomConstraint.constant = -568
@@ -111,11 +126,19 @@ extension MainViewController {
     }
     
     func setUpGestures() {
-        
         let swipeDown = UISwipeGestureRecognizer()
         swipeDown.direction = .down
         swipeDown.addTarget(self, action: #selector(hideContactsMenu))
         menuShowing == true ? self.view.addGestureRecognizer(swipeDown) : self.view.removeGestureRecognizer(swipeDown)
+    }
+    
+    func swipeDownIcon() {
+        let frame = CGRect(x: 200, y: 60, width: 30, height: 30)
+        image.frame = frame
+        image.image = #imageLiteral(resourceName: "Swipe Down")
+        image.contentMode = .scaleAspectFill
+        image.alpha = 0.5
+        self.view.addSubview(image)
     }
     
 }

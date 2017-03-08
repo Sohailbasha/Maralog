@@ -14,7 +14,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         coreLocationManager.startUpdatingLocation()
@@ -22,9 +21,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         self.transparentNavBar()
         self.detailLabelsAreInvisible()
-        
     }
-    
     
     
     // MARK: - Properties
@@ -32,7 +29,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     var coreLocationManager: CLLocationManager!
     var currentLocation: CLLocation?
     var usersLocation: Location?
-    
     
     
     // MARK: - Outlets
@@ -52,7 +48,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     @IBOutlet var autoTextSwitch: UISwitch!
     
     
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             coreLocationManager.startUpdatingLocation()
@@ -70,29 +65,31 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             }
         }
     }
-    
-    
+
     
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces),
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces),
             let phoneNumber = phoneNumberTextField.text as String? else { return }
-        
         if uiSwitch.isOn {
             if let location = usersLocation {
-                let contact = Contact(firstName: firstName.capitalized, lastName: lastName.capitalized, phoneNumber: phoneNumber, location: location)
+                let contact = Contact(firstName: firstName.capitalized,
+                                      lastName: lastName.capitalized,
+                                      phoneNumber: phoneNumber,
+                                      location: location)
                 ContactController.sharedInstance.addContact(contact: contact)
             }
         } else {
-            let contact = Contact(firstName: firstName.capitalized, lastName: lastName.capitalized, phoneNumber: phoneNumber)
+            let contact = Contact(firstName: firstName.capitalized,
+                                  lastName: lastName.capitalized,
+                                  phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)
         }
-        
         if autoTextSwitch.isOn {
-            sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+            sendAutoTextTo(phoneNumber: phoneNumber,
+                           firstName: firstName)
         } else {
             _ = navigationController?.popToRootViewController(animated: true)
         }
@@ -104,8 +101,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
 //MARK: - Helper Methods
 
 extension AddContactsViewController {
-    
-    
+
     func transparentNavBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -124,7 +120,8 @@ extension AddContactsViewController {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized) it's"
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-            present(messageComposerVC, animated: true,
+            present(messageComposerVC,
+                    animated: true,
                     completion: {
                 MessageSender.sharedInstance.recepients.removeAll()
                 MessageSender.sharedInstance.textBody = ""
