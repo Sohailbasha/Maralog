@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
         self.setMenuConstraints()
         numContacts.text = ""
         numRecAdded.text = ""
+        swipeDownLabel.alpha = 0
     }
     
     
@@ -35,10 +36,14 @@ class MainViewController: UIViewController {
 
     // Buttons
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet var contactsButton: UIButton!
+    
     
     // Labels
     @IBOutlet var numContacts: UILabel!
     @IBOutlet var numRecAdded: UILabel!
+    @IBOutlet var swipeDownLabel: UILabel!
+    
     
     // UIContainer View's
     @IBOutlet var listView: UIView!
@@ -56,6 +61,7 @@ class MainViewController: UIViewController {
     
     @IBAction func contactsButtonTapped(_ sender: Any) {
         showContactsMenu()
+        
         self.view.bringSubview(toFront: allContactsView)
         recentlyAddedView.isHidden = true
         allContactsView.isHidden = false
@@ -64,6 +70,7 @@ class MainViewController: UIViewController {
    
     @IBAction func recentlyAddedButtonTapped(_ sender: Any) {
         showContactsMenu()
+        
         self.view.bringSubview(toFront: recentlyAddedView)
         recentlyAddedView.isHidden = false
         allContactsView.isHidden = true
@@ -100,10 +107,8 @@ extension MainViewController {
     
     func showContactsMenu() {
         UIView.animate(withDuration: 0.5) {
-            self.swipeDownIcon()
-            self.image.center.x = self.listView.center.x
-            self.image.center.y = 60
             
+            self.swipeDownLabel.alpha = 0.5
             let viewHeight = self.view.frame.height
             self.listViewConstraint.constant = (viewHeight / 9.9)
             self.bottomImageViewConstraint.constant = (-viewHeight)
@@ -115,8 +120,8 @@ extension MainViewController {
     func hideContactsMenu() {
         UIView.animate(withDuration: 0.5) {
             let viewHeight = self.view.frame.height
-            self.image.removeFromSuperview()
             
+            self.swipeDownLabel.alpha = 0
             self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
             self.listViewConstraint.constant = (viewHeight / 1.15)
             self.listViewBottomConstraint.constant = -568
