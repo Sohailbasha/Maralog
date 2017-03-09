@@ -27,6 +27,38 @@
             endingLineNumber = "119"
             landmarkName = "saveMenuButtonTapped(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Maralog.ContactDetailViewController.saveMenuButtonTapped (Any) -&gt; ()"
+                  moduleName = "Maralog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/ContactDetailViewController.swift"
+                  timestampString = "510794640.371749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "1656">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Maralog.ContactDetailViewController.saveMenuButtonTapped (Any) -&gt; ()"
+                  moduleName = "Maralog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/ContactDetailViewController.swift"
+                  timestampString = "510794640.3732"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "1704">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
