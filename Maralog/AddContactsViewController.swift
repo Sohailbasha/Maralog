@@ -87,6 +87,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
                                   phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)
         }
+        
         if autoTextSwitch.isOn {
             sendAutoTextTo(phoneNumber: phoneNumber,
                            firstName: firstName)

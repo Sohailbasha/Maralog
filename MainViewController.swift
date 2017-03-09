@@ -76,6 +76,8 @@ class MainViewController: UIViewController {
         allContactsView.isHidden = true
         setUpGestures()
     }
+    
+    
 }
 
 

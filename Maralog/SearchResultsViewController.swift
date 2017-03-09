@@ -8,25 +8,34 @@
 
 import UIKit
 import CoreData
+import Foundation
 
-class SearchResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
+class SearchResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        fetchedResultsController.delegate = self
         
-        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error starting fetched results controller: \(error)")
+        }
     }
+    
+    // MARK: - Properties
+    
+    var contacts: [Contact]? {
+        return fetchedResultsController.fetchedObjects
+    }
+    
     
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         
-        //let threeDaysAgo = Date().addingTimeInterval(-259200) // How to make recent contacts last 3 days.
-        //let predicate = NSPredicate(format: "timeStamp > %@", threeDaysAgo as CVarArg)
-        //fetchRequest.predicate = predicate
-        
-        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: CoreDataStack.context,
@@ -35,19 +44,22 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     }()
     
     
+    // MARK: - Table View
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return contacts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResult", for: indexPath)
-        
+        let contact = contacts?[indexPath.row]
+        cell.textLabel?.text = contact?.fullName
         return cell
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "( someString contains[cd] %@)", arguments: text)
+        fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "someString contains[cd] %@", text as CVarArg)
     }
     
     // MARK: - Outlets
@@ -55,9 +67,20 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    
 }
 
+
+// MARK: - SearchBar Delegate
+
+extension SearchResultsViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text?.lowercased() else {
+            return }
+        let searchText = text.capitalized
+        fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "someString contains[cd] %@", searchText as CVarArg)
+    
+    }
+}
 
 
 // MARK: - NSFetched Results Controller Delegate DataSource functions
