@@ -22,7 +22,6 @@ extension Contact {
     
     var firstLetter: String {
         guard let firstName = firstName?.trimmingCharacters(in: .whitespaces) else { return "" }
-        
         let sectionHeader = (String(firstName[firstName.index(firstName.startIndex, offsetBy: 0)]).uppercased())
         return sectionHeader
     }

@@ -19,9 +19,7 @@ enum CoreDataStack {
             if let error = error as NSError? {
                 
                 fatalError("Unresolved error \(error)")
-                
             }
-            
         })
         return container
     }()
