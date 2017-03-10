@@ -23,6 +23,10 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
+        uiSwitch.isOn = false
+        syncToContactsSwitch.isOn = false
+        autoTextSwitch.isOn = false
+        
         
         store.requestAccess(for: .contacts) { (granted, error) in
             if granted {
@@ -39,17 +43,11 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     var usersLocation: Location?
     
     let store = CNContactStore()
-    
-    /// REDUNTANT ///
-    var locationSwitchOn: Bool { return uiSwitch.isOn }
-    var fastReplySwitchOn: Bool { return autoTextSwitch.isOn }
-    var syncContactSwitchOn: Bool { return syncToContactsSwitch.isOn }
-    /// REDUNTANT ///
+
     
     var contactsAccessGranted: Bool?
     var locationAccessGranted: Bool?
-    
-    /// REPLACEMENT ///
+    /// REPLACEMENT MAYBE ///
     
     
     
@@ -74,47 +72,74 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces),
-            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces),
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
-        // LOCATION
         if uiSwitch.isOn {
             if let location = usersLocation {
-                let contact = Contact(firstName: firstName.capitalized,
-                                      lastName: lastName.capitalized,
+                let contact = Contact(firstName: firstName,
+                                      lastName: lastName,
                                       phoneNumber: phoneNumber,
-                                      location: location) // location added
+                                      location: location)
                 
                 ContactController.sharedInstance.addContact(contact: contact)
             }
         } else {
-            let contact = Contact(firstName: firstName.capitalized,
-                                  lastName: lastName.capitalized,
+            let contact = Contact(firstName: firstName,
+                                  lastName: lastName,
                                   phoneNumber: phoneNumber)
             
             ContactController.sharedInstance.addContact(contact: contact)
         }
         
-        // SYNC
-        if syncToContactsSwitch.isOn {
-            self.addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-        }
+        syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName,
+                                                     lastName: lastName,
+                                                     phoneNumber: phoneNumber) : ()
         
-        // TEXT
-        if autoTextSwitch.isOn {
-            sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-        } else {
-            _ = navigationController?.popToRootViewController(animated: true)
-        }
+        autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
+                                             firstName: firstName) : goToRootView()
+
+        
+        
+//        // LOCATION
+//        if uiSwitch.isOn {
+//            if let location = usersLocation {
+//                let contact = Contact(firstName: firstName.capitalized,
+//                                      lastName: lastName.capitalized,
+//                                      phoneNumber: phoneNumber,
+//                                      location: location) // location added
+//                
+//                ContactController.sharedInstance.addContact(contact: contact)
+//            }
+//        } else {
+//            let contact = Contact(firstName: firstName.capitalized,
+//                                  lastName: lastName.capitalized,
+//                                  phoneNumber: phoneNumber)
+//            
+//            ContactController.sharedInstance.addContact(contact: contact)
+//        }
+//        
+//        // SYNC
+//        if syncToContactsSwitch.isOn {
+//            self.addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+//        }
+//        
+//        // TEXT
+//        if autoTextSwitch.isOn {
+//            sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+//        } else {
+//            _ = navigationController?.popToRootViewController(animated: true)
+//        }
     }
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             uiSwitch.setOn(false, animated: true)
-            permissionsAlert(title: "Location Services Are Off", message: "Location is required for this feature")
+            permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save location")
         } else { return }
     }
+    
     @IBAction func syncSwitchEnabled(_ sender: Any) {
         store.requestAccess(for: .contacts) { (granted, error) in
             if !granted {
@@ -148,7 +173,7 @@ extension AddContactsViewController {
     
     
     
-    // MAKR: - Features
+    // MARK: - Features
     
     func sendAutoTextTo(phoneNumber: String, firstName: String) {
         if(MessageSender.sharedInstance.canSendText()) {
@@ -162,7 +187,6 @@ extension AddContactsViewController {
             return
         }
     }
-    
     
     func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
         let contact = CNMutableContact()
@@ -225,45 +249,6 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
-
-    func saveWithFeatures() {
-        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces),
-            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces),
-            let phoneNumber = phoneNumberTextField.text as String? else { return }
-        //delete these when actually impleenting
-        
-        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-        guard let location = usersLocation else { return }
-        
-        uiSwitch.isOn ? createContactWithLocation(firstName: firstName,
-                                                  lastName: lastName,
-                                                  phoneNumber: phoneNumber,
-                                                  location: location) : ContactController.sharedInstance.addContact(contact: contact)
-        
-        syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName,
-                                                     lastName: lastName,
-                                                     phoneNumber: phoneNumber) : ()
-        
-        autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
-                                             firstName: firstName) : goToRootView()
-        
-    }
-    
-    
-    
-    func createContactWithLocation(firstName: String, lastName: String, phoneNumber: String, location: Location) {
-        
-        if let location = usersLocation {
-            let contact = Contact(firstName: firstName.capitalized,
-                                  lastName: lastName.capitalized,
-                                  phoneNumber: phoneNumber,
-                                  location: location)
-            
-            ContactController.sharedInstance.addContact(contact: contact)
-        }
-        
-    }
     
     func goToRootView() {
         _ = navigationController?.popToRootViewController(animated: true)
