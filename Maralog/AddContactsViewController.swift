@@ -26,13 +26,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         uiSwitch.isOn = false
         syncToContactsSwitch.isOn = false
         autoTextSwitch.isOn = false
-        
-        
-        store.requestAccess(for: .contacts) { (granted, error) in
-            if granted {
-                self.contactsAccessGranted = true
-            }
-        }
     }
     
     
@@ -43,12 +36,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     var usersLocation: Location?
     
     let store = CNContactStore()
-
-    
-    var contactsAccessGranted: Bool?
-    var locationAccessGranted: Bool?
-    /// REPLACEMENT MAYBE ///
-    
     
     
     // MARK: - Outlets
@@ -82,7 +69,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
                                       lastName: lastName,
                                       phoneNumber: phoneNumber,
                                       location: location)
-                
+
                 ContactController.sharedInstance.addContact(contact: contact)
             }
         } else {
@@ -99,45 +86,13 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
                                              firstName: firstName) : goToRootView()
-
-        
-        
-//        // LOCATION
-//        if uiSwitch.isOn {
-//            if let location = usersLocation {
-//                let contact = Contact(firstName: firstName.capitalized,
-//                                      lastName: lastName.capitalized,
-//                                      phoneNumber: phoneNumber,
-//                                      location: location) // location added
-//                
-//                ContactController.sharedInstance.addContact(contact: contact)
-//            }
-//        } else {
-//            let contact = Contact(firstName: firstName.capitalized,
-//                                  lastName: lastName.capitalized,
-//                                  phoneNumber: phoneNumber)
-//            
-//            ContactController.sharedInstance.addContact(contact: contact)
-//        }
-//        
-//        // SYNC
-//        if syncToContactsSwitch.isOn {
-//            self.addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-//        }
-//        
-//        // TEXT
-//        if autoTextSwitch.isOn {
-//            sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-//        } else {
-//            _ = navigationController?.popToRootViewController(animated: true)
-//        }
     }
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             uiSwitch.setOn(false, animated: true)
             permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save location")
-        } else { return }
+        }
     }
     
     @IBAction func syncSwitchEnabled(_ sender: Any) {
@@ -145,33 +100,19 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             if !granted {
                 self.syncToContactsSwitch.setOn(false, animated: true)
                 self.permissionsAlert(title: "Contacts Access Disabled", message: "Enable access to contacts to sync")
-            } else { return }
+            }
         }
     }
-    
     
 }
 
 
 
-//MARK: - Helper Methods
+//MARK: - Major Helper Methods
 
 extension AddContactsViewController {
     
-    func transparentNavBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = UIColor.clear
-    }
-    
-    func detailLabelsAreInvisible() {
-        self.labelOfPhoneNumber.alpha = 0
-        self.labelOfFirstName.alpha = 0
-        self.labelOfLastName.alpha = 0
-    }
-    
-    
+
     
     // MARK: - Features
     
@@ -200,9 +141,6 @@ extension AddContactsViewController {
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
     }
-    
-    
-    
 }
 
 
@@ -230,13 +168,12 @@ extension AddContactsViewController {
 
 
 
-// MARK: - Experimental Functions
+// MARK: - Minor Methods
 
 extension AddContactsViewController {
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
         let enable = UIAlertAction(title: "Enable", style: .default) { (_) in
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
             if UIApplication.shared.canOpenURL(settingsUrl) {
@@ -249,12 +186,22 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
     func goToRootView() {
         _ = navigationController?.popToRootViewController(animated: true)
     }
     
+    func transparentNavBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+    }
     
+    func detailLabelsAreInvisible() {
+        self.labelOfPhoneNumber.alpha = 0
+        self.labelOfFirstName.alpha = 0
+        self.labelOfLastName.alpha = 0
+    }
     
 }
 
