@@ -76,7 +76,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
                                       lastName: lastName.capitalized,
                                       phoneNumber: phoneNumber,
                                       location: location)
-            
+                
                 ContactController.sharedInstance.addContact(contact: contact)
             }
         } else {
@@ -86,7 +86,7 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             
             ContactController.sharedInstance.addContact(contact: contact)
         }
-    
+        
         // SYNC
         if syncToContactsSwitch.isOn {
             self.addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
@@ -120,6 +120,9 @@ extension AddContactsViewController {
         self.labelOfLastName.alpha = 0
     }
     
+    
+    
+    
     func sendAutoTextTo(phoneNumber: String, firstName: String) {
         if(MessageSender.sharedInstance.canSendText()) {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
@@ -128,6 +131,8 @@ extension AddContactsViewController {
             present(messageComposerVC,
                     animated: true,
                     completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
+        } else {
+            return
         }
     }
     
@@ -144,21 +149,33 @@ extension AddContactsViewController {
         try? store.execute(saveRequest)
     }
     
+    func createContactWithLocation(firstName: String, lastName: String, phoneNumber: String, location: Location) {
+        if CLLocationManager.locationServicesEnabled() {
+            if let location = usersLocation {
+                let contact = Contact(firstName: firstName.capitalized,
+                                      lastName: lastName.capitalized,
+                                      phoneNumber: phoneNumber,
+                                      location: location)
+                
+                ContactController.sharedInstance.addContact(contact: contact)
+            }
+        } else { return }
+    }
+    
+    func syncToBook(firstName: String, lastName: String, phoneNumber: String) {
+        
+    }
+    
+    
 }
 
 
-// MARK: - Location Manager 
+// MARK: - Location Manager
 
 extension AddContactsViewController {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             coreLocationManager.startUpdatingLocation()
-        }
-        
-        switch status {
-        case .authorizedWhenInUse: coreLocationManager.startUpdatingLocation()
-        case .denied:
-        case .notDetermined:
         }
     }
     
@@ -180,6 +197,57 @@ extension AddContactsViewController {
 
 
 
+
+// MARK: - Experimental Functions
+
+extension AddContactsViewController {
+    
+    func locationAlert() {
+        let alert = UIAlertController(title: "Location Services Disabled",
+                                      message: "To use this feature Location Services must be turned on",
+                                      preferredStyle: .alert)
+        
+        
+        let enable = UIAlertAction(title: "Enable", style: .default) { (_) in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsUrl) { UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil) }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(enable)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
+    
+    
+    func saveWithFeatures() {
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces),
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces),
+            let phoneNumber = phoneNumberTextField.text as String? else { return }
+        //delete these when actually impleenting
+        
+        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+        guard let location = usersLocation else { return }
+        
+            locationSwitchOn ? createContactWithLocation(firstName: firstName,
+                                                         lastName: lastName,
+                                                         phoneNumber: phoneNumber,
+                                                         location: location) : ContactController.sharedInstance.addContact(contact: contact)
+        
+            
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+}
 
 
 
