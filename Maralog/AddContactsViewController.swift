@@ -26,9 +26,22 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     
     
     // MARK: - Properties
+    
     var coreLocationManager: CLLocationManager!
     var currentLocation: CLLocation?
     var usersLocation: Location?
+    
+    var locationSwitchOn: Bool {
+        return uiSwitch.isOn
+    }
+    
+    var fastReplySwitchOn: Bool {
+        return autoTextSwitch.isOn
+    }
+    
+    var syncContactSwitchOn: Bool {
+        return syncToContactsSwitch.isOn
+    }
     
     
     // MARK: - Outlets
@@ -140,6 +153,12 @@ extension AddContactsViewController {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             coreLocationManager.startUpdatingLocation()
+        }
+        
+        switch status {
+        case .authorizedWhenInUse: coreLocationManager.startUpdatingLocation()
+        case .denied:
+        case .notDetermined:
         }
     }
     
