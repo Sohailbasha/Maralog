@@ -28,8 +28,6 @@
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
-		FDFDC4781E720CE100286A42 /* ContactSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFDC4771E720CE100286A42 /* ContactSyncer.swift */; };
-		FDFDC47C1E720DDA00286A42 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFDC47B1E720DDA00286A42 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +54,6 @@
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
-		FDFDC4771E720CE100286A42 /* ContactSyncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSyncer.swift; sourceTree = "<group>"; };
-		FDFDC47B1E720DDA00286A42 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = ../LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,8 +166,6 @@
 			children = (
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
-				FDFDC4771E720CE100286A42 /* ContactSyncer.swift */,
-				FDFDC47B1E720DDA00286A42 /* LocationManager.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -256,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
-				FDFDC47C1E720DDA00286A42 /* LocationManager.swift in Sources */,
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
@@ -270,7 +263,6 @@
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
 				FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */,
-				FDFDC4781E720CE100286A42 /* ContactSyncer.swift in Sources */,
 				FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

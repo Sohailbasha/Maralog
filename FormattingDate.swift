@@ -12,7 +12,6 @@ import Foundation
 class FormattingDate {
     
     static let sharedInstance = FormattingDate()
-    
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
