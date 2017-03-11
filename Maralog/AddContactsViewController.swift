@@ -65,24 +65,19 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         
         if uiSwitch.isOn {
             if let location = usersLocation {
-                let contact = Contact(firstName: firstName,
-                                      lastName: lastName,
-                                      phoneNumber: phoneNumber,
-                                      location: location)
-
+                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
                 ContactController.sharedInstance.addContact(contact: contact)
             }
         } else {
-            let contact = Contact(firstName: firstName,
-                                  lastName: lastName,
-                                  phoneNumber: phoneNumber)
-            
+            let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
             ContactController.sharedInstance.addContact(contact: contact)
         }
+        
         
         syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName,
                                                      lastName: lastName,
                                                      phoneNumber: phoneNumber) : ()
+    
         
         autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
                                              firstName: firstName) : goToRootView()
@@ -104,6 +99,14 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 

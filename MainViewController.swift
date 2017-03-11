@@ -21,7 +21,11 @@ class MainViewController: UIViewController {
         numContacts.text = ""
         numRecAdded.text = ""
         swipeDownLabel.alpha = 0
+        
+        
     }
+    
+    
     
     
     // MARK: - Properties

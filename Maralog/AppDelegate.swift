@@ -16,10 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var vc: UIViewController
+        
+        if (UserDefaults.standard.value(forKey: "name") as? String) == nil {
+            // show the onboarding screen
+            vc = storyboard.instantiateViewController(withIdentifier: "OnvoardingVC")
+        } else {
+            // show the main screen
+        }
+        
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+        
         let store = CNContactStore()
                 store.requestAccess(for: .contacts) { (granted, error) in
                     if granted {
-//                        self.contactsAccessGranted = true
+                        
                     }
                 }
         return true
