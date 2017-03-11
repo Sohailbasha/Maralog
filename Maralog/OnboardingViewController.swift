@@ -16,12 +16,18 @@ class OnboardingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBOutlet var nameTextField: UITextField!
+    
+    @IBAction func continueTouched(_ sender: Any) {
+        
+        UserDefaults.standard.set(nameTextField.text, forKey: "name")
+        performSegue(withIdentifier: "toMainSegue", sender: self) 
     }
     
 
+    
+    
+    
     /*
     // MARK: - Navigation
 

@@ -121,8 +121,9 @@ extension AddContactsViewController {
     
     func sendAutoTextTo(phoneNumber: String, firstName: String) {
         if(MessageSender.sharedInstance.canSendText()) {
+            guard let yourName = UserDefaults.standard.value(forKey: "name") else { return }
             MessageSender.sharedInstance.recepients.append(phoneNumber)
-            MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized) it's"
+            MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
             present(messageComposerVC,
                     animated: true,

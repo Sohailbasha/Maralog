@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (UserDefaults.standard.value(forKey: "name") as? String) == nil {
             // show the onboarding screen
-            vc = storyboard.instantiateViewController(withIdentifier: "OnvoardingVC")
+            vc = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
         } else {
             // show the main screen
+            vc = storyboard.instantiateInitialViewController()!
         }
         
         self.window?.rootViewController = vc

@@ -332,10 +332,10 @@
             </objects>
             <point key="canvasLocation" x="1892" y="157"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="uMq-Ev-Lak">
             <objects>
-                <viewController storyboardIdentifier="OnvoardingVC" id="wLM-21-uMI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingVC" id="wLM-21-uMI" customClass="OnboardingViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SBH-8q-ZLS"/>
                         <viewControllerLayoutGuide type="bottom" id="u6G-t5-Ec4"/>
@@ -355,14 +355,21 @@
                                 <rect key="frame" x="156" y="287" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTouched:" destination="wLM-21-uMI" eventType="touchUpInside" id="Cx8-zs-Q8g"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="hvx-h8-7JH" id="Xg7-68-llM"/>
+                        <segue destination="AQ7-o1-VJu" kind="show" identifier="toMainSegue" id="ou4-ZP-DLi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4O-wP-5hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-570.39999999999998" y="156.97151424287858"/>
+            <point key="canvasLocation" x="-582" y="-475"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OAU-lB-6sa">
