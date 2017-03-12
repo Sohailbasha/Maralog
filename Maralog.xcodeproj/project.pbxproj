@@ -26,6 +26,7 @@
 		FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14971E4A83C900506CC1 /* CoreLocation.framework */; };
 		FD3B149A1E4AE01100506CC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14991E4AE01100506CC1 /* MapKit.framework */; };
 		FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */; };
+		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
@@ -53,6 +54,7 @@
 		FD3B14971E4A83C900506CC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FD3B14991E4AE01100506CC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				FD16C9951E490F6100237631 /* ContactController.swift */,
 				FD3B14941E4A830300506CC1 /* LocationController.swift */,
+				FD5F256E1E74D5FE001D2B68 /* UserController.swift */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
 				FD0065451E70CDDA000ED2AF /* SearchResultsViewController.swift in Sources */,
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
+				FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */,
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,

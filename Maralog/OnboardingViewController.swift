@@ -20,7 +20,8 @@ class OnboardingViewController: UIViewController {
     
     @IBAction func continueTouched(_ sender: Any) {
         
-        UserDefaults.standard.set(nameTextField.text, forKey: "name")
+        //UserDefaults.standard.set(nameTextField.text, forKey: "name")
+        UserController.sharedInstance.saveUserName(name: nameTextField.text)
         performSegue(withIdentifier: "toMainSegue", sender: self) 
     }
     
