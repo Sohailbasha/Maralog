@@ -27,6 +27,7 @@
 		FD3B149A1E4AE01100506CC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14991E4AE01100506CC1 /* MapKit.framework */; };
 		FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */; };
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
+		FD5F25711E74DA90001D2B68 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F25701E74DA90001D2B68 /* TutorialPageViewController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
@@ -55,6 +56,7 @@
 		FD3B14991E4AE01100506CC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		FD5F25701E74DA90001D2B68 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */,
+				FD5F25701E74DA90001D2B68 /* TutorialPageViewController.swift */,
 				FD30C0071E440AAD00759ECB /* MainViewController.swift */,
 				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
 				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
@@ -269,6 +272,7 @@
 				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,
 				FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */,
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
+				FD5F25711E74DA90001D2B68 /* TutorialPageViewController.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
 				FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */,
 				FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */,
