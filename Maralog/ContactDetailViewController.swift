@@ -8,14 +8,14 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class ContactDetailViewController: UIViewController {
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateViews()
+        self.setupButons()
     }
     
     
@@ -26,6 +26,9 @@ class ContactDetailViewController: UIViewController {
     var usersLocation: Location? {
         return contact?.location
     }
+    
+    
+    
     func updateViews() {
         guard let contact = self.contact,
             let firstName = contact.firstName as String?,
@@ -34,18 +37,23 @@ class ContactDetailViewController: UIViewController {
             let timeStamp = contact.timeStamp as? Date else { return }
         
         
+        let timeStampFormatted = FormattingDate.sharedInstance.formatter.string(from: timeStamp)
+
         fullName.text = "\(firstName) \(lastName)"
         phoneNumber.text = number
         timeMetLabel.text = ""
         locationMetLabel.text = ""
-        let timeStampFormatted = FormattingDate.sharedInstance.formatter.string(from: timeStamp)
+        mapView.isHidden = true
         
         if contact.location != nil {
-            
+
             if let location = contact.location {
                 let coordinate = LocationController.sharedInstance.getLocationCoordinates(location: location)
                 let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                
                 let geocoder = CLGeocoder()
+                
+                mapView.isHidden = false
                 
                 geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
                     if let error = error {
@@ -60,7 +68,8 @@ class ContactDetailViewController: UIViewController {
                             let state = pm.administrativeArea,
                             let street = pm.thoroughfare,
                             let zipcode = pm.postalCode {
-                            self.locationMetLabel.text = "location met: \(street). \(city), \(state) \(zipcode)"
+            
+                            self.locationMetLabel.text = "met: \(street). \(city), \(state) \(zipcode)"
                             self.timeMetLabel.text = timeStampFormatted
                         }
                     }
@@ -68,15 +77,6 @@ class ContactDetailViewController: UIViewController {
             }
         }
     }
-    
-    
-    let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        formatter.doesRelativeDateFormatting = true
-        return formatter
-    } ()
     
     
     // MARK: - Actions
@@ -96,7 +96,7 @@ class ContactDetailViewController: UIViewController {
         if(MessageSender.sharedInstance.canSendText()) {
             MessageSender.sharedInstance.recepients.append(callNumber)
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-            present(messageComposerVC, animated: true, completion: { 
+            present(messageComposerVC, animated: true, completion: {
                 MessageSender.sharedInstance.recepients.removeAll()
             })
         }
@@ -155,6 +155,12 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet var phoneNumber: UILabel!
     @IBOutlet var locationMetLabel: UILabel!
     @IBOutlet var timeMetLabel: UILabel!
+    @IBOutlet var mapView: MKMapView!
+    
+    @IBOutlet var editButton: UIButton!
+    @IBOutlet var callButton: UIButton!
+    @IBOutlet var textButton: UIButton!
+    
     
     // edit contact view
     @IBOutlet var editMenuView: UIView!
@@ -164,7 +170,16 @@ class ContactDetailViewController: UIViewController {
 }
 
 
+
 extension ContactDetailViewController {
+    
+    func setupButons() {
+        editButton.layer.cornerRadius = 0.5 * editButton.bounds.width
+        callButton.layer.cornerRadius = 0.5 * callButton.bounds.width
+        textButton.layer.cornerRadius = 0.5 * textButton.bounds.width
+    }
+    
+    
     
     func setupMenu() {
         editMenuView.frame.origin.x = 380
