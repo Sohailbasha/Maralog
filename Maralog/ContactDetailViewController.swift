@@ -22,6 +22,7 @@ class ContactDetailViewController: UIViewController {
     // MARK: - Properties
     
     var contact: Contact?
+    var address: String?
     
     var usersLocation: Location? {
         return contact?.location
@@ -51,10 +52,8 @@ class ContactDetailViewController: UIViewController {
                 let coordinate = LocationController.sharedInstance.getLocationCoordinates(location: location)
                 let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
                 
+                
                 let geocoder = CLGeocoder()
-                
-                mapView.isHidden = false
-                
                 geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
                     if let error = error {
                         print("Reverse geocoder failed with error: \(error.localizedDescription)")
@@ -68,6 +67,7 @@ class ContactDetailViewController: UIViewController {
                             let state = pm.administrativeArea,
                             let street = pm.thoroughfare,
                             let zipcode = pm.postalCode {
+                            self.address = "\(street). \(city), \(state) \(zipcode)"
             
                             self.locationMetLabel.text = "met: \(street). \(city), \(state) \(zipcode)"
                             self.timeMetLabel.text = timeStampFormatted
@@ -75,6 +75,8 @@ class ContactDetailViewController: UIViewController {
                     }
                 }
             }
+            
+            self.mapButtonTapped(self)
         }
     }
     
@@ -107,6 +109,15 @@ class ContactDetailViewController: UIViewController {
     
     @IBAction func editContact(_ sender: Any) {
         setupMenu()
+    }
+    
+    
+    @IBAction func mapButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: { 
+            self.mapView.isHidden = false
+        }) { (_) in
+            self.showOnMap()
+        }
     }
     
     
@@ -160,6 +171,7 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet var editButton: UIButton!
     @IBOutlet var callButton: UIButton!
     @IBOutlet var textButton: UIButton!
+    @IBOutlet var mapButton: UIButton!
     
     
     // edit contact view
@@ -177,9 +189,8 @@ extension ContactDetailViewController {
         editButton.layer.cornerRadius = 0.5 * editButton.bounds.width
         callButton.layer.cornerRadius = 0.5 * callButton.bounds.width
         textButton.layer.cornerRadius = 0.5 * textButton.bounds.width
+        mapButton.layer.cornerRadius = 0.5 * mapButton.bounds.width
     }
-    
-    
     
     func setupMenu() {
         editMenuView.frame.origin.x = 380
@@ -201,4 +212,38 @@ extension ContactDetailViewController {
             self.editMenuView.removeFromSuperview()
         }
     }
+    
+    func showOnMap() {
+        let geoCoder = CLGeocoder()
+        guard let address = address else { return }
+        geoCoder.geocodeAddressString(address) { (placeMarks, error) in
+            if let error = error {
+                print("error: \(error)")
+            }
+            guard let placemark = placeMarks else { return }
+            let pm = placemark[0] as CLPlacemark
+            let annotation: MKPlacemark = MKPlacemark(placemark: pm)
+            self.mapView.showAnnotations([annotation], animated: true)
+        }
+    }
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

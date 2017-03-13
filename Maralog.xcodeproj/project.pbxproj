@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD0065431E70CCC2000ED2AF /* SearchController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0065421E70CCC2000ED2AF /* SearchController.storyboard */; };
-		FD0065451E70CDDA000ED2AF /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0065441E70CDDA000ED2AF /* SearchResultsViewController.swift */; };
 		FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD16C98D1E490AEB00237631 /* Maralog.xcdatamodeld */; };
 		FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9911E490C6600237631 /* CoreDataStack.swift */; };
 		FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9931E490C9500237631 /* Contact + Convenience.swift */; };
@@ -34,8 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FD0065421E70CCC2000ED2AF /* SearchController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchController.storyboard; sourceTree = "<group>"; };
-		FD0065441E70CDDA000ED2AF /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		FD16C98E1E490AEB00237631 /* Maralog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Maralog.xcdatamodel; sourceTree = "<group>"; };
 		FD16C9911E490C6600237631 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FD16C9931E490C9500237631 /* Contact + Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact + Convenience.swift"; sourceTree = "<group>"; };
@@ -86,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				FD30BFF91E43FFA100759ECB /* Main.storyboard */,
-				FD0065421E70CCC2000ED2AF /* SearchController.storyboard */,
 				FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */,
 			);
 			name = "Story Board";
@@ -102,7 +97,6 @@
 				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
 				FD3B146D1E4A39EA00506CC1 /* ContactDetailViewController.swift */,
-				FD0065441E70CDDA000ED2AF /* SearchResultsViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -244,7 +238,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD0065431E70CCC2000ED2AF /* SearchController.storyboard in Resources */,
 				FD30C0001E43FFA100759ECB /* LaunchScreen.storyboard in Resources */,
 				FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */,
 				FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */,
@@ -262,7 +255,6 @@
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
-				FD0065451E70CDDA000ED2AF /* SearchResultsViewController.swift in Sources */,
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
 				FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */,
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,

@@ -26,6 +26,10 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         uiSwitch.isOn = false
         syncToContactsSwitch.isOn = false
         autoTextSwitch.isOn = false
+        
+        autoTextIcon.tintColor = .lightGray
+        syncIcon.tintColor = .lightGray
+        locationIcon.tintColor = .lightGray
     }
     
     
@@ -55,6 +59,11 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
     @IBOutlet var autoTextSwitch: UISwitch!
     @IBOutlet var syncToContactsSwitch: UISwitch!
     
+    // Icons
+    @IBOutlet var locationIcon: UIImageView!
+    @IBOutlet var autoTextIcon: UIImageView!
+    @IBOutlet var syncIcon: UIImageView!
+    
     
     // MARK: - Action
     
@@ -83,10 +92,13 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
                                              firstName: firstName) : goToRootView()
     }
     
+    
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             uiSwitch.setOn(false, animated: true)
             permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save location")
+        } else {
+            locationIcon.tintColor = .white
         }
     }
     
@@ -95,9 +107,20 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             if !granted {
                 self.syncToContactsSwitch.setOn(false, animated: true)
                 self.permissionsAlert(title: "Contacts Access Disabled", message: "Enable access to contacts to sync")
+            } else {
+                self.syncIcon.tintColor = .white
             }
         }
     }
+    
+    @IBAction func autoTextSwitchEnabled(_ sender: Any) {
+        if autoTextSwitch.isOn == false {
+            autoTextIcon.tintColor = .white
+        } else {
+            autoTextIcon.tintColor = .lightGray
+        }
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -171,7 +194,46 @@ extension AddContactsViewController {
     }
 }
 
+// MARK: - TextField Methods
 
+extension AddContactsViewController {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        if textField === firstNameTextField {
+//            UIView.animate(withDuration: 0.5, animations: { 
+//                self.labelOfFirstName.alpha = 1
+//            })
+//        }
+//        
+//        if textField === lastNameTextField {
+//            UIView.animate(withDuration: 0.5, animations: {
+//                self.labelOfLastName.alpha = 1
+//            })
+//        }
+//        
+//        if textField === phoneNumberTextField {
+//            UIView.animate(withDuration: 0.5, animations: { 
+//                self.labelOfPhoneNumber.alpha = 1
+//            })
+//        }
+        
+        switch textField {
+        case firstNameTextField:
+            UIView.animate(withDuration: 0.5, animations: {
+                self.labelOfFirstName.alpha = 1
+            })
+        case lastNameTextField:
+            UIView.animate(withDuration: 0.5, animations: {
+                self.labelOfLastName.alpha = 1
+            })
+        default:
+            UIView.animate(withDuration: 0.5, animations: {
+                self.labelOfPhoneNumber.alpha = 1
+            })
+        }
+    }
+    
+}
 
 // MARK: - Minor Methods
 
