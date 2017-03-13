@@ -8,10 +8,9 @@
 
 import UIKit
 import CoreLocation
-import MapKit
 import Contacts
 
-class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +19,8 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
+        
+        
         self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
@@ -27,9 +28,13 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         syncToContactsSwitch.isOn = false
         autoTextSwitch.isOn = false
         
-        autoTextIcon.tintColor = .lightGray
-        syncIcon.tintColor = .lightGray
-        locationIcon.tintColor = .lightGray
+        autoTextIcon.tintColor = .gray
+        syncIcon.tintColor = .gray
+        locationIcon.tintColor = .gray
+        
+        phoneNumberTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
     }
     
     
@@ -86,17 +91,20 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
         syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName,
                                                      lastName: lastName,
                                                      phoneNumber: phoneNumber) : ()
-    
+        
         
         autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
                                              firstName: firstName) : goToRootView()
     }
     
-    
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             uiSwitch.setOn(false, animated: true)
             permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save location")
+        }
+        
+        if uiSwitch.isOn == false {
+            locationIcon.tintColor = .gray
         } else {
             locationIcon.tintColor = .white
         }
@@ -107,29 +115,25 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
             if !granted {
                 self.syncToContactsSwitch.setOn(false, animated: true)
                 self.permissionsAlert(title: "Contacts Access Disabled", message: "Enable access to contacts to sync")
-            } else {
-                self.syncIcon.tintColor = .white
             }
         }
+        
+        if syncToContactsSwitch.isOn == false {
+            syncIcon.tintColor = .gray
+        } else {
+            syncIcon.tintColor = .white
+        }
+        
     }
     
     @IBAction func autoTextSwitchEnabled(_ sender: Any) {
         if autoTextSwitch.isOn == false {
-            autoTextIcon.tintColor = .white
+            autoTextIcon.tintColor = .gray
         } else {
-            autoTextIcon.tintColor = .lightGray
+            autoTextIcon.tintColor = .white
         }
     }
     
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
 }
 
 
@@ -138,7 +142,6 @@ class AddContactsViewController: UIViewController, UITextFieldDelegate, CLLocati
 
 extension AddContactsViewController {
     
-
     
     // MARK: - Features
     
@@ -196,41 +199,52 @@ extension AddContactsViewController {
 
 // MARK: - TextField Methods
 
-extension AddContactsViewController {
+extension AddContactsViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField === firstNameTextField {
-//            UIView.animate(withDuration: 0.5, animations: { 
-//                self.labelOfFirstName.alpha = 1
-//            })
-//        }
-//        
-//        if textField === lastNameTextField {
-//            UIView.animate(withDuration: 0.5, animations: {
-//                self.labelOfLastName.alpha = 1
-//            })
-//        }
-//        
-//        if textField === phoneNumberTextField {
-//            UIView.animate(withDuration: 0.5, animations: { 
-//                self.labelOfPhoneNumber.alpha = 1
-//            })
-//        }
-        
-        switch textField {
-        case firstNameTextField:
-            UIView.animate(withDuration: 0.5, animations: {
-                self.labelOfFirstName.alpha = 1
-            })
-        case lastNameTextField:
-            UIView.animate(withDuration: 0.5, animations: {
-                self.labelOfLastName.alpha = 1
-            })
-        default:
-            UIView.animate(withDuration: 0.5, animations: {
-                self.labelOfPhoneNumber.alpha = 1
-            })
+        if firstNameTextField.isEditing {
+           UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+            self.labelOfFirstName.isHidden = false }, completion: nil)
         }
+        
+        if lastNameTextField.isEditing {
+            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+                self.labelOfLastName.isHidden = false }, completion: nil)
+        }
+        
+        if phoneNumberTextField.isEditing {
+            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+                self.labelOfPhoneNumber.isHidden = false }, completion: nil)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let fNameText = firstNameTextField.text else { return }
+        guard let lNameText = lastNameTextField.text else { return }
+        guard let pNumberText = phoneNumberTextField.text else { return }
+        
+        if fNameText.isEmpty {
+            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+                self.labelOfFirstName.isHidden = true }, completion: nil)
+        }
+        if lNameText.isEmpty {
+            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+                self.labelOfLastName.isHidden = true }, completion: nil)
+        }
+        if pNumberText.isEmpty {
+            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+                self.labelOfPhoneNumber.isHidden = true }, completion: nil)
+        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }
@@ -247,6 +261,7 @@ extension AddContactsViewController {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
         }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(enable)
         alert.addAction(cancel)
@@ -265,9 +280,9 @@ extension AddContactsViewController {
     }
     
     func detailLabelsAreInvisible() {
-        self.labelOfPhoneNumber.alpha = 0
-        self.labelOfFirstName.alpha = 0
-        self.labelOfLastName.alpha = 0
+        self.labelOfPhoneNumber.isHidden = true
+        self.labelOfFirstName.isHidden = true
+        self.labelOfLastName.isHidden = true
     }
     
 }
