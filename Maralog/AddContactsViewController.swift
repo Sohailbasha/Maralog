@@ -164,8 +164,20 @@ extension AddContactsViewController {
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberiPhone, value: CNPhoneNumber(stringValue: phoneNumber))]
+        
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added with Astrea"
+        
+        let dateMet = NSDateComponents()
+        dateMet.month = Calendar.current.component(.month, from: Date())
+        dateMet.year = Calendar.current.component(.year, from: Date())
+        dateMet.day = Calendar.current.component(.day, from: Date())
+        
+        
+        
+        let met = CNLabeledValue(label: "Date met", value: dateMet)
+        contact.dates = [met]
+    
         
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
