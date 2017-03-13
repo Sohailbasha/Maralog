@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Swipe Down.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Sync Contact.png",
       "scale" : "2x"
     },
     {
