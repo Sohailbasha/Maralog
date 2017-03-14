@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJN-GF-oCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-529" y="63"/>
+            <point key="canvasLocation" x="-524" y="-63"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="bFC-bM-kTu">
@@ -85,11 +85,20 @@
                         <outlet property="descriptionLabel" destination="cBF-DZ-5gg" id="sPS-qW-Z8z"/>
                         <outlet property="headerLabel" destination="1sm-vg-8v7" id="1A7-gl-Ikg"/>
                         <outlet property="imageView" destination="wr3-VP-UMx" id="vT8-e0-KaH"/>
+                        <segue destination="7kM-UV-ETL" kind="show" identifier="toMainSegue" id="kj9-Cx-FBT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6O-of-Xac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="943" y="63"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="g0u-uz-Ja8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="7kM-UV-ETL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hfe-VT-Zt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1819" y="31"/>
         </scene>
     </scenes>
     <resources>

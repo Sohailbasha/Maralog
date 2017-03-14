@@ -51,7 +51,7 @@ extension TutorialViewController {
 }
 
 extension TutorialViewController: StoryboardInitializable {
-    static var storyboardName: String { return String(describing: TutorialStartViewController.self) }
+    static var storyboardName: String { return "Tutorial" }
 }
 
 
