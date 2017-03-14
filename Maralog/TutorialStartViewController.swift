@@ -37,6 +37,7 @@ class TutorialStartViewController: UIViewController, UIPageViewControllerDataSou
     
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
         guard let vcBefore = viewController as? TutorialViewController else { return nil }
         switch vcBefore.pageIndex {
         case 0:
@@ -68,6 +69,7 @@ class TutorialStartViewController: UIViewController, UIPageViewControllerDataSou
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
         guard let vcAfter = viewController as? TutorialViewController else { return nil }
         switch vcAfter.pageIndex {
         case 0:

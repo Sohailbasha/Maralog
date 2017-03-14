@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--MainViewController-->
         <scene sceneID="cyT-5N-RFD">
             <objects>
-                <viewController id="FmS-8h-oDN" customClass="MainViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FmS-8h-oDN" customClass="MainViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WqM-qS-hIn"/>
                         <viewControllerLayoutGuide type="bottom" id="PvV-lr-K4h"/>
@@ -324,7 +324,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5o-Yn-j4C">
-                                <rect key="frame" x="113" y="130" width="149" height="50"/>
+                                <rect key="frame" x="113" y="492" width="149" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.43529411764705883" green="0.59607843137254901" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -339,13 +339,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="continuebutton" destination="r5o-Yn-j4C" id="9Is-JI-KY6"/>
                         <outlet property="nameTextField" destination="hvx-h8-7JH" id="Xg7-68-llM"/>
                         <segue destination="jxq-ei-wdm" kind="show" identifier="toTutorialSegue" id="Jky-V9-bBs"/>
+                        <segue destination="AQ7-o1-VJu" kind="show" identifier="toMainSegue" id="w1S-Ru-eOT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4O-wP-5hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-847" y="-284"/>
+            <point key="canvasLocation" x="-914" y="-174"/>
         </scene>
         <!--Tutorial-->
         <scene sceneID="FBT-4F-vjl">
@@ -354,37 +356,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7w-zB-2xY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-209" y="-461"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MOi-fL-0os">
-            <objects>
-                <viewController storyboardIdentifier="fourthVC" id="QR1-Al-fAz" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZOQ-m9-efj"/>
-                        <viewControllerLayoutGuide type="bottom" id="L80-9G-Ixc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kdb-sG-DFj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Onboarding Screen W: Logo" translatesAutoresizingMaskIntoConstraints="NO" id="2Vv-yC-4sf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sync a contact to your address book also" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtl-Lz-YOQ">
-                                <rect key="frame" x="0.0" y="183" width="375" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dZJ-xl-zfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3021.5999999999999" y="-866.71664167916049"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OAU-lB-6sa">
