@@ -324,7 +324,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5o-Yn-j4C">
-                                <rect key="frame" x="113" y="539" width="149" height="50"/>
+                                <rect key="frame" x="113" y="130" width="149" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.43529411764705883" green="0.59607843137254901" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -333,7 +333,6 @@
                                 </state>
                                 <connections>
                                     <action selector="continueTouched:" destination="wLM-21-uMI" eventType="touchUpInside" id="Cx8-zs-Q8g"/>
-                                    <segue destination="jxq-ei-wdm" kind="show" id="mTT-H6-rcS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -341,124 +340,20 @@
                     </view>
                     <connections>
                         <outlet property="nameTextField" destination="hvx-h8-7JH" id="Xg7-68-llM"/>
+                        <segue destination="jxq-ei-wdm" kind="show" identifier="toTutorialSegue" id="Jky-V9-bBs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4O-wP-5hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-879.20000000000005" y="-666.11694152923542"/>
+            <point key="canvasLocation" x="-847" y="-284"/>
         </scene>
-        <!--Tutorial Page View Controller-->
-        <scene sceneID="GqA-FR-1y2">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="iDV-OP-nQU" customClass="TutorialPageViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BQm-QV-Tjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="175" y="-1205"/>
-        </scene>
-        <!--Storyboard Reference-->
+        <!--Tutorial-->
         <scene sceneID="FBT-4F-vjl">
             <objects>
-                <viewControllerPlaceholder id="jxq-ei-wdm" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="Tutorial.storyboard" storyboardName="Tutorial" id="jxq-ei-wdm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7w-zB-2xY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16" y="-765"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Svp-l3-e88">
-            <objects>
-                <viewController storyboardIdentifier="firstVC" id="HE3-WO-a28" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NCp-1l-tWj"/>
-                        <viewControllerLayoutGuide type="bottom" id="HeZ-wy-jIu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3JX-88-zF6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Onboarding Screen W: Logo" translatesAutoresizingMaskIntoConstraints="NO" id="to3-x1-fFa">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Effeciently add contacts with Astrea.                             Saving more than just numbers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvn-43-AmL">
-                                <rect key="frame" x="5" y="183" width="364" height="300"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oVk-0H-L4C" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="841" y="-1205"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="iPf-AP-wXb">
-            <objects>
-                <viewController storyboardIdentifier="secondVC" id="XBx-HL-TNV" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BGq-W2-Qy5"/>
-                        <viewControllerLayoutGuide type="bottom" id="hkR-Kc-0ws"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wyg-4q-HGC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Onboarding Screen W: Logo" translatesAutoresizingMaskIntoConstraints="NO" id="IKb-Ys-aXx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Location + Time" translatesAutoresizingMaskIntoConstraints="NO" id="5T1-Br-7gy">
-                                <rect key="frame" x="147" y="492" width="80" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Saving a place, time, and battery" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGE-Lc-XAB">
-                                <rect key="frame" x="0.0" y="184" width="375" height="300"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EQb-4o-Rv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1599" y="-1217"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="b1n-dp-YEv">
-            <objects>
-                <viewController storyboardIdentifier="thirdVC" id="If6-Po-Wo7" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qm6-YB-yOt"/>
-                        <viewControllerLayoutGuide type="bottom" id="qE7-0W-b9Q"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="t6b-DL-W8F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Onboarding Screen W: Logo" translatesAutoresizingMaskIntoConstraints="NO" id="K6H-yo-d3X">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Immediately send a message after adding a new number" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAe-uW-VIL">
-                                <rect key="frame" x="0.0" y="183" width="375" height="300"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D3M-hT-2rf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2274.4000000000001" y="-863.1184407796103"/>
+            <point key="canvasLocation" x="-209" y="-461"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MOi-fL-0os">

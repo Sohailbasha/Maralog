@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tutorial View Controller-->
+        <!--Tutorial Start View Controller-->
         <scene sceneID="U07-Qv-qEU">
             <objects>
-                <viewController id="Ztf-ev-QGR" customClass="TutorialViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialStartViewController" id="Ztf-ev-QGR" customClass="TutorialStartViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lQf-W8-60b"/>
                         <viewControllerLayoutGuide type="bottom" id="oJn-lc-qbx"/>
@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJN-GF-oCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-582" y="72"/>
+            <point key="canvasLocation" x="-529" y="63"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="bFC-bM-kTu">
@@ -42,12 +42,12 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="ZJp-EC-LIS" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="flP-sb-AS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="64"/>
+            <point key="canvasLocation" x="182" y="47"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutorial View Controller-->
         <scene sceneID="PyX-kz-vhD">
             <objects>
-                <viewController id="MJ1-NU-zVu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MJ1-NU-zVu" customClass="TutorialViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Aus-bT-1pp"/>
                         <viewControllerLayoutGuide type="bottom" id="hgD-q6-LbK"/>
@@ -81,10 +81,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="cBF-DZ-5gg" id="sPS-qW-Z8z"/>
+                        <outlet property="headerLabel" destination="1sm-vg-8v7" id="1A7-gl-Ikg"/>
+                        <outlet property="imageView" destination="wr3-VP-UMx" id="vT8-e0-KaH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6O-of-Xac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962.39999999999998" y="71.514242878560722"/>
+            <point key="canvasLocation" x="943" y="63"/>
         </scene>
     </scenes>
     <resources>
