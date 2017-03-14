@@ -25,13 +25,20 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    weak var delegate: AllContactsCountDelegate?
+    
     
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
     
+    func allContactsForDelegate() {
+        if let numOfContacts = fetchedResultsController.fetchedObjects?.count {
+            delegate?.allContacts(count: numOfContacts)
+        }
+    }
     
-    // MARK: - Datasource
+    // MARK: - TableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
@@ -81,7 +88,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Fetched Results Controller
     
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
-        
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -135,4 +141,8 @@ extension ContactsListViewController {
         tableView.endUpdates()
     }
     
+}
+
+protocol AllContactsCountDelegate: class {
+    func allContacts(count: Int)
 }

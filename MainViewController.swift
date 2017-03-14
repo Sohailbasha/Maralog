@@ -9,7 +9,7 @@
 import UIKit
 import Contacts
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCountDelegate{
     
     
     override func viewDidLoad() {
@@ -17,8 +17,13 @@ class MainViewController: UIViewController {
         self.setUpButton()
         self.transparentNavBar()
         self.setMenuConstraints()
-        numContacts.text = ""
-        numRecAdded.text = ""
+        if let numOfRecentContacts = numOfRecentContacts {
+            numRecAdded.text = "\(numOfRecentContacts)"
+        }
+        if let numOfContacts = numOfContacts {
+            numContacts.text = "\(numOfContacts)"
+        }
+        
         swipeDownLabel.alpha = 0
         selectionLine.isHidden = true
     }
@@ -29,12 +34,14 @@ class MainViewController: UIViewController {
     var menuShowing: Bool {
         return listViewBottomConstraint.constant == 0
     }
+    var numOfRecentContacts: Int?
+    var numOfContacts: Int?
     
     let image = UIImageView()
-
+    
     
     // MARK: - Outlets
-
+    
     // Buttons
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet var contactsButton: UIButton!
@@ -61,7 +68,7 @@ class MainViewController: UIViewController {
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
     @IBOutlet var listViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var listViewHeightConstraint: NSLayoutConstraint!
-
+    
     
     // MARK: - Actions
     
@@ -77,12 +84,12 @@ class MainViewController: UIViewController {
                        initialSpringVelocity: 8,
                        options: [],
                        animations: {
-            self.selectionLine.center.x = self.contactsStack.center.x
+                        self.selectionLine.center.x = self.contactsStack.center.x
                         
         }, completion: nil)
         setUpGestures()
     }
-   
+    
     @IBAction func recentlyAddedButtonTapped(_ sender: Any) {
         showContactsMenu()
         
@@ -169,6 +176,25 @@ extension MainViewController {
         image.contentMode = .scaleAspectFill
         image.alpha = 0.5
         self.view.addSubview(image)
+    }
+    
+    func recentlyAddedContacts(count: Int) {
+        numOfRecentContacts = count
+    }
+    
+    func allContacts(count: Int) {
+        numOfContacts = count
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recentlyAdded" {
+            guard let recentVC = segue.destination as? RecentlyAddedViewController else { return }
+            recentVC.delegate = self
+        }
+        if segue.identifier == "allContacts" {
+            guard let allContactsVC = segue.destination as? ContactsListViewController else { return }
+            
+        }
     }
     
 }

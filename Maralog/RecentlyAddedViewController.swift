@@ -30,7 +30,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Properties 
     
-    weak var delegate: RecentlYAddedDelegate?
+    weak var delegate: RecentlyAddedDelegate?
     
     var contacts: [Contact]? {
         return fetchedResultsController.fetchedObjects
@@ -135,6 +135,6 @@ extension RecentlyAddedViewController {
     }
 }
 
-protocol RecentlYAddedDelegate: class {
+protocol RecentlyAddedDelegate: class {
     func recentlyAddedContacts(count: Int)
 }

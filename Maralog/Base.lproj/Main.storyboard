@@ -43,13 +43,13 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVo-fH-wsd">
                                         <rect key="frame" x="0.0" y="99" width="375" height="560"/>
                                         <connections>
-                                            <segue destination="BH9-rm-wS3" kind="embed" id="hld-1U-oBg"/>
+                                            <segue destination="BH9-rm-wS3" kind="embed" identifier="recentlyAdded" id="hld-1U-oBg"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BP4-Ac-ooE">
                                         <rect key="frame" x="0.0" y="99" width="375" height="560"/>
                                         <connections>
-                                            <segue destination="dyc-oR-eTl" kind="embed" id="gsk-qW-Rg4"/>
+                                            <segue destination="dyc-oR-eTl" kind="embed" identifier="allContacts" id="gsk-qW-Rg4"/>
                                         </connections>
                                     </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="yIY-Db-ivz">
