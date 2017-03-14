@@ -21,4 +21,13 @@ class OnboardingViewController: UIViewController {
         performSegue(withIdentifier: "toMainSegue", sender: self)
     }
     
+    func createGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        let bgTop: UIColor = UIColor(red: 101/255, green: 124/255, blue: 176/255, alpha: 100)
+        let bgBottom: UIColor = UIColor(red: 45/255, green: 63/255, blue: 105/255, alpha: 100)
+        gradientLayer.colors = [bgTop.cgColor, bgBottom.cgColor]
+        self.view.layer.addSublayer(gradientLayer)
+        
+    }
 }
