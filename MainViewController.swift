@@ -14,18 +14,14 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setUpButton()
         self.transparentNavBar()
         self.setMenuConstraints()
         numContacts.text = ""
         numRecAdded.text = ""
         swipeDownLabel.alpha = 0
-        
-        
+        selectionLine.isHidden = true
     }
-    
-    
     
     
     // MARK: - Properties
@@ -49,11 +45,16 @@ class MainViewController: UIViewController {
     @IBOutlet var numRecAdded: UILabel!
     @IBOutlet var swipeDownLabel: UILabel!
     
+    // Stack Views
+    @IBOutlet var recentlyAddedStack: UIStackView!
+    @IBOutlet var contactsStack: UIStackView!
+    
     
     // UIContainer View's
     @IBOutlet var listView: UIView!
     @IBOutlet var recentlyAddedView: UIView!
     @IBOutlet var allContactsView: UIView!
+    @IBOutlet var selectionLine: UIView!
     
     // Constraints
     @IBOutlet var listViewConstraint: NSLayoutConstraint!
@@ -70,6 +71,15 @@ class MainViewController: UIViewController {
         self.view.bringSubview(toFront: allContactsView)
         recentlyAddedView.isHidden = true
         allContactsView.isHidden = false
+        UIView.animate(withDuration: 0.35,
+                       delay: 0,
+                       usingSpringWithDamping: 8,
+                       initialSpringVelocity: 8,
+                       options: [],
+                       animations: {
+            self.selectionLine.center.x = self.contactsStack.center.x
+                        
+        }, completion: nil)
         setUpGestures()
     }
    
@@ -79,10 +89,16 @@ class MainViewController: UIViewController {
         self.view.bringSubview(toFront: recentlyAddedView)
         recentlyAddedView.isHidden = false
         allContactsView.isHidden = true
+        UIView.animate(withDuration: 0.35,
+                       delay: 0,
+                       usingSpringWithDamping: 8,
+                       initialSpringVelocity: 8,
+                       options: [],
+                       animations: {
+                        self.selectionLine.center.x = self.recentlyAddedStack.center.x
+        }, completion: nil)
         setUpGestures()
     }
-    
-    
 }
 
 
@@ -120,6 +136,7 @@ extension MainViewController {
             self.listViewConstraint.constant = (viewHeight / 9.9)
             self.bottomImageViewConstraint.constant = (-viewHeight)
             self.listViewBottomConstraint.constant = 0
+            self.selectionLine.isHidden = false
             self.view.layoutIfNeeded()
         }
     }
@@ -133,6 +150,7 @@ extension MainViewController {
             self.listViewConstraint.constant = (viewHeight / 1.15)
             self.listViewBottomConstraint.constant = -568
             self.addButton.alpha = 1
+            self.selectionLine.isHidden = true
             self.view.layoutIfNeeded()
         }
     }

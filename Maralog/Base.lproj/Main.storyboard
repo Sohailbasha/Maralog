@@ -101,6 +101,11 @@
                                         <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8T-CL-RQS">
+                                        <rect key="frame" x="6" y="65" width="122" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25506764650344849" green="0.2552897036075592" blue="0.25510203838348389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -140,13 +145,16 @@
                         <outlet property="allContactsView" destination="BP4-Ac-ooE" id="cNn-aN-PVA"/>
                         <outlet property="bottomImageViewConstraint" destination="EWG-Js-G07" id="o6a-C2-3YM"/>
                         <outlet property="contactsButton" destination="mdb-Lz-0E7" id="zUr-sI-hZw"/>
+                        <outlet property="contactsStack" destination="yIY-Db-ivz" id="ln2-aU-DvK"/>
                         <outlet property="listView" destination="1Rh-D6-oER" id="Fgb-Kj-zj7"/>
                         <outlet property="listViewBottomConstraint" destination="97v-Pd-M2c" id="QUs-1T-O6V"/>
                         <outlet property="listViewConstraint" destination="OWz-he-O45" id="d23-ri-Si9"/>
                         <outlet property="listViewHeightConstraint" destination="71u-WQ-66B" id="P9V-tT-yNT"/>
                         <outlet property="numContacts" destination="rxy-gD-MaN" id="xWe-7S-wPY"/>
                         <outlet property="numRecAdded" destination="wiM-r9-WWy" id="a7V-me-fk7"/>
+                        <outlet property="recentlyAddedStack" destination="6Sh-2I-f7a" id="HAv-LW-AKW"/>
                         <outlet property="recentlyAddedView" destination="EVo-fH-wsd" id="Iyo-0R-uWm"/>
+                        <outlet property="selectionLine" destination="l8T-CL-RQS" id="Giu-3U-QOO"/>
                         <outlet property="swipeDownLabel" destination="pdj-Kn-Cli" id="NKu-g0-5P3"/>
                     </connections>
                 </viewController>
@@ -511,14 +519,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NHX-p2-drt">
-                                                    <rect key="frame" x="15" y="12" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="beT-b0-57e">
-                                                    <rect key="frame" x="316" y="12" width="44" height="21"/>
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -569,14 +577,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="added at location:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNT-2V-Ui9">
                                 <rect key="frame" x="16" y="488" width="343" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="at time:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmX-Gt-bhl">
                                 <rect key="frame" x="16" y="515" width="343" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

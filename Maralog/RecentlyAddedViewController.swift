@@ -30,15 +30,20 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Properties 
     
+    weak var delegate: RecentlYAddedDelegate?
+    
     var contacts: [Contact]? {
         return fetchedResultsController.fetchedObjects
     }
+    
     
    
     // MARK: - Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts?.count ?? 0
+        guard let count = contacts?.count else { return 0 }
+        delegate?.recentlyAddedContacts(count: count)
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -128,4 +133,8 @@ extension RecentlyAddedViewController {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+}
+
+protocol RecentlYAddedDelegate: class {
+    func recentlyAddedContacts(count: Int)
 }
