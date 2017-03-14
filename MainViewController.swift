@@ -175,7 +175,7 @@ extension MainViewController {
     }
     
     func recentlyAddedContacts(count: Int) {
-        numOfRecentContacts = count
+        numRecAdded.text = "\(count)"
     }
     
     func allContacts(count: Int) {

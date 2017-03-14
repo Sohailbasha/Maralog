@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 
 class ContactController {
-    
-    
+
     //MARK: - C R U D methods
     
     static let sharedInstance = ContactController()

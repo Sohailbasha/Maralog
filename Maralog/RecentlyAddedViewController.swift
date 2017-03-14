@@ -23,6 +23,10 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         allContactsForDelegate()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        allContactsForDelegate()
+    }
     
     // MARK: - Outlets
     
@@ -47,25 +51,25 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = contacts?.count else { return 0 }
-        return count
+        guard let sectionInfo = fetchedResultsController.sections?[section] else { return 0 }
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentlyAdded", for: indexPath) as UITableViewCell
         cell.detailTextLabel?.text = ""
-        let contact = contacts?[indexPath.row]
+        let contact = fetchedResultsController.object(at: indexPath)
         var dateString = ""
         
-        if let timeStamp = contact?.timeStamp {
+        if let timeStamp = contact.timeStamp {
             let dateAdded = FormattingDate.sharedInstance.formatter.string(from: timeStamp as Date)
             dateString = dateAdded
         }
         
-        cell.textLabel?.text = contact?.fullName
+        cell.textLabel?.text = contact.fullName
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
-        if contact?.location != nil {
+        if contact.location != nil {
             cell.detailTextLabel?.text = "added \(dateString)"
             cell.detailTextLabel?.textColor = .white
             cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightUltraLight)
@@ -121,21 +125,22 @@ extension RecentlyAddedViewController {
             guard let indexPath = indexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .fade)
             allContactsForDelegate()
-            
+
         case .insert:
             guard let newIndexPath = newIndexPath else {return}
             tableView.insertRows(at: [newIndexPath], with: .automatic)
             allContactsForDelegate()
-            
+
         case .move:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
             tableView.moveRow(at: indexPath, to: newIndexPath)
-            allContactsForDelegate()
+            
             
         case .update:
             guard let indexPath = indexPath else {return}
             tableView.reloadRows(at: [indexPath], with: .automatic)
-            allContactsForDelegate()
+            
+            
         }
     }
     

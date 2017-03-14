@@ -27,8 +27,6 @@ class ContactDetailViewController: UIViewController {
         return contact?.location
     }
     
-    
-    
     func updateViews() {
         guard let contact = self.contact,
             let firstName = contact.firstName as String?,
@@ -46,11 +44,9 @@ class ContactDetailViewController: UIViewController {
     
         
         if contact.location != nil {
-
             if let location = contact.location {
                 let coordinate = LocationController.sharedInstance.getLocationCoordinates(location: location)
                 let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                
                 
                 let geocoder = CLGeocoder()
                 geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
