@@ -14,6 +14,9 @@
 		FD16C9961E490F6100237631 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9951E490F6100237631 /* ContactController.swift */; };
 		FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9981E49120F00237631 /* AddContactsViewController.swift */; };
 		FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C99A1E491F3200237631 /* ContactsListViewController.swift */; };
+		FD1756E61E788C550026E0AB /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1756E51E788C550026E0AB /* Tutorial.storyboard */; };
+		FD1756E81E788FF70026E0AB /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */; };
+		FD1756EA1E7890F70026E0AB /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756E91E7890F70026E0AB /* TutorialViewController.swift */; };
 		FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30BFF51E43FFA100759ECB /* AppDelegate.swift */; };
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
@@ -40,6 +43,9 @@
 		FD16C9951E490F6100237631 /* ContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		FD16C9981E49120F00237631 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		FD16C99A1E491F3200237631 /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
+		FD1756E51E788C550026E0AB /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
+		FD1756E91E7890F70026E0AB /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		FD30BFF21E43FFA100759ECB /* Maralog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maralog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30BFF51E43FFA100759ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30BFFA1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				FD30BFF91E43FFA100759ECB /* Main.storyboard */,
+				FD1756E51E788C550026E0AB /* Tutorial.storyboard */,
 				FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */,
 			);
 			name = "Story Board";
@@ -93,12 +100,13 @@
 			isa = PBXGroup;
 			children = (
 				FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */,
-				FD5F25701E74DA90001D2B68 /* TutorialPageViewController.swift */,
+				FD1756E91E7890F70026E0AB /* TutorialViewController.swift */,
 				FD30C0071E440AAD00759ECB /* MainViewController.swift */,
 				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
 				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
 				FD3B146D1E4A39EA00506CC1 /* ContactDetailViewController.swift */,
+				FD5F25701E74DA90001D2B68 /* TutorialPageViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FD0C57AE1E776ED5009763ED /* GradientLayer.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
+				FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -243,6 +252,7 @@
 			files = (
 				FD30C0001E43FFA100759ECB /* LaunchScreen.storyboard in Resources */,
 				FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */,
+				FD1756E61E788C550026E0AB /* Tutorial.storyboard in Resources */,
 				FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +266,7 @@
 			files = (
 				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
+				FD1756EA1E7890F70026E0AB /* TutorialViewController.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
@@ -263,6 +274,7 @@
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
+				FD1756E81E788FF70026E0AB /* StoryboardInitializable.swift in Sources */,
 				FD3B146E1E4A39EA00506CC1 /* ContactDetailViewController.swift in Sources */,
 				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,
 				FD0C57AF1E776ED5009763ED /* GradientLayer.swift in Sources */,
