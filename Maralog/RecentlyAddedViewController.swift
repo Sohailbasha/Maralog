@@ -20,6 +20,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         fetchedResultsController.delegate = self
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }
+        allContactsForDelegate()
     }
 
     
@@ -36,13 +37,17 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return fetchedResultsController.fetchedObjects
     }
     
-    
+    func allContactsForDelegate() {
+        if let contacts = fetchedResultsController.fetchedObjects {
+            let numOfContacts = contacts.count
+            delegate?.recentlyAddedContacts(count: numOfContacts)
+        }
+    }
    
     // MARK: - Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = contacts?.count else { return 0 }
-        delegate?.recentlyAddedContacts(count: count)
         return count
     }
     
@@ -115,18 +120,22 @@ extension RecentlyAddedViewController {
         case .delete:
             guard let indexPath = indexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .fade)
+            allContactsForDelegate()
             
         case .insert:
             guard let newIndexPath = newIndexPath else {return}
             tableView.insertRows(at: [newIndexPath], with: .automatic)
+            allContactsForDelegate()
             
         case .move:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
             tableView.moveRow(at: indexPath, to: newIndexPath)
+            allContactsForDelegate()
             
         case .update:
             guard let indexPath = indexPath else {return}
             tableView.reloadRows(at: [indexPath], with: .automatic)
+            allContactsForDelegate()
         }
     }
     

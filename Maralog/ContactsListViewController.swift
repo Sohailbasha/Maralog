@@ -11,7 +11,6 @@ import CoreData
 
 class ContactsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -23,6 +22,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         } catch {
             print("Error starting fetched results controller: \(error)")
         }
+        allContactsForDelegate()
     }
     
     weak var delegate: AllContactsCountDelegate?
@@ -33,7 +33,8 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var tableView: UITableView!
     
     func allContactsForDelegate() {
-        if let numOfContacts = fetchedResultsController.fetchedObjects?.count {
+        if let contacts = fetchedResultsController.fetchedObjects {
+            let numOfContacts = contacts.count
             delegate?.allContacts(count: numOfContacts)
         }
     }
@@ -67,6 +68,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         if editingStyle == .delete {
             let contact = fetchedResultsController.object(at: indexPath)
             ContactController.sharedInstance.removeContact(contact: contact)
+            allContactsForDelegate()
         }
     }
     
@@ -122,18 +124,26 @@ extension ContactsListViewController {
         case .delete:
             guard let indexPath = indexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .fade)
+            allContactsForDelegate()
+
         case .insert:
             guard let newIndexPath = newIndexPath else {return}
             tableView.insertRows(at: [newIndexPath], with: .automatic)
+            allContactsForDelegate()
+
         case .move:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
+            allContactsForDelegate()
+
             
         case .update:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
+            allContactsForDelegate()
+
         }
     }
     

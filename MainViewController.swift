@@ -20,9 +20,6 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
         if let numOfRecentContacts = numOfRecentContacts {
             numRecAdded.text = "\(numOfRecentContacts)"
         }
-        if let numOfContacts = numOfContacts {
-            numContacts.text = "\(numOfContacts)"
-        }
         
         swipeDownLabel.alpha = 0
         selectionLine.isHidden = true
@@ -35,7 +32,6 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
         return listViewBottomConstraint.constant == 0
     }
     var numOfRecentContacts: Int?
-    var numOfContacts: Int?
     
     let image = UIImageView()
     
@@ -183,7 +179,7 @@ extension MainViewController {
     }
     
     func allContacts(count: Int) {
-        numOfContacts = count
+        numContacts.text = "\(count)"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -193,7 +189,7 @@ extension MainViewController {
         }
         if segue.identifier == "allContacts" {
             guard let allContactsVC = segue.destination as? ContactsListViewController else { return }
-            
+            allContactsVC.delegate = self
         }
     }
     
