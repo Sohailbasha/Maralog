@@ -16,6 +16,7 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         self.updateViews()
         self.setupButons()
+        detailDisplayView.layer.cornerRadius = 10
     }
     
     
@@ -41,7 +42,7 @@ class ContactDetailViewController: UIViewController {
         fullName.text = "\(firstName) \(lastName)"
         phoneNumber.text = number
         timeMetLabel.text = ""
-        locationMetLabel.text = ""
+        locationMetLabel.text = "No location info"
     
         
         if contact.location != nil {
@@ -155,6 +156,8 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet var editButton: UIButton!
     @IBOutlet var callButton: UIButton!
     @IBOutlet var textButton: UIButton!
+    
+    @IBOutlet var detailDisplayView: UIView!
     
     
     
