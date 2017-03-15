@@ -25,11 +25,11 @@ class OnboardingViewController: UIViewController, UITextFieldDelegate {
     var didShowTutorial: Bool = false
     
     @IBAction func continueTouched(_ sender: Any) {
-        if didShowTutorial == false {
-            UserController.sharedInstance.saveUserName(name: nameTextField.text)
-            performSegue(withIdentifier: "toTutorialSegue", sender: self)
-            didShowTutorial = true
-        }
+//        if didShowTutorial == false {
+//            UserController.sharedInstance.saveUserName(name: nameTextField.text)
+//            performSegue(withIdentifier: "toTutorialSegue", sender: self)
+//            didShowTutorial = true
+//        }
     }
     
     func goToMain() {

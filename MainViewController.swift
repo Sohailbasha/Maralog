@@ -193,7 +193,6 @@ extension MainViewController {
             allContactsVC.delegate = self
         }
     }
-    
 }
 
 

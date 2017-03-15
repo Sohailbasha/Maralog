@@ -78,18 +78,6 @@
                                 <rect key="frame" x="85" y="377" width="205" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndQ-Ow-ykK">
-                                <rect key="frame" x="0.0" y="195" width="375" height="277"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="0.11761558219178082" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Lets Get Started!">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="startButtonTapped:" destination="MJ1-NU-zVu" eventType="touchUpInside" id="N1X-Uv-PGn"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -97,21 +85,11 @@
                         <outlet property="descriptionLabel" destination="cBF-DZ-5gg" id="sPS-qW-Z8z"/>
                         <outlet property="headerLabel" destination="1sm-vg-8v7" id="1A7-gl-Ikg"/>
                         <outlet property="imageView" destination="wr3-VP-UMx" id="vT8-e0-KaH"/>
-                        <outlet property="startButton" destination="ndQ-Ow-ykK" id="WAJ-jb-WHr"/>
-                        <segue destination="yFX-ya-L7g" kind="show" identifier="toMainSegue" id="pDJ-oD-UA0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6O-of-Xac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="936.79999999999995" y="45.42728635682159"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="aYG-kC-XHy">
-            <objects>
-                <viewControllerPlaceholder id="yFX-ya-L7g" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bms-Dp-Eou" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1742" y="30"/>
         </scene>
     </scenes>
     <resources>
