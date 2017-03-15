@@ -36,11 +36,11 @@
                   moduleName = "Maralog"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/OnboardingViewController.swift"
-                  timestampString = "511225253.721989"
+                  timestampString = "511300893.049536"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
                   offsetFromSymbolStart = "24">
                </Location>
                <Location
@@ -51,11 +51,11 @@
                   moduleName = "Maralog"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/OnboardingViewController.swift"
-                  timestampString = "511225253.723183"
+                  timestampString = "511300893.050941"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
                   offsetFromSymbolStart = "40">
                </Location>
                <Location
@@ -66,11 +66,11 @@
                   moduleName = "Maralog"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/OnboardingViewController.swift"
-                  timestampString = "511225253.72439"
+                  timestampString = "511300893.052316"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
                   offsetFromSymbolStart = "132">
                </Location>
                <Location
@@ -81,11 +81,11 @@
                   moduleName = "Maralog"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/OnboardingViewController.swift"
-                  timestampString = "511225253.725869"
+                  timestampString = "511300893.053628"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
                   offsetFromSymbolStart = "92">
                </Location>
             </Locations>

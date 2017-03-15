@@ -18,8 +18,18 @@ class SettingsTableViewController: UITableViewController {
     
 
     @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var saveButton: UIButton!
 
     @IBAction func saveButtonTapped(_ sender: Any) {
+        UserController.sharedInstance.saveUserName(name: nameTextField.text)
+        
+        UIView.animate(withDuration: 2, animations: {
+            self.saveButton.backgroundColor = .green
+            self.saveButton.setTitle("Saved", for: .normal)
+        }) { (_) in
+            self.saveButton.backgroundColor = .white
+            self.saveButton.setTitle("Save", for: .normal)
+        }
     }
 
 }
