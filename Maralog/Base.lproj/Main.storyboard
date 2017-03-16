@@ -303,7 +303,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872.8" y="156.97151424287858"/>
+            <point key="canvasLocation" x="1892" y="157"/>
+        </scene>
+        <!--Tutorial Page View Controller-->
+        <scene sceneID="RiC-KM-RWH">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="mWu-3b-WdT" customClass="TutorialPageViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2wp-WK-eay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2042" y="-949"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bG5-cI-LKC">
+            <objects>
+                <viewController storyboardIdentifier="tutorial1" id="exB-vw-x1y" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q9B-uK-rSH"/>
+                        <viewControllerLayoutGuide type="bottom" id="J2z-hW-BEA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hxj-DP-85m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ioy-wC-2fh">
+                                <rect key="frame" x="166" y="130" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.48703867200000001" green="0.64338344339999998" blue="0.98776262999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7M-jb-IhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1366" y="-944"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8sH-hj-hrg">
+            <objects>
+                <viewController storyboardIdentifier="tutorial2" id="PQY-Zq-8fj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y0f-A5-Zct"/>
+                        <viewControllerLayoutGuide type="bottom" id="LCl-Ja-f7m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B70-MG-OE0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.48703867197036743" green="0.6433834433555603" blue="0.98776262998580933" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6wS-uH-0iQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-743" y="-944"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="uMq-Ev-Lak">
@@ -372,7 +425,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4O-wP-5hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-642" y="157"/>
+            <point key="canvasLocation" x="-2465" y="-164"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="jk3-63-oFR">
+            <objects>
+                <viewController storyboardIdentifier="tutorial3" id="8fo-yf-bws" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="60G-TC-iON"/>
+                        <viewControllerLayoutGuide type="bottom" id="HFU-f2-HAB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nFG-56-lgm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.48703867197036743" green="0.6433834433555603" blue="0.98776262998580933" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvf-yy-H7q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-129" y="-944"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aIy-Hx-VyQ">
+            <objects>
+                <viewController storyboardIdentifier="tutorial4" id="6pH-lO-6HX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2OJ-HK-Dh7"/>
+                        <viewControllerLayoutGuide type="bottom" id="nFD-nj-5jc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fpf-Vl-1Lv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xm-UK-i6m">
+                                <rect key="frame" x="145" y="614" width="230" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Tap here to get started -&gt; ">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.48703867200000001" green="0.64338344339999998" blue="0.98776262999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwe-9j-nj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="480.80000000000001" y="-944.07796101949032"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="qxW-Q1-GLx">
@@ -477,7 +576,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oO7-8U-hvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111" y="-494"/>
+            <point key="canvasLocation" x="1511" y="-484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OAU-lB-6sa">

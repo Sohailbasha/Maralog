@@ -13,9 +13,6 @@
 		FD16C9961E490F6100237631 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9951E490F6100237631 /* ContactController.swift */; };
 		FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9981E49120F00237631 /* AddContactsViewController.swift */; };
 		FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C99A1E491F3200237631 /* ContactsListViewController.swift */; };
-		FD1756E81E788FF70026E0AB /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */; };
-		FD1756EA1E7890F70026E0AB /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756E91E7890F70026E0AB /* TutorialViewController.swift */; };
-		FD1756EC1E7891C70026E0AB /* TutorialStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756EB1E7891C70026E0AB /* TutorialStartViewController.swift */; };
 		FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30BFF51E43FFA100759ECB /* AppDelegate.swift */; };
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
@@ -26,6 +23,7 @@
 		FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14941E4A830300506CC1 /* LocationController.swift */; };
 		FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14971E4A83C900506CC1 /* CoreLocation.framework */; };
 		FD3B149A1E4AE01100506CC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14991E4AE01100506CC1 /* MapKit.framework */; };
+		FD3C20741E7A2F64005E8DB9 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3C20731E7A2F64005E8DB9 /* TutorialPageViewController.swift */; };
 		FD557C511E79D1D800067EF1 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */; };
 		FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */; };
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
@@ -41,9 +39,6 @@
 		FD16C9951E490F6100237631 /* ContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		FD16C9981E49120F00237631 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		FD16C99A1E491F3200237631 /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
-		FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
-		FD1756E91E7890F70026E0AB /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		FD1756EB1E7891C70026E0AB /* TutorialStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStartViewController.swift; sourceTree = "<group>"; };
 		FD30BFF21E43FFA100759ECB /* Maralog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maralog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30BFF51E43FFA100759ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30BFFA1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +51,7 @@
 		FD3B14941E4A830300506CC1 /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		FD3B14971E4A83C900506CC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FD3B14991E4AE01100506CC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FD3C20731E7A2F64005E8DB9 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageViewController.swift; path = ../TutorialPageViewController.swift; sourceTree = "<group>"; };
 		FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -103,8 +99,7 @@
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
 				FD3B146D1E4A39EA00506CC1 /* ContactDetailViewController.swift */,
 				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
-				FD1756EB1E7891C70026E0AB /* TutorialStartViewController.swift */,
-				FD1756E91E7890F70026E0AB /* TutorialViewController.swift */,
+				FD3C20751E7A2F6A005E8DB9 /* Tutorial */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -172,12 +167,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD3C20751E7A2F6A005E8DB9 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				FD3C20731E7A2F64005E8DB9 /* TutorialPageViewController.swift */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
 		FD631D841E4E7D2E00CA9B11 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
-				FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -262,7 +264,6 @@
 			files = (
 				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
-				FD1756EA1E7890F70026E0AB /* TutorialViewController.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
@@ -270,14 +271,13 @@
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
-				FD1756E81E788FF70026E0AB /* StoryboardInitializable.swift in Sources */,
 				FD3B146E1E4A39EA00506CC1 /* ContactDetailViewController.swift in Sources */,
 				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,
 				FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */,
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
+				FD3C20741E7A2F64005E8DB9 /* TutorialPageViewController.swift in Sources */,
 				FD557C511E79D1D800067EF1 /* SettingsTableViewController.swift in Sources */,
-				FD1756EC1E7891C70026E0AB /* TutorialStartViewController.swift in Sources */,
 				FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */,
 				FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */,
 			);
