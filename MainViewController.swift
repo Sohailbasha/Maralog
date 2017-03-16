@@ -43,7 +43,6 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet var contactsButton: UIButton!
     
-    
     // Labels
     @IBOutlet var numContacts: UILabel!
     @IBOutlet var numRecAdded: UILabel!
@@ -53,12 +52,12 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
     @IBOutlet var recentlyAddedStack: UIStackView!
     @IBOutlet var contactsStack: UIStackView!
     
-    
-    // UIContainer View's
+    // UIViews View's
     @IBOutlet var listView: UIView!
+    @IBOutlet var selectionLine: UIView!
+    
     @IBOutlet var recentlyAddedView: UIView!
     @IBOutlet var allContactsView: UIView!
-    @IBOutlet var selectionLine: UIView!
     
     // Constraints
     @IBOutlet var listViewConstraint: NSLayoutConstraint!

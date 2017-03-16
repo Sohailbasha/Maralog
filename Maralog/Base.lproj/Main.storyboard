@@ -103,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8T-CL-RQS">
-                                        <rect key="frame" x="39" y="61" width="5" height="5"/>
+                                        <rect key="frame" x="69" y="63" width="5" height="5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.67450980392156867" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -265,8 +265,14 @@
                         <color key="backgroundColor" red="0.6470588235294118" green="0.81176470588235294" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="gtc-vI-2Ts">
-                        <barButtonItem key="rightBarButtonItem" title="save" id="LGp-DX-9cA">
-                            <color key="tintColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="Vhd-CO-lbs">
+                            <color key="tintColor" red="0.015721499543654871" green="0.0114507824147117" blue="0.0084119851878175743" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="aFt-A3-DSS" id="Xz3-ko-Yda"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="LGp-DX-9cA">
+                            <color key="tintColor" red="0.015721499543654871" green="0.0114507824147117" blue="0.0084119851878175743" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="saveButtonTapped:" destination="aFt-A3-DSS" id="uI5-Ry-XcZ"/>
                             </connections>
@@ -289,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="1056"/>
+            <point key="canvasLocation" x="1862" y="913"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="RiC-KM-RWH">
@@ -297,7 +303,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="mWu-3b-WdT" customClass="TutorialPageViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wp-WK-eay" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2774" y="-430"/>
+            <point key="canvasLocation" x="3007" y="-445"/>
         </scene>
         <!--First Tutorial View Controller-->
         <scene sceneID="bG5-cI-LKC">
@@ -555,6 +561,7 @@
                                                     <items>
                                                         <navigationItem title="Settings" id="NjB-UR-sma">
                                                             <barButtonItem key="leftBarButtonItem" title="Back" id="jC6-JB-lh5">
+                                                                <color key="tintColor" red="0.015721499539999999" green="0.011450782410000001" blue="0.0084119851879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <connections>
                                                                     <action selector="BackButtonTapped:" destination="g4p-B1-NhW" id="hpM-p8-zS2"/>
                                                                 </connections>
@@ -670,16 +677,17 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oO7-8U-hvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="-41"/>
+            <point key="canvasLocation" x="1953" y="-134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OAU-lB-6sa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AQ7-o1-VJu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yhB-2q-STp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yhB-2q-STp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -716,14 +724,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NHX-p2-drt">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="12" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="beT-b0-57e">
-                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="316" y="12" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -804,9 +812,9 @@
                                     <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVq-ce-2o1">
                                         <rect key="frame" x="98" y="262" width="79" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
-                                        <color key="tintColor" red="0.93333333330000001" green="0.67450980390000004" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="(D) Text"/>
                                         <connections>
                                             <action selector="textButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="ZdQ-vw-Y1G"/>
@@ -815,9 +823,9 @@
                                     <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwd-gD-FlN">
                                         <rect key="frame" x="8" y="262" width="79" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
-                                        <color key="tintColor" red="0.93333333330000001" green="0.67450980390000004" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="(D) Edit"/>
                                         <connections>
                                             <action selector="editContact:" destination="I7C-xY-9PK" eventType="touchUpInside" id="Xpv-ti-in5"/>
@@ -833,9 +841,9 @@
                                     <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xK7-Tt-B6T">
                                         <rect key="frame" x="188" y="262" width="79" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
-                                        <color key="tintColor" red="0.93333333330000001" green="0.67450980390000004" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="(D) Call"/>
                                         <connections>
                                             <action selector="callButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="a08-9s-dia"/>
@@ -939,7 +947,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1028" y="1796"/>
+            <point key="canvasLocation" x="647" y="1720"/>
         </scene>
         <!--Contacts List View Controller-->
         <scene sceneID="MFv-xc-yyl">

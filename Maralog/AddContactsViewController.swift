@@ -86,10 +86,18 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Action
     
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        goToRootView()
+    }
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
+        
+       
+        
         
         if uiSwitch.isOn {
             if let location = usersLocation {
@@ -315,19 +323,19 @@ extension AddContactsViewController {
     }
     
     func draw(bezierPath: UIBezierPath, under textField: UITextField) {
+        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x,
+                                          y: textField.frame.origin.y + (textField.bounds.height + 2))
         
-        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x, y: textField.frame.origin.y + (textField.bounds.height + 2))
-        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width), y: textField.frame.origin.y + (textField.bounds.height + 2))
+        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
+                                        y: textField.frame.origin.y + (textField.bounds.height + 2))
         
         bezierPath.move(to: textFieldstartPoint)
         bezierPath.addLine(to: textFieldEndPoint)
-        
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = bezierPath.cgPath
         shapeLayer.strokeColor = UIColor.white.cgColor
         shapeLayer.lineWidth = 1.5
         view.layer.addSublayer(shapeLayer)
-        
     }
     
 }
