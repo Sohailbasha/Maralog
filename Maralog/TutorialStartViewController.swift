@@ -12,24 +12,21 @@ class TutorialStartViewController: UIViewController, UIPageViewControllerDataSou
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageViewController.setViewControllers([TutorialViewController.initializeFromStoryboard()], direction: .forward, animated: true, completion: nil)
-
+        if let pageViewController = pageViewController {
+            pageViewController.setViewControllers([TutorialViewController.initializeFromStoryboard()], direction: .forward, animated: true, completion: nil)
+        }
     }
 
-    var pageViewController: UIPageViewController!
+    var pageViewController: UIPageViewController?
     static var pageIndex = 0
     static let pages = 4
     
     
-    
-
-    
     // MARK: - Navigation
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "embedPageViewController" {
-            pageViewController = segue.destination as! UIPageViewController
+            guard let pageViewController = segue.destination as? UIPageViewController else { return }
             pageViewController.dataSource = self
             pageViewController.delegate = self
         }
@@ -39,6 +36,7 @@ class TutorialStartViewController: UIViewController, UIPageViewControllerDataSou
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         guard let vcBefore = viewController as? TutorialViewController else { return nil }
+
         switch vcBefore.pageIndex {
         case 0:
             return nil

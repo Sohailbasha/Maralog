@@ -19,23 +19,21 @@ class OnboardingViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(true)
     }
     
+    
+    // MARK: - Outlet
     @IBOutlet var continuebutton: UIButton!
     @IBOutlet var nameTextField: UITextField!
     
-    var didShowTutorial: Bool = false
+    
+    // MARK: - Actions 
     
     @IBAction func continueTouched(_ sender: Any) {
-//        if didShowTutorial == false {
-//            UserController.sharedInstance.saveUserName(name: nameTextField.text)
-//            performSegue(withIdentifier: "toTutorialSegue", sender: self)
-//            didShowTutorial = true
-//        }
+            UserController.sharedInstance.saveUserName(name: nameTextField.text)
+            performSegue(withIdentifier: "toTutorialSegue", sender: self)
     }
+
     
-    func goToMain() {
-        performSegue(withIdentifier: "toMainSegue", sender: self)
-    }
-    
+    // MARK: - TextField Delegate Functions
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

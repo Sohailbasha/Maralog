@@ -13,7 +13,6 @@
 		FD16C9961E490F6100237631 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9951E490F6100237631 /* ContactController.swift */; };
 		FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9981E49120F00237631 /* AddContactsViewController.swift */; };
 		FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C99A1E491F3200237631 /* ContactsListViewController.swift */; };
-		FD1756E61E788C550026E0AB /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1756E51E788C550026E0AB /* Tutorial.storyboard */; };
 		FD1756E81E788FF70026E0AB /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */; };
 		FD1756EA1E7890F70026E0AB /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756E91E7890F70026E0AB /* TutorialViewController.swift */; };
 		FD1756EC1E7891C70026E0AB /* TutorialStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1756EB1E7891C70026E0AB /* TutorialStartViewController.swift */; };
@@ -42,7 +41,6 @@
 		FD16C9951E490F6100237631 /* ContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		FD16C9981E49120F00237631 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		FD16C99A1E491F3200237631 /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
-		FD1756E51E788C550026E0AB /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		FD1756E71E788FF70026E0AB /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
 		FD1756E91E7890F70026E0AB /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		FD1756EB1E7891C70026E0AB /* TutorialStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStartViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				FD30BFF91E43FFA100759ECB /* Main.storyboard */,
-				FD1756E51E788C550026E0AB /* Tutorial.storyboard */,
 				FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */,
 			);
 			name = "Story Board";
@@ -252,7 +249,6 @@
 			files = (
 				FD30C0001E43FFA100759ECB /* LaunchScreen.storyboard in Resources */,
 				FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */,
-				FD1756E61E788C550026E0AB /* Tutorial.storyboard in Resources */,
 				FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

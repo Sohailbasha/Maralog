@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AQ7-o1-VJu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -305,6 +305,88 @@
             </objects>
             <point key="canvasLocation" x="1872.8" y="156.97151424287858"/>
         </scene>
+        <!--Tutorial Start View Controller-->
+        <scene sceneID="I5g-xS-fQ4">
+            <objects>
+                <viewController id="eaX-f2-Xi7" customClass="TutorialStartViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NRR-3w-bua"/>
+                        <viewControllerLayoutGuide type="bottom" id="HjE-M7-XbV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="myY-vX-3MO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97S-4V-ms1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="Kxj-ue-cQS" kind="embed" identifier="embedPageViewController" id="ILi-eV-kpq"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ewd-UU-kyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2350" y="-591"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="ede-Zh-QcG">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Kxj-ue-cQS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LeG-1A-hdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1692" y="-591"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="5jf-No-JyZ">
+            <objects>
+                <viewController storyboardIdentifier="TutorialViewController" id="our-Yg-MPh" customClass="TutorialViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="52a-8s-iwf"/>
+                        <viewControllerLayoutGuide type="bottom" id="jZC-Ms-kVc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="woO-9Z-5Pi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Onboarding Screen W:O Logo" translatesAutoresizingMaskIntoConstraints="NO" id="WEh-kH-wnA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQu-6g-h0N">
+                                <rect key="frame" x="0.0" y="132" width="375" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM7-ui-6fY">
+                                <rect key="frame" x="16" y="209" width="343" height="151"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w0c-5q-wNo">
+                                <rect key="frame" x="87" y="368" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="DM7-ui-6fY" id="4p2-Dq-wKk"/>
+                        <outlet property="headerLabel" destination="JQu-6g-h0N" id="7ma-Tg-cd2"/>
+                        <outlet property="imageView" destination="w0c-5q-wNo" id="HOd-WP-EnK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCa-Ok-3CV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1041" y="-591"/>
+        </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="uMq-Ev-Lak">
             <objects>
@@ -367,12 +449,12 @@
                     <connections>
                         <outlet property="continuebutton" destination="r5o-Yn-j4C" id="9Is-JI-KY6"/>
                         <outlet property="nameTextField" destination="hvx-h8-7JH" id="Xg7-68-llM"/>
-                        <segue destination="AQ7-o1-VJu" kind="show" identifier="toMainSegue" id="w1S-Ru-eOT"/>
+                        <segue destination="eaX-f2-Xi7" kind="show" identifier="toTutorialSegue" id="ZbZ-o3-qYH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4O-wP-5hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-738" y="157"/>
+            <point key="canvasLocation" x="-3119" y="-591"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="qxW-Q1-GLx">
@@ -479,14 +561,6 @@
             </objects>
             <point key="canvasLocation" x="1111" y="-494"/>
         </scene>
-        <!--Tutorial-->
-        <scene sceneID="FBT-4F-vjl">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Tutorial.storyboard" storyboardName="Tutorial" id="jxq-ei-wdm" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F7w-zB-2xY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-209" y="-461"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="OAU-lB-6sa">
             <objects>
@@ -531,14 +605,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NHX-p2-drt">
-                                                    <rect key="frame" x="15" y="12" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="beT-b0-57e">
-                                                    <rect key="frame" x="316" y="12" width="44" height="21"/>
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -853,6 +927,7 @@
         <image name="AutoText" width="40" height="18"/>
         <image name="Location + Time" width="62" height="27"/>
         <image name="Onboarding Screen W: Logo" width="375" height="667"/>
+        <image name="Onboarding Screen W:O Logo" width="750" height="1334"/>
         <image name="Sync Contact" width="28" height="29"/>
         <image name="bottomView" width="375" height="280"/>
         <image name="settings (1)" width="32" height="32"/>
