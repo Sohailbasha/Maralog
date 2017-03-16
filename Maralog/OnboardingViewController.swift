@@ -25,11 +25,10 @@ class OnboardingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameTextField: UITextField!
     
     
-    // MARK: - Actions 
-    
+    // MARK: - Actions
     @IBAction func continueTouched(_ sender: Any) {
             UserController.sharedInstance.saveUserName(name: nameTextField.text)
-            performSegue(withIdentifier: "toMainSegue", sender: self)
+            performSegue(withIdentifier: "toTutorialSegue", sender: self)
     }
 
     
