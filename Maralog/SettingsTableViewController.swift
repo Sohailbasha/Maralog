@@ -32,4 +32,7 @@ class SettingsTableViewController: UITableViewController {
         }
     }
 
+    @IBAction func BackButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
