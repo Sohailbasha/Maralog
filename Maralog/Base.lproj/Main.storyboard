@@ -74,27 +74,6 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-2I-f7a">
-                                        <rect key="frame" x="222" y="30" width="130" height="32"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdA-z7-hFX">
-                                                <rect key="frame" x="0.0" y="0.0" width="108" height="32"/>
-                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                                <state key="normal" title="recently added">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="recentlyAddedButtonTapped:" destination="FmS-8h-oDN" eventType="touchUpInside" id="sMp-mi-VB8"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiM-r9-WWy">
-                                                <rect key="frame" x="118" y="0.0" width="12" height="32"/>
-                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="swipe down to exit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-Kn-Cli">
                                         <rect key="frame" x="143.5" y="8" width="87" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -107,6 +86,27 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.67450980392156867" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-2I-f7a">
+                                        <rect key="frame" x="305" y="30" width="52" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LdA-z7-hFX">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
+                                                <state key="normal" title="new">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="recentlyAddedButtonTapped:" destination="FmS-8h-oDN" eventType="touchUpInside" id="sMp-mi-VB8"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiM-r9-WWy">
+                                                <rect key="frame" x="40" y="0.0" width="12" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.20000000000000001" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -115,7 +115,7 @@
                                     <constraint firstItem="yIY-Db-ivz" firstAttribute="leading" secondItem="1Rh-D6-oER" secondAttribute="leading" constant="18" id="BOu-rd-nEl"/>
                                     <constraint firstAttribute="bottom" secondItem="BP4-Ac-ooE" secondAttribute="bottom" id="FaQ-pX-YHW"/>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="top" secondItem="EVo-fH-wsd" secondAttribute="top" id="GPm-4c-1sz"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Sh-2I-f7a" secondAttribute="trailing" constant="23" id="IoN-l1-czf"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Sh-2I-f7a" secondAttribute="trailing" constant="18" id="IoN-l1-czf"/>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="top" secondItem="1Rh-D6-oER" secondAttribute="top" constant="99" id="WUu-A5-la1"/>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="trailing" secondItem="EVo-fH-wsd" secondAttribute="trailing" id="YLO-ua-AQc"/>
                                     <constraint firstItem="EVo-fH-wsd" firstAttribute="top" secondItem="6Sh-2I-f7a" secondAttribute="bottom" constant="37" id="f9q-Wo-XtM"/>
@@ -123,7 +123,7 @@
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="top" secondItem="yIY-Db-ivz" secondAttribute="bottom" constant="37" id="mhd-Ns-oGL"/>
                                     <constraint firstAttribute="trailing" secondItem="BP4-Ac-ooE" secondAttribute="trailing" id="sf2-25-e7z"/>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="bottom" secondItem="EVo-fH-wsd" secondAttribute="bottom" id="tiP-lR-xYL"/>
-                                    <constraint firstItem="6Sh-2I-f7a" firstAttribute="leading" secondItem="yIY-Db-ivz" secondAttribute="trailing" priority="998" constant="120" id="tk5-Ip-Rkm"/>
+                                    <constraint firstItem="6Sh-2I-f7a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yIY-Db-ivz" secondAttribute="trailing" priority="998" constant="120" id="tk5-Ip-Rkm"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -189,15 +189,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-8y-242">
                                 <rect key="frame" x="16" y="240" width="69.5" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
-                                <color key="textColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                <color key="textColor" red="0.93333333330000001" green="0.5148467972647317" blue="0.039149097418358578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="first name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cim-u8-10V">
                                 <rect key="frame" x="16" y="115" width="48" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
-                                <color key="textColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                <color key="textColor" red="0.93333333330000001" green="0.5148467972647317" blue="0.039149097418358578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ANx-2R-crX">
@@ -210,8 +210,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA5-Iy-YNO">
                                 <rect key="frame" x="16" y="174" width="46.5" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
-                                <color key="textColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                <color key="textColor" red="0.93333333330000001" green="0.5148467972647317" blue="0.039149097418358578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4X-hF-4Uv">
@@ -304,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928.8" y="156.97151424287858"/>
+            <point key="canvasLocation" x="1892" y="1308"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="RiC-KM-RWH">
@@ -741,7 +741,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUL-Sz-NgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="888"/>
+            <point key="canvasLocation" x="1028" y="887"/>
         </scene>
         <!--Contact Detail View Controller-->
         <scene sceneID="hrf-BG-DRa">
@@ -785,24 +785,24 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVq-ce-2o1">
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVq-ce-2o1">
                                         <rect key="frame" x="98" y="262" width="79" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.10588235294117647" green="0.14117647058823529" blue="0.21568627450980393" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
                                         <color key="tintColor" red="0.93333333330000001" green="0.67450980390000004" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="text" image="001-email-message-by-mobile-phone"/>
+                                        <state key="normal" image="(D) Text"/>
                                         <connections>
                                             <action selector="textButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="ZdQ-vw-Y1G"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwd-gD-FlN">
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwd-gD-FlN">
                                         <rect key="frame" x="8" y="262" width="79" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.10588235294117647" green="0.14117647058823529" blue="0.21568627450980393" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
                                         <color key="tintColor" red="0.93333333330000001" green="0.67450980390000004" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="edit" image="002-edit"/>
+                                        <state key="normal" image="(D) Edit"/>
                                         <connections>
                                             <action selector="editContact:" destination="I7C-xY-9PK" eventType="touchUpInside" id="Xpv-ti-in5"/>
                                         </connections>
@@ -814,13 +814,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xK7-Tt-B6T">
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xK7-Tt-B6T">
                                         <rect key="frame" x="188" y="262" width="79" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.10588235294117647" green="0.14117647058823529" blue="0.21568627450980393" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
                                         <color key="tintColor" red="0.93333333330000001" green="0.67450980390000004" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="call" image="003-telephone"/>
+                                        <state key="normal" image="(D) Call"/>
                                         <connections>
                                             <action selector="callButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="a08-9s-dia"/>
                                         </connections>
@@ -923,7 +923,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1110" y="1514"/>
+            <point key="canvasLocation" x="1028" y="1796"/>
         </scene>
         <!--Contacts List View Controller-->
         <scene sceneID="MFv-xc-yyl">
@@ -942,6 +942,7 @@
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.20000000000000001" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="1" alpha="0.28165132705479451" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.18039215689999999" green="0.20000000000000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contactCell" id="i3q-fg-QLo">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -993,16 +994,16 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="300" y="888"/>
+            <point key="canvasLocation" x="230" y="887"/>
         </scene>
     </scenes>
     <resources>
+        <image name="(D) Call" width="61" height="62"/>
+        <image name="(D) Edit" width="46" height="73"/>
+        <image name="(D) Text" width="73" height="44"/>
         <image name="(T) Autotext" width="168" height="75"/>
         <image name="(T) Location" width="206" height="88"/>
         <image name="(T) Sync" width="100" height="104"/>
-        <image name="001-email-message-by-mobile-phone" width="32" height="32"/>
-        <image name="002-edit" width="32" height="32"/>
-        <image name="003-telephone" width="32" height="32"/>
         <image name="Onboarding Screen W: Logo" width="375" height="667"/>
         <image name="bottomView" width="375" height="280"/>
         <image name="settings (1)" width="32" height="32"/>

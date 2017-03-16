@@ -15,7 +15,7 @@ class ContactDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateViews()
-        //self.setupButons()
+        setupButons()
         editMenuView.layer.contents = 5
         detailDisplayView.layer.cornerRadius = 10
     }
@@ -88,12 +88,14 @@ class ContactDetailViewController: UIViewController {
     
     @IBAction func textButtonTapped(_ sender: Any) {
         let callNumber: String = phoneNumber.text ?? ""
-        if(MessageSender.sharedInstance.canSendText()) {
-            MessageSender.sharedInstance.recepients.append(callNumber)
-            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-            present(messageComposerVC, animated: true, completion: {
-                MessageSender.sharedInstance.recepients.removeAll()
-            })
+        DispatchQueue.main.async {
+            if(MessageSender.sharedInstance.canSendText()) {
+                MessageSender.sharedInstance.recepients.append(callNumber)
+                let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+                self.present(messageComposerVC, animated: true, completion: {
+                    MessageSender.sharedInstance.recepients.removeAll()
+                })
+            }
         }
     }
     
@@ -171,9 +173,11 @@ class ContactDetailViewController: UIViewController {
 extension ContactDetailViewController {
     
     func setupButons() {
-        editButton.layer.cornerRadius = 0.5 * editButton.bounds.width
-        callButton.layer.cornerRadius = 0.5 * callButton.bounds.width
-        textButton.layer.cornerRadius = 0.5 * textButton.bounds.width
+        editButton.layer.cornerRadius = 17
+        callButton.layer.cornerRadius = 17
+        textButton.layer.cornerRadius = 17
+        
+        
         
     }
     
@@ -181,7 +185,7 @@ extension ContactDetailViewController {
         setUpProgramaticObjects()
         self.view.addSubview(background)
         self.view.addSubview(editMenuView)
-
+        
         self.editMenuView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         UIView.animate(withDuration: 0.4) {
             self.editMenuView.transform = CGAffineTransform.identity
