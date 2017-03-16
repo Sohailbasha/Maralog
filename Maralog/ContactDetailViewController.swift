@@ -16,6 +16,7 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         self.updateViews()
         self.setupButons()
+        editMenuView.layer.contents = 5
         detailDisplayView.layer.cornerRadius = 10
     }
     
@@ -27,6 +28,8 @@ class ContactDetailViewController: UIViewController {
         return contact?.location
     }
     
+    let background = UIView()
+    
     func updateViews() {
         guard let contact = self.contact,
             let firstName = contact.firstName as String?,
@@ -34,14 +37,13 @@ class ContactDetailViewController: UIViewController {
             let number = contact.phoneNumber as String?,
             let timeStamp = contact.timeStamp as? Date else { return }
         
-        
         let timeStampFormatted = FormattingDate.sharedInstance.formatter.string(from: timeStamp)
-
+        
         fullName.text = "\(firstName) \(lastName)"
         phoneNumber.text = number
         timeMetLabel.text = ""
         locationMetLabel.text = "No location info"
-    
+        
         
         if contact.location != nil {
             if let location = contact.location {
@@ -99,7 +101,7 @@ class ContactDetailViewController: UIViewController {
     // menu actions
     
     @IBAction func editContact(_ sender: Any) {
-        setupMenu()
+        summonEditMenuView()
     }
     
     @IBAction func saveMenuButtonTapped(_ sender: Any) {
@@ -132,12 +134,12 @@ class ContactDetailViewController: UIViewController {
                                                                            location: contact.location)
             }
         }
-        removeMenuView()
+        removeEditMenuView()
     }
     
     
     @IBAction func exitButtonTapped(_ sender: Any) {
-        removeMenuView()
+        removeEditMenuView()
     }
     
     
@@ -175,25 +177,39 @@ extension ContactDetailViewController {
         
     }
     
-    func setupMenu() {
-        editMenuView.frame.origin.x = 380
-        editMenuView.center.y = self.view.center.y
+    func summonEditMenuView() {
+        setUpProgramaticObjects()
+        self.view.addSubview(background)
         self.view.addSubview(editMenuView)
-        
-        UIView.animate(withDuration: 0.75) {
-            self.editMenuView.center.x = self.view.center.x
+
+        self.editMenuView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        UIView.animate(withDuration: 0.4) {
+            self.editMenuView.transform = CGAffineTransform.identity
         }
         editPhoneTextField.text = contact?.phoneNumber
         editFirstNameTextField.text = contact?.firstName
         editLastNameTextField.text = contact?.lastName
     }
     
-    func removeMenuView() {
-        UIView.animate(withDuration: 0.75, animations: {
-            self.editMenuView.frame.origin.x = -400
+    func removeEditMenuView() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.editMenuView.alpha = 0
+            self.background.alpha = 0
         }) { (_) in
             self.editMenuView.removeFromSuperview()
+            self.background.removeFromSuperview()
+            self.editMenuView.alpha = 1
+            self.background.alpha = 0.7
         }
+    }
+    
+    func setUpProgramaticObjects() {
+        editMenuView.center = self.view.center
+        background.frame = self.view.frame
+        background.backgroundColor = .black
+        background.alpha = 0.7
+        self.view.bringSubview(toFront: background)
+        self.view.bringSubview(toFront: editMenuView)
     }
     
     
