@@ -35,7 +35,17 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
+        
+        self.allign(label: labelOfFirstName, with: firstNameTextField)
+        self.allign(label: labelOfLastName, with: lastNameTextField)
+        self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
+        
+        self.draw(bezierPath: path1, under: firstNameTextField)
+        self.draw(bezierPath: path2, under: lastNameTextField)
+        self.draw(bezierPath: path3, under: phoneNumberTextField)
+        
     }
+    
     
     
     // MARK: - Properties
@@ -45,6 +55,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     var usersLocation: Location?
     
     let store = CNContactStore()
+    
+    let path1 = UIBezierPath()
+    let path2 = UIBezierPath()
+    let path3 = UIBezierPath()
     
     
     // MARK: - Outlets
@@ -293,6 +307,27 @@ extension AddContactsViewController {
         self.labelOfPhoneNumber.isHidden = true
         self.labelOfFirstName.isHidden = true
         self.labelOfLastName.isHidden = true
+    }
+    
+    func allign(label: UILabel, with textField: UITextField) {
+        label.frame.origin.y = textField.frame.origin.y - label.layer.bounds.height
+        label.frame.origin.x = textField.frame.origin.x
+    }
+    
+    func draw(bezierPath: UIBezierPath, under textField: UITextField) {
+        
+        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x, y: textField.frame.origin.y + (textField.bounds.height + 2))
+        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width), y: textField.frame.origin.y + (textField.bounds.height + 2))
+        
+        bezierPath.move(to: textFieldstartPoint)
+        bezierPath.addLine(to: textFieldEndPoint)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = bezierPath.cgPath
+        shapeLayer.strokeColor = UIColor.white.cgColor
+        shapeLayer.lineWidth = 1.5
+        view.layer.addSublayer(shapeLayer)
+        
     }
     
 }
