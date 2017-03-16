@@ -17,8 +17,7 @@ class LastTutorialViewController: UIViewController {
     
     @IBAction func tapToGetStartedButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "toMainSegue", sender: self)
-        
     }
-    
+
 
 }
