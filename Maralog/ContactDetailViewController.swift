@@ -15,7 +15,7 @@ class ContactDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateViews()
-        self.setupButons()
+        //self.setupButons()
         editMenuView.layer.contents = 5
         detailDisplayView.layer.cornerRadius = 10
     }
