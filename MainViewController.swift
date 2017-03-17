@@ -17,6 +17,7 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
         self.setUpButton()
         self.transparentNavBar()
         self.setMenuConstraints()
+        setUpGestures()
         if let numOfRecentContacts = numOfRecentContacts {
             numRecAdded.text = "\(numOfRecentContacts)"
         }
@@ -161,8 +162,15 @@ extension MainViewController {
     func setUpGestures() {
         let swipeDown = UISwipeGestureRecognizer()
         swipeDown.direction = .down
+        
+        let swipeUp = UISwipeGestureRecognizer()
+        swipeUp.direction = .up
+        
         swipeDown.addTarget(self, action: #selector(hideContactsMenu))
         menuShowing == true ? self.view.addGestureRecognizer(swipeDown) : self.view.removeGestureRecognizer(swipeDown)
+        
+        swipeUp.addTarget(self, action: #selector(showContactsMenu))
+        menuShowing == false ? self.view.addGestureRecognizer(swipeUp) : self.view.removeGestureRecognizer(swipeUp)
     }
     
     func swipeDownIcon() {
