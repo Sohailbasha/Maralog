@@ -131,9 +131,9 @@ class ContactDetailViewController: UIViewController {
                                                                                timeStamp: timeStamp,
                                                                                location: contact.location)
                 }
+                removeEditMenuView()
             }
         }
-        removeEditMenuView()
     }
     
     

@@ -140,7 +140,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sCQ-E1-AQ1">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="xPa-Mz-k3R">
+                        <barButtonItem key="leftBarButtonItem" id="xPa-Mz-k3R">
                             <button key="customView" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ijd-AQ-qop">
                                 <rect key="frame" x="16" y="14" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -175,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="1109.5999999999999" y="156.97151424287858"/>
         </scene>
-        <!--Add Contacts View Controller-->
+        <!--Add Contact-->
         <scene sceneID="SBz-PX-UwO">
             <objects>
                 <viewController id="aFt-A3-DSS" customClass="AddContactsViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
@@ -265,8 +265,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.6470588235294118" green="0.81176470588235294" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gtc-vI-2Ts">
-                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="Vhd-CO-lbs">
+                    <navigationItem key="navigationItem" title="Add Contact" id="gtc-vI-2Ts">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vhd-CO-lbs">
                             <color key="tintColor" red="0.015721499543654871" green="0.0114507824147117" blue="0.0084119851878175743" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="aFt-A3-DSS" id="Xz3-ko-Yda"/>
@@ -296,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889" y="-546"/>
+            <point key="canvasLocation" x="1889" y="-547"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="RiC-KM-RWH">
@@ -678,7 +678,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oO7-8U-hvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889" y="157"/>
+            <point key="canvasLocation" x="1889" y="207"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OAU-lB-6sa">
@@ -697,7 +697,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c13-D1-oHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-121" y="157"/>
+            <point key="canvasLocation" x="-123" y="259"/>
         </scene>
         <!--Recently Added View Controller-->
         <scene sceneID="pOQ-Tx-7MH">
@@ -1033,7 +1033,7 @@
         <image name="settings (1)" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0lp-Zp-tlj"/>
         <segue reference="Q7I-3E-yCI"/>
-        <segue reference="rZS-bj-vTR"/>
     </inferredMetricsTieBreakers>
 </document>
