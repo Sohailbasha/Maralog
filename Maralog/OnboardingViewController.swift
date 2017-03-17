@@ -27,8 +27,10 @@ class OnboardingViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     @IBAction func continueTouched(_ sender: Any) {
+        if let name = nameTextField.text, !name.isEmpty {
             UserController.sharedInstance.saveUserName(name: nameTextField.text)
             performSegue(withIdentifier: "toTutorialSegue", sender: self)
+        }
     }
 
     

@@ -31,9 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         
-        let store = CNContactStore()
-        store.requestAccess(for: .contacts) { (granted, error) in }
-        
         return true
     }
     

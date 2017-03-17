@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Onboarding Screen W:O Logo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "OnBoarding Backgroun.png",
       "scale" : "2x"
     },
     {

@@ -25,6 +25,9 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
         swipeDownLabel.alpha = 0
         selectionLine.layer.cornerRadius = 0.5 * selectionLine.bounds.width
         selectionLine.isHidden = true
+        
+        let store = CNContactStore()
+        store.requestAccess(for: .contacts) { (granted, error) in }
     }
     
     

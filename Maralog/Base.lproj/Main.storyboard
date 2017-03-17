@@ -391,7 +391,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Onboarding Screen W: Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9JG-gY-e4m">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OnBoarding Backgroun" translatesAutoresizingMaskIntoConstraints="NO" id="9JG-gY-e4m">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -1028,12 +1028,12 @@
         <image name="(T) Autotext" width="168" height="75"/>
         <image name="(T) Location" width="206" height="88"/>
         <image name="(T) Sync" width="100" height="104"/>
-        <image name="Onboarding Screen W: Logo" width="375" height="667"/>
+        <image name="OnBoarding Backgroun" width="375" height="667"/>
         <image name="bottomView" width="375" height="280"/>
         <image name="settings (1)" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0lp-Zp-tlj"/>
         <segue reference="Q7I-3E-yCI"/>
+        <segue reference="rZS-bj-vTR"/>
     </inferredMetricsTieBreakers>
 </document>
