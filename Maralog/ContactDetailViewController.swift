@@ -109,31 +109,28 @@ class ContactDetailViewController: UIViewController {
     @IBAction func saveMenuButtonTapped(_ sender: Any) {
         guard let firstName = editFirstNameTextField.text?.trimmingCharacters(in: .whitespaces),
             let lastName = editLastNameTextField.text?.trimmingCharacters(in: .whitespaces),
-            let number = editPhoneTextField.text else {
-                return }
-        
-        if let contact = contact {
-            
-            if contact.location == nil {
-                ContactController.sharedInstance.update(contact: contact,
-                                                        firstName: firstName.capitalized,
-                                                        lastName: lastName.capitalized,
-                                                        phoneNumber: number)
-                
-                fullName.text = "\(firstName) \(lastName)"
-                phoneNumber.text = number
-                
-            } else {
-                guard let timeStamp = contact.timeStamp as? Date else {
-                    return }
-                fullName.text = "\(firstName) \(lastName)"
-                phoneNumber.text = number
-                ContactController.sharedInstance.updateContactWithLocation(contact: contact,
-                                                                           firstName: firstName.capitalized,
-                                                                           lastName: lastName.capitalized,
-                                                                           phoneNumber: number,
-                                                                           timeStamp: timeStamp,
-                                                                           location: contact.location)
+            let number = editPhoneTextField.text else { return }
+        if (!firstName.isEmpty && !number.isEmpty) {
+            if let contact = contact {
+                if contact.location == nil {
+                    ContactController.sharedInstance.update(contact: contact,
+                                                            firstName: firstName.capitalized,
+                                                            lastName: lastName.capitalized,
+                                                            phoneNumber: number)
+                    
+                    fullName.text = "\(firstName) \(lastName)"
+                    phoneNumber.text = number
+                } else {
+                    guard let timeStamp = contact.timeStamp as? Date else { return }
+                    fullName.text = "\(firstName) \(lastName)"
+                    phoneNumber.text = number
+                    ContactController.sharedInstance.updateContactWithLocation(contact: contact,
+                                                                               firstName: firstName.capitalized,
+                                                                               lastName: lastName.capitalized,
+                                                                               phoneNumber: number,
+                                                                               timeStamp: timeStamp,
+                                                                               location: contact.location)
+                }
             }
         }
         removeEditMenuView()

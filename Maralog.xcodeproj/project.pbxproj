@@ -180,7 +180,6 @@
 				FD3C20731E7A2F64005E8DB9 /* TutorialPageViewController.swift */,
 				FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */,
 				FD3C20761E7A33EB005E8DB9 /* LastTutorialViewController.swift */,
-				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -190,6 +189,7 @@
 			children = (
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
+				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";

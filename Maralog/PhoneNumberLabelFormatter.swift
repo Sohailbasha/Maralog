@@ -16,7 +16,7 @@ extension String {
             let count = s.characters.count
             if count > 7 {
                 s.insert(" ", at: s.index(s.startIndex, offsetBy: 3))
-                s.insert(" ", at: s.index(s.startIndex, offsetBy: 8))
+                s.insert(" ", at: s.index(s.startIndex, offsetBy: 7))
             } else if count > 3 {
                 s.insert(" ", at: s.index(s.startIndex, offsetBy: 3))
             }
