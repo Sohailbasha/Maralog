@@ -11,7 +11,6 @@ import Contacts
 
 class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCountDelegate{
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpButton()
@@ -21,11 +20,9 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
         if let numOfRecentContacts = numOfRecentContacts {
             numberOfNewContacts.text = "\(numOfRecentContacts)"
         }
-        
         swipeDownLabel.alpha = 0
         selectionLine.layer.cornerRadius = 0.5 * selectionLine.bounds.width
         selectionLine.isHidden = true
-        
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { (granted, error) in }
     }
@@ -37,7 +34,6 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
         return listViewBottomConstraint.constant == 0
     }
     var numOfRecentContacts: Int?
-    
     let image = UIImageView()
     
     
@@ -46,23 +42,19 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
     // Buttons
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet var contactsButton: UIButton!
-    
     // Labels
     @IBOutlet var numberOfContacts: UILabel!
     @IBOutlet var numberOfNewContacts: UILabel!
     @IBOutlet var swipeDownLabel: UILabel!
-    
     // Stack Views
     @IBOutlet var recentlyAddedStack: UIStackView!
     @IBOutlet var contactsStack: UIStackView!
-    
     // UIViews View's
     @IBOutlet var listView: UIView!
     @IBOutlet var selectionLine: UIView!
-    
+    // Containers
     @IBOutlet var recentlyAddedView: UIView!
     @IBOutlet var allContactsView: UIView!
-    
     // Constraints
     @IBOutlet var listViewConstraint: NSLayoutConstraint!
     @IBOutlet var bottomImageViewConstraint: NSLayoutConstraint!
@@ -137,7 +129,6 @@ extension MainViewController {
     
     func showContactsMenu() {
         UIView.animate(withDuration: 0.5) {
-            
             self.swipeDownLabel.alpha = 0.5
             let viewHeight = self.view.frame.height
             self.listViewConstraint.constant = (viewHeight / 9.9)
@@ -151,7 +142,6 @@ extension MainViewController {
     func hideContactsMenu() {
         UIView.animate(withDuration: 0.5) {
             let viewHeight = self.view.frame.height
-            
             self.swipeDownLabel.alpha = 0
             self.bottomImageViewConstraint.constant = (viewHeight / 1.1)
             self.listViewConstraint.constant = (viewHeight / 1.15)
@@ -165,13 +155,10 @@ extension MainViewController {
     func setUpGestures() {
         let swipeDown = UISwipeGestureRecognizer()
         swipeDown.direction = .down
-        
         let swipeUp = UISwipeGestureRecognizer()
         swipeUp.direction = .up
-        
         swipeDown.addTarget(self, action: #selector(hideContactsMenu))
         menuShowing == true ? self.view.addGestureRecognizer(swipeDown) : self.view.removeGestureRecognizer(swipeDown)
-        
         swipeUp.addTarget(self, action: #selector(showContactsMenu))
         menuShowing == false ? self.view.addGestureRecognizer(swipeUp) : self.view.removeGestureRecognizer(swipeUp)
     }

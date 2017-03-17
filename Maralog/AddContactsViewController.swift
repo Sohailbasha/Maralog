@@ -160,7 +160,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 self.permissionsAlert(title: "Contacts Access Disabled", message: "Enable access to contacts to sync")
             }
         }
-        
         if syncToContactsSwitch.isOn == false {
             syncIcon.tintColor = .gray
         } else {
@@ -179,55 +178,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
 }
 
-
-
-//MARK: - Major Helper Methods
-
-extension AddContactsViewController {
-    
-    
-    // MARK: - Features
-    
-    func sendAutoTextTo(phoneNumber: String, firstName: String) {
-        if(MessageSender.sharedInstance.canSendText()) {
-            
-            let yourName = UserController.sharedInstance.getName()
-            MessageSender.sharedInstance.recepients.append(phoneNumber)
-            MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
-            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-            present(messageComposerVC,
-                    animated: true,
-                    completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
-        } else {
-            return
-        }
-    }
-    
-    func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
-        let contact = CNMutableContact()
-        contact.givenName = firstName.capitalized
-        contact.familyName = lastName.capitalized
-        
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added with Astrea"
-        
-        //        let dateMet = NSDateComponents()
-        //        dateMet.month = Calendar.current.component(.month, from: Date())
-        //        dateMet.year = Calendar.current.component(.year, from: Date())
-        //        dateMet.day = Calendar.current.component(.day, from: Date())
-        
-        //        let met = CNLabeledValue(label: "Date met", value: dateMet)
-        //        contact.dates = [met]
-        
-        
-        let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier: nil)
-        try? store.execute(saveRequest)
-    }
-}
-
-
 // MARK: - Location Manager
 
 extension AddContactsViewController {
@@ -243,14 +193,17 @@ extension AddContactsViewController {
                                          longitude: location.coordinate.longitude)
             
             if let currentLocation = currentLocation {
-                usersLocation = Location(latitude: Double(currentLocation.coordinate.latitude), longitude: Double(currentLocation.coordinate.longitude), name: "")
+                usersLocation = Location(latitude: Double(currentLocation.coordinate.latitude),
+                                         longitude: Double(currentLocation.coordinate.longitude),
+                                         name: "")
             }
         }
         coreLocationManager.stopUpdatingLocation()
     }
 }
 
-// MARK: - TextField Delegate Methods
+
+// MARK: - TEXTFIELD DELEGATE METHODS
 
 extension AddContactsViewController: UITextFieldDelegate {
     
@@ -303,9 +256,48 @@ extension AddContactsViewController: UITextFieldDelegate {
     
 }
 
-// MARK: - Minor Methods
+
+// MARK: - HELPER METHODS
 
 extension AddContactsViewController {
+
+    // MARK: - Features
+    
+    func sendAutoTextTo(phoneNumber: String, firstName: String) {
+        if(MessageSender.sharedInstance.canSendText()) {
+            let yourName = UserController.sharedInstance.getName()
+            MessageSender.sharedInstance.recepients.append(phoneNumber)
+            MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
+            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+            present(messageComposerVC,
+                    animated: true,
+                    completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
+        } else {
+            return
+        }
+    }
+    
+    func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
+        let contact = CNMutableContact()
+        contact.givenName = firstName.capitalized
+        contact.familyName = lastName.capitalized
+        
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        contact.note = "Added with Astrea"
+        
+        //        let dateMet = NSDateComponents()
+        //        dateMet.month = Calendar.current.component(.month, from: Date())
+        //        dateMet.year = Calendar.current.component(.year, from: Date())
+        //        dateMet.day = Calendar.current.component(.day, from: Date())
+        //        let met = CNLabeledValue(label: "Date met", value: dateMet)
+        //        contact.dates = [met]
+        
+        
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier: nil)
+        try? store.execute(saveRequest)
+    }
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -315,7 +307,6 @@ extension AddContactsViewController {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
         }
-        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(enable)
         alert.addAction(cancel)
@@ -350,7 +341,7 @@ extension AddContactsViewController {
         
         let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
                                         y: textField.frame.origin.y + (textField.bounds.height + 2))
-        
+
         bezierPath.move(to: textFieldstartPoint)
         bezierPath.addLine(to: textFieldEndPoint)
         let shapeLayer = CAShapeLayer()
