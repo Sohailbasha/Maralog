@@ -19,7 +19,7 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
         self.setMenuConstraints()
         setUpGestures()
         if let numOfRecentContacts = numOfRecentContacts {
-            numRecAdded.text = "\(numOfRecentContacts)"
+            numberOfNewContacts.text = "\(numOfRecentContacts)"
         }
         
         swipeDownLabel.alpha = 0
@@ -45,8 +45,8 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
     @IBOutlet var contactsButton: UIButton!
     
     // Labels
-    @IBOutlet var numContacts: UILabel!
-    @IBOutlet var numRecAdded: UILabel!
+    @IBOutlet var numberOfContacts: UILabel!
+    @IBOutlet var numberOfNewContacts: UILabel!
     @IBOutlet var swipeDownLabel: UILabel!
     
     // Stack Views
@@ -183,11 +183,11 @@ extension MainViewController {
     }
     
     func recentlyAddedContacts(count: Int) {
-        numRecAdded.text = "\(count)"
+        numberOfNewContacts.text = "\(count)"
     }
     
     func allContacts(count: Int) {
-        numContacts.text = "\(count)"
+        numberOfContacts.text = "\(count)"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

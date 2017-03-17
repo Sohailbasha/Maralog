@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         catch { print("Error starting fetched results controller: \(error)") }
         allContactsForDelegate()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         allContactsForDelegate()
@@ -33,7 +33,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var tableView: UITableView!
     
     
-    // MARK: - Properties 
+    // MARK: - Properties
     
     weak var delegate: RecentlyAddedDelegate?
     
@@ -47,7 +47,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             delegate?.recentlyAddedContacts(count: numOfContacts)
         }
     }
-   
+    
     // MARK: - Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,23 +57,20 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentlyAdded", for: indexPath) as UITableViewCell
-        cell.detailTextLabel?.text = ""
         let contact = fetchedResultsController.object(at: indexPath)
         var dateString = ""
-        
         if let timeStamp = contact.timeStamp {
             let dateAdded = FormattingDate.sharedInstance.formatter.string(from: timeStamp as Date)
             dateString = dateAdded
         }
-        
         cell.textLabel?.text = contact.fullName
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
-        if contact.location != nil {
-            cell.detailTextLabel?.text = "added \(dateString)"
-            cell.detailTextLabel?.textColor = .white
-            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightUltraLight)
-        }
+        
+        cell.detailTextLabel?.text = "added \(dateString)"
+        cell.detailTextLabel?.textColor = .white
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightUltraLight)
+        
         return cell
     }
     
@@ -125,21 +122,16 @@ extension RecentlyAddedViewController {
             guard let indexPath = indexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .fade)
             allContactsForDelegate()
-
         case .insert:
             guard let newIndexPath = newIndexPath else {return}
             tableView.insertRows(at: [newIndexPath], with: .automatic)
             allContactsForDelegate()
-
         case .move:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
             tableView.moveRow(at: indexPath, to: newIndexPath)
-            
-            
         case .update:
             guard let indexPath = indexPath else {return}
             tableView.reloadRows(at: [indexPath], with: .automatic)
-            
             
         }
     }

@@ -64,7 +64,7 @@ class ContactDetailViewController: UIViewController {
                             let state = pm.administrativeArea,
                             let street = pm.thoroughfare,
                             let zipcode = pm.postalCode {
-                            self.locationMetLabel.text = "met: \(street). \(city), \(state) \(zipcode)"
+                            self.locationMetLabel.text = "\(street). \(city), \(state) \(zipcode)"
                             self.timeMetLabel.text = timeStampFormatted
                         }
                     }
