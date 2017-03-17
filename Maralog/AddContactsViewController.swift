@@ -96,27 +96,48 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
-       
         
-        
-        if uiSwitch.isOn {
-            if let location = usersLocation {
-                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+        if (!firstName.isEmpty && !phoneNumber.isEmpty) {
+            
+            if uiSwitch.isOn {
+                if let location = usersLocation {
+                    let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+                    ContactController.sharedInstance.addContact(contact: contact)
+                }
+            } else {
+                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
                 ContactController.sharedInstance.addContact(contact: contact)
             }
+            
+            syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName,
+                                                         lastName: lastName,
+                                                         phoneNumber: phoneNumber) : ()
+            
+            autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
+                                                 firstName: firstName) : goToRootView()
+            
         } else {
-            let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-            ContactController.sharedInstance.addContact(contact: contact)
+            
+            if firstName.isEmpty {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.firstNameTextField.backgroundColor = .red
+                }, completion: { (_) in
+                    UIView.animate(withDuration: 0.25, animations: {
+                        self.firstNameTextField.backgroundColor = .clear
+                    }, completion: nil)
+                })
+                
+            }
+            if phoneNumber.isEmpty {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.phoneNumberTextField.backgroundColor = .red
+                }, completion: { (_) in
+                    UIView.animate(withDuration: 0.25, animations: {
+                        self.phoneNumberTextField.backgroundColor = .clear
+                    })
+                })
+            }
         }
-        
-        
-        syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName,
-                                                     lastName: lastName,
-                                                     phoneNumber: phoneNumber) : ()
-        
-        
-        autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
-                                             firstName: firstName) : goToRootView()
     }
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
@@ -190,13 +211,13 @@ extension AddContactsViewController {
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added with Astrea"
         
-//        let dateMet = NSDateComponents()
-//        dateMet.month = Calendar.current.component(.month, from: Date())
-//        dateMet.year = Calendar.current.component(.year, from: Date())
-//        dateMet.day = Calendar.current.component(.day, from: Date())
-
-//        let met = CNLabeledValue(label: "Date met", value: dateMet)
-//        contact.dates = [met]
+        //        let dateMet = NSDateComponents()
+        //        dateMet.month = Calendar.current.component(.month, from: Date())
+        //        dateMet.year = Calendar.current.component(.year, from: Date())
+        //        dateMet.day = Calendar.current.component(.day, from: Date())
+        
+        //        let met = CNLabeledValue(label: "Date met", value: dateMet)
+        //        contact.dates = [met]
         
         
         let store = CNContactStore()
@@ -229,14 +250,14 @@ extension AddContactsViewController {
     }
 }
 
-// MARK: - TextField Methods
+// MARK: - TextField Delegate Methods
 
 extension AddContactsViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if firstNameTextField.isEditing {
-           UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-            self.labelOfFirstName.isHidden = false }, completion: nil)
+            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+                self.labelOfFirstName.isHidden = false }, completion: nil)
         }
         
         if lastNameTextField.isEditing {
@@ -270,6 +291,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         
     }
     
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

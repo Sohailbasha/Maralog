@@ -53,7 +53,7 @@
                                             <segue destination="dyc-oR-eTl" kind="embed" identifier="allContacts" id="gsk-qW-Rg4"/>
                                         </connections>
                                     </containerView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="yIY-Db-ivz">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="yIY-Db-ivz">
                                         <rect key="frame" x="33" y="30" width="84" height="32"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="mdb-Lz-0E7">
@@ -74,7 +74,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-2I-f7a">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-2I-f7a">
                                         <rect key="frame" x="290" y="30" width="52" height="32"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LdA-z7-hFX">
@@ -112,10 +112,10 @@
                                 <constraints>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="leading" secondItem="1Rh-D6-oER" secondAttribute="leading" id="47D-Je-vJH"/>
                                     <constraint firstAttribute="height" constant="659" id="71u-WQ-66B"/>
-                                    <constraint firstItem="yIY-Db-ivz" firstAttribute="leading" secondItem="1Rh-D6-oER" secondAttribute="leading" constant="18" id="BOu-rd-nEl"/>
+                                    <constraint firstItem="yIY-Db-ivz" firstAttribute="leading" secondItem="1Rh-D6-oER" secondAttribute="leading" constant="33" id="BOu-rd-nEl"/>
                                     <constraint firstAttribute="bottom" secondItem="BP4-Ac-ooE" secondAttribute="bottom" id="FaQ-pX-YHW"/>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="top" secondItem="EVo-fH-wsd" secondAttribute="top" id="GPm-4c-1sz"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Sh-2I-f7a" secondAttribute="trailing" constant="18" id="IoN-l1-czf"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Sh-2I-f7a" secondAttribute="trailing" constant="33" id="IoN-l1-czf"/>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="top" secondItem="1Rh-D6-oER" secondAttribute="top" constant="99" id="WUu-A5-la1"/>
                                     <constraint firstItem="BP4-Ac-ooE" firstAttribute="trailing" secondItem="EVo-fH-wsd" secondAttribute="trailing" id="YLO-ua-AQc"/>
                                     <constraint firstItem="EVo-fH-wsd" firstAttribute="top" secondItem="6Sh-2I-f7a" secondAttribute="bottom" constant="37" id="f9q-Wo-XtM"/>
@@ -802,7 +802,7 @@
                                 <rect key="frame" x="50" y="91" width="275" height="378"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOB-ql-rG8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AOB-ql-rG8">
                                         <rect key="frame" x="0.0" y="45" width="275" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="44"/>

@@ -40,7 +40,7 @@ class ContactDetailViewController: UIViewController {
         let timeStampFormatted = FormattingDate.sharedInstance.formatter.string(from: timeStamp)
         
         fullName.text = "\(firstName) \(lastName)"
-        phoneNumber.text = number
+        phoneNumber.text = number.phoneNumberFormatterL
         timeMetLabel.text = ""
         locationMetLabel.text = "No location info"
         
