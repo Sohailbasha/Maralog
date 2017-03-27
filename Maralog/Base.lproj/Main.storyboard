@@ -30,9 +30,6 @@
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.3438302654109589" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="aFt-A3-DSS" kind="show" id="048-uL-4Xy"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomView" translatesAutoresizingMaskIntoConstraints="NO" id="LjQ-MM-C5J">
                                 <rect key="frame" x="0.0" y="576" width="375" height="91"/>
@@ -262,21 +259,24 @@
                                     <action selector="autoTextSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="BSB-yL-SCW"/>
                                 </connections>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJa-pp-a7p">
+                                <rect key="frame" x="310" y="40" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="oty-d1-MBQ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.6470588235294118" green="0.81176470588235294" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="X7x-am-KNn"/>
                     <navigationItem key="navigationItem" title="Add Contact" id="gtc-vI-2Ts">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vhd-CO-lbs">
                             <color key="tintColor" red="0.015721499543654871" green="0.0114507824147117" blue="0.0084119851878175743" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="aFt-A3-DSS" id="Xz3-ko-Yda"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="LGp-DX-9cA">
                             <color key="tintColor" red="0.015721499543654871" green="0.0114507824147117" blue="0.0084119851878175743" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="saveButtonTapped:" destination="aFt-A3-DSS" id="uI5-Ry-XcZ"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -296,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889" y="-547"/>
+            <point key="canvasLocation" x="5573.6000000000004" y="-1046.6266866566718"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="RiC-KM-RWH">
@@ -420,11 +420,12 @@
                     <connections>
                         <segue destination="cSm-zd-mEi" kind="relationship" relationship="viewControllers" id="XEc-CJ-MrY"/>
                         <segue destination="sgx-8m-g6H" kind="relationship" relationship="viewControllers" id="XoT-2U-5IN"/>
+                        <segue destination="aFt-A3-DSS" kind="relationship" relationship="viewControllers" id="kdI-R4-lz7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVS-BQ-Wey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4623" y="4"/>
+            <point key="canvasLocation" x="4487" y="-521"/>
         </scene>
         <!--First Tutorial View Controller-->
         <scene sceneID="bG5-cI-LKC">

@@ -19,7 +19,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-        self.transparentNavBar()
+//        self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
         uiSwitch.isOn = false
@@ -88,7 +88,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         goToRootView()
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
@@ -146,7 +146,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if uiSwitch.isOn == false {
             locationIcon.tintColor = .gray
         } else {
-            locationIcon.tintColor = .white
+            locationIcon.tintColor = .black
         }
     }
     
@@ -160,7 +160,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if syncToContactsSwitch.isOn == false {
             syncIcon.tintColor = .gray
         } else {
-            syncIcon.tintColor = .white
+            syncIcon.tintColor = .black
         }
     }
     
@@ -168,7 +168,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if autoTextSwitch.isOn == false {
             autoTextIcon.tintColor = .gray
         } else {
-            autoTextIcon.tintColor = .white
+            autoTextIcon.tintColor = .black
         }
     }
     
@@ -342,7 +342,7 @@ extension AddContactsViewController {
         bezierPath.addLine(to: textFieldEndPoint)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = bezierPath.cgPath
-        shapeLayer.strokeColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
         shapeLayer.lineWidth = 1.5
         view.layer.addSublayer(shapeLayer)
     }

@@ -60,16 +60,17 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentlyAdded", for: indexPath) as UITableViewCell
         let contact = fetchedResultsController.object(at: indexPath)
         var dateString = ""
+        
         if let timeStamp = contact.timeStamp {
             let dateAdded = FormattingDate.sharedInstance.formatter.string(from: timeStamp as Date)
             dateString = dateAdded
         }
         cell.textLabel?.text = contact.fullName
-        cell.textLabel?.textColor = .white
+        cell.textLabel?.textColor = .black
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
         
         cell.detailTextLabel?.text = "added \(dateString)"
-        cell.detailTextLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = .black
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightUltraLight)
         
         return cell

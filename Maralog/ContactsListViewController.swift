@@ -59,7 +59,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as UITableViewCell
         let contact = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = contact.fullName
-        cell.textLabel?.textColor = .white
+        cell.textLabel?.textColor = .black
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
         return cell
     }
