@@ -19,7 +19,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-//        self.transparentNavBar()
+//      self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
         uiSwitch.isOn = false
@@ -205,18 +205,24 @@ extension AddContactsViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if firstNameTextField.isEditing {
-            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-                self.labelOfFirstName.isHidden = false }, completion: nil)
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+                self.labelOfFirstName.isHidden = false
+                self.labelOfFirstName.frame.origin.y = self.firstNameTextField.frame.origin.y - self.labelOfFirstName.layer.bounds.height
+            }, completion: nil)
         }
         
         if lastNameTextField.isEditing {
-            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-                self.labelOfLastName.isHidden = false }, completion: nil)
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: { 
+                self.labelOfLastName.isHidden = false
+                self.labelOfLastName.frame.origin.y = self.lastNameTextField.frame.origin.y - self.labelOfLastName.layer.bounds.height
+            }, completion: nil)
         }
         
         if phoneNumberTextField.isEditing {
-            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-                self.labelOfPhoneNumber.isHidden = false }, completion: nil)
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+                self.labelOfPhoneNumber.isHidden = false
+                self.labelOfPhoneNumber.frame.origin.y = self.phoneNumberTextField.frame.origin.y - self.labelOfPhoneNumber.layer.bounds.height
+            }, completion: nil)
         }
     }
     
@@ -226,16 +232,22 @@ extension AddContactsViewController: UITextFieldDelegate {
         guard let pNumberText = phoneNumberTextField.text else { return }
         
         if fNameText.isEmpty {
-            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-                self.labelOfFirstName.isHidden = true }, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: { 
+                self.allign(label: self.labelOfFirstName, with: self.firstNameTextField)
+                self.labelOfFirstName.isHidden = true
+            }, completion: nil)
         }
         if lNameText.isEmpty {
-            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-                self.labelOfLastName.isHidden = true }, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: {
+                self.allign(label: self.labelOfLastName, with: self.lastNameTextField)
+                self.labelOfLastName.isHidden = true
+            }, completion: nil)
         }
         if pNumberText.isEmpty {
-            UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
-                self.labelOfPhoneNumber.isHidden = true }, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: {
+                self.allign(label: self.labelOfPhoneNumber, with: self.phoneNumberTextField)
+                self.labelOfPhoneNumber.isHidden = true
+            }, completion: nil)
         }
         
     }
@@ -327,7 +339,8 @@ extension AddContactsViewController {
     }
     
     func allign(label: UILabel, with textField: UITextField) {
-        label.frame.origin.y = textField.frame.origin.y - label.layer.bounds.height
+//        label.frame.origin.y = textField.frame.origin.y - label.layer.bounds.height
+        label.frame.origin.y = textField.frame.origin.y
         label.frame.origin.x = textField.frame.origin.x
     }
     

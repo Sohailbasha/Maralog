@@ -301,7 +301,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="mWu-3b-WdT" customClass="TutorialPageViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wp-WK-eay" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2654" y="-546"/>
+            <point key="canvasLocation" x="-1425" y="-1388"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="YIp-uL-QsM">
@@ -815,7 +815,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c13-D1-oHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-123" y="259"/>
+            <point key="canvasLocation" x="-122" y="157"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pOQ-Tx-7MH">
