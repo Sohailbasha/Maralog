@@ -11,7 +11,6 @@ import CoreData
 
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -36,17 +35,19 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Properties
     
     weak var delegate: RecentlyAddedDelegate?
-    
     var contacts: [Contact]? {
         return fetchedResultsController.fetchedObjects
     }
     
+    
+    // MARK: - All Contacts Delegate
     func allContactsForDelegate() {
         if let contacts = fetchedResultsController.fetchedObjects {
             let numOfContacts = contacts.count
             delegate?.recentlyAddedContacts(count: numOfContacts)
         }
     }
+    
     
     // MARK: - Datasource
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,10 +16,14 @@ class SettingsTableViewController: UITableViewController {
     }
 
     
+    // MARK: - Outlets
 
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
 
+    
+    // MARK: - Actions 
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
         UserController.sharedInstance.saveUserName(name: nameTextField.text)
         
@@ -34,5 +38,16 @@ class SettingsTableViewController: UITableViewController {
 
     @IBAction func BackButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - TextField Delegate Functions
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

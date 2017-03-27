@@ -19,8 +19,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-        
-        
         self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
@@ -45,7 +43,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.draw(bezierPath: path3, under: phoneNumberTextField)
         
     }
-    
     
     
     // MARK: - Properties
@@ -165,7 +162,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             syncIcon.tintColor = .white
         }
-        
     }
     
     @IBAction func autoTextSwitchEnabled(_ sender: Any) {
