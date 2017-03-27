@@ -74,18 +74,18 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
     
     
     // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showContactDetail" {
-            if let destinationVC = segue.destination as? ContactDetailViewController {
-                if let indexPath = tableView.indexPathForSelectedRow {
-                    let contact = fetchedResultsController.object(at: indexPath)
-                    destinationVC.contact = contact
-                }
-            }
-        }
-    }
-    
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showContactDetail" {
+//            if let destinationVC = segue.destination as? ContactDetailViewController {
+//                if let indexPath = tableView.indexPathForSelectedRow {
+//                    let contact = fetchedResultsController.object(at: indexPath)
+//                    destinationVC.contact = contact
+//                }
+//            }
+//        }
+//    }
+//    
     
     // MARK: - Fetched Results Controller
     
