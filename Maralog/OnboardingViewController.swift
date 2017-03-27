@@ -12,7 +12,11 @@ class OnboardingViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        continuebutton.layer.cornerRadius = 20
+        continuebutton.layer.cornerRadius = 10
+        continuebutton.center.x = self.view.center.x
+        titleStackView.center = self.view.center
+        
+//        continuebutton.frame.origin.y = detailStackView.frame.origin.y + detailStackView.frame.height
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,6 +27,8 @@ class OnboardingViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Outlet
     @IBOutlet var continuebutton: UIButton!
     @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var titleStackView: UIStackView!
+    
     
     
     // MARK: - Actions
