@@ -19,7 +19,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-//      self.transparentNavBar()
+        //      self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
         uiSwitch.isOn = false
@@ -184,7 +184,7 @@ extension AddContactsViewController {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
+        if let location = locations.last {
             currentLocation = CLLocation(latitude: location.coordinate.latitude,
                                          longitude: location.coordinate.longitude)
             
@@ -212,7 +212,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
         
         if lastNameTextField.isEditing {
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: { 
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
                 self.labelOfLastName.isHidden = false
                 self.labelOfLastName.frame.origin.y = self.lastNameTextField.frame.origin.y - self.labelOfLastName.layer.bounds.height
             }, completion: nil)
@@ -232,7 +232,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         guard let pNumberText = phoneNumberTextField.text else { return }
         
         if fNameText.isEmpty {
-            UIView.animate(withDuration: 0.25, animations: { 
+            UIView.animate(withDuration: 0.25, animations: {
                 self.allign(label: self.labelOfFirstName, with: self.firstNameTextField)
                 self.labelOfFirstName.isHidden = true
             }, completion: nil)
@@ -252,7 +252,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         
     }
     
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -268,7 +268,7 @@ extension AddContactsViewController: UITextFieldDelegate {
 // MARK: - HELPER METHODS
 
 extension AddContactsViewController {
-
+    
     // MARK: - Features
     
     func sendAutoTextTo(phoneNumber: String, firstName: String) {
@@ -293,12 +293,44 @@ extension AddContactsViewController {
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added with Astrea"
         
-        //        let dateMet = NSDateComponents()
-        //        dateMet.month = Calendar.current.component(.month, from: Date())
-        //        dateMet.year = Calendar.current.component(.year, from: Date())
-        //        dateMet.day = Calendar.current.component(.day, from: Date())
-        //        let met = CNLabeledValue(label: "Date met", value: dateMet)
-        //        contact.dates = [met]
+        let dateMet = NSDateComponents()
+        dateMet.month = Calendar.current.component(.month, from: Date())
+        dateMet.year = Calendar.current.component(.year, from: Date())
+        dateMet.day = Calendar.current.component(.day, from: Date())
+        let met = CNLabeledValue(label: "Date met", value: dateMet)
+        contact.dates = [met]
+        
+        var cityMet = ""
+        var StateMet = ""
+        var streetMet = ""
+        var zipCodeMet = ""
+        
+        
+        let geocoder = CLGeocoder()
+        guard let currentLocation = currentLocation else {
+            return }
+        geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+            guard let placemarks = placemarks else {
+                return }
+            if placemarks.count > 0 {
+                let pm = placemarks[0] as CLPlacemark
+                guard let city = pm.locality, let state = pm.administrativeArea, let street = pm.thoroughfare, let zipcode = pm.postalCode else { return }
+                    cityMet = city
+                    StateMet = state
+                    streetMet = street
+                    zipCodeMet = zipcode
+                
+            }
+        }
+        
+        let address = CNMutablePostalAddress()
+        address.street = streetMet
+        address.city = cityMet
+        address.state = StateMet
+        address.postalCode = zipCodeMet
+        
+        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
+        contact.postalAddresses = [locationMet]
         
         
         let store = CNContactStore()
@@ -306,6 +338,27 @@ extension AddContactsViewController {
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
     }
+    
+    
+    //    let geocoder = CLGeocoder()
+    //    geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+    //    if let error = error {
+    //    print("Reverse geocoder failed with error: \(error.localizedDescription)")
+    //    }
+    //    guard let placemarks = placemarks else {
+    //    return
+    //    }
+    //    if placemarks.count > 0 {
+    //    let pm = placemarks[0] as CLPlacemark
+    //    if let city = pm.locality,
+    //    let state = pm.administrativeArea,
+    //    let street = pm.thoroughfare,
+    //    let zipcode = pm.postalCode {
+    //    self.locationMetLabel.text = "\(street). \(city), \(state) \(zipcode)"
+    //    self.timeMetLabel.text = timeStampFormatted
+    //    }
+    //    }
+    //    }
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -325,12 +378,6 @@ extension AddContactsViewController {
         _ = navigationController?.popToRootViewController(animated: true)
     }
     
-    func transparentNavBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = UIColor.clear
-    }
     
     func detailLabelsAreInvisible() {
         self.labelOfPhoneNumber.isHidden = true
@@ -339,7 +386,7 @@ extension AddContactsViewController {
     }
     
     func allign(label: UILabel, with textField: UITextField) {
-//        label.frame.origin.y = textField.frame.origin.y - label.layer.bounds.height
+        //        label.frame.origin.y = textField.frame.origin.y - label.layer.bounds.height
         label.frame.origin.y = textField.frame.origin.y
         label.frame.origin.x = textField.frame.origin.x
     }
@@ -350,7 +397,7 @@ extension AddContactsViewController {
         
         let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
                                         y: textField.frame.origin.y + (textField.bounds.height + 2))
-
+        
         bezierPath.move(to: textFieldstartPoint)
         bezierPath.addLine(to: textFieldEndPoint)
         let shapeLayer = CAShapeLayer()
