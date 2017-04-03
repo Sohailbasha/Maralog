@@ -38,9 +38,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.allign(label: labelOfLastName, with: lastNameTextField)
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
-        self.draw(bezierPath: path1, under: firstNameTextField)
-        self.draw(bezierPath: path2, under: lastNameTextField)
-        self.draw(bezierPath: path3, under: phoneNumberTextField)
+//        self.draw(bezierPath: path1, under: firstNameTextField)
+//        self.draw(bezierPath: path2, under: lastNameTextField)
+//        self.draw(bezierPath: path3, under: phoneNumberTextField)
+        
         
     }
     
@@ -56,6 +57,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let path1 = UIBezierPath()
     let path2 = UIBezierPath()
     let path3 = UIBezierPath()
+    
+    var city: String?
+    var state: String?
+    var street: String?
+    var zipcode: String?
     
     
     // MARK: - Outlets
@@ -300,65 +306,41 @@ extension AddContactsViewController {
         let met = CNLabeledValue(label: "Date met", value: dateMet)
         contact.dates = [met]
         
-        var cityMet = ""
-        var StateMet = ""
-        var streetMet = ""
-        var zipCodeMet = ""
-        
-        
+        let address = CNMutablePostalAddress()
         let geocoder = CLGeocoder()
+        
         guard let currentLocation = currentLocation else {
             return }
         geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
-            guard let placemarks = placemarks else {
-                return }
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as CLPlacemark
-                guard let city = pm.locality, let state = pm.administrativeArea, let street = pm.thoroughfare, let zipcode = pm.postalCode else { return }
-                    cityMet = city
-                    StateMet = state
-                    streetMet = street
-                    zipCodeMet = zipcode
-                
+            if let error = error {
+                print("error reverse geocoding: \(error)")
+            }
+            
+            if let placemarks = placemarks {
+                if placemarks.count > 0 {
+                    let pm = placemarks[0] as CLPlacemark
+                    guard let city = pm.locality,
+                        let state = pm.administrativeArea,
+                        let street = pm.thoroughfare,
+                        let zipcode = pm.postalCode else {
+                            return }
+                    
+                    address.street = street
+                    address.city = city
+                    address.state = state
+                    address.postalCode = zipcode
+                }
             }
         }
         
-        let address = CNMutablePostalAddress()
-        address.street = streetMet
-        address.city = cityMet
-        address.state = StateMet
-        address.postalCode = zipCodeMet
-        
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
         contact.postalAddresses = [locationMet]
-        
         
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
     }
-    
-    
-    //    let geocoder = CLGeocoder()
-    //    geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
-    //    if let error = error {
-    //    print("Reverse geocoder failed with error: \(error.localizedDescription)")
-    //    }
-    //    guard let placemarks = placemarks else {
-    //    return
-    //    }
-    //    if placemarks.count > 0 {
-    //    let pm = placemarks[0] as CLPlacemark
-    //    if let city = pm.locality,
-    //    let state = pm.administrativeArea,
-    //    let street = pm.thoroughfare,
-    //    let zipcode = pm.postalCode {
-    //    self.locationMetLabel.text = "\(street). \(city), \(state) \(zipcode)"
-    //    self.timeMetLabel.text = timeStampFormatted
-    //    }
-    //    }
-    //    }
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -378,7 +360,6 @@ extension AddContactsViewController {
         _ = navigationController?.popToRootViewController(animated: true)
     }
     
-    
     func detailLabelsAreInvisible() {
         self.labelOfPhoneNumber.isHidden = true
         self.labelOfFirstName.isHidden = true
@@ -386,7 +367,6 @@ extension AddContactsViewController {
     }
     
     func allign(label: UILabel, with textField: UITextField) {
-        //        label.frame.origin.y = textField.frame.origin.y - label.layer.bounds.height
         label.frame.origin.y = textField.frame.origin.y
         label.frame.origin.x = textField.frame.origin.x
     }
