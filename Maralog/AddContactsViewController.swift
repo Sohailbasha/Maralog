@@ -38,12 +38,41 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.allign(label: labelOfLastName, with: lastNameTextField)
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
-//        self.draw(bezierPath: path1, under: firstNameTextField)
-//        self.draw(bezierPath: path2, under: lastNameTextField)
-//        self.draw(bezierPath: path3, under: phoneNumberTextField)
         
+        self.tempFunc()
+
         
     }
+    
+    
+    func tempFunc() {
+            let geocoder = CLGeocoder()
+            guard let currentLocation = currentLocation else {
+                return }
+            geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+                if let error = error {
+                    print("error reverse geocoding: \(error)")
+                }
+                
+                if let placemarks = placemarks {
+                    if placemarks.count > 0 {
+                        let pm = placemarks[0] as CLPlacemark
+                        guard let city = pm.locality,
+                            let state = pm.administrativeArea,
+                            let street = pm.thoroughfare,
+                            let zipcode = pm.postalCode else {
+                                return }
+                        
+                        self.address.street = street
+                        self.address.city = city
+                        self.address.state = state
+                        self.address.postalCode = zipcode
+                    }
+                }
+            }
+    }
+    
+    
     
     
     // MARK: - Properties
@@ -53,16 +82,18 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     var usersLocation: Location?
     
     let store = CNContactStore()
+    let address = CNMutablePostalAddress()
+    
     
     let path1 = UIBezierPath()
     let path2 = UIBezierPath()
     let path3 = UIBezierPath()
     
-    var city: String?
-    var state: String?
-    var street: String?
-    var zipcode: String?
-    
+//    var city: String?
+//    var state: String?
+//    var street: String?
+//    var zipcode: String?
+//    
     
     // MARK: - Outlets
     
@@ -90,10 +121,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Action
     
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        goToRootView()
-    }
-    
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
@@ -112,30 +139,28 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 ContactController.sharedInstance.addContact(contact: contact)
             }
             
-            syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName,
-                                                         lastName: lastName,
-                                                         phoneNumber: phoneNumber) : ()
+            syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber) : ()
             
-            autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber,
-                                                 firstName: firstName) : goToRootView()
+            autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : goToRootView()
             
         } else {
             
             if firstName.isEmpty {
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.10, animations: {
                     self.firstNameTextField.backgroundColor = .red
                 }, completion: { (_) in
-                    UIView.animate(withDuration: 0.25, animations: {
+                    UIView.animate(withDuration: 0.10, animations: {
                         self.firstNameTextField.backgroundColor = .clear
                     }, completion: nil)
                 })
                 
             }
+            
             if phoneNumber.isEmpty {
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.10, animations: {
                     self.phoneNumberTextField.backgroundColor = .red
                 }, completion: { (_) in
-                    UIView.animate(withDuration: 0.25, animations: {
+                    UIView.animate(withDuration: 0.10, animations: {
                         self.phoneNumberTextField.backgroundColor = .clear
                     })
                 })
@@ -163,8 +188,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 self.permissionsAlert(title: "Contacts Access Disabled", message: "Enable access to contacts to sync")
             }
         }
+        
         if syncToContactsSwitch.isOn == false {
             syncIcon.tintColor = .gray
+            
+            
+            
         } else {
             syncIcon.tintColor = .black
         }
@@ -179,6 +208,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
 }
+
 
 // MARK: - Location Manager
 
@@ -303,35 +333,11 @@ extension AddContactsViewController {
         dateMet.month = Calendar.current.component(.month, from: Date())
         dateMet.year = Calendar.current.component(.year, from: Date())
         dateMet.day = Calendar.current.component(.day, from: Date())
+        
         let met = CNLabeledValue(label: "Date met", value: dateMet)
         contact.dates = [met]
         
-        let address = CNMutablePostalAddress()
-        let geocoder = CLGeocoder()
         
-        guard let currentLocation = currentLocation else {
-            return }
-        geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
-            if let error = error {
-                print("error reverse geocoding: \(error)")
-            }
-            
-            if let placemarks = placemarks {
-                if placemarks.count > 0 {
-                    let pm = placemarks[0] as CLPlacemark
-                    guard let city = pm.locality,
-                        let state = pm.administrativeArea,
-                        let street = pm.thoroughfare,
-                        let zipcode = pm.postalCode else {
-                            return }
-                    
-                    address.street = street
-                    address.city = city
-                    address.state = state
-                    address.postalCode = zipcode
-                }
-            }
-        }
         
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
         contact.postalAddresses = [locationMet]

@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Maralog/AddContactsViewController.swift"
-            timestampString = "512946922.533009"
+            timestampString = "512956081.951607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
             landmarkName = "addToAddressBook(firstName:lastName:phoneNumber:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Maralog/AddContactsViewController.swift"
-            timestampString = "512946923.232594"
+            timestampString = "512956081.951607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "addToAddressBook(firstName:lastName:phoneNumber:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Maralog/AddContactsViewController.swift"
-            timestampString = "512946923.868193"
+            timestampString = "512956081.951607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "addToAddressBook(firstName:lastName:phoneNumber:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -68,13 +68,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Maralog/AddContactsViewController.swift"
-            timestampString = "512946935.023609"
+            timestampString = "512956081.951607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
-            landmarkName = "addToAddressBook(firstName:lastName:phoneNumber:)"
-            landmarkType = "7">
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "AddContactsViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Maralog.AddContactsViewController.address.getter : __ObjC.CNMutablePostalAddress"
+                  moduleName = "Maralog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/AddContactsViewController.swift"
+                  timestampString = "512956101.626695"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Maralog.AddContactsViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Maralog.AddContactsViewController"
+                  moduleName = "Maralog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/AddContactsViewController.swift"
+                  timestampString = "512956101.627941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Maralog.AddContactsViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Maralog.AddContactsViewController&gt;"
+                  moduleName = "Maralog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/AddContactsViewController.swift"
+                  timestampString = "512956101.629166"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "156">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -84,28 +131,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Maralog/AddContactsViewController.swift"
-            timestampString = "512951003.630533"
+            timestampString = "512956095.951549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
-            landmarkName = "addToAddressBook(firstName:lastName:phoneNumber:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Maralog/AddContactsViewController.swift"
-            timestampString = "512951208.634613"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "addToAddressBook(firstName:lastName:phoneNumber:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
