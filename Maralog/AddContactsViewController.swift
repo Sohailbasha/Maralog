@@ -19,7 +19,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-        //      self.transparentNavBar()
         self.detailLabelsAreInvisible()
         
         uiSwitch.isOn = false
