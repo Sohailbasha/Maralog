@@ -36,15 +36,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.allign(label: labelOfFirstName, with: firstNameTextField)
         self.allign(label: labelOfLastName, with: lastNameTextField)
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
-        
-        
-        self.tempFunc()
 
-        
     }
     
     
-    func tempFunc() {
+
+    func saveLocationToContact() {
             let geocoder = CLGeocoder()
             guard let currentLocation = currentLocation else {
                 return }
@@ -88,11 +85,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let path2 = UIBezierPath()
     let path3 = UIBezierPath()
     
-//    var city: String?
-//    var state: String?
-//    var street: String?
-//    var zipcode: String?
-//    
     
     // MARK: - Outlets
     
@@ -121,6 +113,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
@@ -140,7 +133,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             
             syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber) : ()
             
-            autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : goToRootView()
+            autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
             
         } else {
             
@@ -177,6 +170,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             locationIcon.tintColor = .gray
         } else {
             locationIcon.tintColor = .black
+            saveLocationToContact()
         }
     }
     
@@ -190,9 +184,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         if syncToContactsSwitch.isOn == false {
             syncIcon.tintColor = .gray
-            
-            
-            
         } else {
             syncIcon.tintColor = .black
         }
@@ -304,7 +295,6 @@ extension AddContactsViewController: UITextFieldDelegate {
 
 extension AddContactsViewController {
     
-    // MARK: - Features
     
     func sendAutoTextTo(phoneNumber: String, firstName: String) {
         if(MessageSender.sharedInstance.canSendText()) {
@@ -320,22 +310,23 @@ extension AddContactsViewController {
         }
     }
     
+    
+    // ANGEL: -  In this func I create a CNMutableContact and assign values to it and have it save to your actual contacts.
     func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
         
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added with Astrea"
+        contact.note = "Added With Maralog"
         
         let dateMet = NSDateComponents()
         dateMet.month = Calendar.current.component(.month, from: Date())
         dateMet.year = Calendar.current.component(.year, from: Date())
         dateMet.day = Calendar.current.component(.day, from: Date())
         
-        let met = CNLabeledValue(label: "Date met", value: dateMet)
+        let met = CNLabeledValue(label: "Date Added", value: dateMet)
         contact.dates = [met]
-        
         
         
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
@@ -346,6 +337,13 @@ extension AddContactsViewController {
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
     }
+    
+    
+    
+    
+    
+    
+    
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -361,10 +359,6 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func goToRootView() {
-        _ = navigationController?.popToRootViewController(animated: true)
-    }
-    
     func detailLabelsAreInvisible() {
         self.labelOfPhoneNumber.isHidden = true
         self.labelOfFirstName.isHidden = true
@@ -376,21 +370,21 @@ extension AddContactsViewController {
         label.frame.origin.x = textField.frame.origin.x
     }
     
-    func draw(bezierPath: UIBezierPath, under textField: UITextField) {
-        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x,
-                                          y: textField.frame.origin.y + (textField.bounds.height + 2))
-        
-        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
-                                        y: textField.frame.origin.y + (textField.bounds.height + 2))
-        
-        bezierPath.move(to: textFieldstartPoint)
-        bezierPath.addLine(to: textFieldEndPoint)
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = bezierPath.cgPath
-        shapeLayer.strokeColor = UIColor.black.cgColor
-        shapeLayer.lineWidth = 1.5
-        view.layer.addSublayer(shapeLayer)
-    }
+//    func draw(bezierPath: UIBezierPath, under textField: UITextField) {
+//        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x,
+//                                          y: textField.frame.origin.y + (textField.bounds.height + 2))
+//        
+//        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
+//                                        y: textField.frame.origin.y + (textField.bounds.height + 2))
+//        
+//        bezierPath.move(to: textFieldstartPoint)
+//        bezierPath.addLine(to: textFieldEndPoint)
+//        let shapeLayer = CAShapeLayer()
+//        shapeLayer.path = bezierPath.cgPath
+//        shapeLayer.strokeColor = UIColor.black.cgColor
+//        shapeLayer.lineWidth = 1.5
+//        view.layer.addSublayer(shapeLayer)
+//    }
     
 }
 
