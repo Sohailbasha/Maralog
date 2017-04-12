@@ -17,7 +17,7 @@ class ContactDetailViewController: UIViewController {
         self.updateViews()
         setupButons()
         editMenuView.layer.contents = 5
-        detailDisplayView.layer.cornerRadius = 10
+        
     }
     
     
@@ -121,7 +121,7 @@ class ContactDetailViewController: UIViewController {
                     fullName.text = "\(firstName) \(lastName)"
                     phoneNumber.text = number
                 } else {
-                    guard let timeStamp = contact.timeStamp as? Date else { return }
+                    guard let timeStamp = contact.timeStamp as Date? else { return }
                     fullName.text = "\(firstName) \(lastName)"
                     phoneNumber.text = number
                     ContactController.sharedInstance.updateContactWithLocation(contact: contact,
@@ -154,7 +154,7 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet var callButton: UIButton!
     @IBOutlet var textButton: UIButton!
     
-    @IBOutlet var detailDisplayView: UIView!
+    
     
     
     

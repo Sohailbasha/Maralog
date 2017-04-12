@@ -79,17 +79,17 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            if let destinationVC = segue.destination as? ContactDetailViewController {
-//                if let indexPath = tableView.indexPathForSelectedRow {
-//                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
-//                    destinationVC.contact = contact
-//                }
-//            }
-//        }
-//    }
-//    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showContactDetail" {
+            if let destinationVC = segue.destination as? ContactDetailViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+                    destinationVC.contact = contact
+                }
+            }
+        }
+    }
+    
     
     // MARK: - Fetched Results Controller
     
