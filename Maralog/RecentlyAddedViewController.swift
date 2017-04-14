@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
-class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+import Contacts
+import ContactsUI
+
+class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CNContactViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewWillAppear(true)
         allContactsForDelegate()
     }
+    
     
     // MARK: - Outlets
     
@@ -76,6 +80,10 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+    }
     
     // MARK: - Navigation
     
@@ -143,6 +151,50 @@ extension RecentlyAddedViewController {
     }
 }
 
+// MARK: - Helper Methods
+extension RecentlyAddedViewController {
+    
+    func showContact(phoneNumber: String) {
+        let predicate: NSPredicate = CNContact.predicateForContacts(withIdentifiers: [phoneNumber])
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
 protocol RecentlyAddedDelegate: class {
     func recentlyAddedContacts(count: Int)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

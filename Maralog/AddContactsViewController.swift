@@ -36,39 +36,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.allign(label: labelOfFirstName, with: firstNameTextField)
         self.allign(label: labelOfLastName, with: lastNameTextField)
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
-
+        
     }
     
     
 
-    func saveLocationToContact() {
-            let geocoder = CLGeocoder()
-            guard let currentLocation = currentLocation else {
-                return }
-            geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
-                if let error = error {
-                    print("error reverse geocoding: \(error)")
-                }
-                
-                if let placemarks = placemarks {
-                    if placemarks.count > 0 {
-                        let pm = placemarks[0] as CLPlacemark
-                        guard let city = pm.locality,
-                            let state = pm.administrativeArea,
-                            let street = pm.thoroughfare,
-                            let zipcode = pm.postalCode else {
-                                return }
-                        
-                        self.address.street = street
-                        self.address.city = city
-                        self.address.state = state
-                        self.address.postalCode = zipcode
-                    }
-                }
-            }
-    }
-    
-    
     
     
     // MARK: - Properties
@@ -295,7 +267,6 @@ extension AddContactsViewController: UITextFieldDelegate {
 
 extension AddContactsViewController {
     
-    
     func sendAutoTextTo(phoneNumber: String, firstName: String) {
         if(MessageSender.sharedInstance.canSendText()) {
             let yourName = UserController.sharedInstance.getName()
@@ -310,8 +281,33 @@ extension AddContactsViewController {
         }
     }
     
+    func saveLocationToContact() {
+        let geocoder = CLGeocoder()
+        guard let currentLocation = currentLocation else {
+            return }
+        geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+            if let error = error {
+                print("error reverse geocoding: \(error)")
+            }
+            
+            if let placemarks = placemarks {
+                if placemarks.count > 0 {
+                    let pm = placemarks[0] as CLPlacemark
+                    guard let city = pm.locality,
+                        let state = pm.administrativeArea,
+                        let street = pm.thoroughfare,
+                        let zipcode = pm.postalCode else {
+                            return }
+                    
+                    self.address.street = street
+                    self.address.city = city
+                    self.address.state = state
+                    self.address.postalCode = zipcode
+                }
+            }
+        }
+    }
     
-    // ANGEL: -  In this func I create a CNMutableContact and assign values to it and have it save to your actual contacts.
     func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
@@ -370,21 +366,21 @@ extension AddContactsViewController {
         label.frame.origin.x = textField.frame.origin.x
     }
     
-//    func draw(bezierPath: UIBezierPath, under textField: UITextField) {
-//        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x,
-//                                          y: textField.frame.origin.y + (textField.bounds.height + 2))
-//        
-//        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
-//                                        y: textField.frame.origin.y + (textField.bounds.height + 2))
-//        
-//        bezierPath.move(to: textFieldstartPoint)
-//        bezierPath.addLine(to: textFieldEndPoint)
-//        let shapeLayer = CAShapeLayer()
-//        shapeLayer.path = bezierPath.cgPath
-//        shapeLayer.strokeColor = UIColor.black.cgColor
-//        shapeLayer.lineWidth = 1.5
-//        view.layer.addSublayer(shapeLayer)
-//    }
+    //    func draw(bezierPath: UIBezierPath, under textField: UITextField) {
+    //        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x,
+    //                                          y: textField.frame.origin.y + (textField.bounds.height + 2))
+    //
+    //        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
+    //                                        y: textField.frame.origin.y + (textField.bounds.height + 2))
+    //
+    //        bezierPath.move(to: textFieldstartPoint)
+    //        bezierPath.addLine(to: textFieldEndPoint)
+    //        let shapeLayer = CAShapeLayer()
+    //        shapeLayer.path = bezierPath.cgPath
+    //        shapeLayer.strokeColor = UIColor.black.cgColor
+    //        shapeLayer.lineWidth = 1.5
+    //        view.layer.addSublayer(shapeLayer)
+    //    }
     
 }
 

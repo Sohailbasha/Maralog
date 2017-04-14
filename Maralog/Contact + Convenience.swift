@@ -34,6 +34,4 @@ extension Contact {
         let full = "\(firstName) \(lastName)"
         return full
     }
-    
-    
 }
