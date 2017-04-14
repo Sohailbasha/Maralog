@@ -174,6 +174,10 @@ extension ContactsListViewController: CNContactViewControllerDelegate {
     
     func showContact(phoneNumber: String, name: String) {
         
+        let number: CNPhoneNumber = CNPhoneNumber(stringValue: phoneNumber)
+//        let number = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        
+        
         let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)
         let descriptor = CNContactViewController.descriptorForRequiredKeys()
         let contacts: [CNContact]
@@ -184,14 +188,19 @@ extension ContactsListViewController: CNContactViewControllerDelegate {
         } catch {
             contacts = []
         }
+        
         if !contacts.isEmpty {
-            let contact = contacts[0]
+            let filteredContact = contacts.filter({$0.phoneNumbers.first?.value == number})
+//            let contact = contacts[0]
+            let contact = filteredContact[0]
+            
             let cvc = CNContactViewController(for: contact)
             cvc.delegate = self
             cvc.allowsEditing = false
             self.navigationController?.pushViewController(cvc, animated: true)
         } else {
             print("no contact info available")
+            return
         }
     }
 }

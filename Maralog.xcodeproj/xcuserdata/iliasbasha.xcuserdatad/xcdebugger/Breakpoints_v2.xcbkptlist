@@ -77,5 +77,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Maralog/ContactsListViewController.swift"
+            timestampString = "513873963.804749"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "showContact(phoneNumber:name:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Maralog.ContactsListViewController.showContact (phoneNumber : Swift.String, name : Swift.String) -&gt; ()"
+                  moduleName = "Maralog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/ContactsListViewController.swift"
+                  timestampString = "513873971.874719"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "752">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Maralog.ContactsListViewController.(showContact (phoneNumber : Swift.String, name : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Maralog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/iliasbasha/Capstone/Maralog/Maralog/ContactsListViewController.swift"
+                  timestampString = "513873971.875898"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Maralog/ContactsListViewController.swift"
+            timestampString = "513873965.97441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "showContact(phoneNumber:name:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
