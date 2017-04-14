@@ -343,9 +343,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="I7C-xY-9PK" kind="show" identifier="showContactDetail" id="4PQ-po-AsT"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -357,7 +354,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="W1u-MP-reo"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="SLq-iY-sgA" id="zDB-2p-b4n"/>
                     </connections>
@@ -1166,7 +1162,4 @@
         <image name="bottomView" width="375" height="280"/>
         <image name="settings (1)" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="fPh-Af-LJV"/>
-    </inferredMetricsTieBreakers>
 </document>

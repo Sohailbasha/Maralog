@@ -81,22 +81,25 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let contact = fetchedResultsController.object(at: indexPath)
+        guard let phoneNumber = contact.phoneNumber, let firstName = contact.firstName else {
+            return }
+        self.showContact(phoneNumber: phoneNumber, name: firstName)
         
     }
     
     // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showContactDetail" {
-            if let destinationVC = segue.destination as? ContactDetailViewController {
-                if let indexPath = tableView.indexPathForSelectedRow {
-                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
-                    destinationVC.contact = contact
-                }
-            }
-        }
-    }
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showContactDetail" {
+//            if let destinationVC = segue.destination as? ContactDetailViewController {
+//                if let indexPath = tableView.indexPathForSelectedRow {
+//                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
+//                    destinationVC.contact = contact
+//                }
+//            }
+//        }
+//    }
     
     
     // MARK: - Fetched Results Controller
@@ -154,16 +157,30 @@ extension RecentlyAddedViewController {
 // MARK: - Helper Methods
 extension RecentlyAddedViewController {
     
-    func showContact(phoneNumber: String) {
-        let predicate: NSPredicate = CNContact.predicateForContacts(withIdentifiers: [phoneNumber])
+    func showContact(phoneNumber: String, name: String) {
+//        let predicate: NSPredicate = CNContact.predicateForContacts(withIdentifiers: [phoneNumber])
+        let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)
+        let descriptor = CNContactViewController.descriptorForRequiredKeys()
+        let contacts: [CNContact]
+    
+        let store = CNContactStore()
         
+        do {
+            contacts = try store.unifiedContacts(matching: predicate, keysToFetch: [descriptor])
+        } catch {
+            contacts = []
+        }
+        
+        if !contacts.isEmpty {
+            let contact = contacts[0]
+            let cvc = CNContactViewController(for: contact)
+            cvc.delegate = self
+            cvc.allowsEditing = true
+            self.navigationController?.pushViewController(cvc, animated: true)
+        } else {
+            print("no contact info available")
+        }
     }
-    
-    
-    
-    
-    
-    
     
     
 }
