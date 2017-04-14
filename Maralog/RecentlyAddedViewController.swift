@@ -175,14 +175,13 @@ extension RecentlyAddedViewController {
             let contact = contacts[0]
             let cvc = CNContactViewController(for: contact)
             cvc.delegate = self
-            cvc.allowsEditing = true
+            cvc.allowsEditing = false
             self.navigationController?.pushViewController(cvc, animated: true)
         } else {
             print("no contact info available")
         }
     }
-    
-    
+
 }
 
 protocol RecentlyAddedDelegate: class {

@@ -13,6 +13,7 @@
 		FD16C9961E490F6100237631 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9951E490F6100237631 /* ContactController.swift */; };
 		FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9981E49120F00237631 /* AddContactsViewController.swift */; };
 		FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C99A1E491F3200237631 /* ContactsListViewController.swift */; };
+		FD1AAB001EA08E7C0094EF57 /* CNContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1AAAFF1EA08E7C0094EF57 /* CNContactsController.swift */; };
 		FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30BFF51E43FFA100759ECB /* AppDelegate.swift */; };
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		FD16C9951E490F6100237631 /* ContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		FD16C9981E49120F00237631 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		FD16C99A1E491F3200237631 /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
+		FD1AAAFF1EA08E7C0094EF57 /* CNContactsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNContactsController.swift; sourceTree = "<group>"; };
 		FD30BFF21E43FFA100759ECB /* Maralog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maralog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30BFF51E43FFA100759ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30BFFA1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
+				FD1AAAFF1EA08E7C0094EF57 /* CNContactsController.swift */,
 				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
 			);
 			name = Tools;
@@ -288,6 +291,7 @@
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
+				FD1AAB001EA08E7C0094EF57 /* CNContactsController.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
 				FD3B146E1E4A39EA00506CC1 /* ContactDetailViewController.swift in Sources */,
 				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,

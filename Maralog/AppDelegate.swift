@@ -31,11 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         
-        
-        UINavigationBar.appearance().barTintColor = UIColor.white
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().isTranslucent = false
-
         return true
     }
     

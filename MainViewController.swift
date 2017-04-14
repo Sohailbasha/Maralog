@@ -14,7 +14,7 @@ class MainViewController: UIViewController, RecentlyAddedDelegate, AllContactsCo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpButton()
-        self.transparentNavBar()
+//        self.transparentNavBar()
         self.setMenuConstraints()
         setUpGestures()
         if let numOfRecentContacts = numOfRecentContacts {
