@@ -428,23 +428,35 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BDv-Hh-FMR">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                             <subviews>
-                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-iO-ORs">
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-iO-ORs">
                                     <rect key="frame" x="0.0" y="0.0" width="93.5" height="50"/>
                                     <state key="normal" image="(TB) Utilities">
                                         <color key="titleColor" red="0.5568627451" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="aoe-r6-Yc1"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-6H-QlE">
+                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-6H-QlE">
                                     <rect key="frame" x="93.5" y="0.0" width="93.5" height="50"/>
                                     <state key="normal" image="(TB) Recent"/>
+                                    <connections>
+                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="xM6-Bx-Osa"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-9N-1nl">
+                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-9N-1nl">
                                     <rect key="frame" x="187" y="0.0" width="93.5" height="50"/>
                                     <state key="normal" image="(TB) Contacts"/>
+                                    <connections>
+                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="FQj-o7-unv"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" tag="4" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-gc-MIS">
+                                <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-gc-MIS">
                                     <rect key="frame" x="280.5" y="0.0" width="93.5" height="50"/>
                                     <state key="normal" image="(TB) Add"/>
+                                    <connections>
+                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="gDW-dB-KiC"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -456,6 +468,12 @@
                         <constraint firstItem="BDv-Hh-FMR" firstAttribute="leading" secondItem="cRz-em-bdG" secondAttribute="leading" id="G9R-XV-K8N"/>
                         <constraint firstAttribute="bottom" secondItem="BDv-Hh-FMR" secondAttribute="bottom" id="POw-BV-qpZ"/>
                     </constraints>
+                    <connections>
+                        <outlet property="add" destination="dYo-gc-MIS" id="6ah-WL-j5q"/>
+                        <outlet property="contacts" destination="tgy-9N-1nl" id="vzU-cw-btC"/>
+                        <outlet property="recent" destination="tZI-6H-QlE" id="vh4-VI-53b"/>
+                        <outlet property="utilities" destination="Xdb-iO-ORs" id="sBU-A8-QkM"/>
+                    </connections>
                 </view>
             </objects>
             <point key="canvasLocation" x="5538" y="-278"/>
