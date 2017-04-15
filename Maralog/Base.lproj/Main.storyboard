@@ -404,16 +404,17 @@
             </objects>
             <point key="canvasLocation" x="4458" y="1358"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="g2x-rx-il0">
             <objects>
-                <tabBarController id="8Jt-DK-pGG" sceneMemberID="viewController">
+                <tabBarController id="8Jt-DK-pGG" customClass="CustomTabBarController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="BFP-Ly-zOG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabView" destination="cRz-em-bdG" id="EyB-yN-7oq"/>
                         <segue destination="8Mn-s8-zAC" kind="relationship" relationship="viewControllers" id="XEc-CJ-MrY"/>
                         <segue destination="Ssq-L6-1Ke" kind="relationship" relationship="viewControllers" id="XoT-2U-5IN"/>
                         <segue destination="rKK-2m-IzH" kind="relationship" relationship="viewControllers" id="kdI-R4-lz7"/>
