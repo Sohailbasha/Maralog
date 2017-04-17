@@ -13,7 +13,6 @@ class CustomTabBarController: UITabBarController, CustomTabBarViewDelegate {
     override var selectedIndex: Int {
         didSet {
             tabView.select(index: selectedIndex)
-            
         }
     }
     
@@ -28,8 +27,6 @@ class CustomTabBarController: UITabBarController, CustomTabBarViewDelegate {
         tabView.delegate = self
         view.addSubview(tabView)
         self.tabBarButtonTapped(at: 3)
-        
-//        tabView.select(index: 3)
     }
 
     // MARK: Outlets + Properties

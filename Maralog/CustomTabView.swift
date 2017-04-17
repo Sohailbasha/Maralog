@@ -62,47 +62,45 @@ class CustomTabView: UIView {
         switch index {
         case 0:
             transitionFrom(currentIndex, to: index, buttons: buttons)
-//            utilities.tintColor = .blue
-//            recent.tintColor = .black
-//            contacts.tintColor = .black
-//            add.tintColor = .black
+            //            utilities.tintColor = .blue
+            //            recent.tintColor = .black
+            //            contacts.tintColor = .black
+            //            add.tintColor = .black
             
         case 1:
             transitionFrom(currentIndex, to: index, buttons: buttons)
-//            utilities.tintColor = .black
-//            contacts.tintColor = .black
-//            add.tintColor = .black
-//            recent.tintColor = .blue
+            //            utilities.tintColor = .black
+            //            contacts.tintColor = .black
+            //            add.tintColor = .black
+            //            recent.tintColor = .blue
             
             
         case 2:
             transitionFrom(currentIndex, to: index, buttons: buttons)
-//            utilities.tintColor = .black
-//            recent.tintColor = .black
-//            add.tintColor = .black
-//            contacts.tintColor = .blue
+            //            utilities.tintColor = .black
+            //            recent.tintColor = .black
+            //            add.tintColor = .black
+            //            contacts.tintColor = .blue
             
         default:
             transitionFrom(currentIndex, to: index, buttons: buttons)
-//            utilities.tintColor = .black
-//            recent.tintColor = .black
-//            contacts.tintColor = .black
-//            add.tintColor = .blue
+            //            utilities.tintColor = .black
+            //            recent.tintColor = .black
+            //            contacts.tintColor = .black
+            //            add.tintColor = .blue
         }
     }
     
     func transitionFrom(_ currentIndex: Int, to selectedIndex: Int, buttons: [UIButton]) {
         
-        if currentIndex <= selectedIndex {
+        // LEFT TO RIGHT
+        if currentIndex < selectedIndex {
             for i in currentIndex...selectedIndex {
-                UIView.animate(withDuration: 0.25, animations: {
-//                    buttons[currentIndex].transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                UIView.animate(withDuration: 0.5, animations: {
                     buttons[currentIndex].transform = CGAffineTransform.identity
-                    buttons[i].transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                    
                 }, completion: { (_) in
                     if i != selectedIndex {
-                        UIView.animate(withDuration: 0.25, animations: {
+                        UIView.animate(withDuration: 0.5, animations: {
                             buttons[i].transform = CGAffineTransform.identity
                         })
                     }
@@ -110,16 +108,22 @@ class CustomTabView: UIView {
             }
         }
         
-        if currentIndex >= selectedIndex {
+        // RIGHT TO LEFT
+        if currentIndex > selectedIndex {
             for i in (selectedIndex...currentIndex).reversed() {
-                UIView.animate(withDuration: 0.25, animations: {
-//                    buttons[currentIndex].transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                UIView.animate(withDuration: 0.5, animations: {
+                    
                     buttons[currentIndex].transform = CGAffineTransform.identity
-                    buttons[i].transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                    
+//                    if i == 3 {
+//                        buttons[currentIndex].transform = CGAffineTransform.identity
+//                    } else {
+//                        buttons[i + 1].transform = CGAffineTransform.identity
+//                    }
                     
                 }, completion: { (_) in
                     if i != selectedIndex {
-                        UIView.animate(withDuration: 0.25, animations: { 
+                        UIView.animate(withDuration: 0.5, animations: {
                             buttons[i].transform = CGAffineTransform.identity
                         })
                     }
@@ -129,6 +133,7 @@ class CustomTabView: UIView {
         }
     }
     
+
     
     
     // MARK: - Actions
