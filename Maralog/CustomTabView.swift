@@ -14,10 +14,13 @@ protocol CustomTabBarViewDelegate: class {
 }
 
 class CustomTabView: UIView {
-
-//    override func draw(_ rect: CGRect) {
-//
-//    }
+    
+    
+    
+    
+    //    override func draw(_ rect: CGRect) {
+    //
+    //    }
     
     // MARK: - Outlets + Properties
     @IBOutlet var utilities: UIButton!
@@ -28,9 +31,22 @@ class CustomTabView: UIView {
     weak var delegate: CustomTabBarViewDelegate?
     
     // app opens on third tab
-    var currentIndex = 3
+    var currentIndex: Int {
+        guard let previous = pastPresentIndexes[previous] else {
+            return 3
+        }
+        return previous
+    }
     
-
+    let previous = "previous"
+    let current = "current"
+    
+    var pastPresentIndexes = ["previous": 0,
+                              "current": 3]
+    
+    
+    
+    
     
     func select(index: Int) {
         
@@ -40,64 +56,89 @@ class CustomTabView: UIView {
         add.tintColor = .black
         
         let buttons: [UIButton] = [utilities, recent, contacts, add]
-
+        
         
         
         switch index {
         case 0:
-            utilities.tintColor = .blue
-            recent.tintColor = .black
-            contacts.tintColor = .black
-            add.tintColor = .black
-
+            transitionFrom(currentIndex, to: index, buttons: buttons)
+//            utilities.tintColor = .blue
+//            recent.tintColor = .black
+//            contacts.tintColor = .black
+//            add.tintColor = .black
+            
         case 1:
-            utilities.tintColor = .black
-            contacts.tintColor = .black
-            add.tintColor = .black
-            recent.tintColor = .blue
+            transitionFrom(currentIndex, to: index, buttons: buttons)
+//            utilities.tintColor = .black
+//            contacts.tintColor = .black
+//            add.tintColor = .black
+//            recent.tintColor = .blue
             
             
         case 2:
-            utilities.tintColor = .black
-            recent.tintColor = .black
-            add.tintColor = .black
-            contacts.tintColor = .blue
-
+            transitionFrom(currentIndex, to: index, buttons: buttons)
+//            utilities.tintColor = .black
+//            recent.tintColor = .black
+//            add.tintColor = .black
+//            contacts.tintColor = .blue
+            
         default:
-            utilities.tintColor = .black
-            recent.tintColor = .black
-            contacts.tintColor = .black
-            add.tintColor = .blue
+            transitionFrom(currentIndex, to: index, buttons: buttons)
+//            utilities.tintColor = .black
+//            recent.tintColor = .black
+//            contacts.tintColor = .black
+//            add.tintColor = .blue
         }
     }
     
     func transitionFrom(_ currentIndex: Int, to selectedIndex: Int, buttons: [UIButton]) {
         
-        for i in currentIndex...selectedIndex {
-            
-            UIView.animate(withDuration: 0.5, animations: {
-            
-                buttons[currentIndex].transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-                buttons[i].transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                
-            }, completion: { (_) in
-                if i != selectedIndex {
+        if currentIndex <= selectedIndex {
+            for i in currentIndex...selectedIndex {
+                UIView.animate(withDuration: 0.25, animations: {
+//                    buttons[currentIndex].transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                    buttons[currentIndex].transform = CGAffineTransform.identity
+                    buttons[i].transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
                     
-                    buttons[i].transform = CGAffineTransform.identity
-                }
-            })
+                }, completion: { (_) in
+                    if i != selectedIndex {
+                        UIView.animate(withDuration: 0.25, animations: {
+                            buttons[i].transform = CGAffineTransform.identity
+                        })
+                    }
+                })
+            }
         }
         
+        if currentIndex >= selectedIndex {
+            for i in (selectedIndex...currentIndex).reversed() {
+                UIView.animate(withDuration: 0.25, animations: {
+//                    buttons[currentIndex].transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                    buttons[currentIndex].transform = CGAffineTransform.identity
+                    buttons[i].transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                    
+                }, completion: { (_) in
+                    if i != selectedIndex {
+                        UIView.animate(withDuration: 0.25, animations: { 
+                            buttons[i].transform = CGAffineTransform.identity
+                        })
+                    }
+                })
+            }
+            
+        }
     }
     
     
     
     // MARK: - Actions
     @IBAction func didTapButton(_ sender: UIButton) {
+        pastPresentIndexes[previous] = pastPresentIndexes[current]
+        pastPresentIndexes.updateValue(sender.tag, forKey: current)
         delegate?.tabBarButtonTapped(at: sender.tag)
     }
     
-
+    
 }
 
 
