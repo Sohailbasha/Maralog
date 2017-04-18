@@ -61,17 +61,17 @@ class CustomTabView: UIView {
         
         switch index {
         case 0:
-            tabBarAnimation(currentIndex: currentIndex, selectedIndex: index, buttons: buttons)
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
+            
+            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .blue
             //            recent.tintColor = .black
             //            contacts.tintColor = .black
             //            add.tintColor = .black
             
         case 1:
-            tabBarAnimation(currentIndex: currentIndex, selectedIndex: index, buttons: buttons)
+            
 
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
+            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .black
             //            contacts.tintColor = .black
             //            add.tintColor = .black
@@ -79,16 +79,16 @@ class CustomTabView: UIView {
             
             
         case 2:
-            tabBarAnimation(currentIndex: currentIndex, selectedIndex: index, buttons: buttons)
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
+            
+            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .black
             //            recent.tintColor = .black
             //            add.tintColor = .black
             //            contacts.tintColor = .blue
             
         default:
-            tabBarAnimation(currentIndex: currentIndex, selectedIndex: index, buttons: buttons)
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
+            
+            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .black
             //            recent.tintColor = .black
             //            contacts.tintColor = .black
@@ -96,7 +96,7 @@ class CustomTabView: UIView {
         }
     }
     
-    
+    /* FAILED
     func tabBarAnimation(currentIndex: Int, selectedIndex: Int, buttons: [UIButton]) {
         
         if selectedIndex < currentIndex {
@@ -132,6 +132,7 @@ class CustomTabView: UIView {
             }
         }
     }
+    */
     
     func transitionFrom(_ currentIndex: Int, to selectedIndex: Int, buttons: [UIButton]) {
         
@@ -176,7 +177,6 @@ class CustomTabView: UIView {
     }
     
 
-    
     
     // MARK: - Actions
     @IBAction func didTapButton(_ sender: UIButton) {
