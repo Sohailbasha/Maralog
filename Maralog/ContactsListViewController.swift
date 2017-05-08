@@ -106,8 +106,8 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
 //    }
 //    
     
-    // MARK: - Fetched Results Controller
     
+    // MARK: - Fetched Results Controller
     let fetchedResultsController: NSFetchedResultsController<Contact> = {
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
@@ -198,9 +198,9 @@ extension ContactsListViewController: CNContactViewControllerDelegate {
             
             let cvc = CNContactViewController(for: contact)
             cvc.delegate = self
-            cvc.allowsEditing = false
-            self.navigationController?.pushViewController(cvc, animated: true)
+            cvc.allowsEditing = true
             
+            self.navigationController?.pushViewController(cvc, animated: true)
         } else {
             let alert = UIAlertController(title: "Error",
                                           message: "Could not find \(name) in the Contacts application.",

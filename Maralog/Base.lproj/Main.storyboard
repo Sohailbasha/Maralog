@@ -236,18 +236,6 @@
                                 <rect key="frame" x="167" y="469" width="40" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="(T) Sync" translatesAutoresizingMaskIntoConstraints="NO" id="PWB-Iy-gxr">
-                                <rect key="frame" x="319" y="463" width="31" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Io2-U1-Pyc">
-                                <rect key="frame" x="310" y="500" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="0.55686274509803924" green="0.52156862745098043" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="syncSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="rOH-QG-R2n"/>
-                                </connections>
-                            </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
                                 <rect key="frame" x="162.5" y="500" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -281,8 +269,6 @@
                         <outlet property="lastNameTextField" destination="h4X-hF-4Uv" id="4H9-gm-Nei"/>
                         <outlet property="locationIcon" destination="g2g-PU-e8h" id="iXB-4o-pUV"/>
                         <outlet property="phoneNumberTextField" destination="64J-SE-xPZ" id="gp5-Eb-x5O"/>
-                        <outlet property="syncIcon" destination="PWB-Iy-gxr" id="cQV-Fq-Bqu"/>
-                        <outlet property="syncToContactsSwitch" destination="Io2-U1-Pyc" id="Mvz-WJ-zqM"/>
                         <outlet property="uiSwitch" destination="AnW-Ux-CeQ" id="J0A-vY-Gar"/>
                     </connections>
                 </viewController>

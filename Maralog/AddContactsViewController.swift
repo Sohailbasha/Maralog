@@ -103,7 +103,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 ContactController.sharedInstance.addContact(contact: contact)
             }
             
-            syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber) : ()
+//            syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber) : ()
+            addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
             
             autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
             
@@ -308,6 +309,35 @@ extension AddContactsViewController {
         }
     }
     
+    func addToCNContacts(contact: Contact) {
+        guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
+        guard let lastName = contact.lastName else { return }
+        
+        let contact = CNMutableContact()
+        contact.givenName = firstName.capitalized
+        contact.familyName = lastName.capitalized
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        contact.note = "Added With Maralog"
+    
+        let dateAdded = NSDateComponents()
+        dateAdded.month = Calendar.current.component(.month, from: Date())
+        dateAdded.year = Calendar.current.component(.year, from: Date())
+        dateAdded.day = Calendar.current.component(.day, from: Date())
+        let date = CNLabeledValue(label: "Date Added", value: dateAdded)
+        contact.dates = [date]
+        
+        
+        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
+        contact.postalAddresses = [locationMet]
+        
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier: nil)
+        try? store.execute(saveRequest)
+    }
+    
+    
+    
     func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
@@ -316,13 +346,13 @@ extension AddContactsViewController {
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added With Maralog"
         
-        let dateMet = NSDateComponents()
-        dateMet.month = Calendar.current.component(.month, from: Date())
-        dateMet.year = Calendar.current.component(.year, from: Date())
-        dateMet.day = Calendar.current.component(.day, from: Date())
+        let dateAdded = NSDateComponents()
+        dateAdded.month = Calendar.current.component(.month, from: Date())
+        dateAdded.year = Calendar.current.component(.year, from: Date())
+        dateAdded.day = Calendar.current.component(.day, from: Date())
         
-        let met = CNLabeledValue(label: "Date Added", value: dateMet)
-        contact.dates = [met]
+        let added = CNLabeledValue(label: "Date Added", value: dateAdded)
+        contact.dates = [added]
         
         
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
