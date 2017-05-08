@@ -46,8 +46,6 @@ class CustomTabView: UIView {
     
     
     
-    
-    
     func select(index: Int) {
         
         utilities.tintColor = .black
@@ -61,8 +59,9 @@ class CustomTabView: UIView {
         
         switch index {
         case 0:
-            
-            transitionFrom(currentIndex, to: index, buttons: buttons)
+            shift(selected: index, current: currentIndex, buttons: buttons)
+
+//            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .blue
             //            recent.tintColor = .black
             //            contacts.tintColor = .black
@@ -70,8 +69,9 @@ class CustomTabView: UIView {
             
         case 1:
             
+            shift(selected: index, current: currentIndex, buttons: buttons)
 
-            transitionFrom(currentIndex, to: index, buttons: buttons)
+//            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .black
             //            contacts.tintColor = .black
             //            add.tintColor = .black
@@ -79,8 +79,9 @@ class CustomTabView: UIView {
             
             
         case 2:
-            
-            transitionFrom(currentIndex, to: index, buttons: buttons)
+            shift(selected: index, current: currentIndex, buttons: buttons)
+
+//            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .black
             //            recent.tintColor = .black
             //            add.tintColor = .black
@@ -88,13 +89,31 @@ class CustomTabView: UIView {
             
         default:
             
-            transitionFrom(currentIndex, to: index, buttons: buttons)
+            shift(selected: index, current: currentIndex, buttons: buttons)
+//            transitionFrom(currentIndex, to: index, buttons: buttons)
             //            utilities.tintColor = .black
             //            recent.tintColor = .black
             //            contacts.tintColor = .black
             //            add.tintColor = .blue
         }
     }
+    
+    func shift(selected: Int, current: Int, buttons: [UIButton]) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { 
+            buttons[selected].layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+        }, completion: nil)
+        
+        if current != selected {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { 
+                buttons[current].layer.transform = CATransform3DIdentity
+            }, completion: { (_) in
+                
+            })
+        }
+        
+    }
+    
     
     /* FAILED
     func tabBarAnimation(currentIndex: Int, selectedIndex: Int, buttons: [UIButton]) {
