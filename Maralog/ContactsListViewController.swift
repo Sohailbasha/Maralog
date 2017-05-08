@@ -74,6 +74,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
 //        }
 //    }
     
+    //Replaced Commit Editing Style
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let contact = fetchedResultsController.object(at: indexPath)
         let delete = UITableViewRowAction(style: .default, title: "Delete Contact") { (action, indexPath) in
@@ -83,6 +84,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         return [delete]
     }
     
+    //replaced prepareForSegue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = fetchedResultsController.object(at: indexPath)
         guard let phoneNumber = contact.phoneNumber, let name = contact.firstName else { return }
@@ -198,9 +200,14 @@ extension ContactsListViewController: CNContactViewControllerDelegate {
             cvc.delegate = self
             cvc.allowsEditing = false
             self.navigationController?.pushViewController(cvc, animated: true)
+            
         } else {
-            print("no contact info available")
-            return
+            let alert = UIAlertController(title: "Error",
+                                          message: "Could not find \(name) in the Contacts application.",
+                preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
         }
     }
 }
