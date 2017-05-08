@@ -22,11 +22,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.detailLabelsAreInvisible()
         
         uiSwitch.isOn = false
-        syncToContactsSwitch.isOn = false
         autoTextSwitch.isOn = false
         
         autoTextIcon.tintColor = .gray
-        syncIcon.tintColor = .gray
         locationIcon.tintColor = .gray
         
         phoneNumberTextField.delegate = self
@@ -51,12 +49,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     let store = CNContactStore()
     let address = CNMutablePostalAddress()
-    
-    
-    let path1 = UIBezierPath()
-    let path2 = UIBezierPath()
-    let path3 = UIBezierPath()
-    
+ 
     
     // MARK: - Outlets
     
@@ -73,12 +66,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Switches
     @IBOutlet var uiSwitch: UISwitch!
     @IBOutlet var autoTextSwitch: UISwitch!
-    @IBOutlet var syncToContactsSwitch: UISwitch!
+
     
     // Icons
     @IBOutlet var locationIcon: UIImageView!
     @IBOutlet var autoTextIcon: UIImageView!
-    @IBOutlet var syncIcon: UIImageView!
+
     
     
     // MARK: - Action
@@ -97,17 +90,16 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 if let location = usersLocation {
                     let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
                     ContactController.sharedInstance.addContact(contact: contact)
+                    addToCNContacts(contact: contact)
+
                 }
             } else {
                 let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
                 ContactController.sharedInstance.addContact(contact: contact)
+                addContactWithoutAddress(contact: contact)
             }
             
-//            syncToContactsSwitch.isOn ? addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber) : ()
-            addToAddressBook(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-            
             autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
-            
         } else {
             
             if firstName.isEmpty {
@@ -146,21 +138,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             saveLocationToContact()
         }
     }
-    
-    @IBAction func syncSwitchEnabled(_ sender: Any) {
-        store.requestAccess(for: .contacts) { (granted, error) in
-            if !granted {
-                self.syncToContactsSwitch.setOn(false, animated: true)
-                self.permissionsAlert(title: "Contacts Access Disabled", message: "Enable access to contacts to sync")
-            }
-        }
-        
-        if syncToContactsSwitch.isOn == false {
-            syncIcon.tintColor = .gray
-        } else {
-            syncIcon.tintColor = .black
-        }
-    }
+
     
     @IBAction func autoTextSwitchEnabled(_ sender: Any) {
         if autoTextSwitch.isOn == false {
@@ -309,6 +287,24 @@ extension AddContactsViewController {
         }
     }
     
+    
+    func addContactWithoutAddress(contact: Contact) {
+        guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
+        guard let lastName = contact.lastName else { return }
+        
+        let contact = CNMutableContact()
+        contact.givenName = firstName.capitalized
+        contact.familyName = lastName.capitalized
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        contact.note = "Added With Maralog"
+        
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier: nil)
+        try? store.execute(saveRequest)
+    }
+    
+    // maybe use it. Same as func below it.
     func addToCNContacts(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName else { return }
@@ -367,10 +363,6 @@ extension AddContactsViewController {
     
     
     
-    
-    
-    
-    
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let enable = UIAlertAction(title: "Enable", style: .default) { (_) in
@@ -395,22 +387,6 @@ extension AddContactsViewController {
         label.frame.origin.y = textField.frame.origin.y
         label.frame.origin.x = textField.frame.origin.x
     }
-    
-    //    func draw(bezierPath: UIBezierPath, under textField: UITextField) {
-    //        let textFieldstartPoint = CGPoint(x: textField.frame.origin.x,
-    //                                          y: textField.frame.origin.y + (textField.bounds.height + 2))
-    //
-    //        let textFieldEndPoint = CGPoint(x: textField.frame.origin.x + (textField.bounds.width),
-    //                                        y: textField.frame.origin.y + (textField.bounds.height + 2))
-    //
-    //        bezierPath.move(to: textFieldstartPoint)
-    //        bezierPath.addLine(to: textFieldEndPoint)
-    //        let shapeLayer = CAShapeLayer()
-    //        shapeLayer.path = bezierPath.cgPath
-    //        shapeLayer.strokeColor = UIColor.black.cgColor
-    //        shapeLayer.lineWidth = 1.5
-    //        view.layer.addSublayer(shapeLayer)
-    //    }
     
 }
 
