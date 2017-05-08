@@ -284,10 +284,10 @@
             </objects>
             <point key="canvasLocation" x="-1425" y="-1388"/>
         </scene>
-        <!--Recently Added View Controller-->
+        <!--Recently Added-->
         <scene sceneID="YIp-uL-QsM">
             <objects>
-                <viewController id="sgx-8m-g6H" customClass="RecentlyAddedViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Recently Added" id="sgx-8m-g6H" customClass="RecentlyAddedViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fs5-TJ-61c"/>
                         <viewControllerLayoutGuide type="bottom" id="2yz-Yb-bhc"/>
@@ -345,10 +345,10 @@
             </objects>
             <point key="canvasLocation" x="3764" y="1358"/>
         </scene>
-        <!--Contacts List View Controller-->
+        <!--Contacts-->
         <scene sceneID="F2w-8a-ZAK">
             <objects>
-                <viewController id="cSm-zd-mEi" customClass="ContactsListViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Contacts" id="cSm-zd-mEi" customClass="ContactsListViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BaL-As-j6p"/>
                         <viewControllerLayoutGuide type="bottom" id="Wv9-S4-wLz"/>
@@ -389,6 +389,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fna-Nd-dwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4458" y="1358"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Jzu-g9-VA7">
+            <objects>
+                <viewController id="41t-jN-kQr" customClass="LoginViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HHd-Ku-WBn"/>
+                        <viewControllerLayoutGuide type="bottom" id="0P2-Wv-5yY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qHT-Wp-BgH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Uk-bh-sei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2947" y="-999"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="g2x-rx-il0">
@@ -1158,7 +1176,7 @@
                 <navigationController title="Contacts" automaticallyAdjustsScrollViewInsets="NO" id="8Mn-s8-zAC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="OBH-UX-ekA"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xpc-fV-cf7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xpc-fV-cf7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.1803921568627451" green="0.20000000000000001" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1178,7 +1196,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rKK-2m-IzH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="X7x-am-KNn"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wBH-HI-BU1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBH-HI-BU1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.1803921568627451" green="0.20000000000000001" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
@@ -1198,7 +1216,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fpj-3N-xJP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="pSn-hi-C3j"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lK9-lS-tPD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lK9-lS-tPD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.18039215689999999" green="0.20000000000000001" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>

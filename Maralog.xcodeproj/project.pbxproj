@@ -15,6 +15,7 @@
 		FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C99A1E491F3200237631 /* ContactsListViewController.swift */; };
 		FD1AAB021EA2C8E30094EF57 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */; };
 		FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */; };
+		FD21CB651EC10E4700F8E82C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD21CB641EC10E4700F8E82C /* LoginViewController.swift */; };
 		FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30BFF51E43FFA100759ECB /* AppDelegate.swift */; };
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		FD16C99A1E491F3200237631 /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
 		FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		FD21CB641EC10E4700F8E82C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FD30BFF21E43FFA100759ECB /* Maralog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maralog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30BFF51E43FFA100759ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30BFFA1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				FD3B146D1E4A39EA00506CC1 /* ContactDetailViewController.swift */,
 				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
+				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
 				FD3C20751E7A2F6A005E8DB9 /* Tutorial */,
 			);
 			name = "View Controller";
@@ -297,6 +300,7 @@
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
 				FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */,
+				FD21CB651EC10E4700F8E82C /* LoginViewController.swift in Sources */,
 				FD3B146E1E4A39EA00506CC1 /* ContactDetailViewController.swift in Sources */,
 				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,
 				FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */,

@@ -46,7 +46,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     let store = CNContactStore()
     let address = CNMutablePostalAddress()
- 
+    
     
     // MARK: - Outlets
     
@@ -63,12 +63,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Switches
     @IBOutlet var uiSwitch: UISwitch!
     @IBOutlet var autoTextSwitch: UISwitch!
-
+    
     
     // Icons
     @IBOutlet var locationIcon: UIImageView!
     @IBOutlet var autoTextIcon: UIImageView!
-
+    
     
     
     // MARK: - Action
@@ -93,7 +93,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 ContactController.sharedInstance.addContact(contact: contact)
                 addContactWithoutAddress(contact: contact)
             }
-
+            
             autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
         } else {
             
@@ -107,17 +107,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func hilightEmpty(_ textField: UITextField) {
-        let errorColor = UIColor(red: 255/255, green: 101/255, blue: 98/255, alpha: 1)
-        
-        UIView.animate(withDuration: 0.15, animations: {
-            textField.backgroundColor = errorColor
-        }) { (_) in
-            UIView.animate(withDuration: 0.15, animations: { 
-                textField.backgroundColor = .clear
-            })
-        }
-    }
+    
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
@@ -132,7 +122,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             saveLocationToContact()
         }
     }
-
+    
     
     @IBAction func autoTextSwitchEnabled(_ sender: Any) {
         if autoTextSwitch.isOn == false {
@@ -308,7 +298,7 @@ extension AddContactsViewController {
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added With Maralog"
-    
+        
         let dateAdded = NSDateComponents()
         dateAdded.month = Calendar.current.component(.month, from: Date())
         dateAdded.year = Calendar.current.component(.year, from: Date())
@@ -326,36 +316,17 @@ extension AddContactsViewController {
         try? store.execute(saveRequest)
     }
     
-    
-    
-//    func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
-//        let contact = CNMutableContact()
-//        contact.givenName = firstName.capitalized
-//        contact.familyName = lastName.capitalized
-//        
-//        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-//        contact.note = "Added With Maralog"
-//        
-//        let dateAdded = NSDateComponents()
-//        dateAdded.month = Calendar.current.component(.month, from: Date())
-//        dateAdded.year = Calendar.current.component(.year, from: Date())
-//        dateAdded.day = Calendar.current.component(.day, from: Date())
-//        
-//        let added = CNLabeledValue(label: "Date Added", value: dateAdded)
-//        contact.dates = [added]
-//        
-//        
-//        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
-//        contact.postalAddresses = [locationMet]
-//        
-//        let store = CNContactStore()
-//        let saveRequest = CNSaveRequest()
-//        saveRequest.add(contact, toContainerWithIdentifier: nil)
-//        try? store.execute(saveRequest)
-//    }
-//    
-    
-    
+    func hilightEmpty(_ textField: UITextField) {
+        let errorColor = UIColor(red: 255/255, green: 101/255, blue: 98/255, alpha: 1)
+        
+        UIView.animate(withDuration: 0.15, animations: {
+            textField.backgroundColor = errorColor
+        }) { (_) in
+            UIView.animate(withDuration: 0.15, animations: {
+                textField.backgroundColor = .clear
+            })
+        }
+    }
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -371,17 +342,17 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func detailLabelsAreInvisible() {
-        self.labelOfPhoneNumber.isHidden = true
-        self.labelOfFirstName.isHidden = true
-        self.labelOfLastName.isHidden = true
-    }
     
     func allign(label: UILabel, with textField: UITextField) {
         label.frame.origin.y = textField.frame.origin.y
         label.frame.origin.x = textField.frame.origin.x
     }
     
+    func detailLabelsAreInvisible() {
+        self.labelOfPhoneNumber.isHidden = true
+        self.labelOfFirstName.isHidden = true
+        self.labelOfLastName.isHidden = true
+    }
 }
 
 
