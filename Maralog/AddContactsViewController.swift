@@ -38,9 +38,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-
-    
-    
     // MARK: - Properties
     
     var coreLocationManager: CLLocationManager!
@@ -76,7 +73,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Action
     
-    
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
@@ -91,37 +87,35 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                     let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
                     ContactController.sharedInstance.addContact(contact: contact)
                     addToCNContacts(contact: contact)
-
                 }
             } else {
                 let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
                 ContactController.sharedInstance.addContact(contact: contact)
                 addContactWithoutAddress(contact: contact)
             }
-            
+
             autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
         } else {
             
             if firstName.isEmpty {
-                UIView.animate(withDuration: 0.10, animations: {
-                    self.firstNameTextField.backgroundColor = .red
-                }, completion: { (_) in
-                    UIView.animate(withDuration: 0.10, animations: {
-                        self.firstNameTextField.backgroundColor = .clear
-                    }, completion: nil)
-                })
-                
+                self.hilightEmpty(firstNameTextField)
             }
             
             if phoneNumber.isEmpty {
-                UIView.animate(withDuration: 0.10, animations: {
-                    self.phoneNumberTextField.backgroundColor = .red
-                }, completion: { (_) in
-                    UIView.animate(withDuration: 0.10, animations: {
-                        self.phoneNumberTextField.backgroundColor = .clear
-                    })
-                })
+                self.hilightEmpty(phoneNumberTextField)
             }
+        }
+    }
+    
+    func hilightEmpty(_ textField: UITextField) {
+        let errorColor = UIColor(red: 255/255, green: 101/255, blue: 98/255, alpha: 1)
+        
+        UIView.animate(withDuration: 0.15, animations: {
+            textField.backgroundColor = errorColor
+        }) { (_) in
+            UIView.animate(withDuration: 0.15, animations: { 
+                textField.backgroundColor = .clear
+            })
         }
     }
     
@@ -304,7 +298,7 @@ extension AddContactsViewController {
         try? store.execute(saveRequest)
     }
     
-    // maybe use it. Same as func below it.
+    
     func addToCNContacts(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName else { return }
@@ -334,32 +328,32 @@ extension AddContactsViewController {
     
     
     
-    func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
-        let contact = CNMutableContact()
-        contact.givenName = firstName.capitalized
-        contact.familyName = lastName.capitalized
-        
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added With Maralog"
-        
-        let dateAdded = NSDateComponents()
-        dateAdded.month = Calendar.current.component(.month, from: Date())
-        dateAdded.year = Calendar.current.component(.year, from: Date())
-        dateAdded.day = Calendar.current.component(.day, from: Date())
-        
-        let added = CNLabeledValue(label: "Date Added", value: dateAdded)
-        contact.dates = [added]
-        
-        
-        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
-        contact.postalAddresses = [locationMet]
-        
-        let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier: nil)
-        try? store.execute(saveRequest)
-    }
-    
+//    func addToAddressBook(firstName: String, lastName: String, phoneNumber: String) {
+//        let contact = CNMutableContact()
+//        contact.givenName = firstName.capitalized
+//        contact.familyName = lastName.capitalized
+//        
+//        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+//        contact.note = "Added With Maralog"
+//        
+//        let dateAdded = NSDateComponents()
+//        dateAdded.month = Calendar.current.component(.month, from: Date())
+//        dateAdded.year = Calendar.current.component(.year, from: Date())
+//        dateAdded.day = Calendar.current.component(.day, from: Date())
+//        
+//        let added = CNLabeledValue(label: "Date Added", value: dateAdded)
+//        contact.dates = [added]
+//        
+//        
+//        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
+//        contact.postalAddresses = [locationMet]
+//        
+//        let store = CNContactStore()
+//        let saveRequest = CNSaveRequest()
+//        saveRequest.add(contact, toContainerWithIdentifier: nil)
+//        try? store.execute(saveRequest)
+//    }
+//    
     
     
     
