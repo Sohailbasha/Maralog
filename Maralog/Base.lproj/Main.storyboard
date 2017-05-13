@@ -390,24 +390,6 @@
             </objects>
             <point key="canvasLocation" x="4458" y="1358"/>
         </scene>
-        <!--Login View Controller-->
-        <scene sceneID="Jzu-g9-VA7">
-            <objects>
-                <viewController id="41t-jN-kQr" customClass="LoginViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HHd-Ku-WBn"/>
-                        <viewControllerLayoutGuide type="bottom" id="0P2-Wv-5yY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qHT-Wp-BgH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Uk-bh-sei" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2947" y="-999"/>
-        </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="g2x-rx-il0">
             <objects>
