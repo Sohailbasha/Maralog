@@ -403,7 +403,6 @@
                         <outlet property="tabView" destination="cRz-em-bdG" id="EyB-yN-7oq"/>
                         <segue destination="fpj-3N-xJP" kind="relationship" relationship="viewControllers" id="pNd-MU-3Vu"/>
                         <segue destination="Ssq-L6-1Ke" kind="relationship" relationship="viewControllers" id="XoT-2U-5IN"/>
-                        <segue destination="8Mn-s8-zAC" kind="relationship" relationship="viewControllers" id="XEc-CJ-MrY"/>
                         <segue destination="rKK-2m-IzH" kind="relationship" relationship="viewControllers" id="kdI-R4-lz7"/>
                     </connections>
                 </tabBarController>
@@ -420,30 +419,18 @@
                                     <state key="normal" image="(TB) Utilities">
                                         <color key="titleColor" red="0.5568627451" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="aoe-r6-Yc1"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-6H-QlE">
                                     <rect key="frame" x="93.5" y="0.0" width="93.5" height="50"/>
                                     <state key="normal" image="(TB) Recent"/>
-                                    <connections>
-                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="xM6-Bx-Osa"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-9N-1nl">
                                     <rect key="frame" x="187" y="0.0" width="93.5" height="50"/>
                                     <state key="normal" image="(TB) Contacts"/>
-                                    <connections>
-                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="FQj-o7-unv"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-gc-MIS">
                                     <rect key="frame" x="280.5" y="0.0" width="93.5" height="50"/>
                                     <state key="normal" image="(TB) Add"/>
-                                    <connections>
-                                        <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="gDW-dB-KiC"/>
-                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -455,12 +442,6 @@
                         <constraint firstItem="BDv-Hh-FMR" firstAttribute="leading" secondItem="cRz-em-bdG" secondAttribute="leading" id="G9R-XV-K8N"/>
                         <constraint firstAttribute="bottom" secondItem="BDv-Hh-FMR" secondAttribute="bottom" id="POw-BV-qpZ"/>
                     </constraints>
-                    <connections>
-                        <outlet property="add" destination="dYo-gc-MIS" id="6ah-WL-j5q"/>
-                        <outlet property="contacts" destination="tgy-9N-1nl" id="vzU-cw-btC"/>
-                        <outlet property="recent" destination="tZI-6H-QlE" id="vh4-VI-53b"/>
-                        <outlet property="utilities" destination="Xdb-iO-ORs" id="sBU-A8-QkM"/>
-                    </connections>
                 </view>
             </objects>
             <point key="canvasLocation" x="4818" y="-225"/>
