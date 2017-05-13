@@ -66,14 +66,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let contact = fetchedResultsController.object(at: indexPath)
-//            ContactController.sharedInstance.removeContact(contact: contact)
-//            allContactsForDelegate()
-//        }
-//    }
-    
+
     //Replaced Commit Editing Style
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let contact = fetchedResultsController.object(at: indexPath)

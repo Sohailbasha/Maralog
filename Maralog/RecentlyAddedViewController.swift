@@ -183,7 +183,7 @@ extension RecentlyAddedViewController {
             self.navigationController?.pushViewController(cvc, animated: true)
         } else {
             let alert = UIAlertController(title: "Error",
-                                          message: "Could not find \(name) in the Contacts application.",
+                                          message: "Could not find \(name) in the Contacts application. You may have deleted or modified it",
                 preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
