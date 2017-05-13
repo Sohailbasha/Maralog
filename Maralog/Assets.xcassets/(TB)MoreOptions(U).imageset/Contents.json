@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Clock - simple-line-icons.png",
+      "filename" : "MoreOptions(U).jpg",
       "scale" : "2x"
     },
     {
@@ -17,8 +17,5 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }
