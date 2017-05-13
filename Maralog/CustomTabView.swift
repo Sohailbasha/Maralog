@@ -42,7 +42,7 @@ class CustomTabView: UIView {
     let current = "current"
     
     var pastPresentIndexes = ["previous": 0,
-                              "current": 3]
+                              "current": 1]
     
     
     

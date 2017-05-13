@@ -411,37 +411,30 @@
                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BDv-Hh-FMR">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-iO-ORs">
-                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="50"/>
-                                    <state key="normal" image="(TB) Utilities">
-                                        <color key="titleColor" red="0.5568627451" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-6H-QlE">
-                                    <rect key="frame" x="93.5" y="0.0" width="93.5" height="50"/>
-                                    <state key="normal" image="(TB) Recent"/>
-                                </button>
-                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-9N-1nl">
-                                    <rect key="frame" x="187" y="0.0" width="93.5" height="50"/>
-                                    <state key="normal" image="(TB) Contacts"/>
-                                </button>
-                                <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-gc-MIS">
-                                    <rect key="frame" x="280.5" y="0.0" width="93.5" height="50"/>
-                                    <state key="normal" image="(TB) Add"/>
-                                </button>
-                            </subviews>
-                        </stackView>
+                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-iO-ORs">
+                            <rect key="frame" x="0.0" y="0.0" width="93.5" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="(TB) Utilities">
+                                <color key="titleColor" red="0.5568627451" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-6H-QlE">
+                            <rect key="frame" x="93.5" y="0.0" width="93.5" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="(TB) Recent"/>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-9N-1nl">
+                            <rect key="frame" x="187" y="0.0" width="93.5" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="(TB) Contacts"/>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-gc-MIS">
+                            <rect key="frame" x="280.5" y="0.0" width="93.5" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="(TB) Add"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="BDv-Hh-FMR" firstAttribute="top" secondItem="cRz-em-bdG" secondAttribute="top" id="06v-Cg-uM8"/>
-                        <constraint firstAttribute="trailing" secondItem="BDv-Hh-FMR" secondAttribute="trailing" id="6OX-Sv-hpI"/>
-                        <constraint firstItem="BDv-Hh-FMR" firstAttribute="leading" secondItem="cRz-em-bdG" secondAttribute="leading" id="G9R-XV-K8N"/>
-                        <constraint firstAttribute="bottom" secondItem="BDv-Hh-FMR" secondAttribute="bottom" id="POw-BV-qpZ"/>
-                    </constraints>
                 </view>
             </objects>
             <point key="canvasLocation" x="4818" y="-225"/>
