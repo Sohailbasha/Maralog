@@ -23,6 +23,7 @@ class CustomTabBarController: UITabBarController, CustomTabBarViewDelegate {
                            y: view.frame.height - tabView.frame.height,
                            width: view.frame.width,
                            height: tabView.frame.height)
+        
         tabView.frame = frame
         tabView.delegate = self
         view.addSubview(tabView)

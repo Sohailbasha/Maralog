@@ -66,33 +66,24 @@ class CustomTabView: UIView {
         
         switch index {
         case 0:
-            shift(selected: index, current: currentIndex, buttons: buttons)
+//            shift(selected: index, current: currentIndex, buttons: buttons)
+            recentlyAddedImageView.tintColor = .black
 
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
-            //            utilities.tintColor = .blue
-            //            recent.tintColor = .black
-            //            contacts.tintColor = .black
-            //            add.tintColor = .black
+
             
             
         case 1:
             
-            shift(selected: index, current: currentIndex, buttons: buttons)
+//            shift(selected: index, current: currentIndex, buttons: buttons)
+            addImageView.tintColor = .black
 
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
-            //            utilities.tintColor = .black
-            //            contacts.tintColor = .black
-            //            add.tintColor = .black
-            //            recent.tintColor = .blue
 
         default:
             
-            shift(selected: index, current: currentIndex, buttons: buttons)
+//            shift(selected: index, current: currentIndex, buttons: buttons)
 //            transitionFrom(currentIndex, to: index, buttons: buttons)
-            //            utilities.tintColor = .black
-            //            recent.tintColor = .black
-            //            contacts.tintColor = .black
-            //            add.tintColor = .blue
+                        optionsImageView.tintColor = .black
+            
         }
     }
     
