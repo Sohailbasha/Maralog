@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -411,30 +412,68 @@
                     <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-iO-ORs">
-                            <rect key="frame" x="0.0" y="0.0" width="93.5" height="50"/>
+                        <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" distribution="fillEqually" alignment="center" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="xtB-8E-Q4e">
+                            <rect key="frame" x="120.3328228285327" y="16.370503772954635" width="132" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="(TB) Utilities">
-                                <color key="titleColor" red="0.5568627451" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="(TB)RecentlyAddedIcon(U)" translatesAutoresizingMaskIntoConstraints="NO" id="tMX-QD-irg">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="tMX-QD-irg" secondAttribute="height" multiplier="1:1" id="6X1-fO-3tK"/>
+                                        <constraint firstAttribute="height" constant="20.000000000000114" id="eOO-2e-IJx"/>
+                                        <constraint firstAttribute="width" constant="20" id="oXb-c6-Fmy"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="(TB)AddIcon(U)" translatesAutoresizingMaskIntoConstraints="NO" id="7Ck-qd-4vX">
+                                    <rect key="frame" x="56" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="7Ck-qd-4vX" secondAttribute="height" multiplier="20:19" id="Gea-jr-o0i"/>
+                                        <constraint firstAttribute="width" constant="20.000000000000455" id="S6z-L3-SgQ"/>
+                                        <constraint firstAttribute="height" constant="19.999999999999886" id="wVp-HX-NFa"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="(TB)MoreOptions(U)" translatesAutoresizingMaskIntoConstraints="NO" id="wS4-M1-xUg">
+                                    <rect key="frame" x="112" y="0.0" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20.000000000000114" id="En2-A4-FUc"/>
+                                        <constraint firstAttribute="width" constant="20" id="jgG-MY-DJ5"/>
+                                        <constraint firstAttribute="width" secondItem="wS4-M1-xUg" secondAttribute="height" multiplier="1:1" id="lIe-ll-kLo"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIB-r0-6RU">
+                            <rect key="frame" x="93" y="5" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="B7N-ev-6UI"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-6H-QlE">
-                            <rect key="frame" x="93.5" y="0.0" width="93.5" height="50"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svT-l0-kqK">
+                            <rect key="frame" x="251" y="5" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="(TB) Recent"/>
+                            <connections>
+                                <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="aD5-JA-tkL"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgy-9N-1nl">
-                            <rect key="frame" x="187" y="0.0" width="93.5" height="50"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJL-9X-N5h">
+                            <rect key="frame" x="178" y="-5" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="(TB) Contacts"/>
-                        </button>
-                        <button opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYo-gc-MIS">
-                            <rect key="frame" x="280.5" y="0.0" width="93.5" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="(TB) Add"/>
+                            <connections>
+                                <action selector="didTapButton:" destination="cRz-em-bdG" eventType="touchUpInside" id="d2k-6a-lys"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="add" destination="hJL-9X-N5h" id="Jv5-ur-Zzc"/>
+                        <outlet property="addImageView" destination="7Ck-qd-4vX" id="RWG-OD-DP3"/>
+                        <outlet property="menuStack" destination="xtB-8E-Q4e" id="7dv-k0-yq4"/>
+                        <outlet property="options" destination="svT-l0-kqK" id="eKY-X0-Bea"/>
+                        <outlet property="optionsImageView" destination="wS4-M1-xUg" id="GNj-ov-wao"/>
+                        <outlet property="recent" destination="NIB-r0-6RU" id="fBP-6n-VVl"/>
+                        <outlet property="recentlyAddedImageView" destination="tMX-QD-irg" id="vfz-fY-76w"/>
+                    </connections>
                 </view>
             </objects>
             <point key="canvasLocation" x="4818" y="-225"/>
@@ -865,176 +904,6 @@
             </objects>
             <point key="canvasLocation" x="1748" y="926"/>
         </scene>
-        <!--Contact Detail View Controller-->
-        <scene sceneID="hrf-BG-DRa">
-            <objects>
-                <viewController id="I7C-xY-9PK" customClass="ContactDetailViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sI6-ZO-GQe"/>
-                        <viewControllerLayoutGuide type="bottom" id="lk9-QS-z7f"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iiw-LJ-OfQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwd-gD-FlN">
-                                <rect key="frame" x="41" y="483" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="0.086028467465753419" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="(D) Edit"/>
-                                <connections>
-                                    <action selector="editContact:" destination="I7C-xY-9PK" eventType="touchUpInside" id="Xpv-ti-in5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xK7-Tt-B6T">
-                                <rect key="frame" x="137" y="482" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="0.086028467465753419" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="(D) Call"/>
-                                <connections>
-                                    <action selector="callButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="a08-9s-dia"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVq-ce-2o1">
-                                <rect key="frame" x="242" y="482" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.14441198110580444" green="0.15964433550834656" blue="0.21772122383117676" alpha="0.086028467465753419" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="(D) Text"/>
-                                <connections>
-                                    <action selector="textButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="ZdQ-vw-Y1G"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="added at location:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BNT-2V-Ui9">
-                                <rect key="frame" x="28" y="246" width="318" height="28"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
-                                <color key="textColor" red="0.17952018976211548" green="0.19850790500640869" blue="0.2731708288192749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="at time:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wmX-Gt-bhl">
-                                <rect key="frame" x="28" y="274" width="318" height="26"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
-                                <color key="textColor" red="0.17952018976211548" green="0.19850790500640869" blue="0.2731708288192749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AOB-ql-rG8">
-                                <rect key="frame" x="16" y="71" width="343" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="44"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(###) ### ####" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2Y-M6-OJU">
-                                <rect key="frame" x="16" y="126" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="callButton" destination="xK7-Tt-B6T" id="8eM-tB-HCt"/>
-                        <outlet property="editButton" destination="Nwd-gD-FlN" id="qbN-X4-N5V"/>
-                        <outlet property="editFirstNameTextField" destination="QR8-Mr-WuU" id="EeO-2M-ITs"/>
-                        <outlet property="editLastNameTextField" destination="9ne-pH-ogU" id="Xqk-jl-KtE"/>
-                        <outlet property="editMenuView" destination="fxx-44-3HC" id="gPg-Ss-bCn"/>
-                        <outlet property="editPhoneTextField" destination="Kgy-WK-Xsu" id="dxw-Eb-gpw"/>
-                        <outlet property="fullName" destination="AOB-ql-rG8" id="4Cz-6a-cG2"/>
-                        <outlet property="locationMetLabel" destination="BNT-2V-Ui9" id="UAp-W6-CPO"/>
-                        <outlet property="phoneNumber" destination="T2Y-M6-OJU" id="WQz-py-1cO"/>
-                        <outlet property="textButton" destination="kVq-ce-2o1" id="ThA-kg-j6j"/>
-                        <outlet property="timeMetLabel" destination="wmX-Gt-bhl" id="gpS-MQ-SQh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UkC-gb-fDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="fxx-44-3HC">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="183"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="edit contact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnM-WL-fUS">
-                            <rect key="frame" x="141" y="0.0" width="92" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="first name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwF-f1-VQf">
-                            <rect key="frame" x="46" y="83" width="60" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="first name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QR8-Mr-WuU">
-                            <rect key="frame" x="46" y="98" width="283" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="26"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next"/>
-                        </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3n-6F-e7d">
-                            <rect key="frame" x="46" y="132" width="58" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="last" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9ne-pH-ogU">
-                            <rect key="frame" x="46" y="148" width="283" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="26"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" returnKeyType="next"/>
-                        </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="phone number" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Kgy-WK-Xsu">
-                            <rect key="frame" x="46" y="45" width="283" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="26"/>
-                            <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert" returnKeyType="next"/>
-                        </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-Fa-LnH">
-                            <rect key="frame" x="46" y="28" width="87.5" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0U-8H-Sym">
-                            <rect key="frame" x="295" y="0.0" width="34" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="save"/>
-                            <connections>
-                                <action selector="saveMenuButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="ITa-af-0aC"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dv-b7-Oab">
-                            <rect key="frame" x="46" y="0.0" width="34" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="X">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="exitButtonTapped:" destination="I7C-xY-9PK" eventType="touchUpInside" id="CsX-3X-Fro"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-            </objects>
-            <point key="canvasLocation" x="8852" y="14.842578710644679"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="MFv-xc-yyl">
             <objects>
@@ -1188,16 +1057,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="(D) Call" width="61" height="62"/>
-        <image name="(D) Edit" width="46" height="73"/>
-        <image name="(D) Text" width="73" height="44"/>
         <image name="(T) Autotext" width="168" height="75"/>
         <image name="(T) Location" width="206" height="88"/>
         <image name="(T) Sync" width="100" height="104"/>
-        <image name="(TB) Add" width="19" height="19"/>
-        <image name="(TB) Contacts" width="19" height="19"/>
-        <image name="(TB) Recent" width="19" height="19"/>
-        <image name="(TB) Utilities" width="18" height="17"/>
+        <image name="(TB)AddIcon(U)" width="33" height="33"/>
+        <image name="(TB)MoreOptions(U)" width="30" height="8"/>
+        <image name="(TB)RecentlyAddedIcon(U)" width="31" height="31"/>
         <image name="Check - simple-line-icons" width="37" height="37"/>
         <image name="OnBoarding Backgroun" width="375" height="667"/>
         <image name="bottomView" width="375" height="280"/>

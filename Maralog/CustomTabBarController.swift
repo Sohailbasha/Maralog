@@ -26,7 +26,7 @@ class CustomTabBarController: UITabBarController, CustomTabBarViewDelegate {
         tabView.frame = frame
         tabView.delegate = self
         view.addSubview(tabView)
-        self.tabBarButtonTapped(at: 3)
+        self.tabBarButtonTapped(at: 1)
     }
 
     // MARK: Outlets + Properties

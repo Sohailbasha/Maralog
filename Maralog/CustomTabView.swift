@@ -15,25 +15,33 @@ protocol CustomTabBarViewDelegate: class {
 
 class CustomTabView: UIView {
     
-    
-    
-    
-    //    override func draw(_ rect: CGRect) {
-    //
-    //    }
-    
+    override func draw(_ rect: CGRect) {
+        menuStack.center = self.center
+        options.center = optionsImageView.center
+        add.center = addImageView.center
+        recent.center = recentlyAddedImageView.center
+        
+    }
+
     // MARK: - Outlets + Properties
-    @IBOutlet var utilities: UIButton!
+    @IBOutlet var options: UIButton!
     @IBOutlet var recent: UIButton!
-    @IBOutlet var contacts: UIButton!
     @IBOutlet var add: UIButton!
+    
+    @IBOutlet var recentlyAddedImageView: UIImageView!
+    @IBOutlet var addImageView: UIImageView!
+    @IBOutlet var optionsImageView: UIImageView!
+    
+    @IBOutlet var menuStack: UIStackView!
+    
+    
     
     weak var delegate: CustomTabBarViewDelegate?
     
     // app opens on third tab
     var currentIndex: Int {
         guard let previous = pastPresentIndexes[previous] else {
-            return 3
+            return 1
         }
         return previous
     }
@@ -48,12 +56,11 @@ class CustomTabView: UIView {
     
     func select(index: Int) {
         
-        utilities.tintColor = .black
+        options.tintColor = .black
         recent.tintColor = .black
-        contacts.tintColor = .black
         add.tintColor = .black
         
-        let buttons: [UIButton] = [utilities, recent, contacts, add]
+        let buttons: [UIButton] = [options, recent, add]
         
         
         
