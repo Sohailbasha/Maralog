@@ -32,6 +32,7 @@ class CustomTabBarController: UITabBarController, CustomTabBarViewDelegate {
 
     // MARK: Outlets + Properties
     @IBOutlet var tabView: CustomTabView!
+    
 
     func tabBarButtonTapped(at index: Int) {
         selectedIndex = index
