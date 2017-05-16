@@ -205,11 +205,11 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVS-BQ-Wey" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="uKx-vC-1eP" customClass="CustomTabView" customModule="Maralog" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="372" height="55"/>
+                    <rect key="frame" x="0.0" y="0.0" width="372" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" distribution="fillEqually" alignment="center" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="Lkq-YW-RUI">
-                            <rect key="frame" x="63" y="15" width="246" height="40"/>
+                            <rect key="frame" x="63" y="13" width="246" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-fm-eBS">
@@ -219,7 +219,11 @@
                                         <constraint firstAttribute="height" constant="40" id="IK2-uk-Psg"/>
                                         <constraint firstAttribute="width" secondItem="69R-fm-eBS" secondAttribute="height" multiplier="1:1" id="jcp-Kl-ItP"/>
                                     </constraints>
-                                    <state key="normal" image="(TB)RecentlyAddedIcon(U)"/>
+                                    <color key="tintColor" red="0.17952018980000001" green="0.19850790500000001" blue="0.27317082879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="tbRecentlyAdded"/>
+                                    <connections>
+                                        <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="Uie-Wt-QfS"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-i2-Ub6">
                                     <rect key="frame" x="103" y="0.0" width="40" height="40"/>
@@ -228,7 +232,11 @@
                                         <constraint firstAttribute="height" constant="40" id="Shx-Fm-A4n"/>
                                         <constraint firstAttribute="width" secondItem="YPt-i2-Ub6" secondAttribute="height" multiplier="1:1" id="TFa-JU-7Dh"/>
                                     </constraints>
-                                    <state key="normal" image="(TB)AddIcon(U)"/>
+                                    <color key="tintColor" red="0.17952018980000001" green="0.19850790500000001" blue="0.27317082879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="tbAdd"/>
+                                    <connections>
+                                        <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="cLU-Sh-N5C"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-Q8-kdx">
                                     <rect key="frame" x="206" y="0.0" width="40" height="40"/>
@@ -237,12 +245,21 @@
                                         <constraint firstAttribute="width" constant="40" id="ft9-Gc-h0F"/>
                                         <constraint firstAttribute="width" secondItem="6Qi-Q8-kdx" secondAttribute="height" multiplier="1:1" id="lNW-VS-8Ny"/>
                                     </constraints>
-                                    <state key="normal" image="(TB)MoreOptions(U)"/>
+                                    <color key="tintColor" red="0.17952018980000001" green="0.19850790500000001" blue="0.27317082879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="tbOptions"/>
+                                    <connections>
+                                        <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="qib-Hf-cZF"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="addButton" destination="YPt-i2-Ub6" id="glY-fH-dAQ"/>
+                        <outlet property="moreOptionsButton" destination="6Qi-Q8-kdx" id="cew-sN-9tb"/>
+                        <outlet property="recentlyAddedButton" destination="69R-fm-eBS" id="9Nn-DY-wid"/>
+                    </connections>
                 </view>
             </objects>
             <point key="canvasLocation" x="4756" y="-128"/>
@@ -676,10 +693,10 @@
         <image name="(T) Autotext" width="168" height="75"/>
         <image name="(T) Location" width="206" height="88"/>
         <image name="(T) Sync" width="100" height="104"/>
-        <image name="(TB)AddIcon(U)" width="33" height="33"/>
-        <image name="(TB)MoreOptions(U)" width="30" height="8"/>
-        <image name="(TB)RecentlyAddedIcon(U)" width="31" height="31"/>
         <image name="Check - simple-line-icons" width="37" height="37"/>
         <image name="OnBoarding Backgroun" width="375" height="667"/>
+        <image name="tbAdd" width="33" height="33"/>
+        <image name="tbOptions" width="30" height="8"/>
+        <image name="tbRecentlyAdded" width="31" height="31"/>
     </resources>
 </document>
