@@ -15,12 +15,15 @@ protocol CustomTabBarViewDelegate: class {
 
 class CustomTabView: UIView {
     
+    
+    
     weak var delegate: CustomTabBarViewDelegate?
     
     
     @IBOutlet var recentlyAddedButton: UIButton!
     @IBOutlet var addButton: UIButton!
     @IBOutlet var moreOptionsButton: UIButton!
+    
     
     
     
@@ -60,7 +63,6 @@ class CustomTabView: UIView {
         
         let currentButton = buttons[current]
         let selectedButton = buttons[selected]
-//        let centerY = self.center.y
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
