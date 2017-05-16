@@ -43,7 +43,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return fetchedResultsController.fetchedObjects
     }
     
-    
     // MARK: - All Contacts Delegate
     func allContactsForDelegate() {
         if let contacts = fetchedResultsController.fetchedObjects {
@@ -85,22 +84,20 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         guard let phoneNumber = contact.phoneNumber, let firstName = contact.firstName else {
             return }
         self.showContact(phoneNumber: phoneNumber, name: firstName)
-        
     }
     
-    // MARK: - Navigation
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showContactDetail" {
-//            if let destinationVC = segue.destination as? ContactDetailViewController {
-//                if let indexPath = tableView.indexPathForSelectedRow {
-//                    let contact = fetchedResultsController.fetchedObjects?[indexPath.row]
-//                    destinationVC.contact = contact
-//                }
-//            }
-//        }
-//    }
     
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let contact = fetchedResultsController.object(at: indexPath)
+        let delete = UITableViewRowAction(style: .default, title: "Delete Contact") { (action, indexPath) in
+            ContactController.sharedInstance.removeContact(contact: contact)
+        }
+        delete.backgroundColor = .black
+        return [delete]
+    }
+    
+
     
     // MARK: - Fetched Results Controller
     
@@ -158,13 +155,16 @@ extension RecentlyAddedViewController {
 extension RecentlyAddedViewController {
     
     func showContact(phoneNumber: String, name: String) {
-//        let predicate: NSPredicate = CNContact.predicateForContacts(withIdentifiers: [phoneNumber])
+        
+        let number: CNPhoneNumber = CNPhoneNumber(stringValue: phoneNumber)
+        //        let number = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        
+        
         let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)
         let descriptor = CNContactViewController.descriptorForRequiredKeys()
         let contacts: [CNContact]
-    
-        let store = CNContactStore()
         
+        let store = CNContactStore()
         do {
             contacts = try store.unifiedContacts(matching: predicate, keysToFetch: [descriptor])
         } catch {
@@ -172,13 +172,22 @@ extension RecentlyAddedViewController {
         }
         
         if !contacts.isEmpty {
-            let contact = contacts[0]
+            let filteredContact = contacts.filter({$0.phoneNumbers.first?.value == number})
+            //            let contact = contacts[0]
+            let contact = filteredContact[0]
+            
             let cvc = CNContactViewController(for: contact)
             cvc.delegate = self
-            cvc.allowsEditing = false
+            cvc.allowsEditing = true
+            
             self.navigationController?.pushViewController(cvc, animated: true)
         } else {
-            print("no contact info available")
+            let alert = UIAlertController(title: "Error",
+                                          message: "Could not find \(name) in the Contacts application. You may have deleted or modified it",
+                preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
         }
     }
 

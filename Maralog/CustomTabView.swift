@@ -17,23 +17,21 @@ class CustomTabView: UIView {
     
     
     
-    
-    //    override func draw(_ rect: CGRect) {
-    //
-    //    }
-    
-    // MARK: - Outlets + Properties
-    @IBOutlet var utilities: UIButton!
-    @IBOutlet var recent: UIButton!
-    @IBOutlet var contacts: UIButton!
-    @IBOutlet var add: UIButton!
-    
     weak var delegate: CustomTabBarViewDelegate?
+    
+    
+    @IBOutlet var recentlyAddedButton: UIButton!
+    @IBOutlet var addButton: UIButton!
+    @IBOutlet var moreOptionsButton: UIButton!
+    
+    
+    
+    
     
     // app opens on third tab
     var currentIndex: Int {
         guard let previous = pastPresentIndexes[previous] else {
-            return 3
+            return 1
         }
         return previous
     }
@@ -42,71 +40,38 @@ class CustomTabView: UIView {
     let current = "current"
     
     var pastPresentIndexes = ["previous": 0,
-                              "current": 3]
+                              "current": 1]
     
     
     
     func select(index: Int) {
-        
-        utilities.tintColor = .black
-        recent.tintColor = .black
-        contacts.tintColor = .black
-        add.tintColor = .black
-        
-        let buttons: [UIButton] = [utilities, recent, contacts, add]
-        
-        
+        let buttons: [UIButton] = [recentlyAddedButton, addButton, moreOptionsButton]
         
         switch index {
         case 0:
             shift(selected: index, current: currentIndex, buttons: buttons)
-
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
-            //            utilities.tintColor = .blue
-            //            recent.tintColor = .black
-            //            contacts.tintColor = .black
-            //            add.tintColor = .black
-            
         case 1:
-            
             shift(selected: index, current: currentIndex, buttons: buttons)
-
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
-            //            utilities.tintColor = .black
-            //            contacts.tintColor = .black
-            //            add.tintColor = .black
-            //            recent.tintColor = .blue
-            
-            
-        case 2:
-            shift(selected: index, current: currentIndex, buttons: buttons)
-
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
-            //            utilities.tintColor = .black
-            //            recent.tintColor = .black
-            //            add.tintColor = .black
-            //            contacts.tintColor = .blue
-            
         default:
-            
             shift(selected: index, current: currentIndex, buttons: buttons)
-//            transitionFrom(currentIndex, to: index, buttons: buttons)
-            //            utilities.tintColor = .black
-            //            recent.tintColor = .black
-            //            contacts.tintColor = .black
-            //            add.tintColor = .blue
         }
+
     }
+    
     
     func shift(selected: Int, current: Int, buttons: [UIButton]) {
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { 
-            buttons[selected].layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+        let currentButton = buttons[current]
+        let selectedButton = buttons[selected]
+        
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+            self.buttonChange(button: selectedButton)
         }, completion: nil)
         
         if current != selected {
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { 
-                buttons[current].layer.transform = CATransform3DIdentity
+            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                currentButton.layer.transform = CATransform3DIdentity
             }, completion: { (_) in
                 
             })
@@ -115,83 +80,22 @@ class CustomTabView: UIView {
     }
     
     
-    /* FAILED
-    func tabBarAnimation(currentIndex: Int, selectedIndex: Int, buttons: [UIButton]) {
-        
-        if selectedIndex < currentIndex {
-            let leftIndex = selectedIndex
-            let rightIndex = currentIndex
+    func buttonChange(button: UIButton) {
+        switch button {
+        case addButton:
+            addButton.setImage(#imageLiteral(resourceName: "tbAddS"), for: .normal)
+            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
+            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
             
-            while leftIndex < rightIndex {
-                UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.75, options: [], animations: {
-                    buttons[rightIndex].transform = CGAffineTransform(scaleX: 1.75, y: 1.75)
-                    
-                }, completion: { (_) in
-                    UIView.animate(withDuration: 0.25, animations: { 
-                        buttons[rightIndex].transform = CGAffineTransform.identity
-                    })
-                    self.tabBarAnimation(currentIndex: rightIndex - 1, selectedIndex: leftIndex, buttons: buttons)
-                })
-            }
-        }
-        
-        if selectedIndex > currentIndex {
-            let leftIndex = currentIndex
-            let rightIndex = selectedIndex
+        case recentlyAddedButton:
+            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAddedS"), for: .normal)
+            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
+            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
             
-            while currentIndex < selectedIndex {
-                UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.75, options: [], animations: { 
-                    buttons[leftIndex].transform = CGAffineTransform(scaleX: 1.75, y: 1.75)
-                }, completion: { (_) in
-                    UIView.animate(withDuration: 0.25, animations: { 
-                        buttons[leftIndex].transform = CGAffineTransform.identity
-                    })
-                    self.tabBarAnimation(currentIndex: leftIndex + 1, selectedIndex: rightIndex, buttons: buttons)
-                })
-            }
-        }
-    }
-    */
-    
-    func transitionFrom(_ currentIndex: Int, to selectedIndex: Int, buttons: [UIButton]) {
-        
-        // LEFT TO RIGHT
-        if currentIndex < selectedIndex {
-            for i in currentIndex...selectedIndex {
-                UIView.animate(withDuration: 0.25, animations: {
-                    buttons[currentIndex].transform = CGAffineTransform.identity
-                }, completion: { (_) in
-                    if i != selectedIndex {
-                        UIView.animate(withDuration: 0.25, animations: {
-                            buttons[i].transform = CGAffineTransform.identity
-                        })
-                    }
-                })
-            }
-        }
-        
-        // RIGHT TO LEFT
-        if currentIndex > selectedIndex {
-            for i in (selectedIndex...currentIndex).reversed() {
-                UIView.animate(withDuration: 0.25, animations: {
-                    
-                    buttons[currentIndex].transform = CGAffineTransform.identity
-                    
-//                    if i == 3 {
-//                        buttons[currentIndex].transform = CGAffineTransform.identity
-//                    } else {
-//                        buttons[i + 1].transform = CGAffineTransform.identity
-//                    }
-                    
-                }, completion: { (_) in
-                    if i != selectedIndex {
-                        UIView.animate(withDuration: 0.25, animations: {
-                            buttons[i].transform = CGAffineTransform.identity
-                        })
-                    }
-                })
-            }
-            
+        default:
+            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptionsS"), for: .normal)
+            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
+            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
         }
     }
     

@@ -66,14 +66,7 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let contact = fetchedResultsController.object(at: indexPath)
-//            ContactController.sharedInstance.removeContact(contact: contact)
-//            allContactsForDelegate()
-//        }
-//    }
-    
+
     //Replaced Commit Editing Style
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let contact = fetchedResultsController.object(at: indexPath)
@@ -90,21 +83,6 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         guard let phoneNumber = contact.phoneNumber, let name = contact.firstName else { return }
         self.showContact(phoneNumber: phoneNumber, name: name)
     }
-    
-    
-    // MARK: - Navigation
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showContactDetail" {
-//            if let destinationVC = segue.destination as? ContactDetailViewController {
-//                if let indexPath = tableView.indexPathForSelectedRow {
-//                    let contact = fetchedResultsController.object(at: indexPath)
-//                    destinationVC.contact = contact
-//                }
-//            }
-//        }
-//    }
-//    
     
     
     // MARK: - Fetched Results Controller
