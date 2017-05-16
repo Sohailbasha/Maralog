@@ -90,7 +90,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Contact" id="gtc-vI-2Ts">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="7sM-YU-cy8">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="7sM-YU-cy8">
                             <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vJa-pp-a7p">
                                 <rect key="frame" x="319" y="2" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -115,11 +115,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="vKQ-Nl-00z" customClass="MyStyleKit" customModule="Maralog" customModuleProvider="target">
-                    <connections>
-                        <outletCollection property="gradientBackgroundTargets" destination="DQO-nK-wO3" collectionClass="NSMutableArray" id="7ry-xD-QoM"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="4756" y="1705"/>
         </scene>
