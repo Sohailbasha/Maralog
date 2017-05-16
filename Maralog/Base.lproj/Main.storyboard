@@ -115,8 +115,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="vKQ-Nl-00z" customClass="MyStyleKit" customModule="Maralog" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="gradientBackgroundTargets" destination="DQO-nK-wO3" collectionClass="NSMutableArray" id="7ry-xD-QoM"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="4756" y="1358"/>
+            <point key="canvasLocation" x="4756" y="1705"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="RiC-KM-RWH">
@@ -186,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TyK-dc-hli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3913" y="1358"/>
+            <point key="canvasLocation" x="3914" y="1705"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="g2x-rx-il0">
@@ -263,7 +268,7 @@
                     </connections>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4756" y="-128"/>
+            <point key="canvasLocation" x="4756" y="-105"/>
         </scene>
         <!--First Tutorial View Controller-->
         <scene sceneID="bG5-cI-LKC">
@@ -623,7 +628,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oO7-8U-hvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5561" y="1358"/>
+            <point key="canvasLocation" x="5561" y="1705"/>
         </scene>
         <!--Recently Added-->
         <scene sceneID="ZXx-6j-qXO">
@@ -647,7 +652,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PN9-1a-tWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3914" y="636"/>
+            <point key="canvasLocation" x="3914" y="863"/>
         </scene>
         <!--Item-->
         <scene sceneID="Q3j-Mj-Zib">
@@ -667,7 +672,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Bs-mY-rGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756" y="636"/>
+            <point key="canvasLocation" x="4756" y="863"/>
         </scene>
         <!--Item-->
         <scene sceneID="mEC-bp-ckA">
@@ -687,7 +692,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vm8-48-CSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5561" y="636"/>
+            <point key="canvasLocation" x="5561" y="863"/>
         </scene>
     </scenes>
     <resources>
