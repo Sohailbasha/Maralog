@@ -212,40 +212,40 @@
                             <rect key="frame" x="63" y="13" width="246" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-fm-eBS">
+                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-fm-eBS">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="4zS-Vh-GIg"/>
                                         <constraint firstAttribute="height" constant="40" id="IK2-uk-Psg"/>
                                         <constraint firstAttribute="width" secondItem="69R-fm-eBS" secondAttribute="height" multiplier="1:1" id="jcp-Kl-ItP"/>
                                     </constraints>
-                                    <color key="tintColor" red="0.17952018980000001" green="0.19850790500000001" blue="0.27317082879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="tbRecentlyAdded"/>
                                     <connections>
                                         <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="Uie-Wt-QfS"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-i2-Ub6">
+                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-i2-Ub6">
                                     <rect key="frame" x="103" y="0.0" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="Eld-GN-VgC"/>
                                         <constraint firstAttribute="height" constant="40" id="Shx-Fm-A4n"/>
                                         <constraint firstAttribute="width" secondItem="YPt-i2-Ub6" secondAttribute="height" multiplier="1:1" id="TFa-JU-7Dh"/>
                                     </constraints>
-                                    <color key="tintColor" red="0.17952018980000001" green="0.19850790500000001" blue="0.27317082879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="tbAdd"/>
                                     <connections>
                                         <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="cLU-Sh-N5C"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-Q8-kdx">
+                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-Q8-kdx">
                                     <rect key="frame" x="206" y="0.0" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="4wQ-PR-13S"/>
                                         <constraint firstAttribute="width" constant="40" id="ft9-Gc-h0F"/>
                                         <constraint firstAttribute="width" secondItem="6Qi-Q8-kdx" secondAttribute="height" multiplier="1:1" id="lNW-VS-8Ny"/>
                                     </constraints>
-                                    <color key="tintColor" red="0.17952018980000001" green="0.19850790500000001" blue="0.27317082879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="tbOptions"/>
                                     <connections>
                                         <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="qib-Hf-cZF"/>

@@ -69,7 +69,7 @@ class CustomTabView: UIView {
         let currentButton = buttons[current]
         let selectedButton = buttons[selected]
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { 
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
             selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
             self.buttonChange(button: selectedButton)
         }, completion: nil)
@@ -77,7 +77,7 @@ class CustomTabView: UIView {
         if current != selected {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { 
                 currentButton.layer.transform = CATransform3DIdentity
-                self.buttonChange(button: currentButton)
+//                self.buttonChange(button: currentButton)
             }, completion: { (_) in
                 
             })
@@ -90,14 +90,21 @@ class CustomTabView: UIView {
         switch button {
         case addButton:
             addButton.setImage(#imageLiteral(resourceName: "tbAddS"), for: .normal)
+            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
+            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
+            
         case recentlyAddedButton:
             recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAddedS"), for: .normal)
+            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
+            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
+            
         default:
             moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptionsS"), for: .normal)
+            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
+            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
         }
     }
     
-
 
     
     // MARK: - Actions
