@@ -44,8 +44,6 @@ class CustomTabView: UIView {
     func select(index: Int) {
         let buttons: [UIButton] = [recentlyAddedButton, addButton, moreOptionsButton]
         
-        
-        
         switch index {
         case 0:
             shift(selected: index, current: currentIndex, buttons: buttons)
@@ -58,26 +56,20 @@ class CustomTabView: UIView {
     }
     
     
-    
-    
-    
-    
-    
-    
     func shift(selected: Int, current: Int, buttons: [UIButton]) {
         
         let currentButton = buttons[current]
         let selectedButton = buttons[selected]
+//        let centerY = self.center.y
         
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
             self.buttonChange(button: selectedButton)
         }, completion: nil)
         
         if current != selected {
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { 
+            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 currentButton.layer.transform = CATransform3DIdentity
-//                self.buttonChange(button: currentButton)
             }, completion: { (_) in
                 
             })
