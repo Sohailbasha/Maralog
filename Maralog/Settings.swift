@@ -13,14 +13,12 @@ class Settings {
     
     let name: String
     let isOn: Bool
-    let image: UIImage
+    let icon: UIImage
     
-    init(name: String, isOn: Bool, image: UIImage) {
+    init(name: String, isOn: Bool, icon: UIImage) {
         self.name = name
         self.isOn = isOn
-        self.image = image
+        self.icon = icon
     }
-    
-    
     
 }
