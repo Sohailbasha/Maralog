@@ -20,7 +20,6 @@
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
 		FD30C0001E43FFA100759ECB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */; };
-		FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30C0071E440AAD00759ECB /* MainViewController.swift */; };
 		FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14921E4A819700506CC1 /* Location + Convenience.swift */; };
 		FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14941E4A830300506CC1 /* LocationController.swift */; };
 		FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14971E4A83C900506CC1 /* CoreLocation.framework */; };
@@ -36,6 +35,8 @@
 		FDD9C2E81ECE3DCF00573F00 /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */; };
 		FDD9C2EA1ECE3EC900573F00 /* UserDefaultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */; };
 		FDD9C2EC1ECE3F0700573F00 /* DefaultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */; };
+		FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2EE1ECE45B600573F00 /* Settings.swift */; };
+		FDD9C2F11ECE45FD00573F00 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F01ECE45FD00573F00 /* SettingsController.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
@@ -56,7 +57,6 @@
 		FD30BFFC1E43FFA100759ECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD30BFFF1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD30C0011E43FFA100759ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD30C0071E440AAD00759ECB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 		FD3B14921E4A819700506CC1 /* Location + Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location + Convenience.swift"; sourceTree = "<group>"; };
 		FD3B14941E4A830300506CC1 /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		FD3B14971E4A83C900506CC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -72,6 +72,8 @@
 		FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
 		FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTableViewCell.swift; sourceTree = "<group>"; };
 		FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsViewController.swift; sourceTree = "<group>"; };
+		FDD9C2EE1ECE45B600573F00 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FDD9C2F01ECE45FD00573F00 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = ../SettingsController.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,11 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */,
-				FD30C0071E440AAD00759ECB /* MainViewController.swift */,
 				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
-				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
-				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
 				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
 				FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */,
@@ -123,6 +122,7 @@
 				FD16C9911E490C6600237631 /* CoreDataStack.swift */,
 				FD16C9931E490C9500237631 /* Contact + Convenience.swift */,
 				FD3B14921E4A819700506CC1 /* Location + Convenience.swift */,
+				FDD9C2EE1ECE45B600573F00 /* Settings.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -133,6 +133,7 @@
 				FD16C9951E490F6100237631 /* ContactController.swift */,
 				FD3B14941E4A830300506CC1 /* LocationController.swift */,
 				FD5F256E1E74D5FE001D2B68 /* UserController.swift */,
+				FDD9C2F01ECE45FD00573F00 /* SettingsController.swift */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -161,6 +162,7 @@
 				FD16C9971E490F6600237631 /* Model Controller */,
 				FDCB3ACE1E7AE49F00BBF8D3 /* View */,
 				FD16C98C1E490AD500237631 /* View Controller */,
+				FDD9C2ED1ECE421200573F00 /* Unused */,
 				FD631D841E4E7D2E00CA9B11 /* Tools */,
 				FD16C98B1E490ACA00237631 /* Story Board */,
 				FD30C0011E43FFA100759ECB /* Info.plist */,
@@ -206,6 +208,15 @@
 				FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		FDD9C2ED1ECE421200573F00 /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
+				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
+			);
+			name = Unused;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,8 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDD9C2F11ECE45FD00573F00 /* SettingsController.swift in Sources */,
 				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
+				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
@@ -302,7 +315,6 @@
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
 				FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */,
 				FD21CB651EC10E4700F8E82C /* LoginViewController.swift in Sources */,
-				FD30C0081E440AAD00759ECB /* MainViewController.swift in Sources */,
 				FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */,
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
 				FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */,
