@@ -142,7 +142,6 @@ extension RecentlyAddedViewController {
         case .update:
             guard let indexPath = indexPath else {return}
             tableView.reloadRows(at: [indexPath], with: .automatic)
-            
         }
     }
     
@@ -178,16 +177,15 @@ extension RecentlyAddedViewController {
             
             let cvc = CNContactViewController(for: contact)
             cvc.delegate = self
-            cvc.allowsEditing = true
+            cvc.allowsEditing = false
             
             self.navigationController?.pushViewController(cvc, animated: true)
         } else {
             let alert = UIAlertController(title: "Error",
-                                          message: "Could not find \(name) in the Contacts application. You may have deleted or modified it",
+                                          message: "Could not find \(name) in the Contacts application. You may have deleted or modified it.",
                 preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
         }
     }
 

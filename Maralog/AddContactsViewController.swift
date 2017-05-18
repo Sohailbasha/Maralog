@@ -71,6 +71,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
+    
+    
+    
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
@@ -353,6 +356,11 @@ extension AddContactsViewController {
         self.labelOfFirstName.isHidden = true
         self.labelOfLastName.isHidden = true
     }
+    
+    
+    
+    
+
 }
 
 

@@ -31,14 +31,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         
-        let navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearance = UINavigationBar.appearance()
         
-        navigationBarAppearace.backgroundColor = .clear
-        navigationBarAppearace.barTintColor = .clear
-        navigationBarAppearace.tintColor = .clear
-        navigationBarAppearace.shadowImage = UIImage()
-        navigationBarAppearace.setBackgroundImage(UIImage(), for: .default)
+        navigationBarAppearance.backgroundColor = .clear
+        navigationBarAppearance.barTintColor = .clear
+        navigationBarAppearance.tintColor = .clear
+        navigationBarAppearance.shadowImage = UIImage()
+        navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().tintColor = .clear
+        
+        
+        let barButtonAppearance = UIBarButtonItem.appearance()
+        if let font = UIFont(name: "HelveticaNeue-Light", size: 20) {
+            barButtonAppearance.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+        }
+        
         
         return true
     }
