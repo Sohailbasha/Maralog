@@ -73,7 +73,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Action
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,

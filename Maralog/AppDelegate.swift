@@ -31,6 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         
+        let navigationBarAppearace = UINavigationBar.appearance()
+        
+        navigationBarAppearace.backgroundColor = .clear
+        navigationBarAppearace.barTintColor = .clear
+        navigationBarAppearace.tintColor = .clear
+        navigationBarAppearace.shadowImage = UIImage()
+        navigationBarAppearace.setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().tintColor = .clear
+        
         return true
     }
     

@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Contact-->
+        <!--Add Contacts View Controller-->
         <scene sceneID="SBz-PX-UwO">
             <objects>
                 <viewController id="aFt-A3-DSS" customClass="AddContactsViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,11 +63,11 @@
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="(T) Location" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
-                                <rect key="frame" x="9" y="465" width="62" height="27"/>
+                                <rect key="frame" x="12" y="333" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
-                                <rect key="frame" x="16" y="500" width="51" height="31"/>
+                                <rect key="frame" x="19" y="368" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.5568627451" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -75,11 +75,11 @@
                                 </connections>
                             </switch>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="(T) Autotext" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
-                                <rect key="frame" x="167" y="469" width="40" height="18"/>
+                                <rect key="frame" x="127" y="337" width="40" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
-                                <rect key="frame" x="162.5" y="500" width="51" height="31"/>
+                                <rect key="frame" x="122" y="368" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.5568627451" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -89,16 +89,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Contact" id="gtc-vI-2Ts">
-                        <barButtonItem key="rightBarButtonItem" style="done" id="7sM-YU-cy8">
-                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vJa-pp-a7p">
-                                <rect key="frame" x="319" y="2" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Check - simple-line-icons"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="oty-d1-MBQ"/>
-                                </connections>
-                            </button>
+                    <navigationItem key="navigationItem" id="gtc-vI-2Ts">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Rge-PY-wII">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="7sM-YU-cy8">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="aFt-A3-DSS" id="8hL-FT-SIV"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -263,7 +262,7 @@
                     </connections>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4756" y="-105"/>
+            <point key="canvasLocation" x="4756" y="72"/>
         </scene>
         <!--First Tutorial View Controller-->
         <scene sceneID="bG5-cI-LKC">
@@ -694,7 +693,6 @@
         <image name="(T) Autotext" width="168" height="75"/>
         <image name="(T) Location" width="206" height="88"/>
         <image name="(T) Sync" width="100" height="104"/>
-        <image name="Check - simple-line-icons" width="37" height="37"/>
         <image name="OnBoarding Backgroun" width="375" height="667"/>
         <image name="tbAdd" width="33" height="33"/>
         <image name="tbOptions" width="30" height="8"/>
