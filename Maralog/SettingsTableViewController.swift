@@ -12,9 +12,11 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.text = UserController.sharedInstance.getName()
+        nameTextField.text = yourName
     }
 
+    
+    let yourName: String = UserController.sharedInstance.getName()
     
     // MARK: - Outlets
 
@@ -36,9 +38,7 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate{
         }
     }
 
-    @IBAction func BackButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    
     
     
     // MARK: - TextField Delegate Functions

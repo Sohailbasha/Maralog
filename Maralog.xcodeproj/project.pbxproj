@@ -33,6 +33,7 @@
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */; };
 		FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */; };
+		FDD9C2E61ECE38AA00573F00 /* ChangeNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E51ECE38AA00573F00 /* ChangeNameTableViewCell.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTutorialViewController.swift; sourceTree = "<group>"; };
 		FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberLabelFormatter.swift; sourceTree = "<group>"; };
+		FDD9C2E51ECE38AA00573F00 /* ChangeNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNameTableViewCell.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */,
+				FDD9C2E51ECE38AA00573F00 /* ChangeNameTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
 				FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */,
 				FD3C20771E7A33EB005E8DB9 /* LastTutorialViewController.swift in Sources */,
+				FDD9C2E61ECE38AA00573F00 /* ChangeNameTableViewCell.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
 				FD3C20741E7A2F64005E8DB9 /* TutorialPageViewController.swift in Sources */,
 				FD557C511E79D1D800067EF1 /* SettingsTableViewController.swift in Sources */,
