@@ -34,6 +34,7 @@
 		FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */; };
 		FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */; };
 		FDD9C2E61ECE38AA00573F00 /* ChangeNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E51ECE38AA00573F00 /* ChangeNameTableViewCell.swift */; };
+		FDD9C2E81ECE3DCF00573F00 /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTutorialViewController.swift; sourceTree = "<group>"; };
 		FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberLabelFormatter.swift; sourceTree = "<group>"; };
 		FDD9C2E51ECE38AA00573F00 /* ChangeNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNameTableViewCell.swift; sourceTree = "<group>"; };
+		FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
 				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
+				FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */,
 				FD3C20751E7A2F6A005E8DB9 /* Tutorial */,
 			);
 			name = "View Controller";
@@ -288,6 +291,7 @@
 				FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */,
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
 				FD1AAB021EA2C8E30094EF57 /* CustomTabView.swift in Sources */,
+				FDD9C2E81ECE3DCF00573F00 /* MoreOptionsViewController.swift in Sources */,
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
