@@ -33,4 +33,11 @@ class UserController {
         return yourName
     }
     
+    
+    var defaults = [
+        ["locationSave" : false],
+        ["autoText" : false]
+    ]
+    
+    
 }

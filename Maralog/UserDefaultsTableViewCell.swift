@@ -1,5 +1,5 @@
 //
-//  ChangeNameTableViewCell.swift
+//  UserDefaultsTableViewCell.swift
 //  Maralog
 //
 //  Created by Ilias Basha on 5/18/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangeNameTableViewCell: UITableViewCell {
+class UserDefaultsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
