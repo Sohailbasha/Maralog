@@ -25,10 +25,18 @@ class UserDefaultsTableViewCell: UITableViewCell {
     
     var delegate: settingsTableViewDelegate?
     
+    // MARK: - Outlets
+    
     @IBOutlet var settingsImage: UIImageView!
     @IBOutlet var settingsLabel: UILabel!
     @IBOutlet var settingsSwitch: UISwitch!
     
+    
+    // MARK: - Actions
+    
+    @IBAction func switchActivated(_ sender: Any) {
+        delegate?.settingValueChanged(cell: self, selected: settingsSwitch.isOn)
+    }
 }
 
 protocol settingsTableViewDelegate: class {

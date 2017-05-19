@@ -15,6 +15,9 @@ class MoreOptionsViewController: UIViewController, UITableViewDataSource, UITabl
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let name = UserController.sharedInstance.getName()
+        self.yourNameLabel.text = "Your Name: \(name)"
     }
 
     
