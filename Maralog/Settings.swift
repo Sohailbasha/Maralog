@@ -31,6 +31,12 @@ class Settings {
     }
     
     
+    var enabled: Bool {
+        return false
+    }
+    
+    
+    
     convenience init?(dictionary: [String: Any]) {
         guard let name = dictionary[Settings.kName] as? String,
             let isOn = dictionary[Settings.kIsOn] as? Bool,

@@ -16,7 +16,6 @@ class SettingsController {
     
     var settings: [Settings] = []
     
-    
     init() {
         let locationSetting: Settings = Settings(name: "Location Services", isOn: false, icon: #imageLiteral(resourceName: "locationServices"))
         let autoTextSetting: Settings = Settings(name: "Autotext", isOn: false, icon: #imageLiteral(resourceName: "autoMessage"))
@@ -26,9 +25,20 @@ class SettingsController {
     }
     
     
+    func saveLocationSetting(setting: Settings, value: Bool) {
+        let userDefaults = UserDefaults.standard
+        
+        
+        
+        //userDefaults.set(value, forKey: "locationServiceSetting")
+    }
+    
+    
+    
     func saveToPersistentStorage() {
         let userDefaults = UserDefaults.standard
         let defaultsDictionary = settings.map { $0.dictionaryRep }
+        
         userDefaults.set(defaultsDictionary, forKey: SettingsController.settingsControllerKey)
     }
     
