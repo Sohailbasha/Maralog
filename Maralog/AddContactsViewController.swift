@@ -35,8 +35,34 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.allign(label: labelOfLastName, with: lastNameTextField)
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
+        if isLocationDefaultOn == true {
+            uiSwitch.isOn = true
+        } else {
+            uiSwitch.isOn = false
+        }
+        
+        if isAutoTextDefaultOn == true {
+            autoTextSwitch.isOn = true
+        } else {
+            autoTextSwitch.isOn = false
+        }
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if isLocationDefaultOn == true {
+            uiSwitch.isOn = true
+        } else {
+            uiSwitch.isOn = false
+        }
+        
+        if isAutoTextDefaultOn == true {
+            autoTextSwitch.isOn = true
+        } else {
+            autoTextSwitch.isOn = false
+        }
+    }
     
     // MARK: - Properties
     
@@ -46,6 +72,16 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     let store = CNContactStore()
     let address = CNMutablePostalAddress()
+    
+    
+    
+    var isLocationDefaultOn: Bool {
+        return SettingsController.sharedInstance.getLocationSetting()
+    }
+    
+    var isAutoTextDefaultOn: Bool {
+        return SettingsController.sharedInstance.getTextSetting()
+    }
     
     
     // MARK: - Outlets
@@ -356,9 +392,6 @@ extension AddContactsViewController {
         self.labelOfFirstName.isHidden = true
         self.labelOfLastName.isHidden = true
     }
-    
-    
-    
     
 
 }
