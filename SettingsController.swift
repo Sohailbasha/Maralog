@@ -22,4 +22,6 @@ class SettingsController {
         
         settings = [locationSetting, autoTextSetting]
     }
+    
+    
 }
