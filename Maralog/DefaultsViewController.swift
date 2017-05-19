@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DefaultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DefaultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,20 @@ class DefaultsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    // MARK: - Outlets
+    
     @IBOutlet var tableView: UITableView!
     
+    
+    // MARK: - Actions
+    
+    
+    
+
+}
+
+
+extension DefaultsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +47,6 @@ class DefaultsViewController: UIViewController, UITableViewDelegate, UITableView
         cell?.delegate = self
         return cell ?? UITableViewCell()
     }
-    
 }
 
 extension DefaultsViewController: settingsTableViewDelegate {

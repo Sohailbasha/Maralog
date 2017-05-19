@@ -23,8 +23,8 @@ class SettingsController {
     let textKey = "textKey"
     
     init() {
-        var locationIsOn = getLocationSetting()
-        var textIsOn = getTextSetting()
+        let locationIsOn = getLocationSetting()
+        let textIsOn = getTextSetting()
         
         
         let locationSetting: Settings = Settings(name: locationSettingName, isOn: locationIsOn, icon: #imageLiteral(resourceName: "locationServices"))
@@ -63,16 +63,16 @@ class SettingsController {
     
     
     
-
-    func saveToPersistentStorage() {
-        let userDefaults = UserDefaults.standard
-        let defaultsDictionary = settings.map { $0.dictionaryRep }
-        userDefaults.set(defaultsDictionary, forKey: SettingsController.settingsControllerKey)
-    }
-    
-    func loadFromPersistentMemory() {
-        let userDefaults = UserDefaults.standard
-        guard let defaultsDictionary = userDefaults.object(forKey: SettingsController.settingsControllerKey) as? [[String: Any]] else {return}
-        settings = defaultsDictionary.flatMap{ Settings(dictionary: $0) }
-    }
+//
+//    func saveToPersistentStorage() {
+//        let userDefaults = UserDefaults.standard
+//        let defaultsDictionary = settings.map { $0.dictionaryRep }
+//        userDefaults.set(defaultsDictionary, forKey: SettingsController.settingsControllerKey)
+//    }
+//    
+//    func loadFromPersistentMemory() {
+//        let userDefaults = UserDefaults.standard
+//        guard let defaultsDictionary = userDefaults.object(forKey: SettingsController.settingsControllerKey) as? [[String: Any]] else {return}
+//        settings = defaultsDictionary.flatMap{ Settings(dictionary: $0) }
+//    }
 }
