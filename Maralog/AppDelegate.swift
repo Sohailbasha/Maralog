@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
-        if (UserDefaults.standard.value(forKey: "name") as? String) == nil {
+        if (UserDefaults.standard.value(forKey: "userName") as? String) == nil {
             // show the onboarding screen
             vc = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
         } else {

@@ -16,29 +16,57 @@ class SettingsController {
     
     var settings: [Settings] = []
     
+    let locationSettingName = "Location Services"
+    let textingSettingName = "Autotext"
+    
+    let locationKey = "locationKey"
+    let textKey = "textKey"
+    
     init() {
-        let locationSetting: Settings = Settings(name: "Location Services", isOn: false, icon: #imageLiteral(resourceName: "locationServices"))
-        let autoTextSetting: Settings = Settings(name: "Autotext", isOn: false, icon: #imageLiteral(resourceName: "autoMessage"))
+        var locationIsOn = getLocationSetting()
+        var textIsOn = getTextSetting()
+        
+        
+        let locationSetting: Settings = Settings(name: locationSettingName, isOn: locationIsOn, icon: #imageLiteral(resourceName: "locationServices"))
+        let autoTextSetting: Settings = Settings(name: textingSettingName, isOn: textIsOn, icon: #imageLiteral(resourceName: "autoMessage"))
         
         settings = [locationSetting, autoTextSetting]
-        loadFromPersistentMemory()
     }
     
     
-    func saveLocationSetting(setting: Settings, value: Bool) {
+    //save
+    func saveAsDefault(setting: Settings, value: Bool) {
+        
         let userDefaults = UserDefaults.standard
         
+        if setting.name == locationSettingName {
+            userDefaults.set(value, forKey: locationKey)
+        }
         
-        
-        //userDefaults.set(value, forKey: "locationServiceSetting")
+        if setting.name == textingSettingName {
+            userDefaults.set(value, forKey: textKey)
+        }
+    }
+    
+    //load
+    func getLocationSetting() -> Bool {
+        let userDefaults = UserDefaults.standard
+        guard let locationDefaultSetting = userDefaults.value(forKey: locationKey) as? Bool else { return false }
+        return locationDefaultSetting
+    }
+    
+    func getTextSetting() -> Bool {
+        let userDefaults = UserDefaults.standard
+        guard let textDefaultSetting = userDefaults.value(forKey: textKey) as? Bool else { return false }
+        return textDefaultSetting
     }
     
     
     
+
     func saveToPersistentStorage() {
         let userDefaults = UserDefaults.standard
         let defaultsDictionary = settings.map { $0.dictionaryRep }
-        
         userDefaults.set(defaultsDictionary, forKey: SettingsController.settingsControllerKey)
     }
     

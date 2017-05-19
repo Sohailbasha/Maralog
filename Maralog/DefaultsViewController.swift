@@ -39,12 +39,10 @@ class DefaultsViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 extension DefaultsViewController: settingsTableViewDelegate {
-    
     func settingValueChanged(cell: UserDefaultsTableViewCell, selected: Bool) {
         guard let setting = cell.setting, let cellIndexPath = tableView.indexPath(for: cell) else { return }
         setting.isOn = selected
-        tableView.reloadRows(at: [cellIndexPath], with: .none)
-        SettingsController.sharedInstance.saveToPersistentStorage()
+        tableView.reloadRows(at: [cellIndexPath], with: .fade)
+        SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
     }
-    
 }

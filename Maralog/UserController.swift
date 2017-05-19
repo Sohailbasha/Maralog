@@ -25,11 +25,11 @@ class UserController {
 //    
     
     func saveUserName(name: String?) {
-        UserDefaults.standard.set(name, forKey: "name")
+        UserDefaults.standard.set(name, forKey: "userName")
     }
     
     func getName() -> String {
-        guard let yourName = UserDefaults.standard.value(forKey: "name") as? String else { return "" }
+        guard let yourName = UserDefaults.standard.value(forKey: "userName") as? String else { return "" }
         return yourName
     }
     
