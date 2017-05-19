@@ -856,7 +856,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nek-XE-O1g">
-                                                    <rect key="frame" x="71" y="8" width="264" height="21"/>
+                                                    <rect key="frame" x="71" y="8" width="207" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -868,6 +868,11 @@
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingsImage" destination="GsC-32-PHN" id="WKS-S5-52z"/>
+                                            <outlet property="settingsLabel" destination="nek-XE-O1g" id="IiL-QT-Dkm"/>
+                                            <outlet property="settingsSwitch" destination="lwe-oF-6tL" id="WRl-qF-Edj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

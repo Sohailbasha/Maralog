@@ -10,15 +10,27 @@ import UIKit
 
 class UserDefaultsTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+
+    
+    
+    var setting: Settings? {
+        didSet {
+            guard let setting = setting else { return }
+            settingsLabel.text = setting.name
+            settingsImage.image = setting.icon
+            settingsSwitch.isOn = setting.isOn
+        }
+        
     }
+    
+    var delegate: settingsTableViewDelegate?
+    
+    @IBOutlet var settingsImage: UIImageView!
+    @IBOutlet var settingsLabel: UILabel!
+    @IBOutlet var settingsSwitch: UISwitch!
+    
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+protocol settingsTableViewDelegate: class {
+     func settingValueChanged(cell: UserDefaultsTableViewCell, selected: Bool)
 }
