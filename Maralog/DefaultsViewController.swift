@@ -15,6 +15,9 @@ class DefaultsViewController: UIViewController, UITableViewDelegate, UITableView
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
     }
 
     @IBOutlet var tableView: UITableView!

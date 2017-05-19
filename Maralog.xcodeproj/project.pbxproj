@@ -39,6 +39,7 @@
 		FDD9C2F11ECE45FD00573F00 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F01ECE45FD00573F00 /* SettingsController.swift */; };
 		FDD9C2F31ECE79A200573F00 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F21ECE79A200573F00 /* Symbols.swift */; };
 		FDD9C2F61ECE7AD400573F00 /* SymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F51ECE7AD400573F00 /* SymbolsController.swift */; };
+		FDD9C2F81ECE7EF800573F00 /* SymbolsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F71ECE7EF800573F00 /* SymbolsTableViewCell.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		FDD9C2F01ECE45FD00573F00 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = ../SettingsController.swift; sourceTree = "<group>"; };
 		FDD9C2F21ECE79A200573F00 /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		FDD9C2F51ECE7AD400573F00 /* SymbolsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolsController.swift; sourceTree = "<group>"; };
+		FDD9C2F71ECE7EF800573F00 /* SymbolsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolsTableViewCell.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 			children = (
 				FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */,
 				FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */,
+				FDD9C2F71ECE7EF800573F00 /* SymbolsTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
 				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
+				FDD9C2F81ECE7EF800573F00 /* SymbolsTableViewCell.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
 				FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */,
