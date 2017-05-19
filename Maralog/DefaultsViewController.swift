@@ -9,15 +9,15 @@
 import UIKit
 
 class DefaultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
     }
-
+    
     @IBOutlet var tableView: UITableView!
     
     
@@ -26,7 +26,7 @@ class DefaultsViewController: UIViewController, UITableViewDelegate, UITableView
         return SettingsController.sharedInstance.settings.count
     }
     
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "defaultsCell", for: indexPath) as? UserDefaultsTableViewCell
         let setting = SettingsController.sharedInstance.settings[indexPath.row]
@@ -34,12 +34,12 @@ class DefaultsViewController: UIViewController, UITableViewDelegate, UITableView
         cell?.delegate = self
         return cell ?? UITableViewCell()
     }
-
+    
 }
 
 
 extension DefaultsViewController: settingsTableViewDelegate {
-
+    
     func settingValueChanged(cell: UserDefaultsTableViewCell, selected: Bool) {
         guard let setting = cell.setting, let cellIndexPath = tableView.indexPath(for: cell) else { return }
         setting.isOn = selected

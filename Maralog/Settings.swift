@@ -11,6 +11,11 @@ import UIKit
 
 class Settings {
     
+    private static let kName = "name"
+    private static let kIsOn = "isOn"
+    private static let kIcon = "icon"
+
+    
     let name: String
     var isOn: Bool
     let icon: UIImage
@@ -21,4 +26,16 @@ class Settings {
         self.icon = icon
     }
     
+    var dictionaryRep: [String: Any] {
+        return[Settings.kName: name, Settings.kIsOn: isOn, Settings.kIcon: icon]
+    }
+    
+    
+    convenience init?(dictionary: [String: Any]) {
+        guard let name = dictionary[Settings.kName] as? String,
+            let isOn = dictionary[Settings.kIsOn] as? Bool,
+            let icon = dictionary[Settings.kIcon] as? UIImage else { return nil }
+        
+        self.init(name: name, isOn: isOn, icon: icon)
+    }
 }

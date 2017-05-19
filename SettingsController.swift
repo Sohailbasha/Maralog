@@ -11,6 +11,7 @@ import UIKit
 
 class SettingsController {
     
+    private static let settingsControllerKey = "settings"
     static let sharedInstance = SettingsController()
     
     var settings: [Settings] = []
@@ -21,7 +22,19 @@ class SettingsController {
         let autoTextSetting: Settings = Settings(name: "Autotext", isOn: false, icon: #imageLiteral(resourceName: "autoMessage"))
         
         settings = [locationSetting, autoTextSetting]
+        loadFromPersistentMemory()
     }
     
     
+    func saveToPersistentStorage() {
+        let userDefaults = UserDefaults.standard
+        let defaultsDictionary = settings.map { $0.dictionaryRep }
+        userDefaults.set(defaultsDictionary, forKey: SettingsController.settingsControllerKey)
+    }
+    
+    func loadFromPersistentMemory() {
+        let userDefaults = UserDefaults.standard
+        guard let defaultsDictionary = userDefaults.object(forKey: SettingsController.settingsControllerKey) as? [[String: Any]] else {return}
+        settings = defaultsDictionary.flatMap{ Settings(dictionary: $0) }
+    }
 }
