@@ -43,7 +43,7 @@
                                 <rect key="frame" x="16" y="348" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
                                 <rect key="frame" x="23" y="383" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.80392156862745101" green="0.40392156862745099" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,7 +51,7 @@
                                     <action selector="locationSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="Mai-35-TiJ"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
                                 <rect key="frame" x="125" y="383" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.79893714189529419" green="0.40392156862745099" blue="0.56089931726455688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,6 +85,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKv-ZQ-8ZA">
+                                <rect key="frame" x="116" y="490" width="143" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <state key="normal" image="createContact"/>
+                                <connections>
+                                    <action selector="createContactButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="ZYT-0F-Wyr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -102,6 +110,7 @@
                     <connections>
                         <outlet property="autoTextIcon" destination="Tns-Is-0U4" id="AKg-Mf-9Nr"/>
                         <outlet property="autoTextSwitch" destination="wVv-vT-qpx" id="dia-Fa-Bjj"/>
+                        <outlet property="createContactButton" destination="wKv-ZQ-8ZA" id="pr8-8q-LZ8"/>
                         <outlet property="firstNameTextField" destination="ANx-2R-crX" id="osQ-Z1-MVZ"/>
                         <outlet property="labelOfFirstName" destination="cim-u8-10V" id="XWx-vK-wNe"/>
                         <outlet property="labelOfLastName" destination="XA5-Iy-YNO" id="9bO-1Q-aZk"/>
@@ -797,6 +806,7 @@
         <image name="(T) Sync" width="100" height="104"/>
         <image name="OnBoarding Backgroun" width="375" height="667"/>
         <image name="autoMessage" width="168" height="75"/>
+        <image name="createContact" width="176" height="51"/>
         <image name="locationServices" width="206" height="88"/>
         <image name="tbAdd" width="33" height="33"/>
         <image name="tbOptions" width="30" height="8"/>

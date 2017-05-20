@@ -20,6 +20,8 @@ class MoreOptionsViewController: UIViewController {
         self.yourNameLabel.text = "Your Name: \(name)"
         
         self.changeDesignsFor(buttons: [saveNameButton, watchWalkthroughButton])
+        
+        nameChangeTextField.delegate = self
     }
     
     

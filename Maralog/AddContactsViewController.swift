@@ -20,12 +20,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.requestWhenInUseAuthorization()
         
         self.detailLabelsAreInvisible()
+        //
+        //        uiSwitch.isOn = false
+        //        autoTextSwitch.isOn = false
         
-        uiSwitch.isOn = false
-        autoTextSwitch.isOn = false
-        
-        autoTextIcon.tintColor = .gray
-        locationIcon.tintColor = .gray
         
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
@@ -37,15 +35,27 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         if isLocationDefaultOn == true {
             uiSwitch.isOn = true
+            locationIcon.tintColor = .black
+            
         } else {
             uiSwitch.isOn = false
+            locationIcon.tintColor = .gray
+            
         }
         
         if isAutoTextDefaultOn == true {
             autoTextSwitch.isOn = true
+            autoTextIcon.tintColor = .black
+            
         } else {
             autoTextSwitch.isOn = false
+            autoTextIcon.tintColor = .gray
+            
         }
+        
+        
+        createContactButton.isHidden = true
+        
     }
     
     
@@ -62,7 +72,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             autoTextSwitch.isOn = false
         }
+        
+        if phoneNumberTextField.text?.isEmpty == false && firstNameTextField.text?.isEmpty == false {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.createContactButton.isHidden = false
+            })
+        }
     }
+    
     
     // MARK: - Properties
     
@@ -72,8 +89,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     let store = CNContactStore()
     let address = CNMutablePostalAddress()
-    
-    
     
     var isLocationDefaultOn: Bool {
         return SettingsController.sharedInstance.getLocationSetting()
@@ -106,6 +121,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var autoTextIcon: UIImageView!
     
     
+    // Buttons
+    @IBOutlet var createContactButton: UIButton!
     
     
     
@@ -121,6 +138,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         if (!firstName.isEmpty && !phoneNumber.isEmpty) {
             
+            
+            
             if uiSwitch.isOn {
                 if let location = usersLocation {
                     let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
@@ -132,39 +151,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 ContactController.sharedInstance.addContact(contact: contact)
                 addContactWithoutAddress(contact: contact)
             }
-            
             autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
-        } else {
-            
-            if firstName.isEmpty {
-                self.hilightEmpty(firstNameTextField)
-            }
-            
-            if phoneNumber.isEmpty {
-                self.hilightEmpty(phoneNumberTextField)
-            }
         }
     }
-    
-    
-    func createButton() -> UIButton {
-        
-        let button: UIButton = UIButton()
-        let y = autoTextSwitch.frame.origin.y
-        let x = autoTextSwitch.frame.origin.x * 1.5
-        
-        button.frame = CGRect(x: x, y: y, width: 175, height: 50)
-        
-        button.backgroundColor = .red
-        button.setTitle("save", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        
-        self.view.addSubview(button)
-        
-        return button
-    }
-    
-    
     
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
@@ -189,6 +178,24 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextIcon.tintColor = .black
         }
     }
+    
+    
+    
+    
+    @IBAction func createContactButtonTapped(_ sender: Any) {
+        
+        let view: UIView = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        view.backgroundColor = .white
+        let label: UILabel = UILabel()
+        label.text = "Contact Saved"
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 40)
+        
+        
+    }
+    
+    
+    
     
 }
 
@@ -256,6 +263,7 @@ extension AddContactsViewController: UITextFieldDelegate {
                 self.labelOfFirstName.isHidden = true
             }, completion: nil)
         }
+        
         if lNameText.isEmpty {
             UIView.animate(withDuration: 0.25, animations: {
                 self.allign(label: self.labelOfLastName, with: self.lastNameTextField)
@@ -269,8 +277,13 @@ extension AddContactsViewController: UITextFieldDelegate {
             }, completion: nil)
         }
         
+        if fNameText.isEmpty == false && pNumberText.isEmpty == false {
+            createContactButton.isHidden = false
+        } else {
+            createContactButton.isHidden = true
+        }
+        
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -284,6 +297,8 @@ extension AddContactsViewController: UITextFieldDelegate {
 }
 
 
+
+
 // MARK: - HELPER METHODS
 
 extension AddContactsViewController {
@@ -294,9 +309,13 @@ extension AddContactsViewController {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-            present(messageComposerVC,
-                    animated: true,
-                    completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
+            
+            DispatchQueue.main.async {
+                self.present(messageComposerVC,
+                             animated: true,
+                             completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
+            }
+            
         } else {
             return
         }
@@ -374,17 +393,6 @@ extension AddContactsViewController {
         try? store.execute(saveRequest)
     }
     
-    func hilightEmpty(_ textField: UITextField) {
-        let errorColor = UIColor(red: 255/255, green: 101/255, blue: 98/255, alpha: 1)
-        
-        UIView.animate(withDuration: 0.15, animations: {
-            textField.backgroundColor = errorColor
-        }) { (_) in
-            UIView.animate(withDuration: 0.15, animations: {
-                textField.backgroundColor = .clear
-            })
-        }
-    }
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -412,7 +420,66 @@ extension AddContactsViewController {
         self.labelOfLastName.isHidden = true
     }
     
+    
+    
+    
+    func save() {
+        
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
+            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
+            let phoneNumber = phoneNumberTextField.text as String? else { return }
+        
+        
+        if (!firstName.isEmpty && !phoneNumber.isEmpty) {
+            
+            if uiSwitch.isOn {
+                if let location = usersLocation {
+                    let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+                    ContactController.sharedInstance.addContact(contact: contact)
+                    addToCNContacts(contact: contact)
+                }
+            } else {
+                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+                ContactController.sharedInstance.addContact(contact: contact)
+                addContactWithoutAddress(contact: contact)
+            }
+            
+            autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
+        }
+        
+    }
+    
+    
+    func saveanimation() {
+        let label: UILabel = UILabel()
+        label.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        label.text = "saved to contacts"
+        label.center = self.view.center
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.makeAlphaZeroFor(objects: [self.phoneNumberTextField, self.firstNameTextField, self.lastNameTextField, self.uiSwitch, self.autoTextSwitch, self.locationIcon, self.autoTextIcon])
+            self.detailLabelsAreInvisible()
+        }) { (_) in
+            self.phoneNumberTextField.text = ""
+            self.firstNameTextField.text = ""
+            self.lastNameTextField.text = ""
+            UIView.animate(withDuration: 0.75, animations: { 
+                self.makeAlphaZeroFor(objects: [self.phoneNumberTextField, self.firstNameTextField, self.lastNameTextField, self.uiSwitch, self.autoTextSwitch, self.locationIcon, self.autoTextIcon])
+            })
+        }
+    }
+    
+    
+    
+    func makeAlphaZeroFor(objects: [AnyObject]) {
+        for object in objects {
+            object.setAlpha(0.0)
+        }
+    }
 
+    
+    
+    
 }
 
 
