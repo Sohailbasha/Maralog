@@ -260,6 +260,24 @@
             </objects>
             <point key="canvasLocation" x="4756" y="72"/>
         </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="xBm-AN-AQb">
+            <objects>
+                <viewController id="B30-KJ-kIm" customClass="SignInViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRD-Mn-v4T"/>
+                        <viewControllerLayoutGuide type="bottom" id="y3s-uO-0pQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eFf-0Q-g05">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5UQ-9e-hTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5708" y="-366"/>
+        </scene>
         <!--First Tutorial View Controller-->
         <scene sceneID="bG5-cI-LKC">
             <objects>

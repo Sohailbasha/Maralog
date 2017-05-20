@@ -41,6 +41,7 @@
 		FDD9C2F61ECE7AD400573F00 /* SymbolsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F51ECE7AD400573F00 /* SymbolsController.swift */; };
 		FDD9C2F81ECE7EF800573F00 /* SymbolsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F71ECE7EF800573F00 /* SymbolsTableViewCell.swift */; };
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
+		FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F931ED0D7360057E102 /* SignInViewController.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		FDD9C2F51ECE7AD400573F00 /* SymbolsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolsController.swift; sourceTree = "<group>"; };
 		FDD9C2F71ECE7EF800573F00 /* SymbolsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolsTableViewCell.swift; sourceTree = "<group>"; };
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
+		FDE28F931ED0D7360057E102 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +118,7 @@
 				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
 				FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */,
 				FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */,
-				FD3C20751E7A2F6A005E8DB9 /* Tutorial */,
+				FDE28F931ED0D7360057E102 /* SignInViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -221,6 +223,7 @@
 		FDD9C2ED1ECE421200573F00 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				FD3C20751E7A2F6A005E8DB9 /* Tutorial */,
 				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
 				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
 			);
@@ -338,6 +341,7 @@
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
 				FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */,
 				FD3C20771E7A33EB005E8DB9 /* LastTutorialViewController.swift in Sources */,
+				FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
 				FDD9C2F61ECE7AD400573F00 /* SymbolsController.swift in Sources */,
 				FD3C20741E7A2F64005E8DB9 /* TutorialPageViewController.swift in Sources */,
