@@ -147,6 +147,25 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
+    func createButton() -> UIButton {
+        
+        let button: UIButton = UIButton()
+        let y = autoTextSwitch.frame.origin.y
+        let x = autoTextSwitch.frame.origin.x * 1.5
+        
+        button.frame = CGRect(x: x, y: y, width: 175, height: 50)
+        
+        button.backgroundColor = .red
+        button.setTitle("save", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        
+        self.view.addSubview(button)
+        
+        return button
+    }
+    
+    
+    
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
