@@ -199,8 +199,4 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
  
 
-  
-    
-    
-
 }
