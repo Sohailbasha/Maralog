@@ -27,8 +27,6 @@ class DefaultsViewController: UIViewController {
     // MARK: - Actions
     
     
-    
-
 }
 
 
