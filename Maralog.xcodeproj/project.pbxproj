@@ -44,6 +44,7 @@
 		FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F931ED0D7360057E102 /* SignInViewController.swift */; };
 		FDE28F981ED0D80D0057E102 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F971ED0D80D0057E102 /* Page.swift */; };
 		FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9A1ED0D8E80057E102 /* Extensions.swift */; };
+		FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9C1ED0D94B0057E102 /* PageCell.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		FDE28F931ED0D7360057E102 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FDE28F971ED0D80D0057E102 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		FDE28F9A1ED0D8E80057E102 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FDE28F9C1ED0D94B0057E102 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,8 +249,9 @@
 		FDE28F951ED0D7DF0057E102 /* Sign In / Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				FDE28F961ED0D7FB0057E102 /* View Controller */,
 				FDE28F991ED0D8120057E102 /* Model */,
+				FDE28F9E1ED0D9530057E102 /* View */,
+				FDE28F961ED0D7FB0057E102 /* View Controller */,
 			);
 			name = "Sign In / Tutorial";
 			sourceTree = "<group>";
@@ -267,6 +270,14 @@
 				FDE28F971ED0D80D0057E102 /* Page.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		FDE28F9E1ED0D9530057E102 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FDE28F9C1ED0D94B0057E102 /* PageCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
 				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,
 				FD16C99B1E491F3200237631 /* ContactsListViewController.swift in Sources */,
+				FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */,
 				FDD9C2F81ECE7EF800573F00 /* SymbolsTableViewCell.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
