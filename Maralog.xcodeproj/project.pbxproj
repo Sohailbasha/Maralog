@@ -43,6 +43,7 @@
 		FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */; };
 		FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F931ED0D7360057E102 /* SignInViewController.swift */; };
 		FDE28F981ED0D80D0057E102 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F971ED0D80D0057E102 /* Page.swift */; };
+		FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9A1ED0D8E80057E102 /* Extensions.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FDE28F931ED0D7360057E102 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FDE28F971ED0D80D0057E102 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		FDE28F9A1ED0D8E80057E102 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +207,7 @@
 		FD631D841E4E7D2E00CA9B11 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				FDE28F9A1ED0D8E80057E102 /* Extensions.swift */,
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
 				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
@@ -375,6 +378,7 @@
 				FD3C20741E7A2F64005E8DB9 /* TutorialPageViewController.swift in Sources */,
 				FD557C511E79D1D800067EF1 /* SettingsTableViewController.swift in Sources */,
 				FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */,
+				FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */,
 				FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
