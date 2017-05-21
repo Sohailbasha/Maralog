@@ -44,7 +44,7 @@ class PageCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .yellow
+        iv.backgroundColor = .white
         iv.image = UIImage(named: "page1")
         iv.clipsToBounds = true
         return iv
@@ -64,6 +64,8 @@ class PageCell: UICollectionViewCell {
         return view
     }()
     
+    
+    
     func setupViews() {
         addSubview(imageView)
         addSubview(textView)
@@ -77,10 +79,6 @@ class PageCell: UICollectionViewCell {
         
         lineSeparatorView.anchorToTop(nil, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
         lineSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-    }
-    
-    func animateBackgroundColor() {
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

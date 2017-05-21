@@ -46,6 +46,7 @@
 		FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9A1ED0D8E80057E102 /* Extensions.swift */; };
 		FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9C1ED0D94B0057E102 /* PageCell.swift */; };
 		FDE28FA01ED0DA550057E102 /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9F1ED0DA550057E102 /* LoginCell.swift */; };
+		FDE741751ED1699500EB1B90 /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE741741ED1699500EB1B90 /* UIViewX.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		FDE28F9A1ED0D8E80057E102 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FDE28F9C1ED0D94B0057E102 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		FDE28F9F1ED0DA550057E102 /* LoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
+		FDE741741ED1699500EB1B90 /* UIViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -279,6 +281,7 @@
 			children = (
 				FDE28F9C1ED0D94B0057E102 /* PageCell.swift */,
 				FDE28F9F1ED0DA550057E102 /* LoginCell.swift */,
+				FDE741741ED1699500EB1B90 /* UIViewX.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				FDD9C2E81ECE3DCF00573F00 /* MoreOptionsViewController.swift in Sources */,
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FDD9C2F31ECE79A200573F00 /* Symbols.swift in Sources */,
+				FDE741751ED1699500EB1B90 /* UIViewX.swift in Sources */,
 				FDD9C2EA1ECE3EC900573F00 /* UserDefaultsTableViewCell.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
