@@ -121,15 +121,12 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
-        
     }
-    
     
     func keyboardHide() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
-        
     }
     
     func keyboardShow() {
@@ -148,6 +145,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
         pageControl.currentPage = pageNumber
         
         //we are on the last page
+        
         if pageNumber == pages.count {
             moveControlConstaintsOffScreen()
         } else {
@@ -179,8 +177,13 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+ 
         //last login cell is being rendere here
+        if indexPath.item == indexPath.count && UserDefaults.standard.value(forKey: "userName") as? String != nil {
+//            finishSigningIn()
+            self.finishLoggingIn()
+        }
+        
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell
             loginCell.delegate = self
