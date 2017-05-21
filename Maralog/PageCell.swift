@@ -79,6 +79,10 @@ class PageCell: UICollectionViewCell {
         lineSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
+    func animateBackgroundColor() {
+        
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

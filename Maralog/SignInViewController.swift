@@ -39,11 +39,10 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
         return [firstPage, secondPage, thirdPage]
     }()
     
-    
     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.pageIndicatorTintColor = .lightGray
-        pc.currentPageIndicatorTintColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
+        pc.currentPageIndicatorTintColor = .black
         pc.numberOfPages = self.pages.count + 1
         return pc
     }()
@@ -51,7 +50,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("skip", for: .normal)
-        button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(skip), for: .touchUpInside)
         return button
     }()
@@ -64,7 +63,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("next", for: .normal)
-        button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
         return button
     }()
