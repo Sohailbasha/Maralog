@@ -23,6 +23,10 @@ class UserController {
 //    }
 //    
 //    
+    func goToInitialVC() {
+        
+    }
+    
     
     func saveUserName(name: String?) {
         UserDefaults.standard.set(name, forKey: "userName")

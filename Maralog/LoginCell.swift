@@ -27,14 +27,25 @@ class LoginCell: UICollectionViewCell {
     }()
     
     
-    let loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         let color = UIColor(red: 205/255, green: 103/255, blue: 150/255, alpha: 1)
         button.backgroundColor = color
         button.setTitle("start", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
+    
+    
+    
+    func handleLogin() {
+        if let userName = enterUsernameTextField.text, !userName.isEmpty {
+            UserController.sharedInstance.saveUserName(name: userName)
+            
+        }
+        print("Log in")
+    }
     
     
     override init(frame: CGRect) {
