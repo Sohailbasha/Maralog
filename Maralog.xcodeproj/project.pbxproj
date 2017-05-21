@@ -121,7 +121,6 @@
 		FD16C98C1E490AD500237631 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */,
 				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
@@ -161,6 +160,7 @@
 			children = (
 				FD30BFF41E43FFA100759ECB /* Maralog */,
 				FD30BFF31E43FFA100759ECB /* Products */,
+				FDD9C2ED1ECE421200573F00 /* Unused */,
 				FD3B14961E4A83C900506CC1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -180,7 +180,6 @@
 				FD16C9971E490F6600237631 /* Model Controller */,
 				FDCB3ACE1E7AE49F00BBF8D3 /* View */,
 				FD16C98C1E490AD500237631 /* View Controller */,
-				FDD9C2ED1ECE421200573F00 /* Unused */,
 				FD631D841E4E7D2E00CA9B11 /* Tools */,
 				FDE28F951ED0D7DF0057E102 /* Sign In / Tutorial */,
 				FD16C98B1E490ACA00237631 /* Story Board */,
@@ -235,11 +234,13 @@
 		FDD9C2ED1ECE421200573F00 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */,
 				FD3C20751E7A2F6A005E8DB9 /* Tutorial */,
 				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
 				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
 			);
 			name = Unused;
+			path = Maralog;
 			sourceTree = "<group>";
 		};
 		FDD9C2F41ECE79B000573F00 /* Minor Classes */ = {

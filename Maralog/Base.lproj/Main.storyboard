@@ -263,7 +263,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="xBm-AN-AQb">
             <objects>
-                <viewController id="B30-KJ-kIm" customClass="SignInViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" id="B30-KJ-kIm" customClass="SignInViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bRD-Mn-v4T"/>
                         <viewControllerLayoutGuide type="bottom" id="y3s-uO-0pQ"/>
@@ -512,9 +512,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.6470588235294118" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <connections>
-                        <segue destination="8Jt-DK-pGG" kind="show" identifier="toMainSegue" id="7Uh-yI-KaL"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwe-9j-nj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
