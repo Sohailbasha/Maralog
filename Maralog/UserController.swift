@@ -23,9 +23,7 @@ class UserController {
 //    }
 //    
 //    
-    func goToInitialVC() {
-        
-    }
+    
     
     
     func saveUserName(name: String?) {

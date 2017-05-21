@@ -38,11 +38,14 @@ class LoginCell: UICollectionViewCell {
     }()
     
     
+    weak var delegate: CustomCellDelegate?
+    
     
     func handleLogin() {
         if let userName = enterUsernameTextField.text, !userName.isEmpty {
             UserController.sharedInstance.saveUserName(name: userName)
-            
+            delegate?.finishSigningIn()
+        
         }
         print("Log in")
     }
@@ -82,3 +85,7 @@ class leftPaddedTextField: UITextField {
         return CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.width + 10, height: bounds.height)
     }
 }
+
+
+
+

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class SignInViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CustomCellDelegate {
 
     
     lazy var collectionView: UICollectionView = {
@@ -183,6 +183,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
         //last login cell is being rendere here
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell
+            loginCell.delegate = self
             return loginCell
         }
         
@@ -201,4 +202,25 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     func finishLoggingIn() {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    func finishSigningIn() {
+        performSegue(withIdentifier: "toInitialViewController", sender: self)
+    }
 }
+
+
+protocol CustomCellDelegate: class {
+    func finishSigningIn()
+}
+
+
+
+
+
+
+
+
+
+
+
