@@ -29,7 +29,8 @@ class LoginCell: UICollectionViewCell {
     
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .red
+        let color = UIColor(red: 205/255, green: 103/255, blue: 150/255, alpha: 1)
+        button.backgroundColor = color
         button.setTitle("start", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button

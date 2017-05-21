@@ -397,11 +397,9 @@ extension AddContactsViewController {
     
     
     func hilightEmpty(_ textField: UITextField) {
-        
-        let errorColor = UIColor(red: 255/255, green: 101/255, blue: 98/255, alpha: 1)
-        
+    
         UIView.animate(withDuration: 0.15, animations: {
-            textField.backgroundColor = errorColor
+            textField.backgroundColor = Keys.sharedInstance.errorColor
         }) { (_) in
             UIView.animate(withDuration: 0.15, animations: {
                 textField.backgroundColor = .clear

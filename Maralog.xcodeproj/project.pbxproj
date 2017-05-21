@@ -30,6 +30,7 @@
 		FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */; };
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
+		FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2801ED210D20027A3BA /* Keys.swift */; };
 		FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */; };
 		FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */; };
 		FDD9C2E81ECE3DCF00573F00 /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */; };
@@ -75,6 +76,7 @@
 		FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
+		FDBDA2801ED210D20027A3BA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTutorialViewController.swift; sourceTree = "<group>"; };
 		FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberLabelFormatter.swift; sourceTree = "<group>"; };
 		FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
 				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
+				FDBDA2801ED210D20027A3BA /* Keys.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				FDE28FA01ED0DA550057E102 /* LoginCell.swift in Sources */,
 				FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */,
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
+				FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */,
 				FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */,
 				FD3C20771E7A33EB005E8DB9 /* LastTutorialViewController.swift in Sources */,
 				FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */,
