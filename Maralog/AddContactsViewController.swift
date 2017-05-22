@@ -12,6 +12,7 @@ import Contacts
 
 class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         coreLocationManager = CLLocationManager()
@@ -20,10 +21,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.requestWhenInUseAuthorization()
         
         self.detailLabelsAreInvisible()
-        //
-        //        uiSwitch.isOn = false
-        //        autoTextSwitch.isOn = false
-        
         
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
@@ -46,6 +43,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if isAutoTextDefaultOn == true {
             autoTextSwitch.isOn = true
             autoTextIcon.tintColor = .black
+            
             
         } else {
             autoTextSwitch.isOn = false
@@ -383,7 +381,6 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
     func allign(label: UILabel, with textField: UITextField) {
         label.frame.origin.y = textField.frame.origin.y
         label.frame.origin.x = textField.frame.origin.x
@@ -395,7 +392,6 @@ extension AddContactsViewController {
         self.labelOfLastName.isHidden = true
     }
     
-    
     func hilightEmpty(_ textField: UITextField) {
     
         UIView.animate(withDuration: 0.15, animations: {
@@ -406,7 +402,6 @@ extension AddContactsViewController {
             })
         }
     }
-    
 }
 
 
