@@ -16,7 +16,6 @@ protocol CustomTabBarViewDelegate: class {
 class CustomTabView: UIView {
     
     
-    
     weak var delegate: CustomTabBarViewDelegate?
     
     
@@ -28,13 +27,14 @@ class CustomTabView: UIView {
     
     
     
-    // app opens on third tab
+    // app opens on middle tab
     var currentIndex: Int {
         guard let previous = pastPresentIndexes[previous] else {
             return 1
         }
         return previous
     }
+    
     
     let previous = "previous"
     let current = "current"
@@ -46,6 +46,11 @@ class CustomTabView: UIView {
     
     func select(index: Int) {
         let buttons: [UIButton] = [recentlyAddedButton, addButton, moreOptionsButton]
+        
+        recentlyAddedButton.tintColor = .white
+        addButton.tintColor = .white
+        moreOptionsButton.tintColor = .white
+        
         
         switch index {
         case 0:
@@ -65,39 +70,20 @@ class CustomTabView: UIView {
         let selectedButton = buttons[selected]
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
-            self.buttonChange(button: selectedButton)
+            selectedButton.layer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
+
         }, completion: nil)
         
         if current != selected {
             UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 currentButton.layer.transform = CATransform3DIdentity
-            }, completion: { (_) in
-                
-            })
+            }, completion: nil)
         }
         
     }
     
     
-    func buttonChange(button: UIButton) {
-        switch button {
-        case addButton:
-            addButton.setImage(#imageLiteral(resourceName: "tbAddS"), for: .normal)
-            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
-            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
-            
-        case recentlyAddedButton:
-            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAddedS"), for: .normal)
-            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
-            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
-            
-        default:
-            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptionsS"), for: .normal)
-            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
-            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
-        }
-    }
+
     
 
     
