@@ -38,9 +38,10 @@ class MoreOptionsViewController: UIViewController {
     @IBOutlet var watchWalkthroughButton: UIButton!
     
     
+    
     // MARK: - Actions
     @IBAction func saveNameButtonTapped(_ sender: Any) {
-        let color = UIColor(red: 137/255, green: 216/255, blue: 144/255, alpha: 1)
+        let color = Keys.sharedInstance.confirmColor
         UserController.sharedInstance.saveUserName(name: nameChangeTextField.text)
         UIView.animate(withDuration: 1, animations: {
             self.saveNameButton.backgroundColor = color
@@ -54,7 +55,15 @@ class MoreOptionsViewController: UIViewController {
             })
         }
     }
+    
+    @IBAction func watchAgainTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInViewController else { return }
+        self.present(signInVC, animated: true, completion: nil)
+    }
+    
 }
+
 
 extension MoreOptionsViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -73,7 +82,6 @@ extension MoreOptionsViewController: UITableViewDataSource, UITableViewDelegate 
 
 extension MoreOptionsViewController {
     
-    
     func changeDesignsFor(buttons: [UIButton]) {
         for button in buttons {
             button.backgroundColor = .clear
@@ -91,6 +99,7 @@ extension MoreOptionsViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
+        
         if (UserDefaults.standard.value(forKey: "userName") as? String) == nil {
            
             // show the onboarding screen
-            vc = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
+            vc = storyboard.instantiateViewController(withIdentifier: "SignInVC")
         } else {
-            
             // show the main screen
             vc = storyboard.instantiateInitialViewController()!
         }
@@ -42,11 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().tintColor = .clear
         
-        
-        let barButtonAppearance = UIBarButtonItem.appearance()
-        if let font = UIFont(name: "HelveticaNeue-Light", size: 20) {
-            barButtonAppearance.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
-        }
         
         
         return true

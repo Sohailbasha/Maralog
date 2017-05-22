@@ -10,19 +10,7 @@ import Foundation
 
 class UserController {
     
-    
     static let sharedInstance = UserController()
-    
-//    func saveTutorialForMainMenu(viewed: Int) {
-//        UserDefaults.standard.set(viewed, forKey: "timesTutorialViewed")
-//    }
-//    
-//    func getTutorialViewedForMainMenu() -> Int {
-//        guard let isTutorialViewed = UserDefaults.standard.value(forKey: "timesTutorialViewed") as? Int else { return 0 }
-//        return isTutorialViewed
-//    }
-//    
-//    
     
     func saveUserName(name: String?) {
         UserDefaults.standard.set(name, forKey: "userName")

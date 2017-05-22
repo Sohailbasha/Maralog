@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Info - simple-line-icons.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "tbAdd.png",
       "scale" : "2x"
     },
     {

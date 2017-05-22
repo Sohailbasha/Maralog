@@ -260,6 +260,27 @@
             </objects>
             <point key="canvasLocation" x="4756" y="72"/>
         </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="xBm-AN-AQb">
+            <objects>
+                <viewController storyboardIdentifier="SignInVC" id="B30-KJ-kIm" customClass="SignInViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bRD-Mn-v4T"/>
+                        <viewControllerLayoutGuide type="bottom" id="y3s-uO-0pQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eFf-0Q-g05">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="8Jt-DK-pGG" kind="show" identifier="toInitialViewController" id="mvt-PC-LG9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5UQ-9e-hTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4756" y="-703"/>
+        </scene>
         <!--First Tutorial View Controller-->
         <scene sceneID="bG5-cI-LKC">
             <objects>
@@ -494,9 +515,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.6470588235294118" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <connections>
-                        <segue destination="8Jt-DK-pGG" kind="show" identifier="toMainSegue" id="7Uh-yI-KaL"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwe-9j-nj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -568,6 +586,9 @@
                                         <state key="normal" title="Watch It Again">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="watchAgainTapped:" destination="ZOR-vb-F6d" eventType="touchUpInside" id="k1w-Du-hxm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

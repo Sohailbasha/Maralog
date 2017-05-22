@@ -12,6 +12,7 @@ import MessageUI
 
 class MessageSender: NSObject, MFMessageComposeViewControllerDelegate {
     
+    
     static let sharedInstance = MessageSender()
     var recepients: [String] = []
     var textBody = ""
