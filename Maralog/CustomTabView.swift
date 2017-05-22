@@ -18,10 +18,34 @@ class CustomTabView: UIView {
     
     weak var delegate: CustomTabBarViewDelegate?
     
-    
     @IBOutlet var recentlyAddedButton: UIButton!
     @IBOutlet var addButton: UIButton!
     @IBOutlet var moreOptionsButton: UIButton!
+    
+    
+    
+    lazy var recentLabel: UILabel = {
+        let recentlyAdded = UILabel()
+        recentlyAdded.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
+        recentlyAdded.text = "recents"
+        return recentlyAdded
+    }()
+    
+    lazy var addLabel: UILabel = {
+        let add = UILabel()
+        add.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
+        add.text = "add"
+        return add
+    }()
+    
+    lazy var optionsLabel: UILabel = {
+        let options = UILabel()
+        options.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
+        options.text = "options"
+        return options
+    }()
+    
+    
     
     
     
@@ -60,7 +84,7 @@ class CustomTabView: UIView {
         default:
             shift(selected: index, current: currentIndex, buttons: buttons)
         }
-
+        
     }
     
     
@@ -69,13 +93,13 @@ class CustomTabView: UIView {
         let currentButton = buttons[current]
         let selectedButton = buttons[selected]
         
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            selectedButton.layer.transform = CATransform3DMakeScale(1.2, 1.2, 1.2)
-
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
+            selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+            
         }, completion: nil)
         
         if current != selected {
-            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
                 currentButton.layer.transform = CATransform3DIdentity
             }, completion: nil)
         }
@@ -83,9 +107,9 @@ class CustomTabView: UIView {
     }
     
     
-
     
-
+    
+    
     
     // MARK: - Actions
     @IBAction func didTapButton(_ sender: UIButton) {
