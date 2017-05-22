@@ -31,9 +31,9 @@
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2801ED210D20027A3BA /* Keys.swift */; };
+		FDBDA2831ED258BA0027A3BA /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */; };
 		FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */; };
 		FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */; };
-		FDD9C2E81ECE3DCF00573F00 /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */; };
 		FDD9C2EA1ECE3EC900573F00 /* UserDefaultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */; };
 		FDD9C2EC1ECE3F0700573F00 /* DefaultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */; };
 		FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2EE1ECE45B600573F00 /* Settings.swift */; };
@@ -77,9 +77,9 @@
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDBDA2801ED210D20027A3BA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
 		FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTutorialViewController.swift; sourceTree = "<group>"; };
 		FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberLabelFormatter.swift; sourceTree = "<group>"; };
-		FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
 		FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTableViewCell.swift; sourceTree = "<group>"; };
 		FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsViewController.swift; sourceTree = "<group>"; };
 		FDD9C2EE1ECE45B600573F00 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
 				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
-				FDD9C2E71ECE3DCF00573F00 /* MoreOptionsViewController.swift */,
+				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
 				FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */,
 			);
 			name = "View Controller";
@@ -377,9 +377,9 @@
 				FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */,
 				FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */,
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
+				FDBDA2831ED258BA0027A3BA /* MoreOptionsViewController.swift in Sources */,
 				FD1AAB021EA2C8E30094EF57 /* CustomTabView.swift in Sources */,
 				FDD9C2EC1ECE3F0700573F00 /* DefaultsViewController.swift in Sources */,
-				FDD9C2E81ECE3DCF00573F00 /* MoreOptionsViewController.swift in Sources */,
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FDD9C2F31ECE79A200573F00 /* Symbols.swift in Sources */,
 				FDD9C2EA1ECE3EC900573F00 /* UserDefaultsTableViewCell.swift in Sources */,

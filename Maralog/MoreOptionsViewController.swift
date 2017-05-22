@@ -55,6 +55,13 @@ class MoreOptionsViewController: UIViewController {
             })
         }
     }
+    
+    @IBAction func watchAgainTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInViewController else { return }
+        self.present(signInVC, animated: true, completion: nil)
+    }
+    
 }
 
 

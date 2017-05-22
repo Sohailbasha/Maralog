@@ -178,12 +178,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
  
-        //last login cell is being rendere here
-        if indexPath.item == indexPath.count && UserDefaults.standard.value(forKey: "userName") as? String != nil {
-//            finishSigningIn()
-            self.finishLoggingIn()
-        }
-        
+        //last login cell is being rendered here
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell
             loginCell.delegate = self
@@ -201,11 +196,6 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
-    
-    func finishLoggingIn() {
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     func finishSigningIn() {
         performSegue(withIdentifier: "toInitialViewController", sender: self)

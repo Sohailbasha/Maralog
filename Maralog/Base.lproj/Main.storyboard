@@ -586,6 +586,9 @@
                                         <state key="normal" title="Watch It Again">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="watchAgainTapped:" destination="ZOR-vb-F6d" eventType="touchUpInside" id="k1w-Du-hxm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
