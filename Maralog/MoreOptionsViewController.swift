@@ -20,7 +20,7 @@ class MoreOptionsViewController: UIViewController {
         self.yourNameLabel.text = "your name: \(name)"
         
         self.changeDesignsFor(buttons: [saveNameButton, watchWalkthroughButton])
-        nameChangeTextField.layer.borderColor = Keys.sharedInstance.maralogRed.cgColor
+        nameChangeTextField.layer.borderColor = Keys.sharedInstance.mainColor.cgColor
         nameChangeTextField.delegate = self
     }
     
@@ -83,7 +83,7 @@ extension MoreOptionsViewController: UITableViewDataSource, UITableViewDelegate 
 extension MoreOptionsViewController {
     func changeDesignsFor(buttons: [UIButton]) {
         for button in buttons {
-            let color = Keys.sharedInstance.maralogRed
+            let color = Keys.sharedInstance.mainColor
             button.backgroundColor = .clear
             button.layer.cornerRadius = 5
             button.layer.borderWidth = 0.5

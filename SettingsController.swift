@@ -60,19 +60,4 @@ class SettingsController {
         guard let textDefaultSetting = userDefaults.value(forKey: textKey) as? Bool else { return false }
         return textDefaultSetting
     }
-    
-    
-    
-//
-//    func saveToPersistentStorage() {
-//        let userDefaults = UserDefaults.standard
-//        let defaultsDictionary = settings.map { $0.dictionaryRep }
-//        userDefaults.set(defaultsDictionary, forKey: SettingsController.settingsControllerKey)
-//    }
-//    
-//    func loadFromPersistentMemory() {
-//        let userDefaults = UserDefaults.standard
-//        guard let defaultsDictionary = userDefaults.object(forKey: SettingsController.settingsControllerKey) as? [[String: Any]] else {return}
-//        settings = defaultsDictionary.flatMap{ Settings(dictionary: $0) }
-//    }
 }

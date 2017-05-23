@@ -19,6 +19,7 @@ class UserDefaultsTableViewCell: UITableViewCell {
             settingsLabel.text = setting.name
             settingsImage.image = setting.icon
             settingsSwitch.isOn = setting.isOn
+            settingsImage.tintColor = Keys.sharedInstance.mainColor
         }
         
     }
