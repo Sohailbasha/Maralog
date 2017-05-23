@@ -14,7 +14,6 @@ class SymbolsTableViewCell: UITableViewCell {
         didSet {
             guard let symbol = symbol else { return }
             iconImage.image = symbol.icon
-            iconImage.tintColor = .black
             descriptionForSymbol.text = symbol.description
         }
     }

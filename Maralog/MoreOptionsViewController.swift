@@ -83,12 +83,11 @@ extension MoreOptionsViewController: UITableViewDataSource, UITableViewDelegate 
 extension MoreOptionsViewController {
     func changeDesignsFor(buttons: [UIButton]) {
         for button in buttons {
-            let color = Keys.sharedInstance.mainColor
+            let color = Keys.sharedInstance.maralogRed
             button.backgroundColor = .clear
             button.layer.cornerRadius = 5
             button.layer.borderWidth = 0.5
             button.layer.borderColor = color.cgColor
-            
             button.setTitleColor(color, for: .normal)
         }
     }

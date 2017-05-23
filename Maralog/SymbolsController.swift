@@ -28,10 +28,6 @@ class SymbolsController {
 
         symbols = [symbol1, symbol2, symbol3]
     }
-    
-    
-    
-    
-    
+
     
 }

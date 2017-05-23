@@ -45,10 +45,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextIcon.tintColor = .gray
         }
         
-        let color = Keys.sharedInstance.mainColor
-//        saveButton.backgroundColor = .clear
-        
-//        saveButton.layer.borderWidth = 0.5
+        let color = Keys.sharedInstance.maralogRed
+
         saveButton.layer.borderColor = color.cgColor
         saveButton.setTitleColor(.white, for: .normal)
         
