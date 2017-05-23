@@ -219,7 +219,6 @@ extension AddContactsViewController {
                              animated: true,
                              completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
             }
-            
         } else {
             let alert = UIAlertController(title: "Error", message: "Phone unable to send messages.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
@@ -254,7 +253,6 @@ extension AddContactsViewController {
             }
         }
     }
-    
     
     func addContactWithoutAddress(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
@@ -327,7 +325,6 @@ extension AddContactsViewController {
     }
     
     func hilightEmpty(_ textField: UITextField) {
-    
         UIView.animate(withDuration: 0.15, animations: {
             textField.backgroundColor = Keys.sharedInstance.errorColor
         }) { (_) in
