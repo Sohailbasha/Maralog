@@ -46,11 +46,6 @@ class CustomTabView: UIView {
     }()
     
     
-    
-    
-    
-    
-    
     // app opens on middle tab
     var currentIndex: Int {
         guard let previous = pastPresentIndexes[previous] else {
@@ -65,6 +60,7 @@ class CustomTabView: UIView {
     
     var pastPresentIndexes = ["previous": 0,
                               "current": 1]
+    
     
     
     
@@ -93,9 +89,8 @@ class CustomTabView: UIView {
         let currentButton = buttons[current]
         let selectedButton = buttons[selected]
         
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
             selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
-            
         }, completion: nil)
         
         if current != selected {
@@ -105,9 +100,6 @@ class CustomTabView: UIView {
         }
         
     }
-    
-    
-    
     
     
     
