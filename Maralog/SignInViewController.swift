@@ -27,11 +27,11 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     let loginCellId = "loginCellId"
 
     let pages: [Page] = {
-        let firstPage = Page(title: "Welcome to Maralog", message: "It's free to send your books to the people in your life. Every recipient's first book is on us.", imageName: "page1")
+        let firstPage = Page(title: "Welcome to Maralog", message: "Maralog is an app that works with your Contacts to do the most when you get someones number. Just add a name and number through Maralog and we'll handle the rest.", imageName: "page1")
         
-        let secondPage = Page(title: "Never forget when and where you met someone", message: "Tap the More menu next to any book. Choose \"Send this Book\"", imageName: "page2")
+        let secondPage = Page(title: "Never forget when and where you met someone", message: "Ever see a number in your contacts and you have no clue who it is? Fix that with the switch shown above. Maralog will save where and when you got someones number.", imageName: "page2")
         
-        let thirdPage = Page(title: "Bad texter? We've got you", message: "Tap the More menu in the upper corner. Choose \"Send this Book\"", imageName: "page3")
+        let thirdPage = Page(title: "Bad texter? We can help", message: "Select the switch shown above and a text ready to send will be shown once you save a number.", imageName: "page3")
         
         
         //let fourthPage = Page(title: "Recently Added Contacts", message: "Maralog will show who you've met in the last three days", imageName: "")

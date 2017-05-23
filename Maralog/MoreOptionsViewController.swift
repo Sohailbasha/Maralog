@@ -20,7 +20,7 @@ class MoreOptionsViewController: UIViewController {
         self.yourNameLabel.text = "your name: \(name)"
         
         self.changeDesignsFor(buttons: [saveNameButton, watchWalkthroughButton])
-        
+        nameChangeTextField.layer.borderColor = Keys.sharedInstance.maralogRed.cgColor
         nameChangeTextField.delegate = self
     }
     
