@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="autoMessage" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
-                                <rect key="frame" x="130" y="348" width="40" height="18"/>
+                                <rect key="frame" x="128" y="348" width="40" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-8y-242">
@@ -40,11 +39,11 @@
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="locationServices" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
-                                <rect key="frame" x="16" y="348" width="62" height="27"/>
+                                <rect key="frame" x="6" y="348" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
-                                <rect key="frame" x="23" y="383" width="51" height="31"/>
+                                <rect key="frame" x="13" y="383" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.80392156862745101" green="0.40392156862745099" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -52,9 +51,9 @@
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
-                                <rect key="frame" x="125" y="383" width="51" height="31"/>
+                                <rect key="frame" x="124" y="383" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="0.79893714189529419" green="0.40392156862745099" blue="0.56089931726455688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="onTintColor" red="0.80000000000000004" green="0.40392156862745099" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="autoTextSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="BSB-yL-SCW"/>
                                 </connections>
@@ -85,17 +84,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spt-uI-f1J">
+                                <rect key="frame" x="212" y="379" width="144" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.79893714189999998" green="0.40583759549999998" blue="0.56089931729999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="slP-J1-sdX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="gtc-vI-2Ts">
                         <barButtonItem key="rightBarButtonItem" title="create new contact" id="7sM-YU-cy8">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="saveButtonTapped:" destination="aFt-A3-DSS" id="8hL-FT-SIV"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="autoTextIcon" destination="Tns-Is-0U4" id="AKg-Mf-9Nr"/>
                         <outlet property="autoTextSwitch" destination="wVv-vT-qpx" id="dia-Fa-Bjj"/>
@@ -201,56 +209,61 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVS-BQ-Wey" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="uKx-vC-1eP" customClass="CustomTabView" customModule="Maralog" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="372" height="67"/>
+                    <rect key="frame" x="0.0" y="0.0" width="372" height="68"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" distribution="fillEqually" alignment="center" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="Lkq-YW-RUI">
-                            <rect key="frame" x="63" y="13" width="246" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2f9-ky-tf5">
+                            <rect key="frame" x="0.0" y="13" width="372" height="55"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-fm-eBS">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="40" id="4zS-Vh-GIg"/>
-                                        <constraint firstAttribute="height" constant="40" id="IK2-uk-Psg"/>
-                                        <constraint firstAttribute="width" secondItem="69R-fm-eBS" secondAttribute="height" multiplier="1:1" id="jcp-Kl-ItP"/>
-                                    </constraints>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="tbRecentlyAdded"/>
-                                    <connections>
-                                        <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="Uie-Wt-QfS"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-i2-Ub6">
-                                    <rect key="frame" x="103" y="0.0" width="40" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="40" id="Eld-GN-VgC"/>
-                                        <constraint firstAttribute="height" constant="40" id="Shx-Fm-A4n"/>
-                                        <constraint firstAttribute="width" secondItem="YPt-i2-Ub6" secondAttribute="height" multiplier="1:1" id="TFa-JU-7Dh"/>
-                                    </constraints>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="tbAdd"/>
-                                    <connections>
-                                        <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="cLU-Sh-N5C"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-Q8-kdx">
-                                    <rect key="frame" x="206" y="0.0" width="40" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="4wQ-PR-13S"/>
-                                        <constraint firstAttribute="width" constant="40" id="ft9-Gc-h0F"/>
-                                        <constraint firstAttribute="width" secondItem="6Qi-Q8-kdx" secondAttribute="height" multiplier="1:1" id="lNW-VS-8Ny"/>
-                                    </constraints>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="tbOptions"/>
-                                    <connections>
-                                        <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="qib-Hf-cZF"/>
-                                    </connections>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-rH-f3w">
+                                    <rect key="frame" x="0.0" y="0.0" width="372" height="55"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-fm-eBS">
+                                            <rect key="frame" x="0.0" y="0.0" width="117.5" height="55"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="tbRecents"/>
+                                            <connections>
+                                                <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="Uie-Wt-QfS"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-i2-Ub6">
+                                            <rect key="frame" x="127.5" y="0.0" width="117" height="55"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="tbAdd-1"/>
+                                            <connections>
+                                                <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="cLU-Sh-N5C"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-Q8-kdx">
+                                            <rect key="frame" x="254.5" y="0.0" width="117.5" height="55"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="tbOptions-1"/>
+                                            <connections>
+                                                <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="qib-Hf-cZF"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                             </subviews>
-                        </stackView>
+                            <color key="backgroundColor" red="0.79893714189529419" green="0.40583759546279907" blue="0.56089931726455688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="Jdm-rH-f3w" firstAttribute="top" secondItem="2f9-ky-tf5" secondAttribute="top" id="DIj-2C-seG"/>
+                                <constraint firstAttribute="trailing" secondItem="Jdm-rH-f3w" secondAttribute="trailing" id="KRJ-fr-eT8"/>
+                                <constraint firstAttribute="bottom" secondItem="Jdm-rH-f3w" secondAttribute="bottom" id="soR-DD-uau"/>
+                                <constraint firstItem="Jdm-rH-f3w" firstAttribute="leading" secondItem="2f9-ky-tf5" secondAttribute="leading" id="whj-Fb-dx1"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.79893714189999998" green="0.40583759549999998" blue="0.56089931729999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="2f9-ky-tf5" secondAttribute="trailing" id="7j1-JG-3C4"/>
+                        <constraint firstItem="2f9-ky-tf5" firstAttribute="top" secondItem="uKx-vC-1eP" secondAttribute="top" constant="13" id="C3u-hU-zBW"/>
+                        <constraint firstItem="2f9-ky-tf5" firstAttribute="leading" secondItem="uKx-vC-1eP" secondAttribute="leading" id="CPN-mD-etl"/>
+                        <constraint firstAttribute="trailing" secondItem="2f9-ky-tf5" secondAttribute="trailing" id="MeD-uV-RK5"/>
+                        <constraint firstAttribute="bottom" secondItem="2f9-ky-tf5" secondAttribute="bottom" id="VaZ-3o-AUK"/>
+                        <constraint firstItem="2f9-ky-tf5" firstAttribute="leading" secondItem="uKx-vC-1eP" secondAttribute="leading" id="fnV-nI-dPp"/>
+                        <constraint firstAttribute="bottom" secondItem="2f9-ky-tf5" secondAttribute="bottom" id="pNQ-T2-GhT"/>
+                    </constraints>
                     <connections>
                         <outlet property="addButton" destination="YPt-i2-Ub6" id="glY-fH-dAQ"/>
                         <outlet property="moreOptionsButton" destination="6Qi-Q8-kdx" id="cew-sN-9tb"/>
@@ -279,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UQ-9e-hTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756" y="-703"/>
+            <point key="canvasLocation" x="3817" y="-177"/>
         </scene>
         <!--First Tutorial View Controller-->
         <scene sceneID="bG5-cI-LKC">
@@ -816,8 +829,8 @@
         <image name="OnBoarding Backgroun" width="375" height="667"/>
         <image name="autoMessage" width="168" height="75"/>
         <image name="locationServices" width="206" height="88"/>
-        <image name="tbAdd" width="33" height="33"/>
-        <image name="tbOptions" width="30" height="8"/>
-        <image name="tbRecentlyAdded" width="31" height="31"/>
+        <image name="tbAdd-1" width="30" height="30"/>
+        <image name="tbOptions-1" width="29" height="8"/>
+        <image name="tbRecents" width="31" height="31"/>
     </resources>
 </document>

@@ -100,7 +100,6 @@ extension MoreOptionsViewController: UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

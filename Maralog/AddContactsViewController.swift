@@ -9,8 +9,11 @@
 import UIKit
 import CoreLocation
 import Contacts
+import MessageUI
 
 class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
+    
+    var messageComposerVC = MFMessageComposeViewController()
     
     
     override func viewDidLoad() {
@@ -30,26 +33,24 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.allign(label: labelOfLastName, with: lastNameTextField)
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
-        if isLocationDefaultOn == true {
+        if (isLocationDefaultOn) {
             uiSwitch.isOn = true
             locationIcon.tintColor = .black
-            
         } else {
             uiSwitch.isOn = false
             locationIcon.tintColor = .gray
-            
         }
         
-        if isAutoTextDefaultOn == true {
+        if (isAutoTextDefaultOn) {
             autoTextSwitch.isOn = true
             autoTextIcon.tintColor = .black
-            
-            
         } else {
             autoTextSwitch.isOn = false
             autoTextIcon.tintColor = .gray
-            
         }
+        
+        messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+        
     }
     
     
@@ -116,13 +117,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var locationIcon: UIImageView!
     @IBOutlet var autoTextIcon: UIImageView!
     
-    
 
-    
     
     // MARK: - Action
     
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
         
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
@@ -204,74 +203,6 @@ extension AddContactsViewController {
 }
 
 
-// MARK: - TEXTFIELD DELEGATE METHODS
-
-extension AddContactsViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if firstNameTextField.isEditing {
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
-                self.labelOfFirstName.isHidden = false
-                self.labelOfFirstName.frame.origin.y = self.firstNameTextField.frame.origin.y - self.labelOfFirstName.layer.bounds.height
-            }, completion: nil)
-        }
-        
-        if lastNameTextField.isEditing {
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
-                self.labelOfLastName.isHidden = false
-                self.labelOfLastName.frame.origin.y = self.lastNameTextField.frame.origin.y - self.labelOfLastName.layer.bounds.height
-            }, completion: nil)
-        }
-        
-        if phoneNumberTextField.isEditing {
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
-                self.labelOfPhoneNumber.isHidden = false
-                self.labelOfPhoneNumber.frame.origin.y = self.phoneNumberTextField.frame.origin.y - self.labelOfPhoneNumber.layer.bounds.height
-            }, completion: nil)
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let fNameText = firstNameTextField.text else { return }
-        guard let lNameText = lastNameTextField.text else { return }
-        guard let pNumberText = phoneNumberTextField.text else { return }
-        
-        if fNameText.isEmpty {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.allign(label: self.labelOfFirstName, with: self.firstNameTextField)
-                self.labelOfFirstName.isHidden = true
-            }, completion: nil)
-        }
-        
-        if lNameText.isEmpty {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.allign(label: self.labelOfLastName, with: self.lastNameTextField)
-                self.labelOfLastName.isHidden = true
-            }, completion: nil)
-        }
-        if pNumberText.isEmpty {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.allign(label: self.labelOfPhoneNumber, with: self.phoneNumberTextField)
-                self.labelOfPhoneNumber.isHidden = true
-            }, completion: nil)
-        }
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-}
-
-
-
-
 // MARK: - HELPER METHODS
 
 extension AddContactsViewController {
@@ -281,16 +212,18 @@ extension AddContactsViewController {
             let yourName = UserController.sharedInstance.getName()
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
-            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+
             
             DispatchQueue.main.async {
-                self.present(messageComposerVC,
+                self.present(self.messageComposerVC,
                              animated: true,
                              completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
             }
-            
         } else {
-            return
+            let alert = UIAlertController(title: "Error", message: "Phone unable to send messages.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -320,7 +253,6 @@ extension AddContactsViewController {
             }
         }
     }
-    
     
     func addContactWithoutAddress(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
@@ -393,7 +325,6 @@ extension AddContactsViewController {
     }
     
     func hilightEmpty(_ textField: UITextField) {
-    
         UIView.animate(withDuration: 0.15, animations: {
             textField.backgroundColor = Keys.sharedInstance.errorColor
         }) { (_) in
@@ -405,8 +336,69 @@ extension AddContactsViewController {
 }
 
 
+// MARK: - TEXTFIELD DELEGATE METHODS
 
-
+extension AddContactsViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if firstNameTextField.isEditing {
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+                self.labelOfFirstName.isHidden = false
+                self.labelOfFirstName.frame.origin.y = self.firstNameTextField.frame.origin.y - self.labelOfFirstName.layer.bounds.height
+            }, completion: nil)
+        }
+        
+        if lastNameTextField.isEditing {
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+                self.labelOfLastName.isHidden = false
+                self.labelOfLastName.frame.origin.y = self.lastNameTextField.frame.origin.y - self.labelOfLastName.layer.bounds.height
+            }, completion: nil)
+        }
+        
+        if phoneNumberTextField.isEditing {
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+                self.labelOfPhoneNumber.isHidden = false
+                self.labelOfPhoneNumber.frame.origin.y = self.phoneNumberTextField.frame.origin.y - self.labelOfPhoneNumber.layer.bounds.height
+            }, completion: nil)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let fNameText = firstNameTextField.text else { return }
+        guard let lNameText = lastNameTextField.text else { return }
+        guard let pNumberText = phoneNumberTextField.text else { return }
+        
+        if fNameText.isEmpty {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.allign(label: self.labelOfFirstName, with: self.firstNameTextField)
+                self.labelOfFirstName.isHidden = true
+            }, completion: nil)
+        }
+        
+        if lNameText.isEmpty {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.allign(label: self.labelOfLastName, with: self.lastNameTextField)
+                self.labelOfLastName.isHidden = true
+            }, completion: nil)
+        }
+        if pNumberText.isEmpty {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.allign(label: self.labelOfPhoneNumber, with: self.phoneNumberTextField)
+                self.labelOfPhoneNumber.isHidden = true
+            }, completion: nil)
+        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
 
 

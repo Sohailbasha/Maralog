@@ -16,9 +16,7 @@ protocol CustomTabBarViewDelegate: class {
 class CustomTabView: UIView {
     
     
-    
     weak var delegate: CustomTabBarViewDelegate?
-    
     
     @IBOutlet var recentlyAddedButton: UIButton!
     @IBOutlet var addButton: UIButton!
@@ -26,15 +24,36 @@ class CustomTabView: UIView {
     
     
     
+    lazy var recentLabel: UILabel = {
+        let recentlyAdded = UILabel()
+        recentlyAdded.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
+        recentlyAdded.text = "recents"
+        return recentlyAdded
+    }()
+    
+    lazy var addLabel: UILabel = {
+        let add = UILabel()
+        add.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
+        add.text = "add"
+        return add
+    }()
+    
+    lazy var optionsLabel: UILabel = {
+        let options = UILabel()
+        options.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
+        options.text = "options"
+        return options
+    }()
     
     
-    // app opens on third tab
+    // app opens on middle tab
     var currentIndex: Int {
         guard let previous = pastPresentIndexes[previous] else {
             return 1
         }
         return previous
     }
+    
     
     let previous = "previous"
     let current = "current"
@@ -44,8 +63,14 @@ class CustomTabView: UIView {
     
     
     
+    
     func select(index: Int) {
         let buttons: [UIButton] = [recentlyAddedButton, addButton, moreOptionsButton]
+        
+        recentlyAddedButton.tintColor = .white
+        addButton.tintColor = .white
+        moreOptionsButton.tintColor = .white
+        
         
         switch index {
         case 0:
@@ -55,7 +80,7 @@ class CustomTabView: UIView {
         default:
             shift(selected: index, current: currentIndex, buttons: buttons)
         }
-
+        
     }
     
     
@@ -64,42 +89,19 @@ class CustomTabView: UIView {
         let currentButton = buttons[current]
         let selectedButton = buttons[selected]
         
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.45, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
             selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
-            self.buttonChange(button: selectedButton)
         }, completion: nil)
         
         if current != selected {
-            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
                 currentButton.layer.transform = CATransform3DIdentity
-            }, completion: { (_) in
-                
-            })
+            }, completion: nil)
         }
         
     }
     
     
-    func buttonChange(button: UIButton) {
-        switch button {
-        case addButton:
-            addButton.setImage(#imageLiteral(resourceName: "tbAddS"), for: .normal)
-            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
-            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
-            
-        case recentlyAddedButton:
-            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAddedS"), for: .normal)
-            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
-            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptions"), for: .normal)
-            
-        default:
-            moreOptionsButton.setImage(#imageLiteral(resourceName: "tbOptionsS"), for: .normal)
-            addButton.setImage(#imageLiteral(resourceName: "tbAdd"), for: .normal)
-            recentlyAddedButton.setImage(#imageLiteral(resourceName: "tbRecentlyAdded"), for: .normal)
-        }
-    }
-    
-
     
     // MARK: - Actions
     @IBAction func didTapButton(_ sender: UIButton) {
