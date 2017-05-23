@@ -9,12 +9,8 @@
 import UIKit
 import CoreLocation
 import Contacts
-import MessageUI
 
 class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
-    
-    var messageComposerVC = MFMessageComposeViewController()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +44,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextSwitch.isOn = false
             autoTextIcon.tintColor = .gray
         }
-        
-        messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
         
     }
     
@@ -212,10 +206,9 @@ extension AddContactsViewController {
             let yourName = UserController.sharedInstance.getName()
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
-
-            
+            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
             DispatchQueue.main.async {
-                self.present(self.messageComposerVC,
+                self.present(messageComposerVC,
                              animated: true,
                              completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
             }

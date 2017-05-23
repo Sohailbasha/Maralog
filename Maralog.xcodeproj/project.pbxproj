@@ -24,15 +24,10 @@
 		FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14941E4A830300506CC1 /* LocationController.swift */; };
 		FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14971E4A83C900506CC1 /* CoreLocation.framework */; };
 		FD3B149A1E4AE01100506CC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14991E4AE01100506CC1 /* MapKit.framework */; };
-		FD3C20741E7A2F64005E8DB9 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3C20731E7A2F64005E8DB9 /* TutorialPageViewController.swift */; };
-		FD3C20771E7A33EB005E8DB9 /* LastTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3C20761E7A33EB005E8DB9 /* LastTutorialViewController.swift */; };
-		FD557C511E79D1D800067EF1 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */; };
-		FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */; };
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2801ED210D20027A3BA /* Keys.swift */; };
 		FDBDA2831ED258BA0027A3BA /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */; };
-		FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */; };
 		FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */; };
 		FDD9C2EA1ECE3EC900573F00 /* UserDefaultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */; };
 		FDD9C2EC1ECE3F0700573F00 /* DefaultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */; };
@@ -70,15 +65,10 @@
 		FD3B14941E4A830300506CC1 /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		FD3B14971E4A83C900506CC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FD3B14991E4AE01100506CC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		FD3C20731E7A2F64005E8DB9 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageViewController.swift; path = ../TutorialPageViewController.swift; sourceTree = "<group>"; };
-		FD3C20761E7A33EB005E8DB9 /* LastTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTutorialViewController.swift; sourceTree = "<group>"; };
-		FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDBDA2801ED210D20027A3BA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
-		FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTutorialViewController.swift; sourceTree = "<group>"; };
 		FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberLabelFormatter.swift; sourceTree = "<group>"; };
 		FDD9C2E91ECE3EC900573F00 /* UserDefaultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTableViewCell.swift; sourceTree = "<group>"; };
 		FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +111,7 @@
 		FD16C98C1E490AD500237631 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FDE28F951ED0D7DF0057E102 /* Sign In / Tutorial */,
 				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
 				FDDD188D1E4931CA00668592 /* RecentlyAddedViewController.swift */,
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
@@ -180,7 +171,6 @@
 				FD16C9971E490F6600237631 /* Model Controller */,
 				FDCB3ACE1E7AE49F00BBF8D3 /* View */,
 				FD16C98C1E490AD500237631 /* View Controller */,
-				FDE28F951ED0D7DF0057E102 /* Sign In / Tutorial */,
 				FD631D841E4E7D2E00CA9B11 /* Tools */,
 				FD16C98B1E490ACA00237631 /* Story Board */,
 				FD30C0011E43FFA100759ECB /* Info.plist */,
@@ -197,16 +187,6 @@
 				FD3B14971E4A83C900506CC1 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FD3C20751E7A2F6A005E8DB9 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				FD3C20731E7A2F64005E8DB9 /* TutorialPageViewController.swift */,
-				FDCB3AC61E7AE32C00BBF8D3 /* FirstTutorialViewController.swift */,
-				FD3C20761E7A33EB005E8DB9 /* LastTutorialViewController.swift */,
-			);
-			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		FD631D841E4E7D2E00CA9B11 /* Tools */ = {
@@ -234,9 +214,6 @@
 		FDD9C2ED1ECE421200573F00 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
-				FD5F254C1E74B8A5001D2B68 /* OnboardingViewController.swift */,
-				FD3C20751E7A2F6A005E8DB9 /* Tutorial */,
-				FD557C501E79D1D800067EF1 /* SettingsTableViewController.swift */,
 				FD16C99A1E491F3200237631 /* ContactsListViewController.swift */,
 			);
 			name = Unused;
@@ -388,16 +365,11 @@
 				FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */,
 				FD21CB651EC10E4700F8E82C /* LoginViewController.swift in Sources */,
 				FDE28FA01ED0DA550057E102 /* LoginCell.swift in Sources */,
-				FD5F254D1E74B8A5001D2B68 /* OnboardingViewController.swift in Sources */,
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
 				FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */,
-				FDCB3AC71E7AE32C00BBF8D3 /* FirstTutorialViewController.swift in Sources */,
-				FD3C20771E7A33EB005E8DB9 /* LastTutorialViewController.swift in Sources */,
 				FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
 				FDD9C2F61ECE7AD400573F00 /* SymbolsController.swift in Sources */,
-				FD3C20741E7A2F64005E8DB9 /* TutorialPageViewController.swift in Sources */,
-				FD557C511E79D1D800067EF1 /* SettingsTableViewController.swift in Sources */,
 				FDDD188E1E4931CA00668592 /* RecentlyAddedViewController.swift in Sources */,
 				FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */,
 				FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */,
