@@ -17,7 +17,7 @@ class MoreOptionsViewController: UIViewController {
         tableView.dataSource = self
         
         let name = UserController.sharedInstance.getName()
-        self.yourNameLabel.text = "Your Name: \(name)"
+        self.yourNameLabel.text = "your name: \(name)"
         
         self.changeDesignsFor(buttons: [saveNameButton, watchWalkthroughButton])
         
@@ -46,12 +46,15 @@ class MoreOptionsViewController: UIViewController {
         UIView.animate(withDuration: 1, animations: {
             self.saveNameButton.backgroundColor = color
             self.saveNameButton.setTitleColor(.white, for: .normal)
-            self.saveNameButton.setTitle("Saved!", for: .normal)
+            self.saveNameButton.setTitle("saved!", for: .normal)
+            self.nameChangeTextField.text = ""
+            self.yourNameLabel.text = "your name: \(UserController.sharedInstance.getName())"
         }) { (_) in
             UIView.animate(withDuration: 0.5, animations: {
+                let color = Keys.sharedInstance.mainColor
                 self.saveNameButton.backgroundColor = .clear
-                self.saveNameButton.setTitleColor(.black, for: .normal)
-                self.saveNameButton.setTitle("Save", for: .normal)
+                self.saveNameButton.setTitleColor(color, for: .normal)
+                self.saveNameButton.setTitle("save", for: .normal)
             })
         }
     }
@@ -64,9 +67,7 @@ class MoreOptionsViewController: UIViewController {
     
 }
 
-
 extension MoreOptionsViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SymbolsController.sharedInstance.symbols.count
     }
@@ -79,17 +80,16 @@ extension MoreOptionsViewController: UITableViewDataSource, UITableViewDelegate 
     }
 }
 
-
 extension MoreOptionsViewController {
-    
     func changeDesignsFor(buttons: [UIButton]) {
         for button in buttons {
+            let color = Keys.sharedInstance.mainColor
             button.backgroundColor = .clear
             button.layer.cornerRadius = 5
             button.layer.borderWidth = 0.5
-            button.layer.borderColor = UIColor.black.cgColor
+            button.layer.borderColor = color.cgColor
             
-            button.setTitleColor(.black, for: .normal)
+            button.setTitleColor(color, for: .normal)
         }
     }
 }

@@ -22,7 +22,7 @@ class LoginCell: UICollectionViewCell {
         textfield.layer.borderWidth = 0.5
         textfield.placeholder = " enter your name to start"
         textfield.keyboardType = .alphabet
-        textfield.keyboardAppearance = .dark
+        textfield.keyboardAppearance = .light
         return textfield
     }()
     

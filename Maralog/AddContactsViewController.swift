@@ -45,6 +45,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextIcon.tintColor = .gray
         }
         
+        let color = Keys.sharedInstance.mainColor
+//        saveButton.backgroundColor = .clear
+        
+//        saveButton.layer.borderWidth = 0.5
+        saveButton.layer.borderColor = color.cgColor
+        saveButton.setTitleColor(.white, for: .normal)
+        
+        saveButton.layer.cornerRadius = 0.5 * saveButton.bounds.size.width
     }
     
     
@@ -110,6 +118,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Icons
     @IBOutlet var locationIcon: UIImageView!
     @IBOutlet var autoTextIcon: UIImageView!
+    
+    // Button
+    @IBOutlet var saveButton: UIButton!
     
 
     
