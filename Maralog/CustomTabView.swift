@@ -75,9 +75,16 @@ class CustomTabView: UIView {
         switch index {
         case 0:
             shift(selected: index, current: currentIndex, buttons: buttons)
+            UIApplication.shared.statusBarStyle = .lightContent
+            UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
+            
         case 1:
+            UIApplication.shared.statusBarStyle = .lightContent
+            UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
             shift(selected: index, current: currentIndex, buttons: buttons)
         default:
+            UIApplication.shared.statusBarStyle = .default
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
             shift(selected: index, current: currentIndex, buttons: buttons)
         }
         

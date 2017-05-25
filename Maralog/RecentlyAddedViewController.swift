@@ -15,6 +15,7 @@ import ContactsUI
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CNContactViewControllerDelegate {
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -22,13 +23,27 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         fetchedResultsController.delegate = self
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
+        
         allContactsForDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
         allContactsForDelegate()
     }
+
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+//        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+//    }
+    
+    
     
     
     // MARK: - Outlets

@@ -14,9 +14,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
-        statusBar.backgroundColor = Keys.sharedInstance.barColor
+
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
@@ -48,13 +46,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextSwitch.isOn = false
             autoTextIcon.tintColor = .gray
         }
-        
-        let color = Keys.sharedInstance.mainColor
-
-        saveButton.layer.borderColor = color.cgColor
-        saveButton.setTitleColor(.white, for: .normal)
-        
-        saveButton.layer.cornerRadius = 0.5 * saveButton.bounds.size.width
     }
     
     
@@ -65,6 +56,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
 
     override func viewWillAppear(_ animated: Bool) {
+//        
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
+//        
         super.viewWillAppear(true)
         if isLocationDefaultOn == true {
             uiSwitch.isOn = true
@@ -77,10 +72,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             autoTextSwitch.isOn = false
         }
-    
-        
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+//        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+//    }
+//    
     
     // MARK: - Properties
     
@@ -122,13 +121,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var autoTextIcon: UIImageView!
     
     // Button
-    @IBOutlet var saveButton: UIButton!
+    @IBOutlet var saveButton: UIBarButtonItem!
     
 
     
     // MARK: - Action
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
