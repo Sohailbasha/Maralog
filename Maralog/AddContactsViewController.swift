@@ -14,6 +14,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+        statusBar.backgroundColor = Keys.sharedInstance.barColor
+        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         coreLocationManager.startUpdatingLocation()
