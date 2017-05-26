@@ -14,8 +14,7 @@ class Keys {
     
     static let sharedInstance = Keys()
     
-    let mainColor = #colorLiteral(red: 0.831372549, green: 0.368627451, blue: 0.4941176471, alpha: 1)
-//    let mainColor = UIColor(displayP3Red: 224/225, green: 63/225, blue: 61/225, alpha: 1)
+    let mainColor = #colorLiteral(red: 0.2156862745, green: 0.231372549, blue: 0.262745098, alpha: 1)
     
     let maralogRed = #colorLiteral(red: 0.9294117647, green: 0.368627451, blue: 0.368627451, alpha: 1)
 

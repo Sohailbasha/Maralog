@@ -17,7 +17,7 @@ class MoreOptionsViewController: UIViewController {
         tableView.dataSource = self
         
         let name = UserController.sharedInstance.getName()
-        self.yourNameLabel.text = "your name: \(name)"
+        self.yourNameLabel.text = "Your Name: \(name)"
         
         self.changeDesignsFor(buttons: [saveNameButton, watchWalkthroughButton])
         nameChangeTextField.layer.borderColor = Keys.sharedInstance.mainColor.cgColor
@@ -48,7 +48,7 @@ class MoreOptionsViewController: UIViewController {
             self.saveNameButton.setTitleColor(.white, for: .normal)
             self.saveNameButton.setTitle("saved!", for: .normal)
             self.nameChangeTextField.text = ""
-            self.yourNameLabel.text = "your name: \(UserController.sharedInstance.getName())"
+            self.yourNameLabel.text = "Your Name: \(UserController.sharedInstance.getName())"
         }) { (_) in
             UIView.animate(withDuration: 0.5, animations: {
                 let color = Keys.sharedInstance.mainColor
