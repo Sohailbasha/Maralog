@@ -56,10 +56,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
 
     override func viewWillAppear(_ animated: Bool) {
-//        
-//        UIApplication.shared.statusBarStyle = .lightContent
-//        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
-//        
+        
         super.viewWillAppear(true)
         if isLocationDefaultOn == true {
             uiSwitch.isOn = true
@@ -74,13 +71,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
-//        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
-//    }
-//    
-    
+
     // MARK: - Properties
     
     var coreLocationManager: CLLocationManager!
@@ -275,7 +266,6 @@ extension AddContactsViewController {
         try? store.execute(saveRequest)
     }
     
-    
     func addToCNContacts(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName else { return }
@@ -302,7 +292,6 @@ extension AddContactsViewController {
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
     }
-    
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

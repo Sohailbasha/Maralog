@@ -36,11 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBarAppearance = UINavigationBar.appearance()
         
         navigationBarAppearance.backgroundColor = Keys.sharedInstance.barColor
-        navigationBarAppearance.barTintColor = .clear
-        navigationBarAppearance.tintColor = .clear
+//        navigationBarAppearance.barTintColor = Keys.sharedInstance.barColor
+//        navigationBarAppearance.tintColor = Keys.sharedInstance.barColor
         navigationBarAppearance.shadowImage = UIImage()
         navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().tintColor = .clear
         
         return true
     }
