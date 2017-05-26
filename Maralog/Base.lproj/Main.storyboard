@@ -100,10 +100,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                 <state key="normal" image="Send"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="pp4-qZ-30i"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="saveButtonTapped:" destination="aFt-A3-DSS" id="5TF-Gz-Min"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
@@ -117,7 +117,7 @@
                         <outlet property="lastNameTextField" destination="h4X-hF-4Uv" id="4H9-gm-Nei"/>
                         <outlet property="locationIcon" destination="g2g-PU-e8h" id="iXB-4o-pUV"/>
                         <outlet property="phoneNumberTextField" destination="64J-SE-xPZ" id="gp5-Eb-x5O"/>
-                        <outlet property="saveButton" destination="iZY-kh-CGH" id="KkI-lu-LwW"/>
+                        <outlet property="saveButton" destination="Yw6-Yf-K1I" id="IYr-h6-7Xg"/>
                         <outlet property="uiSwitch" destination="AnW-Ux-CeQ" id="J0A-vY-Gar"/>
                     </connections>
                 </viewController>

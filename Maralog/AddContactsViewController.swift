@@ -112,13 +112,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var autoTextIcon: UIImageView!
     
     // Button
-    @IBOutlet var saveButton: UIBarButtonItem!
+    @IBOutlet var saveButton: UIButton!
     
 
     
     // MARK: - Action
     
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
         
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,

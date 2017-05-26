@@ -8,15 +8,29 @@
 
 import UIKit
 import CoreData
-
 import Contacts
 import ContactsUI
 
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CNContactViewControllerDelegate {
     
+    
+    
+    let noFriendsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no new contacts"
+        label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightRegular)
+        label.textColor = Keys.sharedInstance.mainColor
+        label.frame = CGRect(x: 100, y: 100, width: 300, height: 150)
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.alpha = 0.8
+        return label
+    }()
+    
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -26,7 +40,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         fetchedResultsToDelete.delegate = self
-        
         do { try fetchedResultsToDelete.performFetch() }
         catch {print("Error starting fetched results controller: \(error)")}
         
@@ -34,7 +47,13 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
         
         allContactsForDelegate()
+        
+        if contactsIsEmpty == true {
+            self.view.addSubview(noFriendsLabel)
+            noFriendsLabel.center.x = self.view.center.x
+        }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -48,10 +67,15 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             recentlyAddedAlert.addAction(action)
             present(recentlyAddedAlert, animated: true, completion: nil)
         }
-        
+    
         allContactsForDelegate()
         removeOldContactsFromApp()
     }
+    
+    
+    lazy var contactsIsEmpty: Bool? = {
+        return fetchedResultsController.fetchedObjects?.isEmpty
+    }()
     
     
     // MARK: - Outlets
@@ -139,8 +163,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     let fetchedResultsToDelete: NSFetchedResultsController<Contact> = {
-//        let threeDaysAgo = Date().addingTimeInterval(-259200) // How to make recent contacts last 3 days.
-        let threeDaysAgo = Date().addingTimeInterval(-120) //
+        let threeDaysAgo = Date().addingTimeInterval(-259200) // How to make recent contacts last 3 days.
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         let predicate = NSPredicate(format: "timeStamp < %@", threeDaysAgo as CVarArg)
         fetchRequest.predicate = predicate
@@ -154,11 +177,9 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func removeOldContactsFromApp() {
-//        var oldContacts: [Contact] = []
         guard let oldContacts = fetchedResultsToDelete.fetchedObjects else { return }
-        
         for i in oldContacts {
-            print(i)
+            ContactController.sharedInstance.removeContact(contact: i)
         }
     }
 
