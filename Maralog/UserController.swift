@@ -33,5 +33,5 @@ class UserController {
         guard let tOrF = UserDefaults.standard.value(forKey: kPopUp) as? Bool else { return false }
         return tOrF
     }
-    
+
 }

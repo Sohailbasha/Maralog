@@ -24,6 +24,12 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }
         
+        
+        fetchedResultsToDelete.delegate = self
+        
+        do { try fetchedResultsToDelete.performFetch() }
+        catch {print("Error starting fetched results controller: \(error)")}
+        
         UIApplication.shared.statusBarStyle = .lightContent
         UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
         
@@ -44,15 +50,11 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         allContactsForDelegate()
+        removeOldContactsFromApp()
     }
-
-
-    
-    
     
     
     // MARK: - Outlets
-    
     @IBOutlet var tableView: UITableView!
     
     
@@ -133,6 +135,33 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
                                           sectionNameKeyPath: nil,
                                           cacheName: nil)
     }()
+    
+    
+    
+    let fetchedResultsToDelete: NSFetchedResultsController<Contact> = {
+//        let threeDaysAgo = Date().addingTimeInterval(-259200) // How to make recent contacts last 3 days.
+        let threeDaysAgo = Date().addingTimeInterval(-120) //
+        let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
+        let predicate = NSPredicate(format: "timeStamp < %@", threeDaysAgo as CVarArg)
+        fetchRequest.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return NSFetchedResultsController(fetchRequest: fetchRequest,
+                                          managedObjectContext: CoreDataStack.context,
+                                          sectionNameKeyPath: nil,
+                                          cacheName: nil)
+    }()
+    
+    
+    func removeOldContactsFromApp() {
+//        var oldContacts: [Contact] = []
+        guard let oldContacts = fetchedResultsToDelete.fetchedObjects else { return }
+        
+        for i in oldContacts {
+            print(i)
+        }
+    }
+
 }
 
 // MARK: - NSFetched Results Controller Delegate Methods
