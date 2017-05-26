@@ -13,9 +13,7 @@ import ContactsUI
 
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CNContactViewControllerDelegate {
     
-    
-    
-    let noFriendsLabel: UILabel = {
+    let noContactsLabel: UILabel = {
         let label = UILabel()
         label.text = "You have no new contacts"
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightRegular)
@@ -26,7 +24,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         label.alpha = 0.8
         return label
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +43,8 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         UIApplication.shared.statusBarStyle = .lightContent
         UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
         
-        allContactsForDelegate()
-        
-        if contactsIsEmpty == true {
-            self.view.addSubview(noFriendsLabel)
-            noFriendsLabel.center.x = self.view.center.x
-        }
+        showNoFriendsLabel()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -67,15 +58,14 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             recentlyAddedAlert.addAction(action)
             present(recentlyAddedAlert, animated: true, completion: nil)
         }
-    
-        allContactsForDelegate()
+        showNoFriendsLabel()
         removeOldContactsFromApp()
     }
     
     
-    lazy var contactsIsEmpty: Bool? = {
+    var contactsIsEmpty: Bool? {
         return fetchedResultsController.fetchedObjects?.isEmpty
-    }()
+    }
     
     
     // MARK: - Outlets
@@ -88,14 +78,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     var contacts: [Contact]? {
         return fetchedResultsController.fetchedObjects
     }
-    
-    // MARK: - All Contacts Delegate
-    func allContactsForDelegate() {
-        if let contacts = fetchedResultsController.fetchedObjects {
-            let numOfContacts = contacts.count
-            delegate?.recentlyAddedContacts(count: numOfContacts)
-        }
-    }
+
     
     
     // MARK: - Datasource
@@ -120,7 +103,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell.detailTextLabel?.text = "added \(dateString)"
         cell.detailTextLabel?.textColor = .black
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightUltraLight)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightUltraLight)
         
         return cell
     }
@@ -132,8 +115,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         self.showContact(phoneNumber: phoneNumber, name: firstName)
     }
     
-    
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let contact = fetchedResultsController.object(at: indexPath)
         let delete = UITableViewRowAction(style: .default, title: "Delete Contact") { (action, indexPath) in
@@ -142,8 +123,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         delete.backgroundColor = .black
         return [delete]
     }
-    
-
     
     // MARK: - Fetched Results Controller
     
@@ -201,11 +180,11 @@ extension RecentlyAddedViewController {
         case .delete:
             guard let indexPath = indexPath else {return}
             tableView.deleteRows(at: [indexPath], with: .fade)
-            allContactsForDelegate()
+            
         case .insert:
             guard let newIndexPath = newIndexPath else {return}
             tableView.insertRows(at: [newIndexPath], with: .automatic)
-            allContactsForDelegate()
+            
         case .move:
             guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
             tableView.moveRow(at: indexPath, to: newIndexPath)
@@ -258,7 +237,11 @@ extension RecentlyAddedViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-
+    
+    func showNoFriendsLabel() {
+        noContactsLabel.center.x = self.view.center.x
+        contactsIsEmpty == true ? self.view.addSubview(noContactsLabel) : noContactsLabel.removeFromSuperview()
+    }
 }
 
 protocol RecentlyAddedDelegate: class {

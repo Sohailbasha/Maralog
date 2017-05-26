@@ -27,19 +27,13 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
         allContactsForDelegate()
     }
     
-    weak var delegate: AllContactsCountDelegate?
+    
     
     
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
     
-    func allContactsForDelegate() {
-        if let contacts = fetchedResultsController.fetchedObjects {
-            let numOfContacts = contacts.count
-            delegate?.allContacts(count: numOfContacts)
-        }
-    }
     
     // MARK: - TableView
     
