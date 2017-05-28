@@ -14,7 +14,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIApplication.shared.statusBarStyle = .lightContent
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
