@@ -289,6 +289,7 @@ extension AddContactsViewController {
     
     
     func permissionsAlert(title: String, message: String) {
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let enable = UIAlertAction(title: "Enable", style: .default) { (_) in
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
@@ -300,6 +301,7 @@ extension AddContactsViewController {
         alert.addAction(enable)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
+        
     }
     
     

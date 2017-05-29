@@ -13,6 +13,7 @@ import ContactsUI
 
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CNContactViewControllerDelegate {
     
+    
     let noContactsLabel: UILabel = {
         let label = UILabel()
         label.text = "You have no new contacts"
@@ -24,6 +25,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         label.alpha = 0.8
         return label
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         
         UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
         
-        showNoFriendsLabel()
+        noNewContactslabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,10 +59,9 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             recentlyAddedAlert.addAction(action)
             present(recentlyAddedAlert, animated: true, completion: nil)
         }
-        showNoFriendsLabel()
+        noNewContactslabel()
         removeOldContactsFromApp()
     }
-    
     
     var contactsIsEmpty: Bool? {
         return fetchedResultsController.fetchedObjects?.isEmpty
@@ -68,6 +69,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     // MARK: - Outlets
+    
     @IBOutlet var tableView: UITableView!
     
     
@@ -78,7 +80,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return fetchedResultsController.fetchedObjects
     }
 
-    
     
     // MARK: - Datasource
     
@@ -96,6 +97,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             let dateAdded = FormattingDate.sharedInstance.formatter.string(from: timeStamp as Date)
             dateString = dateAdded
         }
+        
         cell.textLabel?.text = contact.fullName
         cell.textLabel?.textColor = .black
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
@@ -109,8 +111,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = fetchedResultsController.object(at: indexPath)
-        guard let phoneNumber = contact.phoneNumber, let firstName = contact.firstName else {
-            return }
+        guard let phoneNumber = contact.phoneNumber, let firstName = contact.firstName else { return }
         self.showContact(phoneNumber: phoneNumber, name: firstName)
     }
     
@@ -122,6 +123,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         delete.backgroundColor = .black
         return [delete]
     }
+    
     
     // MARK: - Fetched Results Controller
     
@@ -163,6 +165,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
 
 }
 
+
 // MARK: - NSFetched Results Controller Delegate Methods
 extension RecentlyAddedViewController {
     
@@ -198,13 +201,13 @@ extension RecentlyAddedViewController {
     }
 }
 
+
 // MARK: - Helper Methods
 extension RecentlyAddedViewController {
     
     func showContact(phoneNumber: String, name: String) {
         
         let number: CNPhoneNumber = CNPhoneNumber(stringValue: phoneNumber)
-        //        let number = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         
         
         let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)
@@ -220,7 +223,6 @@ extension RecentlyAddedViewController {
         
         if !contacts.isEmpty {
             let filteredContact = contacts.filter({$0.phoneNumbers.first?.value == number})
-            //            let contact = contacts[0]
             let contact = filteredContact[0]
             
             let cvc = CNContactViewController(for: contact)
@@ -237,11 +239,12 @@ extension RecentlyAddedViewController {
         }
     }
     
-    func showNoFriendsLabel() {
+    func noNewContactslabel() {
         noContactsLabel.center.x = self.view.center.x
         contactsIsEmpty == true ? self.view.addSubview(noContactsLabel) : noContactsLabel.removeFromSuperview()
     }
 }
+
 
 protocol RecentlyAddedDelegate: class {
     func recentlyAddedContacts(count: Int)

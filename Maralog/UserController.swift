@@ -24,7 +24,6 @@ class UserController {
         return yourName
     }
     
-    
     func recieve(popUp: Bool) {
         UserDefaults.standard.set(popUp, forKey: kPopUp)
     }
@@ -34,4 +33,6 @@ class UserController {
         return tOrF
     }
 
+    
+    
 }

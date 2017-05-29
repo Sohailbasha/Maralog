@@ -8,14 +8,12 @@
 
 import Foundation
 import Contacts
+import UIKit
 
 class CNContactAdd {
     
     static let sharedInstance = CNContactAdd()
-    
-    init() {
-        
-    }
+
     
     func addContactWithoutAddress(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
@@ -57,9 +55,18 @@ class CNContactAdd {
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
-        try? store.execute(saveRequest)
+        
+        
+        
+        do {try? store.execute(saveRequest)}
+        catch{ print("Unable to save contact") }
+        
     }
     
+
     
+    
+    
+ 
     
 }

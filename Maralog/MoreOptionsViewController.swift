@@ -19,7 +19,7 @@ class MoreOptionsViewController: UIViewController {
         let name = UserController.sharedInstance.getName()
         self.yourNameLabel.text = "Your Name: \(name)"
         
-        self.changeDesignsFor(buttons: [saveNameButton, watchWalkthroughButton])
+        self.changeDesignsFor(buttons: [saveNameButton])
         nameChangeTextField.layer.borderColor = Keys.sharedInstance.mainColor.cgColor
         nameChangeTextField.delegate = self
     }
@@ -35,7 +35,7 @@ class MoreOptionsViewController: UIViewController {
     
     @IBOutlet var saveNameButton: UIButton!
     
-    @IBOutlet var watchWalkthroughButton: UIButton!
+    
     
     
     
@@ -58,13 +58,6 @@ class MoreOptionsViewController: UIViewController {
             })
         }
     }
-    
-    @IBAction func watchAgainTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInViewController else { return }
-        self.present(signInVC, animated: true, completion: nil)
-    }
-    
 }
 
 extension MoreOptionsViewController: UITableViewDataSource, UITableViewDelegate {
