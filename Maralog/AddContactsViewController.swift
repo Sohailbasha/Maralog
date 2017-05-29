@@ -174,7 +174,47 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
-
+        
+//        
+//        
+//        if (!firstName.isEmpty && !phoneNumber.isEmpty) {
+//            
+//            switch (uiSwitch.isOn, autoTextSwitch.isOn) {
+//            case (true, true):
+//                if let location = usersLocation{
+//                    let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+//                    ContactController.sharedInstance.addContact(contact: contact)
+//                    addToCNContacts(contact: contact)
+//                    sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+//                }
+//            case (false, false):
+//                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+//                ContactController.sharedInstance.addContact(contact: contact)
+//                addContactWithoutAddress(contact: contact)
+//                DispatchQueue.main.async {
+//                    self.animateViewForDetails()
+//                }
+//            case (true, false):
+//                if let location = usersLocation{
+//                    let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
+//                    ContactController.sharedInstance.addContact(contact: contact)
+//                    addToCNContacts(contact: contact)
+//                }
+//            case (false, true):
+//                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+//                ContactController.sharedInstance.addContact(contact: contact)
+//                addContactWithoutAddress(contact: contact)
+//                DispatchQueue.main.async {
+//                    self.animateViewForDetails()
+//                }
+//            }
+//            
+//            
+//            
+//        }
+//        
+        
+        
         
         
         

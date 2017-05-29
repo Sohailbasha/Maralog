@@ -41,6 +41,7 @@
 		FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9A1ED0D8E80057E102 /* Extensions.swift */; };
 		FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9C1ED0D94B0057E102 /* PageCell.swift */; };
 		FDE28FA01ED0DA550057E102 /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9F1ED0DA550057E102 /* LoginCell.swift */; };
+		FDF8F9191EDBCC990047500B /* CNContactAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF8F9181EDBCC990047500B /* CNContactAdd.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		FDE28F9A1ED0D8E80057E102 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FDE28F9C1ED0D94B0057E102 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		FDE28F9F1ED0DA550057E102 /* LoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
+		FDF8F9181EDBCC990047500B /* CNContactAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNContactAdd.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 		FD631D841E4E7D2E00CA9B11 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				FDF8F9181EDBCC990047500B /* CNContactAdd.swift */,
 				FDE28F9A1ED0D8E80057E102 /* Extensions.swift */,
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
@@ -347,6 +350,7 @@
 				FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */,
 				FD5C98DB1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift in Sources */,
 				FDD9C2F31ECE79A200573F00 /* Symbols.swift in Sources */,
+				FDF8F9191EDBCC990047500B /* CNContactAdd.swift in Sources */,
 				FDD9C2EA1ECE3EC900573F00 /* UserDefaultsTableViewCell.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
