@@ -156,16 +156,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             if phoneNumber.isEmpty {
                 self.hilightEmpty(phoneNumberTextField)
             }
-
         }
     }
+    
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         phoneNumberTextField.text = ""
         firstNameTextField.text = ""
         lastNameTextField.text = ""
-        
-        self.animationNotification()
     }
     
     
@@ -177,11 +175,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         if uiSwitch.isOn == false {
             locationIcon.tintColor = .gray
+            
         } else {
             locationIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
             saveLocationToContact()
         }
     }
+    
     
     @IBAction func autoTextSwitchEnabled(_ sender: Any) {
         if autoTextSwitch.isOn == false {
@@ -346,40 +346,6 @@ extension AddContactsViewController {
         }
     }
     
-    func animationNotification() {
-        
-        UIView.animate(withDuration: 0.5, animations: { 
-            self.firstNameTextField.alpha = 0
-            self.lastNameTextField.alpha = 0
-            self.phoneNumberTextField.alpha = 0
-            self.labelOfPhoneNumber.alpha = 0
-            self.labelOfFirstName.alpha = 0
-            self.labelOfLastName.alpha = 0
-            self.uiSwitch.alpha = 0
-            self.locationIcon.alpha = 0
-            self.autoTextIcon.alpha = 0
-            self.autoTextSwitch.alpha = 0
-            
-        }) { (_) in
-            self.makeviewsVisable()
-        }
-    }
-    
-    func makeviewsVisable() {
-        UIView.animate(withDuration: 0.45, animations: {
-            
-            self.firstNameTextField.alpha = 1
-            self.lastNameTextField.alpha = 1
-            self.phoneNumberTextField.alpha = 1
-            self.labelOfPhoneNumber.alpha = 1
-            self.labelOfFirstName.alpha = 1
-            self.labelOfLastName.alpha = 1
-            self.uiSwitch.alpha = 1
-            self.locationIcon.alpha = 1
-            self.autoTextIcon.alpha = 1
-            self.autoTextSwitch.alpha = 1
-        })
-    }
 }
 
 
