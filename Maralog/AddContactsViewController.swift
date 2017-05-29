@@ -12,22 +12,16 @@ import Contacts
 
 class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
-    var notificationLabel: UILabel {
-        let label = UILabel()
-        label.text = "Contact Saved"
-        label.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightThin)
-        label.textColor = .black
-        label.frame = CGRect(x: 500, y: 300, width: 280, height: 10)
-        label.textAlignment = .center
-        label.center.x = self.view.center.x
-        
-        return label
-    }
+    
+    let contactSavedLabel = UILabel()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        self.viewForContactDetails.center.x = self.view.center.x
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
@@ -50,7 +44,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             locationIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
         } else {
             uiSwitch.isOn = false
-            locationIcon.tintColor = .gray
+            locationIcon.tintColor = .lightGray
         }
         
         if (isAutoTextDefaultOn) {
@@ -58,8 +52,18 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
         } else {
             autoTextSwitch.isOn = false
-            autoTextIcon.tintColor = .gray
+            autoTextIcon.tintColor = .lightGray
         }
+        
+        
+        contactSavedLabel.text = "contact saved"
+        contactSavedLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
+        contactSavedLabel.textColor = .lightGray
+        contactSavedLabel.alpha = 0.95
+        contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
+        contactSavedLabel.textAlignment = .center
+        contactSavedLabel.center = viewForContactDetails.center
+        
     }
     
     
@@ -123,7 +127,44 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Button
     @IBOutlet var saveButton: UIButton!
     
+    // Views
+    @IBOutlet var viewForContactDetails: UIView!
+    
 
+    
+    
+    func animateViewForDetails() {
+        
+        self.view.addSubview(self.contactSavedLabel)
+        self.view.sendSubview(toBack: self.contactSavedLabel)
+
+        UIView.animate(withDuration: 1, animations: {
+            
+            self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
+            self.viewForContactDetails.alpha = 0
+        
+        }) { (_) in
+            
+            self.phoneNumberTextField.text = ""
+            self.firstNameTextField.text = ""
+            self.lastNameTextField.text = ""
+            
+            self.viewForContactDetails.center.x = self.view.center.x
+            
+            UIView.animate(withDuration: 0.75, animations: {
+                self.contactSavedLabel.removeFromSuperview()
+                self.viewForContactDetails.alpha = 1
+            })
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     // MARK: - Action
     
@@ -133,26 +174,36 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text as String? else { return }
         
+
         
+        
+        
+
         if (!firstName.isEmpty && !phoneNumber.isEmpty) {
+            
             if uiSwitch.isOn {
                 if let location = usersLocation {
                     let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
                     ContactController.sharedInstance.addContact(contact: contact)
                     addToCNContacts(contact: contact)
+                    DispatchQueue.main.async {
+                        self.animateViewForDetails()
+                    }
                 }
             } else {
                 let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
                 ContactController.sharedInstance.addContact(contact: contact)
                 addContactWithoutAddress(contact: contact)
+                DispatchQueue.main.async {
+                    self.animateViewForDetails()
+                }
             }
+            
             autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
         } else {
-            
             if firstName.isEmpty {
                 self.hilightEmpty(firstNameTextField)
             }
-            
             if phoneNumber.isEmpty {
                 self.hilightEmpty(phoneNumberTextField)
             }
@@ -174,11 +225,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if uiSwitch.isOn == false {
-            locationIcon.tintColor = .gray
+            locationIcon.tintColor = .lightGray
             
         } else {
             locationIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
-            saveLocationToContact()
+            getCurrentLocationForCNContact()
         }
     }
     
@@ -241,7 +292,7 @@ extension AddContactsViewController {
         }
     }
     
-    func saveLocationToContact() {
+    func getCurrentLocationForCNContact() {
         let geocoder = CLGeocoder()
         guard let currentLocation = currentLocation else {
             return }
