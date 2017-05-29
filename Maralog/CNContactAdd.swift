@@ -11,6 +11,54 @@ import Contacts
 
 class CNContactAdd {
     
+    static let sharedInstance = CNContactAdd()
+    
+    init() {
+        
+    }
+    
+    func addContactWithoutAddress(contact: Contact) {
+        guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
+        guard let lastName = contact.lastName else { return }
+        
+        let contact = CNMutableContact()
+        contact.givenName = firstName.capitalized
+        contact.familyName = lastName.capitalized
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        contact.note = "Added With Maralog"
+        
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier: nil)
+        try? store.execute(saveRequest)
+    }
+    
+    func addToCNContacts(contact: Contact, address: CNMutablePostalAddress) {
+        guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
+        guard let lastName = contact.lastName else { return }
+        
+        let contact = CNMutableContact()
+        contact.givenName = firstName.capitalized
+        contact.familyName = lastName.capitalized
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        contact.note = "Added With Maralog"
+        
+        let dateAdded = NSDateComponents()
+        dateAdded.month = Calendar.current.component(.month, from: Date())
+        dateAdded.year = Calendar.current.component(.year, from: Date())
+        dateAdded.day = Calendar.current.component(.day, from: Date())
+        let date = CNLabeledValue(label: "Date Added", value: dateAdded)
+        contact.dates = [date]
+        
+        
+        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
+        contact.postalAddresses = [locationMet]
+        
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier: nil)
+        try? store.execute(saveRequest)
+    }
     
     
     

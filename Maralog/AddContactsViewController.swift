@@ -67,7 +67,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
@@ -84,12 +84,19 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        firstNameTextField.text = ""
+        lastNameTextField.text = ""
+        phoneNumberTextField.text = ""
+    }
+    
+    
     // MARK: - Properties
     
     var coreLocationManager: CLLocationManager!
     var currentLocation: CLLocation?
-    var usersLocation: Location?
+    
     
     let store = CNContactStore()
     let address = CNMutablePostalAddress()
@@ -130,124 +137,52 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Views
     @IBOutlet var viewForContactDetails: UIView!
     
+    
 
-    
-    
-    func animateViewForDetails() {
-        
-        self.view.addSubview(self.contactSavedLabel)
-        self.view.sendSubview(toBack: self.contactSavedLabel)
-
-        UIView.animate(withDuration: 1, animations: {
-            
-            self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
-            self.viewForContactDetails.alpha = 0
-        
-        }) { (_) in
-            
-            self.phoneNumberTextField.text = ""
-            self.firstNameTextField.text = ""
-            self.lastNameTextField.text = ""
-            
-            self.viewForContactDetails.center.x = self.view.center.x
-            
-            UIView.animate(withDuration: 0.75, animations: {
-                self.contactSavedLabel.removeFromSuperview()
-                self.viewForContactDetails.alpha = 1
-            })
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
     
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         
-        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
+        
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
-            let phoneNumber = phoneNumberTextField.text as String? else { return }
+            let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
         
+        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         
-//        
-//        
-//        if (!firstName.isEmpty && !phoneNumber.isEmpty) {
-//            
-//            switch (uiSwitch.isOn, autoTextSwitch.isOn) {
-//            case (true, true):
-//                if let location = usersLocation{
-//                    let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
-//                    ContactController.sharedInstance.addContact(contact: contact)
-//                    addToCNContacts(contact: contact)
-//                    sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-//                }
-//            case (false, false):
-//                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-//                ContactController.sharedInstance.addContact(contact: contact)
-//                addContactWithoutAddress(contact: contact)
-//                DispatchQueue.main.async {
-//                    self.animateViewForDetails()
-//                }
-//            case (true, false):
-//                if let location = usersLocation{
-//                    let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
-//                    ContactController.sharedInstance.addContact(contact: contact)
-//                    addToCNContacts(contact: contact)
-//                }
-//            case (false, true):
-//                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-//                ContactController.sharedInstance.addContact(contact: contact)
-//                addContactWithoutAddress(contact: contact)
-//                DispatchQueue.main.async {
-//                    self.animateViewForDetails()
-//                }
-//            }
-//            
-//            
-//            
-//        }
-//        
-        
-        
-        
-        
-        
-
         if (!firstName.isEmpty && !phoneNumber.isEmpty) {
             
-            if uiSwitch.isOn {
-                if let location = usersLocation {
-                    let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, location: location)
-                    ContactController.sharedInstance.addContact(contact: contact)
-                    addToCNContacts(contact: contact)
-                    DispatchQueue.main.async {
-                        self.animateViewForDetails()
-                    }
-                }
-            } else {
-                let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+            switch (uiSwitch.isOn, autoTextSwitch.isOn) {
+            case (true, true):
+                
                 ContactController.sharedInstance.addContact(contact: contact)
-                addContactWithoutAddress(contact: contact)
+                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
+                sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+                
+            case (false, false):
+                
+                ContactController.sharedInstance.addContact(contact: contact)
+                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
                 DispatchQueue.main.async {
                     self.animateViewForDetails()
                 }
-            }
-            
-            autoTextSwitch.isOn ? sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName) : ()
-        } else {
-            if firstName.isEmpty {
-                self.hilightEmpty(firstNameTextField)
-            }
-            if phoneNumber.isEmpty {
-                self.hilightEmpty(phoneNumberTextField)
+                
+            case (true, false):
+                ContactController.sharedInstance.addContact(contact: contact)
+                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
+                DispatchQueue.main.async {
+                    self.animateViewForDetails()
+                }
+                
+            case (false, true):
+                ContactController.sharedInstance.addContact(contact: contact)
+                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
+                sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+                
             }
         }
+
     }
     
     
@@ -266,7 +201,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         if uiSwitch.isOn == false {
             locationIcon.tintColor = .lightGray
-            
         } else {
             locationIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
             getCurrentLocationForCNContact()
@@ -275,8 +209,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func autoTextSwitchEnabled(_ sender: Any) {
+        
         if autoTextSwitch.isOn == false {
-            autoTextIcon.tintColor = .gray
+            autoTextIcon.tintColor = .lightGray
         } else {
             autoTextIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
         }
@@ -297,12 +232,6 @@ extension AddContactsViewController {
         if let location = locations.last {
             currentLocation = CLLocation(latitude: location.coordinate.latitude,
                                          longitude: location.coordinate.longitude)
-            
-            if let currentLocation = currentLocation {
-                usersLocation = Location(latitude: Double(currentLocation.coordinate.latitude),
-                                         longitude: Double(currentLocation.coordinate.longitude),
-                                         name: "")
-            }
         }
         coreLocationManager.stopUpdatingLocation()
     }
@@ -319,10 +248,9 @@ extension AddContactsViewController {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+            messageComposerVC.modalPresentationCapturesStatusBarAppearance = true
             DispatchQueue.main.async {
-                self.present(messageComposerVC,
-                             animated: true,
-                             completion: { _ = self.navigationController?.popToRootViewController(animated: true) })
+                self.present(messageComposerVC, animated: true, completion: nil)
             }
         } else {
             let alert = UIAlertController(title: "Error", message: "Phone unable to send messages.", preferredStyle: .alert)
@@ -359,48 +287,6 @@ extension AddContactsViewController {
         }
     }
     
-    func addContactWithoutAddress(contact: Contact) {
-        guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
-        guard let lastName = contact.lastName else { return }
-        
-        let contact = CNMutableContact()
-        contact.givenName = firstName.capitalized
-        contact.familyName = lastName.capitalized
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added With Maralog"
-        
-        let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier: nil)
-        try? store.execute(saveRequest)
-    }
-    
-    func addToCNContacts(contact: Contact) {
-        guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
-        guard let lastName = contact.lastName else { return }
-        
-        let contact = CNMutableContact()
-        contact.givenName = firstName.capitalized
-        contact.familyName = lastName.capitalized
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added With Maralog"
-        
-        let dateAdded = NSDateComponents()
-        dateAdded.month = Calendar.current.component(.month, from: Date())
-        dateAdded.year = Calendar.current.component(.year, from: Date())
-        dateAdded.day = Calendar.current.component(.day, from: Date())
-        let date = CNLabeledValue(label: "Date Added", value: dateAdded)
-        contact.dates = [date]
-        
-        
-        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
-        contact.postalAddresses = [locationMet]
-        
-        let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier: nil)
-        try? store.execute(saveRequest)
-    }
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -415,6 +301,33 @@ extension AddContactsViewController {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    
+    
+    func animateViewForDetails() {
+        
+        self.view.addSubview(self.contactSavedLabel)
+        self.view.sendSubview(toBack: self.contactSavedLabel)
+        
+        UIView.animate(withDuration: 1, animations: {
+            
+            self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
+            self.viewForContactDetails.alpha = 0
+            
+        }) { (_) in
+            
+            self.phoneNumberTextField.text = ""
+            self.firstNameTextField.text = ""
+            self.lastNameTextField.text = ""
+            
+            self.viewForContactDetails.center.x = self.view.center.x
+            
+            UIView.animate(withDuration: 0.75, animations: {
+                self.contactSavedLabel.removeFromSuperview()
+                self.viewForContactDetails.alpha = 1
+            })
+        }
+    }
+    
     
     func allign(label: UILabel, with textField: UITextField) {
         label.frame.origin.y = textField.frame.origin.y
