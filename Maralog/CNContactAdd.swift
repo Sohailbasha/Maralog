@@ -46,7 +46,7 @@ class CNContactAdd {
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added With Maralog \non \(hour):\(minutes)"
+        contact.note = "Added With Maralog. \nOn \(hour):\(minutes)"
         
         
         let dateAdded = NSDateComponents()

@@ -49,8 +49,8 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("skip", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Skip", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(skip), for: .touchUpInside)
         return button
     }()
@@ -62,8 +62,8 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("next", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Next", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
         return button
     }()
@@ -177,7 +177,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
- 
+        
         //last login cell is being rendered here
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell

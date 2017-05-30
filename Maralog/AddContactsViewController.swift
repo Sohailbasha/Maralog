@@ -16,10 +16,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let contactSavedLabel = UILabel()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
         
         self.viewForContactDetails.center.x = self.view.center.x
         
@@ -49,7 +50,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if (isAutoTextDefaultOn) {
             autoTextSwitch.isOn = true
             autoTextIcon.tintColor = Keys.sharedInstance.trimColor
-
+            
         } else {
             autoTextSwitch.isOn = false
             autoTextIcon.tintColor = .lightGray
@@ -151,7 +152,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var viewForContactDetails: UIView!
     
     
-
     
     // MARK: - Action
     
@@ -163,14 +163,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         
-//        if CNContactStore.authorizationStatus(for: .contacts) == .authorized 
-        
-            
-        
-            
-            
-        
-            
         // if (!firstName.isEmpty && !phoneNumber.isEmpty) {
         
         
@@ -178,7 +170,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             
             switch (uiSwitch.isOn, autoTextSwitch.isOn) {
             case (true, true):
-            
+                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
                 sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
@@ -206,7 +198,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             self.permissionsAlert(title: "Unable to access Contacts", message: "Maralog requires access to your contacts in order to save there. Please enabel them.")
         }
-
+        
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -225,7 +217,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             locationIcon.tintColor = .lightGray
         } else {
             locationIcon.tintColor = Keys.sharedInstance.trimColor
-
+            
             getCurrentLocationForCNContact()
         }
     }
@@ -237,7 +229,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextIcon.tintColor = .lightGray
         } else {
             autoTextIcon.tintColor = Keys.sharedInstance.trimColor
-
         }
     }
 }

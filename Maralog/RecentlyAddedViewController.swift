@@ -42,8 +42,6 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         do { try fetchedResultsToDelete.performFetch() }
         catch {print("Error starting fetched results controller: \(error)")}
         
-        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
-        
         noNewContactslabel()
     }
     

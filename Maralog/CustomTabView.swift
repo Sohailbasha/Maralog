@@ -22,7 +22,7 @@ class CustomTabView: UIView {
     @IBOutlet var addButton: UIButton!
     @IBOutlet var moreOptionsButton: UIButton!
     
-    
+
     
     lazy var recentLabel: UILabel = {
         let recentlyAdded = UILabel()

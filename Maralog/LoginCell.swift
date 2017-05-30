@@ -29,7 +29,7 @@ class LoginCell: UICollectionViewCell {
     
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        let color = UIColor(red: 205/255, green: 103/255, blue: 150/255, alpha: 1)
+        let color = Keys.sharedInstance.mainColor
         button.backgroundColor = color
         button.setTitle("start", for: .normal)
         button.setTitleColor(.white, for: .normal)
