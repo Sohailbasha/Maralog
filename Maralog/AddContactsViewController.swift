@@ -166,19 +166,19 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
 //        if CNContactStore.authorizationStatus(for: .contacts) == .authorized 
         
             
-            
-            
-            
         
             
+            
+        
+            
+        // if (!firstName.isEmpty && !phoneNumber.isEmpty) {
         
         
-        
-        if (!firstName.isEmpty && !phoneNumber.isEmpty) {
+        if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
             
             switch (uiSwitch.isOn, autoTextSwitch.isOn) {
             case (true, true):
-                
+            
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
                 sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
@@ -202,8 +202,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
                 sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-                
             }
+        } else {
+            self.permissionsAlert(title: "Unable to access Contacts", message: "Maralog requires access to your contacts in order to save there. Please enabel them.")
         }
 
     }
@@ -217,7 +218,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             uiSwitch.setOn(false, animated: true)
-            permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save location")
+            permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save a location")
         }
         
         if uiSwitch.isOn == false {

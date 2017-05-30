@@ -275,7 +275,7 @@
                     </connections>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4756" y="96"/>
+            <point key="canvasLocation" x="4756" y="23"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="xBm-AN-AQb">
@@ -296,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UQ-9e-hTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3218" y="96"/>
+            <point key="canvasLocation" x="3913" y="-132"/>
         </scene>
         <!--More Options-->
         <scene sceneID="KLz-rR-cef">
@@ -468,10 +468,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rKK-2m-IzH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="X7x-am-KNn"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBH-HI-BU1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wBH-HI-BU1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.1803921568627451" green="0.20000000000000001" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -565,9 +565,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T0N-5s-f6z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="jNw-5q-v2Z"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rmm-DU-wfJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rmm-DU-wfJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

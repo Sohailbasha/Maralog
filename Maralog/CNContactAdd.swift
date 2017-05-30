@@ -13,17 +13,20 @@ import UIKit
 class CNContactAdd {
     
     static let sharedInstance = CNContactAdd()
+    
+    let calendar = Calendar.current
 
     
     func addContactWithoutAddress(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName else { return }
-        
+
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added With Maralog"
+
         
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
@@ -33,13 +36,18 @@ class CNContactAdd {
     
     func addToCNContacts(contact: Contact, address: CNMutablePostalAddress) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
-        guard let lastName = contact.lastName else { return }
+        guard let lastName = contact.lastName, let timeStamp = contact.timeStamp else { return }
+        
+        let hour = calendar.component(.hour, from: timeStamp as Date)
+        let minutes = calendar.component(.minute, from: timeStamp as Date)
+        
         
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added With Maralog"
+        contact.note = "Added With Maralog \non \(hour):\(minutes)"
+        
         
         let dateAdded = NSDateComponents()
         dateAdded.month = Calendar.current.component(.month, from: Date())
@@ -59,7 +67,6 @@ class CNContactAdd {
         
         
         do {try? store.execute(saveRequest)}
-        catch{ print("Unable to save contact") }
         
     }
     
