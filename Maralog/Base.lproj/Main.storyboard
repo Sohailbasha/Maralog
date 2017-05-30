@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-8y-242">
-                                        <rect key="frame" x="16" y="0.0" width="78.5" height="13"/>
+                                        <rect key="frame" x="16" y="0.0" width="79" height="13"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                                         <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="light"/>
                                     </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA5-Iy-YNO">
-                                        <rect key="frame" x="16" y="124" width="51.5" height="13"/>
+                                        <rect key="frame" x="16" y="124" width="52" height="13"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                                         <nil key="highlightedColor"/>
@@ -67,18 +67,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-DW-qXs">
-                                <rect key="frame" x="16" y="318" width="286" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-DW-qXs">
+                                <rect key="frame" x="45" y="318" width="286" height="31"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wgn-Ri-foL">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wgn-Ri-foL">
                                         <rect key="frame" x="0.0" y="0.0" width="103" height="31"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="whenandwhere" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whenandwhere" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
                                                 <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
                                                 <rect key="frame" x="54" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="locationSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="Mai-35-TiJ"/>
@@ -86,14 +85,14 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-fq-0PJ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-fq-0PJ">
                                         <rect key="frame" x="183" y="0.0" width="103" height="31"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="magicmessage" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magicmessage" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
                                                 <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
                                                 <rect key="frame" x="54" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="autoTextSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="BSB-yL-SCW"/>
@@ -105,6 +104,10 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yUr-DW-qXs" firstAttribute="centerY" secondItem="DQO-nK-wO3" secondAttribute="centerY" id="VMM-gs-KWu"/>
+                            <constraint firstItem="yUr-DW-qXs" firstAttribute="centerX" secondItem="DQO-nK-wO3" secondAttribute="centerX" id="ibU-Ky-by7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Contact" id="gtc-vI-2Ts">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="hwc-hH-a8j">
@@ -468,7 +471,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rKK-2m-IzH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="X7x-am-KNn"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wBH-HI-BU1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wBH-HI-BU1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -565,7 +568,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T0N-5s-f6z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="jNw-5q-v2Z"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rmm-DU-wfJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rmm-DU-wfJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

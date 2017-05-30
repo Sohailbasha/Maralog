@@ -11,7 +11,7 @@ import UIKit
 class LoginCell: UICollectionViewCell {
     
     let logoImageView: UIImageView = {
-        let image = UIImage(named: "logo")
+        let image = UIImage(named: "appLogo")
         let imageView = UIImageView(image: image)
         return imageView
     }()

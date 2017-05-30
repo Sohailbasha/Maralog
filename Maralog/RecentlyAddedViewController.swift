@@ -49,13 +49,13 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewWillAppear(true)
         
         if UserController.sharedInstance.didrecievePopUp() == false {
-            let recentlyAddedAlert = UIAlertController(title: "This is your recently added list.", message: "- You'll find the contacts of people you've met in the past three days here. \n \n - To delete contacts. swipe left on their cell.", preferredStyle: .alert)
+            let recentlyAddedAlert = UIAlertController(title: "Recently Added List", message: "- These are the contacts which you've added through Maralog in the past 3 days. \n \n - TO DELETE CONTACTS, SWIPE LEFT ON THE CELL.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Got it.", style: .default, handler: { (_) in
                 let popUp = true
                 UserController.sharedInstance.recieve(popUp: popUp)
             })
             recentlyAddedAlert.addAction(action)
-            present(recentlyAddedAlert, animated: true, completion: nil)
+            self.parent?.present(recentlyAddedAlert, animated: true, completion: nil)
         }
         noNewContactslabel()
         removeOldContactsFromApp()
