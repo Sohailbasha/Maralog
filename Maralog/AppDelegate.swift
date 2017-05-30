@@ -43,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.shadowImage = UIImage()
         navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
 
-        
         return true
     }
     
