@@ -17,7 +17,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     let noContactsLabel: UILabel = {
         let label = UILabel()
         label.text = "You have no new contacts"
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightRegular)
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightRegular)
         label.textColor = Keys.sharedInstance.mainColor
         label.frame = CGRect(x: 100, y: 100, width: 300, height: 150)
         label.adjustsFontSizeToFitWidth = true
@@ -51,7 +51,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewWillAppear(true)
         
         if UserController.sharedInstance.didrecievePopUp() == false {
-            let recentlyAddedAlert = UIAlertController(title: "This is your recently added list.", message: "You'll find the contacts of people you've met in the past three days here", preferredStyle: .alert)
+            let recentlyAddedAlert = UIAlertController(title: "This is your recently added list.", message: "- You'll find the contacts of people you've met in the past three days here. \n \n - To delete contacts. swipe left on their cell.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Got it.", style: .default, handler: { (_) in
                 let popUp = true
                 UserController.sharedInstance.recieve(popUp: popUp)
@@ -100,11 +100,11 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell.textLabel?.text = contact.fullName
         cell.textLabel?.textColor = .black
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightUltraLight)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightThin)
         
         cell.detailTextLabel?.text = "added \(dateString)"
         cell.detailTextLabel?.textColor = .black
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightUltraLight)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightThin)
         
         return cell
     }

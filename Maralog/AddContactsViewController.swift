@@ -40,8 +40,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         if (isLocationDefaultOn) {
             uiSwitch.isOn = true
-            
-            locationIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
+            locationIcon.tintColor = Keys.sharedInstance.trimColor
         } else {
             uiSwitch.isOn = false
             locationIcon.tintColor = .lightGray
@@ -49,12 +48,15 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         if (isAutoTextDefaultOn) {
             autoTextSwitch.isOn = true
-            autoTextIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
+            autoTextIcon.tintColor = Keys.sharedInstance.trimColor
+
         } else {
             autoTextSwitch.isOn = false
             autoTextIcon.tintColor = .lightGray
         }
         
+        uiSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
+        autoTextSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         
         contactSavedLabel.text = "contact saved"
         contactSavedLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
@@ -64,8 +66,15 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         contactSavedLabel.textAlignment = .center
         contactSavedLabel.center = viewForContactDetails.center
         
+        
+        if CNContactStore.authorizationStatus(for: .contacts) != .authorized {
+            store.requestAccess(for: .contacts, completionHandler: { (success, error) in
+                if (success) {
+                    return
+                }
+            })
+        }
     }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,14 +82,18 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         super.viewWillAppear(true)
         if isLocationDefaultOn == true {
             uiSwitch.isOn = true
+            locationIcon.tintColor = Keys.sharedInstance.trimColor
         } else {
             uiSwitch.isOn = false
+            locationIcon.tintColor = .lightGray
         }
         
         if isAutoTextDefaultOn == true {
             autoTextSwitch.isOn = true
+            autoTextIcon.tintColor = Keys.sharedInstance.trimColor
         } else {
             autoTextSwitch.isOn = false
+            autoTextIcon.tintColor = .lightGray
         }
     }
     
@@ -144,12 +157,22 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         
-        
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
         
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+        
+//        if CNContactStore.authorizationStatus(for: .contacts) == .authorized 
+        
+            
+            
+            
+            
+        
+            
+        
+        
         
         if (!firstName.isEmpty && !phoneNumber.isEmpty) {
             
@@ -185,13 +208,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
-    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         phoneNumberTextField.text = ""
         firstNameTextField.text = ""
         lastNameTextField.text = ""
     }
-    
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
@@ -202,7 +223,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if uiSwitch.isOn == false {
             locationIcon.tintColor = .lightGray
         } else {
-            locationIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
+            locationIcon.tintColor = Keys.sharedInstance.trimColor
+
             getCurrentLocationForCNContact()
         }
     }
@@ -213,7 +235,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if autoTextSwitch.isOn == false {
             autoTextIcon.tintColor = .lightGray
         } else {
-            autoTextIcon.tintColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.7921568627, alpha: 1)
+            autoTextIcon.tintColor = Keys.sharedInstance.trimColor
+
         }
     }
 }
