@@ -29,12 +29,10 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
     let pages: [Page] = {
         let firstPage = Page(title: "Welcome to Maralog", message: "Maralog works with your contacts to save more than just a number.", imageName: "page1")
         
-        let secondPage = Page(title: "Features", message: "Use Maralog the next time you go out, and save where and when you got someones number. You can even text them immediately. No extra effort required.", imageName: "page2")
+        let secondPage = Page(title: "Features", message: "Add numbers using Maralog the next time you go out, and see when and where you save a new contact. You can even text them immediately. No extra effort required.", imageName: "page2")
         
-        let thirdPage = Page(title: "Recently Added", message: "Rough weekend? ;) We'll show you people you've met in the last 3 days.", imageName: "page3")
+        let thirdPage = Page(title: "Recently Added", message: "Busy weekend? Forgetful? We can help. Maralog will show you the contacts added in the last 3 days.", imageName: "page3")
         
-        
-        //let fourthPage = Page(title: "Recently Added Contacts", message: "Maralog will show who you've met in the last three days", imageName: "")
         
         return [firstPage, secondPage, thirdPage]
     }()

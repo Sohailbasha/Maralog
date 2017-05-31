@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSContactsUsageDescription</key>
-	<string>This app requires access to your contacts for syncing</string>
+	<string>This app requires access to your contacts in order to sync new ones added through Maralog.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs location data to show you when and where you meet new friends</string>
+	<string>This app needs your location data to show you where you got someones number.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
