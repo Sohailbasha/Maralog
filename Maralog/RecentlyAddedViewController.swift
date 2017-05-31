@@ -13,7 +13,6 @@ import ContactsUI
 
 class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CNContactViewControllerDelegate {
     
-    
     let noContactsLabel: UILabel = {
         let label = UILabel()
         label.text = "You have no new contacts"
@@ -26,6 +25,9 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return label
     }()
     
+    var contactsIsEmpty: Bool? {
+        return fetchedResultsController.fetchedObjects?.isEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +63,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         removeOldContactsFromApp()
     }
     
-    var contactsIsEmpty: Bool? {
-        return fetchedResultsController.fetchedObjects?.isEmpty
-    }
-    
+
     
     // MARK: - Outlets
     
@@ -112,8 +111,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = fetchedResultsController.object(at: indexPath)
-        guard let phoneNumber = contact.phoneNumber, let firstName = contact.firstName else { return }
-        self.showContact(phoneNumber: phoneNumber, name: firstName)
+        self.showDetailsFor(contact)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -168,6 +166,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
 
 
 // MARK: - NSFetched Results Controller Delegate Methods
+
 extension RecentlyAddedViewController {
     
     
@@ -206,7 +205,8 @@ extension RecentlyAddedViewController {
 // MARK: - Helper Methods
 extension RecentlyAddedViewController {
     
-    func showContact(phoneNumber: String, name: String) {
+    func showDetailsFor(_ contact: Contact) {
+        guard let name = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         
         let number: CNPhoneNumber = CNPhoneNumber(stringValue: phoneNumber)
         
@@ -229,13 +229,14 @@ extension RecentlyAddedViewController {
             let cvc = CNContactViewController(for: contact)
             cvc.delegate = self
             cvc.allowsEditing = false
-            
-            self.navigationController?.pushViewController(cvc, animated: true)
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(cvc, animated: true)
+            }
         } else {
             let alert = UIAlertController(title: "Error",
                                           message: "Could not find \(name) in the Contacts application. You may have deleted or modified it.",
                 preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
