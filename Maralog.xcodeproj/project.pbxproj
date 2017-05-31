@@ -111,10 +111,10 @@
 		FD16C98C1E490AD500237631 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
+				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
 				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
 				FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */,
-				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
-				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
 				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
 				FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */,
 			);

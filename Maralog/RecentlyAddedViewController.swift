@@ -49,7 +49,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewWillAppear(true)
         
         if UserController.sharedInstance.didrecievePopUp() == false {
-            let recentlyAddedAlert = UIAlertController(title: "Recently Added List", message: "- These are the contacts which you've added through Maralog in the past 3 days. \n \n - TO DELETE CONTACTS, SWIPE LEFT ON THE CELL.", preferredStyle: .alert)
+            let recentlyAddedAlert = UIAlertController(title: "Recently Added List", message: "- These are the contacts which you've added through Maralog in the past 3 days. \n \n - TO DELETE CONTACTS, SWIPE LEFT ON THEIR NAME.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Got it.", style: .default, handler: { (_) in
                 let popUp = true
                 UserController.sharedInstance.recieve(popUp: popUp)
@@ -103,6 +103,9 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         cell.detailTextLabel?.text = "added \(dateString)"
         cell.detailTextLabel?.textColor = .black
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightThin)
+        
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
         
         return cell
     }
@@ -160,8 +163,8 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
             ContactController.sharedInstance.removeContact(contact: i)
         }
     }
-
 }
+
 
 
 // MARK: - NSFetched Results Controller Delegate Methods
