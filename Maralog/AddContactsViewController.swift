@@ -374,6 +374,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
     }
     
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let fNameText = firstNameTextField.text else { return }
         guard let lNameText = lastNameTextField.text else { return }
@@ -398,17 +399,13 @@ extension AddContactsViewController: UITextFieldDelegate {
                 self.labelOfPhoneNumber.isHidden = true
             }, completion: nil)
         }
-        
-        switch pNumberText.characters.count {
-//        case 10:
-        }
-        
-        
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
