@@ -145,7 +145,6 @@
                         <outlet property="locationIcon" destination="g2g-PU-e8h" id="iXB-4o-pUV"/>
                         <outlet property="phoneNumberTextField" destination="64J-SE-xPZ" id="gp5-Eb-x5O"/>
                         <outlet property="saveButton" destination="Yw6-Yf-K1I" id="IYr-h6-7Xg"/>
-                        <outlet property="uiSwitch" destination="AnW-Ux-CeQ" id="J0A-vY-Gar"/>
                         <outlet property="viewForContactDetails" destination="HCp-vu-JZl" id="4F9-Gw-TaO"/>
                     </connections>
                 </viewController>

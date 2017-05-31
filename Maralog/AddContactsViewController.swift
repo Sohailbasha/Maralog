@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Contacts
 
+
 class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
@@ -66,21 +67,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
         contactSavedLabel.textAlignment = .center
         contactSavedLabel.center = viewForContactDetails.center
-        
-        
-        if CNContactStore.authorizationStatus(for: .contacts) != .authorized {
-            store.requestAccess(for: .contacts, completionHandler: { (success, error) in
-                if (success) {
-                    return
-                }
-            })
-        }
+
+        CNContactAdd.sharedInstance.checkAuthorization()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(true)
+        
         if isLocationDefaultOn == true {
             uiSwitch.isOn = true
             locationIcon.tintColor = Keys.sharedInstance.trimColor
@@ -163,9 +157,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         
-        // if (!firstName.isEmpty && !phoneNumber.isEmpty) {
-        
-        
+
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
             
             switch (uiSwitch.isOn, autoTextSwitch.isOn) {

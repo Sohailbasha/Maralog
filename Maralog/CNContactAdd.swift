@@ -15,7 +15,17 @@ class CNContactAdd {
     static let sharedInstance = CNContactAdd()
     
     let calendar = Calendar.current
-
+    let store = CNContactStore()
+    
+    func checkAuthorization() {
+        if CNContactStore.authorizationStatus(for: .contacts) != .authorized {
+            store.requestAccess(for: .contacts, completionHandler: { (success, error) in
+                if (success) {
+                    return
+                }
+            })
+        }
+    }
     
     func addContactWithoutAddress(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
@@ -28,7 +38,7 @@ class CNContactAdd {
         contact.note = "Added With Maralog"
 
         
-        let store = CNContactStore()
+//        let store = CNContactStore()
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
@@ -60,7 +70,7 @@ class CNContactAdd {
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
         contact.postalAddresses = [locationMet]
         
-        let store = CNContactStore()
+//        let store = CNContactStore()
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         
