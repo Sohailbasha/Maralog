@@ -22,29 +22,6 @@ class CustomTabView: UIView {
     @IBOutlet var addButton: UIButton!
     @IBOutlet var moreOptionsButton: UIButton!
     
-
-    
-    lazy var recentLabel: UILabel = {
-        let recentlyAdded = UILabel()
-        recentlyAdded.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
-        recentlyAdded.text = "recents"
-        return recentlyAdded
-    }()
-    
-    lazy var addLabel: UILabel = {
-        let add = UILabel()
-        add.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
-        add.text = "add"
-        return add
-    }()
-    
-    lazy var optionsLabel: UILabel = {
-        let options = UILabel()
-        options.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightThin)
-        options.text = "options"
-        return options
-    }()
-    
     
     // app opens on middle tab
     var currentIndex: Int {
