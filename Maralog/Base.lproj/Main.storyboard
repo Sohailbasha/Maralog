@@ -73,7 +73,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wgn-Ri-foL">
                                         <rect key="frame" x="0.0" y="0.0" width="103" height="31"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whenandwhere" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationServicesIcon" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
                                                 <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -88,7 +88,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-fq-0PJ">
                                         <rect key="frame" x="183" y="0.0" width="103" height="31"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magicmessage" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="autoTextIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
                                                 <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -115,7 +115,7 @@
                                 <rect key="frame" x="16" y="2" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
-                                <state key="normal" image="xButton"/>
+                                <state key="normal" image="clearButton"/>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="Sad-bn-5GZ"/>
                                 </connections>
@@ -126,7 +126,7 @@
                                 <rect key="frame" x="319" y="2" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
-                                <state key="normal" image="checkButton"/>
+                                <state key="normal" image="saveButton"/>
                                 <connections>
                                     <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="pp4-qZ-30i"/>
                                 </connections>
@@ -240,7 +240,7 @@
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-fm-eBS">
                                     <rect key="frame" x="0.0" y="0.0" width="110.5" height="55"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="tbRecents"/>
+                                    <state key="normal" image="tbRecentsButton"/>
                                     <connections>
                                         <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="Uie-Wt-QfS"/>
                                     </connections>
@@ -248,7 +248,7 @@
                                 <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPt-i2-Ub6">
                                     <rect key="frame" x="130.5" y="0.0" width="111" height="55"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="tbAdd-1"/>
+                                    <state key="normal" image="tbPlusButton"/>
                                     <connections>
                                         <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="cLU-Sh-N5C"/>
                                     </connections>
@@ -256,7 +256,7 @@
                                 <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-Q8-kdx">
                                     <rect key="frame" x="261.5" y="0.0" width="110.5" height="55"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="tbOptions-1"/>
+                                    <state key="normal" image="tbOptionsButton"/>
                                     <connections>
                                         <action selector="didTapButton:" destination="uKx-vC-1eP" eventType="touchUpInside" id="qib-Hf-cZF"/>
                                     </connections>
@@ -588,12 +588,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkButton" width="178" height="178"/>
-        <image name="magicmessage" width="39" height="28"/>
-        <image name="tbAdd-1" width="30" height="30"/>
-        <image name="tbOptions-1" width="29" height="8"/>
-        <image name="tbRecents" width="31" height="31"/>
-        <image name="whenandwhere" width="38" height="45"/>
-        <image name="xButton" width="178" height="178"/>
+        <image name="autoTextIcon" width="39" height="28"/>
+        <image name="clearButton" width="178" height="178"/>
+        <image name="locationServicesIcon" width="38" height="45"/>
+        <image name="saveButton" width="178" height="178"/>
+        <image name="tbOptionsButton" width="29" height="8"/>
+        <image name="tbPlusButton" width="30" height="30"/>
+        <image name="tbRecentsButton" width="31" height="31"/>
     </resources>
 </document>

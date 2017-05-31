@@ -27,8 +27,8 @@ class SettingsController {
         let textIsOn = getTextSetting()
         
         
-        let locationSetting: Settings = Settings(name: locationSettingName, isOn: locationIsOn, icon: #imageLiteral(resourceName: "whenandwhere"))
-        let autoTextSetting: Settings = Settings(name: textingSettingName, isOn: textIsOn, icon: #imageLiteral(resourceName: "magicmessage"))
+        let locationSetting: Settings = Settings(name: locationSettingName, isOn: locationIsOn, icon: #imageLiteral(resourceName: "locationServicesIcon"))
+        let autoTextSetting: Settings = Settings(name: textingSettingName, isOn: textIsOn, icon: #imageLiteral(resourceName: "autoTextIcon"))
         
         settings = [autoTextSetting, locationSetting]
     }
