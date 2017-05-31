@@ -151,25 +151,20 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty,
             let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
             let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
         
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         
-
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-            
             switch (locationServicesSwitch.isOn, autoTextSwitch.isOn) {
             case (true, true):
-                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
                 sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 
             case (false, false):
-                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
                 DispatchQueue.main.async {
@@ -189,10 +184,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
             }
         } else {
-            self.permissionsAlert(title: "Unable to access Contacts", message: "Maralog requires access to your contacts in order to save there. Please enabel them.")
+            self.permissionsAlert(title: "Unable to access Contacts", message: "Maralog requires access to your contacts in order to save new ones there. Please enabel them.")
         }
-        
     }
+    
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         phoneNumberTextField.text = ""
@@ -200,28 +195,31 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         lastNameTextField.text = ""
     }
     
+    
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             locationServicesSwitch.setOn(false, animated: true)
             permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save a location")
         }
         
-        if locationServicesSwitch.isOn == false {
-            locationIcon.tintColor = .lightGray
-        } else {
+        switch locationServicesSwitch.isOn {
+        case true:
             locationIcon.tintColor = Keys.sharedInstance.trimColor
-            
             getCurrentLocationForCNContact()
+            
+        default:
+            locationIcon.tintColor = .lightGray
         }
     }
     
     
     @IBAction func autoTextSwitchEnabled(_ sender: Any) {
-        
-        if autoTextSwitch.isOn == false {
-            autoTextIcon.tintColor = .lightGray
-        } else {
+        switch autoTextSwitch.isOn {
+        case true:
             autoTextIcon.tintColor = Keys.sharedInstance.trimColor
+            
+        default:
+            autoTextIcon.tintColor = .lightGray
         }
     }
 }
@@ -268,6 +266,7 @@ extension AddContactsViewController {
         }
     }
     
+    
     func getCurrentLocationForCNContact() {
         let geocoder = CLGeocoder()
         guard let currentLocation = currentLocation else {
@@ -297,7 +296,6 @@ extension AddContactsViewController {
     
     
     func permissionsAlert(title: String, message: String) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let enable = UIAlertAction(title: "Enable", style: .default) { (_) in
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
@@ -309,7 +307,6 @@ extension AddContactsViewController {
         alert.addAction(enable)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
-        
     }
     
     
@@ -324,13 +321,10 @@ extension AddContactsViewController {
             self.viewForContactDetails.alpha = 0
             
         }) { (_) in
-            
             self.phoneNumberTextField.text = ""
             self.firstNameTextField.text = ""
             self.lastNameTextField.text = ""
-            
             self.viewForContactDetails.center.x = self.view.center.x
-            
             UIView.animate(withDuration: 0.75, animations: {
                 self.contactSavedLabel.removeFromSuperview()
                 self.viewForContactDetails.alpha = 1
@@ -344,22 +338,12 @@ extension AddContactsViewController {
         label.frame.origin.x = textField.frame.origin.x
     }
     
+    
     func detailLabelsAreInvisible() {
         self.labelOfPhoneNumber.isHidden = true
         self.labelOfFirstName.isHidden = true
         self.labelOfLastName.isHidden = true
     }
-    
-    func hilightEmpty(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.15, animations: {
-            textField.backgroundColor = Keys.sharedInstance.errorColor
-        }) { (_) in
-            UIView.animate(withDuration: 0.15, animations: {
-                textField.backgroundColor = .clear
-            })
-        }
-    }
-    
 }
 
 
@@ -414,6 +398,11 @@ extension AddContactsViewController: UITextFieldDelegate {
                 self.labelOfPhoneNumber.isHidden = true
             }, completion: nil)
         }
+        
+        switch pNumberText.characters.count {
+//        case 10:
+        }
+        
         
     }
     
