@@ -11,7 +11,6 @@
 		FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9911E490C6600237631 /* CoreDataStack.swift */; };
 		FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9931E490C9500237631 /* Contact + Convenience.swift */; };
 		FD16C9961E490F6100237631 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9951E490F6100237631 /* ContactController.swift */; };
-		FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9981E49120F00237631 /* AddContactsViewController.swift */; };
 		FD1AAB021EA2C8E30094EF57 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */; };
 		FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */; };
 		FD21CB651EC10E4700F8E82C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD21CB641EC10E4700F8E82C /* LoginViewController.swift */; };
@@ -19,6 +18,7 @@
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
 		FD30C0001E43FFA100759ECB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFE1E43FFA100759ECB /* LaunchScreen.storyboard */; };
+		FD324B141EDE71510091A665 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD324B131EDE71510091A665 /* AddContactsViewController.swift */; };
 		FD3B14931E4A819700506CC1 /* Location + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14921E4A819700506CC1 /* Location + Convenience.swift */; };
 		FD3B14951E4A830300506CC1 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3B14941E4A830300506CC1 /* LocationController.swift */; };
 		FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14971E4A83C900506CC1 /* CoreLocation.framework */; };
@@ -50,7 +50,6 @@
 		FD16C9911E490C6600237631 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FD16C9931E490C9500237631 /* Contact + Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact + Convenience.swift"; sourceTree = "<group>"; };
 		FD16C9951E490F6100237631 /* ContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
-		FD16C9981E49120F00237631 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		FD21CB641EC10E4700F8E82C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		FD30BFFC1E43FFA100759ECB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD30BFFF1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD30C0011E43FFA100759ECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD324B131EDE71510091A665 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		FD3B14921E4A819700506CC1 /* Location + Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location + Convenience.swift"; sourceTree = "<group>"; };
 		FD3B14941E4A830300506CC1 /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		FD3B14971E4A83C900506CC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -113,7 +113,7 @@
 			children = (
 				FD21CB641EC10E4700F8E82C /* LoginViewController.swift */,
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
-				FD16C9981E49120F00237631 /* AddContactsViewController.swift */,
+				FD324B131EDE71510091A665 /* AddContactsViewController.swift */,
 				FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */,
 				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
 				FDD9C2EB1ECE3F0700573F00 /* DefaultsViewController.swift */,
@@ -336,7 +336,6 @@
 				FDD9C2F11ECE45FD00573F00 /* SettingsController.swift in Sources */,
 				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
 				FDE28F981ED0D80D0057E102 /* Page.swift in Sources */,
-				FD16C9991E49120F00237631 /* AddContactsViewController.swift in Sources */,
 				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,
 				FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */,
 				FDD9C2F81ECE7EF800573F00 /* SymbolsTableViewCell.swift in Sources */,
@@ -351,6 +350,7 @@
 				FD5C98DB1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift in Sources */,
 				FDD9C2F31ECE79A200573F00 /* Symbols.swift in Sources */,
 				FDF8F9191EDBCC990047500B /* CNContactAdd.swift in Sources */,
+				FD324B141EDE71510091A665 /* AddContactsViewController.swift in Sources */,
 				FDD9C2EA1ECE3EC900573F00 /* UserDefaultsTableViewCell.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,

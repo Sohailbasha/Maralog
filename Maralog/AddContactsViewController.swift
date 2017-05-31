@@ -41,10 +41,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
         if (isLocationDefaultOn) {
-            uiSwitch.isOn = true
+            locationServicesSwitch.isOn = true
             locationIcon.tintColor = Keys.sharedInstance.trimColor
         } else {
-            uiSwitch.isOn = false
+            locationServicesSwitch.isOn = false
             locationIcon.tintColor = .lightGray
         }
         
@@ -57,7 +57,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextIcon.tintColor = .lightGray
         }
         
-        uiSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
+        locationServicesSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         autoTextSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         
         contactSavedLabel.text = "contact saved"
@@ -76,10 +76,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         super.viewWillAppear(true)
         
         if isLocationDefaultOn == true {
-            uiSwitch.isOn = true
+            locationServicesSwitch.isOn = true
             locationIcon.tintColor = Keys.sharedInstance.trimColor
         } else {
-            uiSwitch.isOn = false
+            locationServicesSwitch.isOn = false
             locationIcon.tintColor = .lightGray
         }
         
@@ -131,7 +131,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var labelOfLastName: UILabel!
     
     // Switches
-    @IBOutlet var uiSwitch: UISwitch!
+    
+    @IBOutlet var locationServicesSwitch: UISwitch!
     @IBOutlet var autoTextSwitch: UISwitch!
     
     
@@ -160,7 +161,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
 
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
             
-            switch (uiSwitch.isOn, autoTextSwitch.isOn) {
+            switch (locationServicesSwitch.isOn, autoTextSwitch.isOn) {
             case (true, true):
                 
                 ContactController.sharedInstance.addContact(contact: contact)
@@ -201,11 +202,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func locationSwitchEnabled(_ sender: Any) {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-            uiSwitch.setOn(false, animated: true)
+            locationServicesSwitch.setOn(false, animated: true)
             permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save a location")
         }
         
-        if uiSwitch.isOn == false {
+        if locationServicesSwitch.isOn == false {
             locationIcon.tintColor = .lightGray
         } else {
             locationIcon.tintColor = Keys.sharedInstance.trimColor
