@@ -97,6 +97,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         firstNameTextField.text = ""
         lastNameTextField.text = ""
         phoneNumberTextField.text = ""
+        self.detailLabelsAreInvisible()
     }
     
     
@@ -321,6 +322,7 @@ extension AddContactsViewController {
             self.viewForContactDetails.alpha = 0
             
         }) { (_) in
+            self.detailLabelsAreInvisible()
             self.phoneNumberTextField.text = ""
             self.firstNameTextField.text = ""
             self.lastNameTextField.text = ""

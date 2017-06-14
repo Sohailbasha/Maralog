@@ -25,8 +25,8 @@ class ContactController {
         saveToMemory()
     }
     
-    func updateContactWithLocation(contact: Contact, firstName: String, lastName: String, phoneNumber: String, timeStamp: Date, location: Location?) {
-        let newContact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: timeStamp, location: location)
+    func updateContactWithLocation(contact: Contact, firstName: String, lastName: String, phoneNumber: String, timeStamp: Date) {
+        let newContact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, timeStamp: timeStamp)
         addContact(contact: newContact)
         removeContact(contact: contact)
     }

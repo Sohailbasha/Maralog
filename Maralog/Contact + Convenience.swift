@@ -11,13 +11,12 @@ import CoreData
 
 extension Contact {
     
-    convenience init(firstName: String, lastName: String, phoneNumber: String, timeStamp: Date = Date(), location: Location? = nil, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(firstName: String, lastName: String, phoneNumber: String, timeStamp: Date = Date(), context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.firstName = firstName
         self.lastName = lastName
         self.phoneNumber = phoneNumber
         self.timeStamp = timeStamp as NSDate
-        self.location = location
     }
     
     var firstLetter: String {
