@@ -45,7 +45,6 @@ class LoginCell: UICollectionViewCell {
         if let userName = enterUsernameTextField.text, !userName.isEmpty {
             UserController.sharedInstance.saveUserName(name: userName)
             delegate?.finishSigningIn()
-        
         }
         print("Log in")
     }

@@ -185,7 +185,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
             }
         } else {
-            self.permissionsAlert(title: "Unable to access Contacts", message: "Maralog requires access to your contacts in order to save new ones there. Please enabel them.")
+            self.permissionsAlert(title: "Unable to access Contacts",
+                                  message: "Maralog requires access to your contacts in order to save new ones there. Please enabel them.")
         }
     }
     
@@ -207,7 +208,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         case true:
             locationIcon.tintColor = Keys.sharedInstance.trimColor
             getCurrentLocationForCNContact()
-            
         default:
             locationIcon.tintColor = .lightGray
         }
@@ -218,7 +218,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         switch autoTextSwitch.isOn {
         case true:
             autoTextIcon.tintColor = Keys.sharedInstance.trimColor
-            
         default:
             autoTextIcon.tintColor = .lightGray
         }
@@ -256,6 +255,7 @@ extension AddContactsViewController {
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
             messageComposerVC.modalPresentationCapturesStatusBarAppearance = true
+            self.detailLabelsAreInvisible()
             DispatchQueue.main.async {
                 self.present(messageComposerVC, animated: true, completion: nil)
             }
@@ -317,7 +317,6 @@ extension AddContactsViewController {
         self.view.sendSubview(toBack: self.contactSavedLabel)
         
         UIView.animate(withDuration: 1, animations: {
-            
             self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
             self.viewForContactDetails.alpha = 0
             
