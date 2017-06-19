@@ -30,7 +30,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-        self.detailLabelsAreInvisible()
+        self.hideLabelsAndText()
         
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
@@ -94,10 +94,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        firstNameTextField.text = ""
-        lastNameTextField.text = ""
-        phoneNumberTextField.text = ""
-        self.detailLabelsAreInvisible()
+        self.hideLabelsAndText()
     }
     
     
@@ -118,6 +115,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         return SettingsController.sharedInstance.getTextSetting()
     }
     
+    var yourName: String {
+        return UserController.sharedInstance.getName()
+    }
     
     // MARK: - Outlets
     
@@ -163,26 +163,28 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             case (true, true):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+                self.fadeOut()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+                })
                 
             case (false, false):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                DispatchQueue.main.async {
-                    self.animateViewForDetails()
-                }
+                self.fadeOut()
                 
             case (true, false):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                DispatchQueue.main.async {
-                    self.animateViewForDetails()
-                }
+                self.fadeOut()
                 
             case (false, true):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+                self.fadeOut()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { 
+                    self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
+                })
             }
         } else {
             self.permissionsAlert(title: "Unable to access Contacts",
@@ -192,9 +194,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        phoneNumberTextField.text = ""
-        firstNameTextField.text = ""
-        lastNameTextField.text = ""
+      self.hideLabelsAndText()
     }
     
     
@@ -228,6 +228,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
 // MARK: - Location Manager
 
 extension AddContactsViewController {
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             coreLocationManager.startUpdatingLocation()
@@ -241,32 +242,6 @@ extension AddContactsViewController {
         }
         coreLocationManager.stopUpdatingLocation()
     }
-}
-
-
-// MARK: - HELPER METHODS
-
-extension AddContactsViewController {
-    
-    func sendAutoTextTo(phoneNumber: String, firstName: String) {
-        if(MessageSender.sharedInstance.canSendText()) {
-            let yourName = UserController.sharedInstance.getName()
-            MessageSender.sharedInstance.recepients.append(phoneNumber)
-            MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(yourName)"
-            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-            messageComposerVC.modalPresentationCapturesStatusBarAppearance = true
-            self.detailLabelsAreInvisible()
-            DispatchQueue.main.async {
-                self.present(messageComposerVC, animated: true, completion: nil)
-            }
-        } else {
-            let alert = UIAlertController(title: "Error", message: "Phone unable to send messages.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
     
     func getCurrentLocationForCNContact() {
         let geocoder = CLGeocoder()
@@ -295,6 +270,31 @@ extension AddContactsViewController {
         }
     }
     
+}
+
+
+// MARK: - HELPER METHODS
+
+extension AddContactsViewController {
+    
+    func sendAutoTextTo(phoneNumber: String, firstName: String) {
+        if(MessageSender.sharedInstance.canSendText()) {
+            MessageSender.sharedInstance.recepients.append(phoneNumber)
+            MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(self.yourName)"
+            let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
+            messageComposerVC.modalPresentationCapturesStatusBarAppearance = true
+            
+            self.present(messageComposerVC, animated: true, completion: { 
+                self.hideLabelsAndText()
+            })
+            
+        } else {
+            let alert = UIAlertController(title: "Error", message: "Phone unable to send messages.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+    }
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -310,29 +310,26 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
-    func animateViewForDetails() {
-        
+    func fadeOut() {
         self.view.addSubview(self.contactSavedLabel)
         self.view.sendSubview(toBack: self.contactSavedLabel)
         
         UIView.animate(withDuration: 1, animations: {
             self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
             self.viewForContactDetails.alpha = 0
-            
         }) { (_) in
-            self.detailLabelsAreInvisible()
-            self.phoneNumberTextField.text = ""
-            self.firstNameTextField.text = ""
-            self.lastNameTextField.text = ""
+            self.hideLabelsAndText()
             self.viewForContactDetails.center.x = self.view.center.x
-            UIView.animate(withDuration: 0.75, animations: {
-                self.contactSavedLabel.removeFromSuperview()
-                self.viewForContactDetails.alpha = 1
-            })
+            self.fadeBackIn()
         }
     }
     
+    func fadeBackIn() {
+        UIView.animate(withDuration: 0.75, animations: {
+            self.contactSavedLabel.removeFromSuperview()
+            self.viewForContactDetails.alpha = 1
+        })
+    }
     
     func allign(label: UILabel, with textField: UITextField) {
         label.frame.origin.y = textField.frame.origin.y
@@ -340,7 +337,10 @@ extension AddContactsViewController {
     }
     
     
-    func detailLabelsAreInvisible() {
+    func hideLabelsAndText() {
+        self.phoneNumberTextField.text = ""
+        self.firstNameTextField.text = ""
+        self.lastNameTextField.text = ""
         self.labelOfPhoneNumber.isHidden = true
         self.labelOfFirstName.isHidden = true
         self.labelOfLastName.isHidden = true
