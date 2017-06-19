@@ -111,6 +111,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = fetchedResultsController.object(at: indexPath)
+        
         self.showDetailsFor(contact)
     }
     
@@ -228,10 +229,9 @@ extension RecentlyAddedViewController {
             
             let cvc = CNContactViewController(for: contact)
             cvc.delegate = self
+            cvc.contactStore = store
             cvc.allowsEditing = false
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(cvc, animated: true)
-            }
+            self.navigationController?.pushViewController(cvc, animated: true)
         } else {
             let alert = UIAlertController(title: "Error",
                                           message: "Could not find \(name) in the Contacts application. You may have deleted or modified it.",
