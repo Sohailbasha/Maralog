@@ -22,62 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-DW-qXs">
-                                <rect key="frame" x="45" y="318" width="286" height="31"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wgn-Ri-foL">
-                                        <rect key="frame" x="0.0" y="0.0" width="103" height="31"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationServicesIcon" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
-                                                <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
-                                                <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </imageView>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
-                                                <rect key="frame" x="54" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="locationSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="Mai-35-TiJ"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-fq-0PJ">
-                                        <rect key="frame" x="183" y="0.0" width="103" height="31"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="autoTextIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
-                                                <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
-                                                <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </imageView>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
-                                                <rect key="frame" x="54" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="autoTextSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="BSB-yL-SCW"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0T-k7-CcE">
-                                <rect key="frame" x="44" y="541" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-6s-B9e">
-                                <rect key="frame" x="291" y="541" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWo-Nd-IG5">
-                                <rect key="frame" x="16" y="20" width="343" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="sKP-3v-QmO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCp-vu-JZl">
-                                <rect key="frame" x="17" y="118" width="342" height="192"/>
+                                <rect key="frame" x="17" y="144" width="342" height="192"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-8y-242">
@@ -122,14 +68,79 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-DW-qXs">
+                                <rect key="frame" x="45" y="374" width="286" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wgn-Ri-foL">
+                                        <rect key="frame" x="0.0" y="0.0" width="103" height="31"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="locationServicesIcon" translatesAutoresizingMaskIntoConstraints="NO" id="g2g-PU-e8h">
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
+                                                <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Ux-CeQ">
+                                                <rect key="frame" x="54" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="locationSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="Mai-35-TiJ"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-fq-0PJ">
+                                        <rect key="frame" x="183" y="0.0" width="103" height="31"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="autoTextIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-Is-0U4">
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="31"/>
+                                                <color key="tintColor" red="0.35686274509999999" green="0.79215686269999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wVv-vT-qpx">
+                                                <rect key="frame" x="54" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="autoTextSwitchEnabled:" destination="aFt-A3-DSS" eventType="valueChanged" id="BSB-yL-SCW"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-6s-B9e">
+                                <rect key="frame" x="238" y="533" width="93" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="b2h-Yy-uP0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWo-Nd-IG5">
+                                <rect key="frame" x="16" y="20" width="343" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="sKP-3v-QmO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0T-k7-CcE">
+                                <rect key="frame" x="17" y="526" width="66" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="mBV-oI-c0b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="iWo-Nd-IG5" secondAttribute="trailing" id="Ek2-4X-hCC"/>
-                            <constraint firstItem="yUr-DW-qXs" firstAttribute="centerY" secondItem="DQO-nK-wO3" secondAttribute="centerY" id="VMM-gs-KWu"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="dbX-FA-hIR"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="top" secondItem="SOW-W5-mqZ" secondAttribute="bottom" id="f7s-Hw-Vfj"/>
-                            <constraint firstItem="yUr-DW-qXs" firstAttribute="centerX" secondItem="DQO-nK-wO3" secondAttribute="centerX" id="ibU-Ky-by7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gtc-vI-2Ts"/>
@@ -145,12 +156,13 @@
                         <outlet property="locationIcon" destination="g2g-PU-e8h" id="iXB-4o-pUV"/>
                         <outlet property="locationServicesSwitch" destination="AnW-Ux-CeQ" id="0A3-5j-iMp"/>
                         <outlet property="phoneNumberTextField" destination="64J-SE-xPZ" id="gp5-Eb-x5O"/>
+                        <outlet property="saveButton" destination="LpY-6s-B9e" id="CgD-bQ-03b"/>
                         <outlet property="viewForContactDetails" destination="HCp-vu-JZl" id="4F9-Gw-TaO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756" y="1626"/>
+            <point key="canvasLocation" x="4756" y="1625.0374812593705"/>
         </scene>
         <!--Recently Added-->
         <scene sceneID="YIp-uL-QsM">
