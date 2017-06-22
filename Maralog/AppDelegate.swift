@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationBarAppearance = UINavigationBar.appearance()
         
-        navigationBarAppearance.backgroundColor = Keys.sharedInstance.barColor
+        navigationBarAppearance.backgroundColor = .clear
 //        UIApplication.shared.statusBarStyle = .lightContent
 //        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
         navigationBarAppearance.barTintColor = UIColor.white
