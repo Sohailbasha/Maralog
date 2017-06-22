@@ -20,8 +20,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.shared.statusBarStyle = .lightContent
-        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
+        
+        
         
         self.viewForContactDetails.center.x = self.view.center.x
         
@@ -282,7 +282,7 @@ extension AddContactsViewController {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(self.yourName)"
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
-            messageComposerVC.modalPresentationCapturesStatusBarAppearance = true
+            
             
             self.present(messageComposerVC, animated: true, completion: { 
                 self.hideLabelsAndText()
