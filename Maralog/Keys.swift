@@ -16,9 +16,12 @@ class Keys {
     
     
     let trimColor = #colorLiteral(red: 0.3568627451, green: 0.7921568627, blue: 1, alpha: 1)
-    
     let mainColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.9725490196, alpha: 1)
     let barColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.9725490196, alpha: 1)
+    
+    // *
+    let tabBarDefault = #colorLiteral(red: 0.6641708968, green: 0.651147938, blue: 0.651147938, alpha: 1)
+    let tabBarSelected = #colorLiteral(red: 0.2784313725, green: 0.2784313725, blue: 0.2784313725, alpha: 1)
     
     let switchActivatedColor = #colorLiteral(red: 0, green: 0.8470588235, blue: 0.6352941176, alpha: 1)
     let confirmColor = UIColor(red: 137/255, green: 216/255, blue: 144/255, alpha: 1)

@@ -44,9 +44,10 @@ class CustomTabView: UIView {
     func select(index: Int) {
         let buttons: [UIButton] = [recentlyAddedButton, addButton, moreOptionsButton]
         
-        recentlyAddedButton.tintColor = .white
-        addButton.tintColor = .white
-        moreOptionsButton.tintColor = .white
+        
+        recentlyAddedButton.tintColor = Keys.sharedInstance.tabBarDefault
+        addButton.tintColor = Keys.sharedInstance.tabBarDefault
+        moreOptionsButton.tintColor = Keys.sharedInstance.tabBarDefault
         
         
         switch index {
@@ -67,12 +68,14 @@ class CustomTabView: UIView {
         let selectedButton = buttons[selected]
         
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-            selectedButton.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+            selectedButton.layer.transform = CATransform3DMakeScale(1.25, 1.25, 1.25)
+            selectedButton.tintColor = Keys.sharedInstance.tabBarSelected
         }, completion: nil)
         
         if current != selected {
-            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
                 currentButton.layer.transform = CATransform3DIdentity
+                currentButton.tintColor = Keys.sharedInstance.tabBarDefault
             }, completion: nil)
         }
         
