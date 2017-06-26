@@ -17,7 +17,9 @@ class Keys {
     
     let trimColor = #colorLiteral(red: 0.3568627451, green: 0.7921568627, blue: 1, alpha: 1)
     let mainColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.9725490196, alpha: 1)
-    let barColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.9725490196, alpha: 1)
+    
+    
+    
     
     // *
     let tabBarDefault = #colorLiteral(red: 0.6641708968, green: 0.651147938, blue: 0.651147938, alpha: 1)

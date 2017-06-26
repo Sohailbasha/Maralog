@@ -63,7 +63,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         removeOldContactsFromApp()
     }
     
-
+    
     
     // MARK: - Outlets
     
@@ -76,7 +76,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     var contacts: [Contact]? {
         return fetchedResultsController.fetchedObjects
     }
-
+    
     
     // MARK: - Datasource
     
@@ -97,11 +97,11 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell.textLabel?.text = contact.fullName
         cell.textLabel?.textColor = .black
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightThin)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightSemibold)
         
         cell.detailTextLabel?.text = "added \(dateString)"
         cell.detailTextLabel?.textColor = .black
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightThin)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightSemibold)
         
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
@@ -124,6 +124,15 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         return [delete]
     }
     
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightSemibold)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Contacts added in the last 3 days. Swipe left to DELETE."
+    }
     
     // MARK: - Fetched Results Controller
     
