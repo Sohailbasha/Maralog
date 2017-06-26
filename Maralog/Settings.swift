@@ -14,16 +14,19 @@ class Settings {
     private static let kName = "name"
     private static let kIsOn = "isOn"
     private static let kIcon = "icon"
+    private static let kDescription = "description"
 
     
     let name: String
     var isOn: Bool
     let icon: UIImage
+    let description: String
     
-    init(name: String, isOn: Bool, icon: UIImage) {
+    init(name: String, isOn: Bool, icon: UIImage, description: String) {
         self.name = name
         self.isOn = isOn
         self.icon = icon
+        self.description = description
     }
     
     var dictionaryRep: [String: Any] {
@@ -39,9 +42,9 @@ class Settings {
     
     convenience init?(dictionary: [String: Any]) {
         guard let name = dictionary[Settings.kName] as? String,
+            let description = dictionary[Settings.kDescription] as? String,
             let isOn = dictionary[Settings.kIsOn] as? Bool,
             let icon = dictionary[Settings.kIcon] as? UIImage else { return nil }
-        
-        self.init(name: name, isOn: isOn, icon: icon)
+        self.init(name: name, isOn: isOn, icon: icon, description: description)
     }
 }

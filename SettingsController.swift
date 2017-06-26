@@ -22,6 +22,11 @@ class SettingsController {
     let locationKey = "locationKey"
     let textKey = "textKey"
     
+    let locationServiceDescription = "Auto-Text: You enter their name/number and Maralog will generate a text for you to send immidiately using the name you've at the start of the app. Must activate before adding a contact."
+    
+    let autoTextDescription = "Auto-Text: You enter their name/number and Maralog will generate a text for you to send immidiately using the name you've at the start of the app. Must activate before adding a contact."
+    
+    
     init() {
         let locationIsOn = getLocationSetting()
         let textIsOn = getTextSetting()
@@ -29,6 +34,10 @@ class SettingsController {
         
         let locationSetting: Settings = Settings(name: locationSettingName, isOn: locationIsOn, icon: #imageLiteral(resourceName: "locationServicesIcon"))
         let autoTextSetting: Settings = Settings(name: textingSettingName, isOn: textIsOn, icon: #imageLiteral(resourceName: "autoTextIcon"))
+        
+        let locationServicesSetting: Settings = Settings(name: locationSettingName, description: locationServiceDescription, isOn: locationIsOn, icon: #imageLiteral(resourceName: "locationServicesIcon"))
+        
+        let autoTextSetting = 
         
         settings = [autoTextSetting, locationSetting]
     }
