@@ -16,8 +16,8 @@ class MoreOptionsViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        let name = UserController.sharedInstance.getName()
-        self.yourNameLabel.text = "Your Name: \(name)"
+//        let name = UserController.sharedInstance.getName()
+        self.yourNameLabel.text = "Your Name: \(UserController.sharedInstance.getName())"
         
         self.changeDesignsFor(buttons: [saveNameButton])
         nameChangeTextField.layer.borderColor = Keys.sharedInstance.mainColor.cgColor
@@ -48,7 +48,7 @@ class MoreOptionsViewController: UIViewController {
         UIView.animate(withDuration: 1, animations: {
             self.saveNameButton.backgroundColor = color
             self.saveNameButton.setTitleColor(.white, for: .normal)
-            self.saveNameButton.setTitle("saved!", for: .normal)
+            self.saveNameButton.setTitle("Saved!", for: .normal)
             self.nameChangeTextField.text = ""
             self.yourNameLabel.text = "Your Name: \(UserController.sharedInstance.getName())"
         }) { (_) in
@@ -56,7 +56,7 @@ class MoreOptionsViewController: UIViewController {
                 let color = Keys.sharedInstance.mainColor
                 self.saveNameButton.backgroundColor = .clear
                 self.saveNameButton.setTitleColor(color, for: .normal)
-                self.saveNameButton.setTitle("save", for: .normal)
+                self.saveNameButton.setTitle("Save", for: .normal)
             })
         }
     }
