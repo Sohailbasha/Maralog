@@ -33,7 +33,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         
-        self.allign(label: labelOfFirstName, with: firstNameTextField)
+//        self.allign(label: labelOfFirstName, with: firstNameTextField)
         self.allign(label: labelOfLastName, with: lastNameTextField)
         self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
@@ -141,7 +141,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Button
     @IBOutlet var saveButton: UIButton!
     
-    // Views
+    // Constraints
+    
+    @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
+    
+    @IBOutlet var fNameVerticalConst: NSLayoutConstraint!
+    
+    @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
     
     
     
@@ -351,10 +357,20 @@ extension AddContactsViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if firstNameTextField.isEditing {
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.labelOfFirstName.isHidden = false
-                self.labelOfFirstName.frame.origin.y = self.firstNameTextField.frame.origin.y - self.labelOfFirstName.layer.bounds.height
-            }, completion: nil)
+                self.fNameVerticalConst.constant = 1
+                self.view.layoutIfNeeded()
+            })
+            
+//            UIView.animate(withDuration: 0.15, animations: { 
+//                self.labelOfLastName.isHidden = false
+//            }, completion: { (_) in
+//                UIView.animate(withDuration: 0.25, animations: { 
+//                    self.fNameVerticalConst.constant = 1
+//                    self.view.layoutIfNeeded()
+//                })
+//            })
         }
         
         if lastNameTextField.isEditing {
@@ -365,6 +381,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
         
         if phoneNumberTextField.isEditing {
+            
             UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
                 self.labelOfPhoneNumber.isHidden = false
                 self.labelOfPhoneNumber.frame.origin.y = self.phoneNumberTextField.frame.origin.y - self.labelOfPhoneNumber.layer.bounds.height
@@ -379,10 +396,23 @@ extension AddContactsViewController: UITextFieldDelegate {
         guard let pNumberText = phoneNumberTextField.text else { return }
         
         if fNameText.isEmpty {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.allign(label: self.labelOfFirstName, with: self.firstNameTextField)
+//            UIView.animate(withDuration: 0.25, animations: {
+//                
+//                self.fNameVerticalConst.constant = -15
+//                self.view.layoutIfNeeded()
+////                self.allign(label: self.labelOfFirstName, with: self.firstNameTextField)
+////                self.labelOfFirstName.isHidden = true
+//            }, completion {
+//                
+//            })
+            
+            
+            UIView.animate(withDuration: 0.25, animations: { 
+                self.fNameVerticalConst.constant = -14
+                self.view.layoutIfNeeded()
+            }, completion: { (_) in
                 self.labelOfFirstName.isHidden = true
-            }, completion: nil)
+            })
         }
         
         if lNameText.isEmpty {
