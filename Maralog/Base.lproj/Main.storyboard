@@ -412,7 +412,7 @@
                                 <rect key="frame" x="16" y="403" width="343" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z4f-UH-2MC">
@@ -461,6 +461,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="bOS-qw-S55" id="MXI-TA-k6h"/>
+                        <outlet property="descriptionTextView" destination="D3t-Mu-h9T" id="fK2-tx-X79"/>
                         <outlet property="nameChangeTextField" destination="jJS-3b-x82" id="Iip-f8-WIu"/>
                         <outlet property="saveNameButton" destination="qha-5m-djg" id="8b9-lu-6Gu"/>
                         <outlet property="yourNameLabel" destination="fxb-0H-ZH3" id="Cbl-uW-1tT"/>

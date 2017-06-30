@@ -37,6 +37,7 @@ class MoreOptionsViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var descriptionTextView: UITextView!
     
     
     
@@ -75,6 +76,11 @@ extension MoreOptionsViewController: UICollectionViewDelegate, UICollectionViewD
         cell?.setting = setting
         cell?.delegate = self
         return cell ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let setting = SettingsController.sharedInstance.settings[indexPath.row]
+        descriptionTextView.text = setting.description
     }
     
 }
