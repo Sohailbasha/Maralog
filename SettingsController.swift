@@ -37,7 +37,7 @@ class SettingsController {
         
         let autoTextSetting = Settings(name: textingSettingName, isOn: textIsOn, icon: #imageLiteral(resourceName: "autoTextIcon"), description: autoTextDescription)
         
-        settings = [autoTextSetting, locationSetting]
+        settings = [locationSetting, autoTextSetting]
     }
     
     

@@ -32,7 +32,6 @@ class DefaultsViewController: UIViewController {
 
 extension DefaultsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SettingsController.sharedInstance.settings.count
     }
@@ -55,3 +54,9 @@ extension DefaultsViewController: settingsTableViewDelegate {
         SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
     }
 }
+
+
+
+
+
+

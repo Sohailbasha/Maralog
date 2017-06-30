@@ -13,6 +13,9 @@ class MoreOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         let name = UserController.sharedInstance.getName()
         self.yourNameLabel.text = "Your Name: \(name)"
         
@@ -24,7 +27,7 @@ class MoreOptionsViewController: UIViewController {
     
     // MARK: - Outlets
     
-
+    
     
     @IBOutlet var yourNameLabel: UILabel!
     
@@ -32,6 +35,7 @@ class MoreOptionsViewController: UIViewController {
     
     @IBOutlet var saveNameButton: UIButton!
     
+    @IBOutlet var collectionView: UICollectionView!
     
     
     
@@ -58,6 +62,32 @@ class MoreOptionsViewController: UIViewController {
 }
 
 
+
+extension MoreOptionsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return SettingsController.sharedInstance.settings.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "settingCell", for: indexPath) as? SettingsCollectionViewCell
+        let setting = SettingsController.sharedInstance.settings[indexPath.row]
+        cell?.setting = setting
+        cell?.delegate = self
+        return cell ?? UICollectionViewCell()
+    }
+    
+}
+
+extension MoreOptionsViewController: SwitchSettingsDelegate {
+    func captureDefaultSettingFor(cell: SettingsCollectionViewCell, selected: Bool) {
+        if let setting = cell.setting, let indexPath = collectionView.indexPath(for: cell) {
+            setting.isOn = selected
+            collectionView.reloadItems(at: [indexPath])
+            SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
+        }
+    }
+}
 
 extension MoreOptionsViewController {
     func changeDesignsFor(buttons: [UIButton]) {
