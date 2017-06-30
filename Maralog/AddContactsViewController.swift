@@ -22,9 +22,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         
         
-        
-        self.viewForContactDetails.center.x = self.view.center.x
-        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         coreLocationManager.startUpdatingLocation()
@@ -60,13 +57,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         locationServicesSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         autoTextSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         
-        contactSavedLabel.text = "contact saved"
-        contactSavedLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
-        contactSavedLabel.textColor = .lightGray
-        contactSavedLabel.alpha = 0.95
-        contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
-        contactSavedLabel.textAlignment = .center
-        contactSavedLabel.center = viewForContactDetails.center
+//        contactSavedLabel.text = "contact saved"
+//        contactSavedLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
+//        contactSavedLabel.textColor = .lightGray
+//        contactSavedLabel.alpha = 0.95
+//        contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
+//        contactSavedLabel.textAlignment = .center
+//        contactSavedLabel.center = viewForContactDetails.center
 
         CNContactAdd.sharedInstance.checkAuthorization()
     }
@@ -145,7 +142,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var saveButton: UIButton!
     
     // Views
-    @IBOutlet var viewForContactDetails: UIView!
+    
     
     
     
@@ -311,24 +308,24 @@ extension AddContactsViewController {
     }
     
     func fadeOut() {
-        self.view.addSubview(self.contactSavedLabel)
-        self.view.sendSubview(toBack: self.contactSavedLabel)
-        
-        UIView.animate(withDuration: 1, animations: {
-            self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
-            self.viewForContactDetails.alpha = 0
-        }) { (_) in
-            self.hideLabelsAndText()
-            self.viewForContactDetails.center.x = self.view.center.x
-            self.fadeBackIn()
-        }
+//        self.view.addSubview(self.contactSavedLabel)
+//        self.view.sendSubview(toBack: self.contactSavedLabel)
+//        
+//        UIView.animate(withDuration: 1, animations: {
+//            self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
+//            self.viewForContactDetails.alpha = 0
+//        }) { (_) in
+//            self.hideLabelsAndText()
+//            self.viewForContactDetails.center.x = self.view.center.x
+//            self.fadeBackIn()
+//        }
     }
     
     func fadeBackIn() {
-        UIView.animate(withDuration: 0.75, animations: {
-            self.contactSavedLabel.removeFromSuperview()
-            self.viewForContactDetails.alpha = 1
-        })
+//        UIView.animate(withDuration: 0.75, animations: {
+//            self.contactSavedLabel.removeFromSuperview()
+//            self.viewForContactDetails.alpha = 1
+//        })
     }
     
     func allign(label: UILabel, with textField: UITextField) {
