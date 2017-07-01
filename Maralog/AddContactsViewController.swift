@@ -141,6 +141,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Button
     @IBOutlet var saveButton: UIButton!
     
+    
+    // Views
+    
+    @IBOutlet var contactSaveNotifView: UIView!
+    
+    
     // Constraints
     
     @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
@@ -166,7 +172,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             case (true, true):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                self.fadeOut()
+                self.fadeIn()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
@@ -174,17 +180,17 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             case (false, false):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                self.fadeOut()
+                self.fadeIn()
                 
             case (true, false):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                self.fadeOut()
+                self.fadeIn()
                 
             case (false, true):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                self.fadeOut()
+                self.fadeIn()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { 
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
@@ -313,18 +319,10 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func fadeOut() {
-//        self.view.addSubview(self.contactSavedLabel)
-//        self.view.sendSubview(toBack: self.contactSavedLabel)
-//        
-//        UIView.animate(withDuration: 1, animations: {
-//            self.viewForContactDetails.frame.origin.x = self.viewForContactDetails.frame.width + 18
-//            self.viewForContactDetails.alpha = 0
-//        }) { (_) in
-//            self.hideLabelsAndText()
-//            self.viewForContactDetails.center.x = self.view.center.x
-//            self.fadeBackIn()
-//        }
+    func fadeIn() {
+     
+        
+        
     }
     
     func fadeBackIn() {
@@ -362,30 +360,22 @@ extension AddContactsViewController: UITextFieldDelegate {
                 self.fNameVerticalConst.constant = 1
                 self.view.layoutIfNeeded()
             })
-            
-//            UIView.animate(withDuration: 0.15, animations: { 
-//                self.labelOfLastName.isHidden = false
-//            }, completion: { (_) in
-//                UIView.animate(withDuration: 0.25, animations: { 
-//                    self.fNameVerticalConst.constant = 1
-//                    self.view.layoutIfNeeded()
-//                })
-//            })
         }
         
         if lastNameTextField.isEditing {
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.labelOfLastName.isHidden = false
-                self.labelOfLastName.frame.origin.y = self.lastNameTextField.frame.origin.y - self.labelOfLastName.layer.bounds.height
-            }, completion: nil)
+                self.lNameVerticalConst.constant = 1
+                self.view.layoutIfNeeded()
+            })
         }
         
         if phoneNumberTextField.isEditing {
-            
-            UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.labelOfPhoneNumber.isHidden = false
-                self.labelOfPhoneNumber.frame.origin.y = self.phoneNumberTextField.frame.origin.y - self.labelOfPhoneNumber.layer.bounds.height
-            }, completion: nil)
+                self.pNumVerticalConst.constant = 1
+                self.view.layoutIfNeeded()
+            })
         }
     }
     
@@ -396,16 +386,6 @@ extension AddContactsViewController: UITextFieldDelegate {
         guard let pNumberText = phoneNumberTextField.text else { return }
         
         if fNameText.isEmpty {
-//            UIView.animate(withDuration: 0.25, animations: {
-//                
-//                self.fNameVerticalConst.constant = -15
-//                self.view.layoutIfNeeded()
-////                self.allign(label: self.labelOfFirstName, with: self.firstNameTextField)
-////                self.labelOfFirstName.isHidden = true
-//            }, completion {
-//                
-//            })
-            
             
             UIView.animate(withDuration: 0.25, animations: { 
                 self.fNameVerticalConst.constant = -14
@@ -417,15 +397,20 @@ extension AddContactsViewController: UITextFieldDelegate {
         
         if lNameText.isEmpty {
             UIView.animate(withDuration: 0.25, animations: {
-                self.allign(label: self.labelOfLastName, with: self.lastNameTextField)
+                self.lNameVerticalConst.constant = -14
+                self.view.layoutIfNeeded()
+            }, completion: { (_) in
                 self.labelOfLastName.isHidden = true
-            }, completion: nil)
+            })
         }
+        
         if pNumberText.isEmpty {
             UIView.animate(withDuration: 0.25, animations: {
-                self.allign(label: self.labelOfPhoneNumber, with: self.phoneNumberTextField)
+                self.pNumVerticalConst.constant = -14
+                self.view.layoutIfNeeded()
+            }, completion: { (_) in
                 self.labelOfPhoneNumber.isHidden = true
-            }, completion: nil)
+            })
         }
     }
     
