@@ -64,6 +64,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
 //        contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
 //        contactSavedLabel.textAlignment = .center
 //        contactSavedLabel.center = viewForContactDetails.center
+        
+        
+        saveButton.backgroundColor = UIColor.clear
+        saveButton.layer.cornerRadius = 20
+        saveButton.layer.borderWidth = 1
+        saveButton.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
 
         CNContactAdd.sharedInstance.checkAuthorization()
     }
@@ -320,16 +326,24 @@ extension AddContactsViewController {
     }
     
     func fadeIn() {
-     
-        
-        
+        UIView.animate(withDuration: 0.5, animations: { 
+            self.saveButton.backgroundColor = Keys.sharedInstance.tabBarSelected
+            self.saveButton.setTitle("Saved!", for: .normal)
+            self.saveButton.setTitleColor(.white, for: .normal)
+            self.hideLabelsAndText()
+        }) { (_) in
+            self.fadeBackIn()
+        }
     }
     
     func fadeBackIn() {
-//        UIView.animate(withDuration: 0.75, animations: {
-//            self.contactSavedLabel.removeFromSuperview()
-//            self.viewForContactDetails.alpha = 1
-//        })
+        UIView.animate(withDuration: 0.5, animations: { 
+            self.saveButton.backgroundColor = .clear
+            self.saveButton.setTitle("Save", for: .normal)
+            let color = Keys.sharedInstance.tabBarSelected
+            self.saveButton.setTitleColor(color, for: .normal)
+        }, completion: nil)
+        
     }
     
     func allign(label: UILabel, with textField: UITextField) {
@@ -360,6 +374,8 @@ extension AddContactsViewController: UITextFieldDelegate {
                 self.fNameVerticalConst.constant = 1
                 self.view.layoutIfNeeded()
             })
+            
+            self.popUp(label: self.labelOfFirstName, constraint: fNameVerticalConst)
         }
         
         if lastNameTextField.isEditing {
@@ -377,6 +393,15 @@ extension AddContactsViewController: UITextFieldDelegate {
                 self.view.layoutIfNeeded()
             })
         }
+    }
+    
+    
+    func popUp(label: UILabel, constraint: NSLayoutConstraint) {
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [], animations: { 
+            label.isHidden = false
+            constraint.constant = 1
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     
