@@ -33,9 +33,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         
-//        self.allign(label: labelOfFirstName, with: firstNameTextField)
-        self.allign(label: labelOfLastName, with: lastNameTextField)
-        self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
+        //        self.allign(label: labelOfFirstName, with: firstNameTextField)
+//        self.allign(label: labelOfLastName, with: lastNameTextField)
+//        self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
         if (isLocationDefaultOn) {
             locationServicesSwitch.isOn = true
@@ -57,20 +57,20 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         locationServicesSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         autoTextSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         
-//        contactSavedLabel.text = "contact saved"
-//        contactSavedLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
-//        contactSavedLabel.textColor = .lightGray
-//        contactSavedLabel.alpha = 0.95
-//        contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
-//        contactSavedLabel.textAlignment = .center
-//        contactSavedLabel.center = viewForContactDetails.center
+        //        contactSavedLabel.text = "contact saved"
+        //        contactSavedLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
+        //        contactSavedLabel.textColor = .lightGray
+        //        contactSavedLabel.alpha = 0.95
+        //        contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
+        //        contactSavedLabel.textAlignment = .center
+        //        contactSavedLabel.center = viewForContactDetails.center
         
         
         saveButton.backgroundColor = UIColor.clear
         saveButton.layer.cornerRadius = 20
         saveButton.layer.borderWidth = 1
         saveButton.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
-
+        
         CNContactAdd.sharedInstance.checkAuthorization()
     }
     
@@ -197,7 +197,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
                 self.fadeIn()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { 
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
             }
@@ -209,7 +209,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-      self.hideLabelsAndText()
+        self.hideLabelsAndText()
     }
     
     
@@ -299,7 +299,7 @@ extension AddContactsViewController {
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
             
             
-            self.present(messageComposerVC, animated: true, completion: { 
+            self.present(messageComposerVC, animated: true, completion: {
                 self.hideLabelsAndText()
             })
             
@@ -326,7 +326,7 @@ extension AddContactsViewController {
     }
     
     func fadeIn() {
-        UIView.animate(withDuration: 0.5, animations: { 
+        UIView.animate(withDuration: 0.5, animations: {
             self.saveButton.backgroundColor = Keys.sharedInstance.tabBarSelected
             self.saveButton.setTitle("Saved!", for: .normal)
             self.saveButton.setTitleColor(.white, for: .normal)
@@ -337,7 +337,7 @@ extension AddContactsViewController {
     }
     
     func fadeBackIn() {
-        UIView.animate(withDuration: 0.5, animations: { 
+        UIView.animate(withDuration: 0.5, animations: {
             self.saveButton.backgroundColor = .clear
             self.saveButton.setTitle("Save", for: .normal)
             let color = Keys.sharedInstance.tabBarSelected
@@ -368,36 +368,22 @@ extension AddContactsViewController {
 extension AddContactsViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if firstNameTextField.isEditing {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.labelOfFirstName.isHidden = false
-                self.fNameVerticalConst.constant = 1
-                self.view.layoutIfNeeded()
-            })
-            
-            self.popUp(label: self.labelOfFirstName, constraint: fNameVerticalConst)
-        }
         
-        if lastNameTextField.isEditing {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.labelOfLastName.isHidden = false
-                self.lNameVerticalConst.constant = 1
-                self.view.layoutIfNeeded()
-            })
-        }
-        
-        if phoneNumberTextField.isEditing {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.labelOfPhoneNumber.isHidden = false
-                self.pNumVerticalConst.constant = 1
-                self.view.layoutIfNeeded()
-            })
+        switch textField {
+        case firstNameTextField:
+            self.popUp(label: labelOfFirstName, constraint: fNameVerticalConst)
+        case lastNameTextField:
+            self.popUp(label: labelOfLastName, constraint: lNameVerticalConst)
+        case phoneNumberTextField:
+            self.popUp(label: labelOfPhoneNumber, constraint: pNumVerticalConst)
+        default:
+            break
         }
     }
     
     
     func popUp(label: UILabel, constraint: NSLayoutConstraint) {
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [], animations: { 
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             label.isHidden = false
             constraint.constant = 1
             self.view.layoutIfNeeded()
@@ -410,34 +396,36 @@ extension AddContactsViewController: UITextFieldDelegate {
         guard let lNameText = lastNameTextField.text else { return }
         guard let pNumberText = phoneNumberTextField.text else { return }
         
-        if fNameText.isEmpty {
-            
-            UIView.animate(withDuration: 0.25, animations: { 
-                self.fNameVerticalConst.constant = -14
-                self.view.layoutIfNeeded()
-            }, completion: { (_) in
-                self.labelOfFirstName.isHidden = true
-            })
+        switch textField {
+        case firstNameTextField:
+            if fNameText.isEmpty {
+                popDown(label: labelOfFirstName, constraint: fNameVerticalConst)
+            }
+        case lastNameTextField:
+            if lNameText.isEmpty {
+                popDown(label: labelOfLastName, constraint: lNameVerticalConst)
+            }
+        case phoneNumberTextField:
+            if pNumberText.isEmpty {
+                popDown(label: labelOfPhoneNumber, constraint: pNumVerticalConst)
+            }
+        default:
+            break
         }
         
-        if lNameText.isEmpty {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.lNameVerticalConst.constant = -14
-                self.view.layoutIfNeeded()
-            }, completion: { (_) in
-                self.labelOfLastName.isHidden = true
-            })
-        }
-        
-        if pNumberText.isEmpty {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.pNumVerticalConst.constant = -14
-                self.view.layoutIfNeeded()
-            }, completion: { (_) in
-                self.labelOfPhoneNumber.isHidden = true
-            })
+    }
+    
+    func popDown(label: UILabel, constraint: NSLayoutConstraint) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
+            constraint.constant = -14
+            self.view.layoutIfNeeded()
+            label.alpha = 0
+        }) { (_) in
+            label.alpha = 1
+            label.isHidden = true
         }
     }
+    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

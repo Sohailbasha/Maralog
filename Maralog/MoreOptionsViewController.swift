@@ -16,13 +16,19 @@ class MoreOptionsViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-//        let name = UserController.sharedInstance.getName()
-        self.yourNameLabel.text = "Your Name: \(UserController.sharedInstance.getName())"
-        
+        let name = UserController.sharedInstance.getName()
+
+        nameChangeTextField.text = name
         self.changeDesignsFor(buttons: [saveNameButton])
         nameChangeTextField.layer.borderColor = Keys.sharedInstance.mainColor.cgColor
         nameChangeTextField.delegate = self
     }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        descriptionTextView.text = "Tap the icons above for more information"
+    }
+    
     
     
     // MARK: - Outlets
@@ -43,14 +49,15 @@ class MoreOptionsViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func saveNameButtonTapped(_ sender: Any) {
-        let color = Keys.sharedInstance.confirmColor
+        let color = Keys.sharedInstance.tabBarSelected
         UserController.sharedInstance.saveUserName(name: nameChangeTextField.text)
         UIView.animate(withDuration: 1, animations: {
             self.saveNameButton.backgroundColor = color
             self.saveNameButton.setTitleColor(.white, for: .normal)
             self.saveNameButton.setTitle("Saved!", for: .normal)
-            self.nameChangeTextField.text = ""
-            self.yourNameLabel.text = "Your Name: \(UserController.sharedInstance.getName())"
+
+
+            
         }) { (_) in
             UIView.animate(withDuration: 0.5, animations: {
                 let color = Keys.sharedInstance.mainColor
@@ -98,7 +105,7 @@ extension MoreOptionsViewController: SwitchSettingsDelegate {
 extension MoreOptionsViewController {
     func changeDesignsFor(buttons: [UIButton]) {
         for button in buttons {
-            let color = Keys.sharedInstance.mainColor
+            let color = Keys.sharedInstance.tabBarSelected
             button.backgroundColor = .clear
             button.layer.cornerRadius = 5
             button.layer.borderWidth = 0.5
