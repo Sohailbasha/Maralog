@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756" y="1821"/>
+            <point key="canvasLocation" x="4756" y="1614"/>
         </scene>
         <!--Recently Added-->
         <scene sceneID="YIp-uL-QsM">
@@ -276,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TyK-dc-hli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3913" y="1626"/>
+            <point key="canvasLocation" x="3913" y="1613"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="g2x-rx-il0">
@@ -428,7 +428,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="37N-ue-4uX">
-                                <rect key="frame" x="16" y="174.5" width="343" height="171"/>
+                                <rect key="frame" x="16" y="174.5" width="343" height="174"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiM-r6-vh1">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="23"/>
@@ -441,11 +441,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bOS-qw-S55">
-                                        <rect key="frame" x="0.0" y="23" width="343" height="148"/>
+                                        <rect key="frame" x="0.0" y="23" width="310" height="151"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="343" id="Cfs-9z-8EK"/>
-                                            <constraint firstAttribute="height" constant="148" id="P7c-bP-jkS"/>
+                                            <constraint firstAttribute="height" constant="151" id="v3L-BF-9v9"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wp1-xS-p14">
                                             <size key="itemSize" width="150" height="150"/>
@@ -469,6 +468,7 @@
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3lC-JM-0tx">
                                                             <rect key="frame" x="50" y="50" width="50" height="50"/>
+                                                            <color key="tintColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="he6-ee-OCf"/>
                                                                 <constraint firstAttribute="height" constant="50" id="ycW-aJ-Xlq"/>
@@ -476,6 +476,7 @@
                                                         </imageView>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ot-T3-nuv">
                                                             <rect key="frame" x="51" y="108" width="51" height="31"/>
+                                                            <color key="onTintColor" red="0.0" green="0.84705882349999995" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <connections>
                                                                 <action selector="settingSwitchTapped:" destination="6uJ-kt-CQI" eventType="valueChanged" id="uUI-jU-qqu"/>
                                                             </connections>
@@ -506,9 +507,15 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="bOS-qw-S55" firstAttribute="leading" secondItem="37N-ue-4uX" secondAttribute="leading" id="0UH-ag-nSB"/>
+                                    <constraint firstItem="bOS-qw-S55" firstAttribute="top" secondItem="37N-ue-4uX" secondAttribute="top" constant="23" id="Szy-OQ-dcB"/>
+                                    <constraint firstAttribute="trailing" secondItem="bOS-qw-S55" secondAttribute="trailing" constant="33" id="V2J-eI-c2n"/>
+                                    <constraint firstAttribute="bottom" secondItem="bOS-qw-S55" secondAttribute="bottom" id="eLP-8g-yLw"/>
+                                </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Tap the icons above for more information" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D3t-Mu-h9T">
-                                <rect key="frame" x="16" y="359" width="343" height="259"/>
+                                <rect key="frame" x="16" y="361.5" width="343" height="256.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -543,7 +550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eih-h2-NXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5685.6000000000004" y="1624.1379310344828"/>
+            <point key="canvasLocation" x="5686" y="1614"/>
         </scene>
         <!--Recently Added-->
         <scene sceneID="ZXx-6j-qXO">

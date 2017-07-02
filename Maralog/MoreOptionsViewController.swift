@@ -20,13 +20,15 @@ class MoreOptionsViewController: UIViewController {
 
         nameChangeTextField.text = name
         self.changeDesignsFor(buttons: [saveNameButton])
-        nameChangeTextField.layer.borderColor = Keys.sharedInstance.mainColor.cgColor
+        nameChangeTextField.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
         nameChangeTextField.delegate = self
     }
     
     
+    
     override func viewDidDisappear(_ animated: Bool) {
         descriptionTextView.text = "Tap the icons above for more information"
+        nameChangeTextField.text = UserController.sharedInstance.getName()
     }
     
     
@@ -50,21 +52,19 @@ class MoreOptionsViewController: UIViewController {
     // MARK: - Actions
     @IBAction func saveNameButtonTapped(_ sender: Any) {
         let color = Keys.sharedInstance.tabBarSelected
-        UserController.sharedInstance.saveUserName(name: nameChangeTextField.text)
-        UIView.animate(withDuration: 1, animations: {
-            self.saveNameButton.backgroundColor = color
-            self.saveNameButton.setTitleColor(.white, for: .normal)
-            self.saveNameButton.setTitle("Saved!", for: .normal)
-
-
-            
-        }) { (_) in
-            UIView.animate(withDuration: 0.5, animations: {
-                let color = Keys.sharedInstance.mainColor
-                self.saveNameButton.backgroundColor = .clear
-                self.saveNameButton.setTitleColor(color, for: .normal)
-                self.saveNameButton.setTitle("Save", for: .normal)
-            })
+        if let newName = nameChangeTextField.text, !newName.isEmpty {
+            UserController.sharedInstance.saveUserName(name: nameChangeTextField.text)
+            UIView.animate(withDuration: 1, animations: {
+                self.saveNameButton.backgroundColor = color
+                self.saveNameButton.setTitleColor(.white, for: .normal)
+                self.saveNameButton.setTitle("Saved!", for: .normal)
+            }) { (_) in
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.saveNameButton.backgroundColor = .clear
+                    self.saveNameButton.setTitleColor(color, for: .normal)
+                    self.saveNameButton.setTitle("Save", for: .normal)
+                })
+            }
         }
     }
 }

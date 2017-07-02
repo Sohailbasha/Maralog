@@ -20,8 +20,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         coreLocationManager.startUpdatingLocation()
@@ -32,10 +30,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
-        
-        //        self.allign(label: labelOfFirstName, with: firstNameTextField)
-//        self.allign(label: labelOfLastName, with: lastNameTextField)
-//        self.allign(label: labelOfPhoneNumber, with: phoneNumberTextField)
         
         if (isLocationDefaultOn) {
             locationServicesSwitch.isOn = true
@@ -56,16 +50,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         locationServicesSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
         autoTextSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
-        
-        //        contactSavedLabel.text = "contact saved"
-        //        contactSavedLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
-        //        contactSavedLabel.textColor = .lightGray
-        //        contactSavedLabel.alpha = 0.95
-        //        contactSavedLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 4), width: 280, height: 50)
-        //        contactSavedLabel.textAlignment = .center
-        //        contactSavedLabel.center = viewForContactDetails.center
-        
-        
+
         saveButton.backgroundColor = UIColor.clear
         saveButton.layer.cornerRadius = 20
         saveButton.layer.borderWidth = 1
@@ -106,7 +91,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     var coreLocationManager: CLLocationManager!
     var currentLocation: CLLocation?
     
-    
     let store = CNContactStore()
     let address = CNMutablePostalAddress()
     
@@ -139,7 +123,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var locationServicesSwitch: UISwitch!
     @IBOutlet var autoTextSwitch: UISwitch!
     
-    
     // Icons
     @IBOutlet var locationIcon: UIImageView!
     @IBOutlet var autoTextIcon: UIImageView!
@@ -147,11 +130,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Button
     @IBOutlet var saveButton: UIButton!
     
-    
     // Views
-    
-    @IBOutlet var contactSaveNotifView: UIView!
-    
     
     // Constraints
     
@@ -178,25 +157,24 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             case (true, true):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                self.fadeIn()
+                self.saveButtonAnimation()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
-                
             case (false, false):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                self.fadeIn()
+                self.saveButtonAnimation()
                 
             case (true, false):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                self.fadeIn()
+                self.saveButtonAnimation()
                 
             case (false, true):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                self.fadeIn()
+                self.saveButtonAnimation()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
@@ -325,7 +303,7 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func fadeIn() {
+    func saveButtonAnimation() {
         UIView.animate(withDuration: 0.5, animations: {
             self.saveButton.backgroundColor = Keys.sharedInstance.tabBarSelected
             self.saveButton.setTitle("Saved!", for: .normal)
