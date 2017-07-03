@@ -131,7 +131,9 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Contacts added in the last 3 days. Swipe left to DELETE."
+        
+        
+        return "Added in the last 3 days. Swipe left to delete."
     }
     
     // MARK: - Fetched Results Controller

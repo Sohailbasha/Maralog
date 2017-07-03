@@ -152,6 +152,7 @@
                             <constraint firstItem="ANx-2R-crX" firstAttribute="top" secondItem="cim-u8-10V" secondAttribute="bottom" constant="-13" id="5Ha-fR-fkf"/>
                             <constraint firstItem="h4X-hF-4Uv" firstAttribute="top" secondItem="XA5-Iy-YNO" secondAttribute="bottom" constant="-13" id="6Si-es-GjW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="h4X-hF-4Uv" secondAttribute="trailing" constant="40" id="7CH-MX-0Xt"/>
+                            <constraint firstItem="tl2-dV-Z75" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" constant="6" id="BLC-IW-hXk"/>
                             <constraint firstItem="ANx-2R-crX" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="Dib-yW-zUW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iWo-Nd-IG5" secondAttribute="trailing" id="Ek2-4X-hCC"/>
                             <constraint firstItem="ANx-2R-crX" firstAttribute="top" secondItem="64J-SE-xPZ" secondAttribute="bottom" constant="25" id="GIx-mK-7hv"/>
@@ -170,6 +171,7 @@
                             <constraint firstItem="yUr-DW-qXs" firstAttribute="top" secondItem="h4X-hF-4Uv" secondAttribute="bottom" multiplier="1.25" id="kkd-e9-iWP"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="top" secondItem="SOW-W5-mqZ" secondAttribute="bottom" id="lGj-MH-jku"/>
                             <constraint firstItem="tl2-dV-Z75" firstAttribute="centerX" secondItem="DQO-nK-wO3" secondAttribute="centerX" id="oMM-CV-X0e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tl2-dV-Z75" secondAttribute="trailing" constant="7" id="p11-26-9wb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="64J-SE-xPZ" secondAttribute="trailing" constant="40" id="pUQ-el-mGT"/>
                             <constraint firstItem="64J-SE-xPZ" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="qRS-RN-aPh"/>
                             <constraint firstItem="yUr-DW-qXs" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" constant="20" id="sEI-uE-NiG"/>
@@ -212,9 +214,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGF-Nx-zgV">
-                                <rect key="frame" x="16" y="20" width="168" height="49"/>
+                                <rect key="frame" x="16" y="20" width="343" height="49"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="168" id="Pg6-5x-HnG"/>
                                     <constraint firstAttribute="height" constant="49" id="WL7-yU-N8i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
@@ -260,10 +261,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SLq-iY-sgA" firstAttribute="leading" secondItem="Fw7-mN-Oo5" secondAttribute="leading" id="1Jd-Fu-ka9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WGF-Nx-zgV" secondAttribute="trailing" id="5fJ-bx-pAB"/>
                             <constraint firstItem="WGF-Nx-zgV" firstAttribute="top" secondItem="Fs5-TJ-61c" secondAttribute="bottom" id="9yL-Py-CBq"/>
                             <constraint firstAttribute="trailing" secondItem="SLq-iY-sgA" secondAttribute="trailing" id="Eem-wT-e7L"/>
                             <constraint firstItem="2yz-Yb-bhc" firstAttribute="top" secondItem="SLq-iY-sgA" secondAttribute="bottom" id="Fth-Ah-sif"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WGF-Nx-zgV" secondAttribute="trailing" constant="175" id="baG-dB-kBF"/>
                             <constraint firstItem="SLq-iY-sgA" firstAttribute="top" secondItem="WGF-Nx-zgV" secondAttribute="bottom" id="eTz-L9-7D5"/>
                             <constraint firstItem="WGF-Nx-zgV" firstAttribute="leading" secondItem="Fw7-mN-Oo5" secondAttribute="leadingMargin" id="qRa-RH-zL5"/>
                         </constraints>
@@ -446,7 +447,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="151" id="v3L-BF-9v9"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wp1-xS-p14">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wp1-xS-p14">
                                             <size key="itemSize" width="150" height="150"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -454,7 +455,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="settingCell" id="6uJ-kt-CQI" customClass="SettingsCollectionViewCell" customModule="Maralog" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="150" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
