@@ -32,9 +32,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         lastNameTextField.delegate = self
         
         
+        saveButton.ghostButton()
         
         CNContactAdd.sharedInstance.checkAuthorization()
-        
+    
         checkSettings()
     }
     
@@ -68,7 +69,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         self.hideLabelsAndText()
-
+        checkSettings()
     }
     
     
@@ -80,22 +81,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let store = CNContactStore()
     let address = CNMutablePostalAddress()
     
-    var isLocationDefaultOn: Bool {
-        return SettingsController.sharedInstance.getLocationSetting()
-    }
-    
-    var isAutoTextDefaultOn: Bool {
-        return SettingsController.sharedInstance.getTextSetting()
-    }
-    
-    var yourName: String {
-        return UserController.sharedInstance.getName()
-    }
-    
+    let yourName = UserController.sharedInstance.getName()
     
     var locationToggled = Bool()
     var autoTextToggled = Bool()
-    
     
     let colorForSelectedUI = Keys.sharedInstance.trimColor
     let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
@@ -113,34 +102,21 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var labelOfFirstName: UILabel!
     @IBOutlet var labelOfLastName: UILabel!
     
-    
-    
     // Button
     @IBOutlet var saveButton: UIButton!
-    
     @IBOutlet var atButtonOutlet: UIButton!
     @IBOutlet var lsButtonOutlet: UIButton!
     
-    
-    
-    
-    // Views
-    
     // Constraints
-    
     @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
-    
     @IBOutlet var fNameVerticalConst: NSLayoutConstraint!
-    
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
     
     
 
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        
         switch sender {
-            
         case atButtonOutlet:
             if autoTextToggled == false {
                 autoTextToggled = true
@@ -220,15 +196,22 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func select(button: UIButton) {
-        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-            button.transform = CGAffineTransform(scaleX: 1.10, y: 1.10)
-            button.tintColor = self.colorForSelectedUI
+        let insets: CGFloat = 5
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            button.backgroundColor = self.colorForSelectedUI
+            button.imageEdgeInsets = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
+//            button.layer.cornerRadius = 0.5 * button.layer.bounds.width
+            button.tintColor = .white
         }) { (_) in }
     }
     
     func deselect(button: UIButton) {
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             button.transform = CGAffineTransform.identity
+            button.backgroundColor = .clear
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//            button.layer.cornerRadius = 0
             button.tintColor = self.colorForUnselectedUI
         }) { (_) in }
     }
@@ -279,7 +262,6 @@ extension AddContactsViewController {
             }
         }
     }
-
 }
 
 

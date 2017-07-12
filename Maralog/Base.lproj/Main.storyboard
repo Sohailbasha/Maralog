@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -78,7 +79,7 @@
                                 <textInputTraits key="textInputTraits" keyboardAppearance="light"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0T-k7-CcE">
-                                <rect key="frame" x="16" y="492" width="90" height="45"/>
+                                <rect key="frame" x="16" y="492.5" width="90" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="52k-jC-qGG"/>
                                     <constraint firstAttribute="height" constant="45" id="Mbl-kz-jTA"/>
@@ -92,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-6s-B9e">
-                                <rect key="frame" x="269" y="492" width="90" height="45"/>
+                                <rect key="frame" x="269" y="492.5" width="90" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="5A6-gP-EL0"/>
                                     <constraint firstAttribute="height" constant="45" id="MTL-MN-DGD"/>
@@ -105,20 +106,24 @@
                                     <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="b2h-Yy-uP0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-hW-ZrV">
-                                <rect key="frame" x="292" y="372" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="autoTextIcon"/>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="JYX-g9-AWg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-XO-I6X">
-                                <rect key="frame" x="39" y="372" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-XO-I6X">
+                                <rect key="frame" x="36" y="372" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zK5-XO-I6X" secondAttribute="height" multiplier="1:1" id="17G-ui-6KZ"/>
+                                </constraints>
                                 <state key="normal" image="locationServicesIcon"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="PpL-ho-4tG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-hW-ZrV">
+                                <rect key="frame" x="287" y="372" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OSI-hW-ZrV" secondAttribute="height" multiplier="1:1" id="453-1d-mbV"/>
+                                </constraints>
+                                <state key="normal" image="autoTextIcon"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="JYX-g9-AWg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -130,21 +135,25 @@
                             <constraint firstItem="ANx-2R-crX" firstAttribute="top" secondItem="cim-u8-10V" secondAttribute="bottom" constant="-13" id="5Ha-fR-fkf"/>
                             <constraint firstItem="h4X-hF-4Uv" firstAttribute="top" secondItem="XA5-Iy-YNO" secondAttribute="bottom" constant="-13" id="6Si-es-GjW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="h4X-hF-4Uv" secondAttribute="trailing" constant="40" id="7CH-MX-0Xt"/>
-                            <constraint firstItem="oj5-n1-55E" firstAttribute="top" secondItem="LpY-6s-B9e" secondAttribute="bottom" constant="81" id="ANq-uj-ngw"/>
+                            <constraint firstItem="oj5-n1-55E" firstAttribute="top" secondItem="LpY-6s-B9e" secondAttribute="bottom" multiplier="1.15" id="ANq-uj-ngw"/>
                             <constraint firstItem="ANx-2R-crX" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="Dib-yW-zUW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iWo-Nd-IG5" secondAttribute="trailing" id="Ek2-4X-hCC"/>
                             <constraint firstItem="ANx-2R-crX" firstAttribute="top" secondItem="64J-SE-xPZ" secondAttribute="bottom" constant="25" id="GIx-mK-7hv"/>
+                            <constraint firstItem="zK5-XO-I6X" firstAttribute="top" secondItem="h4X-hF-4Uv" secondAttribute="bottom" constant="114" id="IPj-Cq-Zzg"/>
+                            <constraint firstItem="OSI-hW-ZrV" firstAttribute="top" secondItem="h4X-hF-4Uv" secondAttribute="bottom" constant="114" id="KEL-bC-EJd"/>
                             <constraint firstItem="h4X-hF-4Uv" firstAttribute="top" secondItem="ANx-2R-crX" secondAttribute="bottom" constant="25" id="Kpo-rk-84Q"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cOF-8y-242" secondAttribute="leading" id="L5r-cO-co6"/>
                             <constraint firstItem="64J-SE-xPZ" firstAttribute="top" secondItem="cOF-8y-242" secondAttribute="bottom" constant="-13" id="Odj-5Q-djZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OSI-hW-ZrV" secondAttribute="trailing" constant="20" id="RtF-rc-3Jb"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="Tao-Zr-pob"/>
                             <constraint firstItem="64J-SE-xPZ" firstAttribute="top" secondItem="iWo-Nd-IG5" secondAttribute="bottom" multiplier="10/6.9" id="X9N-oH-kgr"/>
                             <constraint firstAttribute="leadingMargin" secondItem="XA5-Iy-YNO" secondAttribute="leading" id="ac8-aV-5pL"/>
                             <constraint firstItem="h4X-hF-4Uv" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="bR3-b6-qbh"/>
-                            <constraint firstItem="oj5-n1-55E" firstAttribute="top" secondItem="B0T-k7-CcE" secondAttribute="bottom" constant="81" id="bRE-f9-zUK"/>
+                            <constraint firstItem="oj5-n1-55E" firstAttribute="top" secondItem="B0T-k7-CcE" secondAttribute="bottom" multiplier="1.15" id="bRE-f9-zUK"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="dbX-FA-hIR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cim-u8-10V" secondAttribute="leading" id="exQ-Tr-ifn"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="top" secondItem="SOW-W5-mqZ" secondAttribute="bottom" id="f7s-Hw-Vfj"/>
+                            <constraint firstItem="zK5-XO-I6X" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" constant="20" id="gko-dQ-8xQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ANx-2R-crX" secondAttribute="trailing" constant="40" id="jaJ-3y-r9j"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="top" secondItem="SOW-W5-mqZ" secondAttribute="bottom" id="lGj-MH-jku"/>
                             <constraint firstAttribute="trailingMargin" secondItem="64J-SE-xPZ" secondAttribute="trailing" constant="40" id="pUQ-el-mGT"/>
