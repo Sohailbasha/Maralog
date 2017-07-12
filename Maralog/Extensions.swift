@@ -57,7 +57,6 @@ extension UIView {
 }
 
 
-
 extension UIApplication {
     var statusBarView: UIView? {
         return value(forKey: "statusBar") as? UIView
@@ -65,6 +64,13 @@ extension UIApplication {
 }
 
 
+extension UIButton {
+    func ghostButton() {
+        self.backgroundColor = UIColor.clear
+        self.layer.borderWidth = 1
+        self.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
+    }
+}
 
 
 

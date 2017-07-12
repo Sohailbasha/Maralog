@@ -110,7 +110,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="autoTextIcon"/>
                                 <connections>
-                                    <action selector="autoTextButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="0t5-HS-EV5"/>
+                                    <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="JYX-g9-AWg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-XO-I6X">
@@ -118,7 +118,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="locationServicesIcon"/>
                                 <connections>
-                                    <action selector="locationServiceButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="8yB-W9-lbb"/>
+                                    <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="PpL-ho-4tG"/>
                                 </connections>
                             </button>
                         </subviews>

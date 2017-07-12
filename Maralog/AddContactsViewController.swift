@@ -31,72 +31,44 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         
-        if (isLocationDefaultOn) {
-            locationServicesSwitch.isOn = true
-            locationIcon.tintColor = Keys.sharedInstance.trimColor
-        } else {
-            locationServicesSwitch.isOn = false
-            locationIcon.tintColor = .lightGray
-        }
         
-        if (isAutoTextDefaultOn) {
-            autoTextSwitch.isOn = true
-            autoTextIcon.tintColor = Keys.sharedInstance.trimColor
-            
-        } else {
-            autoTextSwitch.isOn = false
-            autoTextIcon.tintColor = .lightGray
-        }
-        
-        locationServicesSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
-        autoTextSwitch.onTintColor = Keys.sharedInstance.switchActivatedColor
-
-        saveButton.backgroundColor = UIColor.clear
-        saveButton.layer.cornerRadius = 20
-        saveButton.layer.borderWidth = 1
-        saveButton.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
         
         CNContactAdd.sharedInstance.checkAuthorization()
         
-        
-        isToggled()
+        checkSettings()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        if isLocationDefaultOn == true {
-            locationServicesSwitch.isOn = true
-            locationIcon.tintColor = Keys.sharedInstance.trimColor
-        } else {
-            locationServicesSwitch.isOn = false
-            locationIcon.tintColor = .lightGray
-        }
-        
-        if isAutoTextDefaultOn == true {
-            autoTextSwitch.isOn = true
-            autoTextIcon.tintColor = Keys.sharedInstance.trimColor
-        } else {
-            autoTextSwitch.isOn = false
-            autoTextIcon.tintColor = .lightGray
-        }
-        
-        isToggled()
+        checkSettings()
     }
     
     
     
     // TODO: Move Later
-    func isToggled() {
+    func checkSettings() {
         autoTextToggled = SettingsController.sharedInstance.getTextSetting()
         locationToggled = SettingsController.sharedInstance.getLocationSetting()
+        
+        if autoTextToggled == true {
+            select(button: atButtonOutlet)
+        } else {
+            deselect(button: atButtonOutlet)
+        }
+
+        if locationToggled == true {
+            select(button: lsButtonOutlet)
+        } else {
+            deselect(button: lsButtonOutlet)
+        }
     }
     
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         self.hideLabelsAndText()
+
     }
     
     
@@ -120,6 +92,15 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         return UserController.sharedInstance.getName()
     }
     
+    
+    var locationToggled = Bool()
+    var autoTextToggled = Bool()
+    
+    
+    let colorForSelectedUI = Keys.sharedInstance.trimColor
+    let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
+    
+    
     // MARK: - Outlets
     
     // Text Fields
@@ -132,27 +113,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var labelOfFirstName: UILabel!
     @IBOutlet var labelOfLastName: UILabel!
     
-    // Switches
     
-    @IBOutlet var locationServicesSwitch: UISwitch!
-    @IBOutlet var autoTextSwitch: UISwitch!
-    
-    // Icons
-    @IBOutlet var locationIcon: UIImageView!
-    @IBOutlet var autoTextIcon: UIImageView!
     
     // Button
     @IBOutlet var saveButton: UIButton!
     
     @IBOutlet var atButtonOutlet: UIButton!
     @IBOutlet var lsButtonOutlet: UIButton!
-    
-    
-    
-    // move later
-    
-    var locationToggled = Bool()
-    var autoTextToggled = Bool()
     
     
     
@@ -168,26 +135,43 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
     
     
-    @IBAction func locationServiceButtonTapped(_ sender: UIButton) {
-        if locationToggled == false {
-            lsButtonOutlet.tintColor = .blue
-            locationToggled = true
-        } else {
-            lsButtonOutlet.tintColor = .gray
-            locationToggled = false
+
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        
+        switch sender {
+            
+        case atButtonOutlet:
+            if autoTextToggled == false {
+                autoTextToggled = true
+                select(button: atButtonOutlet)
+                
+            } else {
+                autoTextToggled = false
+                deselect(button: atButtonOutlet)
+            }
+            
+        case lsButtonOutlet:
+            if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+                permissionsAlert(title: "Location Services Are Off", message: "Enabel Access When In Use")
+            } else {
+                if locationToggled == false {
+                    locationToggled = true
+                    getCurrentLocationForCNContact()
+                    select(button: lsButtonOutlet)
+                } else {
+                    locationToggled = false
+                    deselect(button: lsButtonOutlet)
+                }
+            }
+            
+        default:
+            return
         }
     }
     
-    @IBAction func autoTextButtonTapped(_ sender: UIButton) {
-        if autoTextToggled == false {
-            atButtonOutlet.tintColor = .blue
-            autoTextToggled = true
-        } else {
-            atButtonOutlet.tintColor = .gray
-            autoTextToggled = false
-        }
-    }
     
+
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
@@ -235,30 +219,18 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.hideLabelsAndText()
     }
     
-    
-    @IBAction func locationSwitchEnabled(_ sender: Any) {
-        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-            locationServicesSwitch.setOn(false, animated: true)
-            permissionsAlert(title: "Location Services Are Off", message: "Enabel access to save a location")
-        }
-        
-        switch locationServicesSwitch.isOn {
-        case true:
-            locationIcon.tintColor = Keys.sharedInstance.trimColor
-            getCurrentLocationForCNContact()
-        default:
-            locationIcon.tintColor = .lightGray
-        }
+    func select(button: UIButton) {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            button.transform = CGAffineTransform(scaleX: 1.10, y: 1.10)
+            button.tintColor = self.colorForSelectedUI
+        }) { (_) in }
     }
     
-    
-    @IBAction func autoTextSwitchEnabled(_ sender: Any) {
-        switch autoTextSwitch.isOn {
-        case true:
-            autoTextIcon.tintColor = Keys.sharedInstance.trimColor
-        default:
-            autoTextIcon.tintColor = .lightGray
-        }
+    func deselect(button: UIButton) {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            button.transform = CGAffineTransform.identity
+            button.tintColor = self.colorForUnselectedUI
+        }) { (_) in }
     }
 }
 
@@ -307,7 +279,7 @@ extension AddContactsViewController {
             }
         }
     }
-    
+
 }
 
 
@@ -355,11 +327,11 @@ extension AddContactsViewController {
             self.saveButton.setTitleColor(.white, for: .normal)
             self.hideLabelsAndText()
         }) { (_) in
-            self.fadeBackIn()
+            self.saveButtonReturnToDefault()
         }
     }
     
-    func fadeBackIn() {
+    func saveButtonReturnToDefault() {
         UIView.animate(withDuration: 0.5, animations: {
             self.saveButton.backgroundColor = .clear
             self.saveButton.setTitle("Save", for: .normal)
@@ -369,12 +341,6 @@ extension AddContactsViewController {
         
     }
     
-    func allign(label: UILabel, with textField: UITextField) {
-        label.frame.origin.y = textField.frame.origin.y
-        label.frame.origin.x = textField.frame.origin.x
-    }
-    
-    
     func hideLabelsAndText() {
         self.phoneNumberTextField.text = ""
         self.firstNameTextField.text = ""
@@ -383,6 +349,7 @@ extension AddContactsViewController {
         self.labelOfFirstName.isHidden = true
         self.labelOfLastName.isHidden = true
     }
+    
 }
 
 
@@ -404,7 +371,6 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
     }
     
-    
     func popUp(label: UILabel, constraint: NSLayoutConstraint) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             label.isHidden = false
@@ -412,7 +378,6 @@ extension AddContactsViewController: UITextFieldDelegate {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let fNameText = firstNameTextField.text else { return }
