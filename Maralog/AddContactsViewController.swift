@@ -57,6 +57,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         saveButton.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
         
         CNContactAdd.sharedInstance.checkAuthorization()
+        
+        
+        isToggled()
     }
     
     
@@ -78,7 +81,18 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             autoTextSwitch.isOn = false
             autoTextIcon.tintColor = .lightGray
         }
+        
+        isToggled()
     }
+    
+    
+    
+    // TODO: Move Later
+    func isToggled() {
+        autoTextToggled = SettingsController.sharedInstance.getTextSetting()
+        locationToggled = SettingsController.sharedInstance.getLocationSetting()
+    }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -130,6 +144,19 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     // Button
     @IBOutlet var saveButton: UIButton!
     
+    @IBOutlet var atButtonOutlet: UIButton!
+    @IBOutlet var lsButtonOutlet: UIButton!
+    
+    
+    
+    // move later
+    
+    var locationToggled = Bool()
+    var autoTextToggled = Bool()
+    
+    
+    
+    
     // Views
     
     // Constraints
@@ -141,7 +168,25 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
     
     
+    @IBAction func locationServiceButtonTapped(_ sender: UIButton) {
+        if locationToggled == false {
+            lsButtonOutlet.tintColor = .blue
+            locationToggled = true
+        } else {
+            lsButtonOutlet.tintColor = .gray
+            locationToggled = false
+        }
+    }
     
+    @IBAction func autoTextButtonTapped(_ sender: UIButton) {
+        if autoTextToggled == false {
+            atButtonOutlet.tintColor = .blue
+            autoTextToggled = true
+        } else {
+            atButtonOutlet.tintColor = .gray
+            autoTextToggled = false
+        }
+    }
     
     // MARK: - Action
     
@@ -153,7 +198,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-            switch (locationServicesSwitch.isOn, autoTextSwitch.isOn) {
+            switch (locationToggled, autoTextToggled) {
             case (true, true):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
