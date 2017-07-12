@@ -110,8 +110,16 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-DW-qXs">
-                                <rect key="frame" x="36" y="390" width="303" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-XO-I6X">
+                                <rect key="frame" x="52" y="441" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-hW-ZrV">
+                                <rect key="frame" x="281" y="441" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-DW-qXs">
+                                <rect key="frame" x="36" y="336" width="303" height="31"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wgn-Ri-foL">
                                         <rect key="frame" x="0.0" y="0.0" width="148" height="31"/>
@@ -634,8 +642,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="autoTextIcon" width="510" height="510"/>
-        <image name="locationServicesIcon" width="510" height="510"/>
+        <image name="autoTextIcon" width="50" height="50"/>
+        <image name="locationServicesIcon" width="50" height="50"/>
         <image name="tbOptionsButton" width="29" height="8"/>
         <image name="tbPlusButton" width="30" height="30"/>
         <image name="tbRecentsButton" width="31" height="31"/>
