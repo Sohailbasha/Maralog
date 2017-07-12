@@ -38,5 +38,4 @@ class SettingsCollectionViewCell: UICollectionViewCell {
 protocol SwitchSettingsDelegate: class {
     
     func captureDefaultSettingFor(cell: SettingsCollectionViewCell, selected: Bool)
-    
 }

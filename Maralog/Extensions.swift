@@ -67,6 +67,7 @@ extension UIApplication {
 extension UIButton {
     func ghostButton() {
         self.backgroundColor = UIColor.clear
+        self.setTitleColor(Keys.sharedInstance.tabBarSelected, for: .normal)
         self.layer.borderWidth = 1
         self.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
     }

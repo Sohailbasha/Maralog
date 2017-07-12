@@ -37,17 +37,23 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         CNContactAdd.sharedInstance.checkAuthorization()
     
         checkSettings()
+        setupViews()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        checkSettings()
+        setupViews()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        self.hideLabelsAndText()
         checkSettings()
     }
     
     
     
-    // TODO: Move Later
     func checkSettings() {
         autoTextToggled = SettingsController.sharedInstance.getTextSetting()
         locationToggled = SettingsController.sharedInstance.getLocationSetting()
@@ -65,14 +71,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        self.hideLabelsAndText()
-        checkSettings()
-    }
-    
-    
     // MARK: - Properties
     
     var coreLocationManager: CLLocationManager!
@@ -89,6 +87,38 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let colorForSelectedUI = Keys.sharedInstance.trimColor
     let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
     
+    let lsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightSemibold)
+        label.tintColor = Keys.sharedInstance.tabBarDefault
+        label.text = "Save Location"
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let atLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightSemibold)
+        label.tintColor = Keys.sharedInstance.tabBarDefault
+        label.text = "Auto Text"
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    func setupViews() {
+        
+        lsLabel.frame = CGRect(x: lsButtonOutlet.frame.origin.x, y: lsButtonOutlet.frame.origin.y, width: 100, height: 25)
+        lsLabel.center.x = lsButtonOutlet.center.x
+        lsLabel.center.y = lsButtonOutlet.center.y - (100/8)
+
+        atLabel.frame = CGRect(x: atButtonOutlet.frame.origin.x, y: atButtonOutlet.frame.origin.y, width: 100, height: 25)
+        atLabel.center.x = atLabel.center.x
+        atLabel.center.y = atLabel.center.y - (100/8)
+        
+        self.view.addSubview(lsLabel)
+        self.view.addSubview(atLabel)
+
+    }
     
     // MARK: - Outlets
     
@@ -113,15 +143,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
     
     
-
-    
     @IBAction func buttonTapped(_ sender: UIButton) {
         switch sender {
         case atButtonOutlet:
             if autoTextToggled == false {
                 autoTextToggled = true
                 select(button: atButtonOutlet)
-                
             } else {
                 autoTextToggled = false
                 deselect(button: atButtonOutlet)
@@ -190,7 +217,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.hideLabelsAndText()
     }
@@ -201,7 +227,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             button.backgroundColor = self.colorForSelectedUI
             button.imageEdgeInsets = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
-//            button.layer.cornerRadius = 0.5 * button.layer.bounds.width
             button.tintColor = .white
         }) { (_) in }
     }
@@ -211,7 +236,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             button.transform = CGAffineTransform.identity
             button.backgroundColor = .clear
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//            button.layer.cornerRadius = 0
             button.tintColor = self.colorForUnselectedUI
         }) { (_) in }
     }

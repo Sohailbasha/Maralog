@@ -19,16 +19,22 @@ class MoreOptionsViewController: UIViewController {
         let name = UserController.sharedInstance.getName()
 
         nameChangeTextField.text = name
-        self.changeDesignsFor(buttons: [saveNameButton])
+        saveNameButton.ghostButton()
         nameChangeTextField.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
         nameChangeTextField.delegate = self
     }
     
     
-    
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         descriptionTextView.text = "Tap the icons above for more information"
         nameChangeTextField.text = UserController.sharedInstance.getName()
+        
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        cellSelected = false
+        collectionView.reloadData()
     }
     
     
@@ -67,6 +73,9 @@ class MoreOptionsViewController: UIViewController {
             }
         }
     }
+    
+    
+    var cellSelected = Bool()
 }
 
 
@@ -87,8 +96,21 @@ extension MoreOptionsViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let setting = SettingsController.sharedInstance.settings[indexPath.row]
+        let cell = collectionView.cellForItem(at: indexPath)
+        
         descriptionTextView.text = setting.description
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+            cell?.transform = CGAffineTransform(scaleX: 1.11, y: 1.11)
+        }) { (_) in
+            UIView.animate(withDuration: 0.2, animations: {
+                cell?.transform = CGAffineTransform.identity
+            })
+        }
     }
+    
+    
+    
+
     
 }
 
@@ -98,19 +120,6 @@ extension MoreOptionsViewController: SwitchSettingsDelegate {
             setting.isOn = selected
             collectionView.reloadItems(at: [indexPath])
             SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
-        }
-    }
-}
-
-extension MoreOptionsViewController {
-    func changeDesignsFor(buttons: [UIButton]) {
-        for button in buttons {
-            let color = Keys.sharedInstance.tabBarSelected
-            button.backgroundColor = .clear
-            button.layer.cornerRadius = 5
-            button.layer.borderWidth = 0.5
-            button.layer.borderColor = color.cgColor
-            button.setTitleColor(color, for: .normal)
         }
     }
 }

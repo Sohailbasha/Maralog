@@ -106,20 +106,24 @@
                                     <action selector="saveButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="b2h-Yy-uP0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-XO-I6X">
-                                <rect key="frame" x="36" y="372" width="45" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-XO-I6X">
+                                <rect key="frame" x="45" y="372" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zK5-XO-I6X" secondAttribute="height" multiplier="1:1" id="17G-ui-6KZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="1rq-Rj-cWJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="wNZ-5z-oDX"/>
                                 </constraints>
                                 <state key="normal" image="locationServicesIcon"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="PpL-ho-4tG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-hW-ZrV">
-                                <rect key="frame" x="287" y="372" width="45" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-hW-ZrV">
+                                <rect key="frame" x="189.5" y="372" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OSI-hW-ZrV" secondAttribute="height" multiplier="1:1" id="453-1d-mbV"/>
+                                    <constraint firstAttribute="width" constant="50" id="G6B-GJ-IHL"/>
+                                    <constraint firstAttribute="height" constant="50" id="Vt5-3s-JiY"/>
                                 </constraints>
                                 <state key="normal" image="autoTextIcon"/>
                                 <connections>
@@ -144,7 +148,6 @@
                             <constraint firstItem="h4X-hF-4Uv" firstAttribute="top" secondItem="ANx-2R-crX" secondAttribute="bottom" constant="25" id="Kpo-rk-84Q"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cOF-8y-242" secondAttribute="leading" id="L5r-cO-co6"/>
                             <constraint firstItem="64J-SE-xPZ" firstAttribute="top" secondItem="cOF-8y-242" secondAttribute="bottom" constant="-13" id="Odj-5Q-djZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OSI-hW-ZrV" secondAttribute="trailing" constant="20" id="RtF-rc-3Jb"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="Tao-Zr-pob"/>
                             <constraint firstItem="64J-SE-xPZ" firstAttribute="top" secondItem="iWo-Nd-IG5" secondAttribute="bottom" multiplier="10/6.9" id="X9N-oH-kgr"/>
                             <constraint firstAttribute="leadingMargin" secondItem="XA5-Iy-YNO" secondAttribute="leading" id="ac8-aV-5pL"/>
@@ -153,11 +156,12 @@
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="dbX-FA-hIR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cim-u8-10V" secondAttribute="leading" id="exQ-Tr-ifn"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="top" secondItem="SOW-W5-mqZ" secondAttribute="bottom" id="f7s-Hw-Vfj"/>
-                            <constraint firstItem="zK5-XO-I6X" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" constant="20" id="gko-dQ-8xQ"/>
+                            <constraint firstItem="zK5-XO-I6X" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" multiplier="2.8" id="gko-dQ-8xQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ANx-2R-crX" secondAttribute="trailing" constant="40" id="jaJ-3y-r9j"/>
                             <constraint firstItem="iWo-Nd-IG5" firstAttribute="top" secondItem="SOW-W5-mqZ" secondAttribute="bottom" id="lGj-MH-jku"/>
                             <constraint firstAttribute="trailingMargin" secondItem="64J-SE-xPZ" secondAttribute="trailing" constant="40" id="pUQ-el-mGT"/>
                             <constraint firstItem="64J-SE-xPZ" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="qRS-RN-aPh"/>
+                            <constraint firstItem="OSI-hW-ZrV" firstAttribute="leading" secondItem="zK5-XO-I6X" secondAttribute="trailing" multiplier="2" id="r3w-RT-L95"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gtc-vI-2Ts"/>
