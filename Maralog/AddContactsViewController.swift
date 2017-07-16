@@ -37,13 +37,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         CNContactAdd.sharedInstance.checkAuthorization()
     
         checkSettings()
-        setupViews()
+//        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         checkSettings()
-        setupViews()
+//        setupViews()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -107,11 +107,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     func setupViews() {
         
-        lsLabel.frame = CGRect(x: lsButtonOutlet.frame.origin.x, y: lsButtonOutlet.frame.origin.y, width: 100, height: 25)
+        lsLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
         lsLabel.center.x = lsButtonOutlet.center.x
         lsLabel.center.y = lsButtonOutlet.center.y - (100/8)
 
-        atLabel.frame = CGRect(x: atButtonOutlet.frame.origin.x, y: atButtonOutlet.frame.origin.y, width: 100, height: 25)
+        atLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
         atLabel.center.x = atLabel.center.x
         atLabel.center.y = atLabel.center.y - (100/8)
         
