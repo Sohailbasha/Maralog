@@ -95,7 +95,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-6s-B9e">
                                 <rect key="frame" x="269" y="492.5" width="90" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="5A6-gP-EL0"/>
+                                    <constraint firstAttribute="width" constant="120" id="5A6-gP-EL0"/>
                                     <constraint firstAttribute="height" constant="45" id="MTL-MN-DGD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
