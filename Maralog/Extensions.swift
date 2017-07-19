@@ -71,6 +71,24 @@ extension UIButton {
         self.layer.borderWidth = 1
         self.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
     }
+    
+    func tappedAnimation() {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.backgroundColor = Keys.sharedInstance.randomColor()
+            self.setTitle("Saved!", for: .normal)
+            self.setTitleColor(.white, for: .normal)
+        }) { (_) in
+            self.tapAnimationDidFinish()
+        }
+    }
+    
+    
+    func tapAnimationDidFinish() {
+        UIView.animate(withDuration: 0.4, animations: { 
+            self.ghostButton()
+            self.setTitle("Save", for: .normal)
+        }, completion: nil)
+    }
 }
 
 

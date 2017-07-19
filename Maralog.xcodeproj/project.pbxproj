@@ -113,7 +113,7 @@
 				FD16C98D1E490AEB00237631 /* Maralog.xcdatamodeld */,
 				FD16C9911E490C6600237631 /* CoreDataStack.swift */,
 				FD16C9931E490C9500237631 /* Contact + Convenience.swift */,
-				FDD9C2F41ECE79B000573F00 /* Minor Classes */,
+				FDD9C2EE1ECE45B600573F00 /* Settings.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -192,14 +192,6 @@
 				FDD5C0E31F1EF7B400E331E6 /* ColorView.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		FDD9C2F41ECE79B000573F00 /* Minor Classes */ = {
-			isa = PBXGroup;
-			children = (
-				FDD9C2EE1ECE45B600573F00 /* Settings.swift */,
-			);
-			name = "Minor Classes";
 			sourceTree = "<group>";
 		};
 		FDE28F951ED0D7DF0057E102 /* Sign In / Tutorial */ = {

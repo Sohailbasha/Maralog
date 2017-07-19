@@ -133,7 +133,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
-    
 
     // MARK: - Action
     
@@ -147,26 +146,24 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
             switch (locationToggled, autoTextToggled) {
             case (true, true):
+                saveButton.tappedAnimation()
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                self.saveButtonAnimation()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
             case (false, false):
+                saveButton.tappedAnimation()
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                self.saveButtonAnimation()
-                
             case (true, false):
+                saveButton.tappedAnimation()
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                self.saveButtonAnimation()
-                
             case (false, true):
+                saveButton.tappedAnimation()
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                self.saveButtonAnimation()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
@@ -188,7 +185,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             
             button.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
             button.tintColor = .white
-            button.backgroundColor = Keys.sharedInstance.trimColor
+            button.backgroundColor = Keys.sharedInstance.randomColor()
             button.imageEdgeInsets = UIEdgeInsetsMake(insets, insets, insets, insets)
             
             label.transform = CGAffineTransform(translationX: 0, y: 10)
@@ -200,7 +197,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             
             button.transform = CGAffineTransform.identity
-            button.tintColor = Keys.sharedInstance.trimColor
+            button.tintColor = self.colorForUnselectedUI
+
             button.backgroundColor = .clear
             button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
             label.transform = CGAffineTransform.identity
@@ -299,7 +297,7 @@ extension AddContactsViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.saveButton.backgroundColor = Keys.sharedInstance.tabBarSelected
             self.saveButton.setTitle("Saved!", for: .normal)
-            self.saveButton.setTitleColor(.white, for: .normal)
+            self.saveButton.setTitleColor(Keys.sharedInstance.randomColor(), for: .normal)
             self.hideLabelsAndText()
         }) { (_) in
             self.saveButtonReturnToDefault()

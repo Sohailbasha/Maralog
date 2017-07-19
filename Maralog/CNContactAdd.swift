@@ -70,7 +70,7 @@ class CNContactAdd {
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
         contact.postalAddresses = [locationMet]
         
-//        let store = CNContactStore()
+
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         
