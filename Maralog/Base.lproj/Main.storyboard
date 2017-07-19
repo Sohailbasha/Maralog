@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756" y="1614"/>
+            <point key="canvasLocation" x="4756" y="1613.3433283358322"/>
         </scene>
         <!--Recently Added-->
         <scene sceneID="YIp-uL-QsM">
@@ -219,14 +219,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KAx-HL-5OR">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="12" width="33" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qJF-G7-9za">
-                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="316" y="12" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -615,8 +615,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="autoTextIcon" width="50" height="50"/>
-        <image name="locationServicesIcon" width="50" height="50"/>
+        <image name="autoTextIcon" width="130" height="130"/>
+        <image name="locationServicesIcon" width="130" height="130"/>
         <image name="tbOptionsButton" width="29" height="8"/>
         <image name="tbPlusButton" width="30" height="30"/>
         <image name="tbRecentsButton" width="31" height="31"/>
