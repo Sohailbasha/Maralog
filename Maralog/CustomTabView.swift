@@ -23,6 +23,7 @@ class CustomTabView: UIView {
     @IBOutlet var moreOptionsButton: UIButton!
     
     
+    
     // app opens on middle tab
     var currentIndex: Int {
         guard let previous = pastPresentIndexes[previous] else {
@@ -37,9 +38,6 @@ class CustomTabView: UIView {
     
     var pastPresentIndexes = ["previous": 0,
                               "current": 1]
-    
-    
-    
     
     func select(index: Int) {
         let buttons: [UIButton] = [recentlyAddedButton, addButton, moreOptionsButton]
@@ -81,6 +79,7 @@ class CustomTabView: UIView {
         
     }
     
+
     
     
     // MARK: - Actions

@@ -31,19 +31,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         
-        
         saveButton.ghostButton()
-        
         CNContactAdd.sharedInstance.checkAuthorization()
-    
         checkSettings()
-//        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         checkSettings()
-//        setupViews()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -52,24 +47,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         checkSettings()
     }
     
-    
-    
     func checkSettings() {
         autoTextToggled = SettingsController.sharedInstance.getTextSetting()
         locationToggled = SettingsController.sharedInstance.getLocationSetting()
-        
-        if autoTextToggled == true {
-            select(button: atButtonOutlet)
-        } else {
-            deselect(button: atButtonOutlet)
-        }
-
-        if locationToggled == true {
-            select(button: lsButtonOutlet)
-        } else {
-            deselect(button: lsButtonOutlet)
-        }
+        autoTextToggled == true ? select(button: atButtonOutlet, label: autoTextLabel) : deselect(button: atButtonOutlet, label: autoTextLabel)
+        locationToggled == true ? select(button: lsButtonOutlet, label: locationSaveLabel) : deselect(button: lsButtonOutlet, label: locationSaveLabel)
     }
+    
     
     // MARK: - Properties
     
@@ -87,38 +71,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let colorForSelectedUI = Keys.sharedInstance.trimColor
     let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
     
-    let lsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightSemibold)
-        label.tintColor = Keys.sharedInstance.tabBarDefault
-        label.text = "Save Location"
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
-    
-    let atLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightSemibold)
-        label.tintColor = Keys.sharedInstance.tabBarDefault
-        label.text = "Auto Text"
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
-    
-    func setupViews() {
-        
-        lsLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
-        lsLabel.center.x = lsButtonOutlet.center.x
-        lsLabel.center.y = lsButtonOutlet.center.y - (100/8)
-
-        atLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 25)
-        atLabel.center.x = atLabel.center.x
-        atLabel.center.y = atLabel.center.y - (100/8)
-        
-        self.view.addSubview(lsLabel)
-        self.view.addSubview(atLabel)
-
-    }
+ 
     
     // MARK: - Outlets
     
@@ -131,6 +84,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var labelOfPhoneNumber: UILabel!
     @IBOutlet var labelOfFirstName: UILabel!
     @IBOutlet var labelOfLastName: UILabel!
+    
+    // Labels for features
+    @IBOutlet var locationSaveLabel: UILabel!
+    @IBOutlet var autoTextLabel: UILabel!
+    
     
     // Button
     @IBOutlet var saveButton: UIButton!
@@ -148,10 +106,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         case atButtonOutlet:
             if autoTextToggled == false {
                 autoTextToggled = true
-                select(button: atButtonOutlet)
+                select(button: atButtonOutlet, label: autoTextLabel)
             } else {
                 autoTextToggled = false
-                deselect(button: atButtonOutlet)
+                deselect(button: atButtonOutlet, label: autoTextLabel)
             }
             
         case lsButtonOutlet:
@@ -161,10 +119,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 if locationToggled == false {
                     locationToggled = true
                     getCurrentLocationForCNContact()
-                    select(button: lsButtonOutlet)
+                    select(button: lsButtonOutlet, label: locationSaveLabel)
                 } else {
                     locationToggled = false
-                    deselect(button: lsButtonOutlet)
+                    deselect(button: lsButtonOutlet, label: locationSaveLabel)
                 }
             }
             
@@ -172,6 +130,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
     }
+    
+    
     
     
 
@@ -221,23 +181,32 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         self.hideLabelsAndText()
     }
     
-    func select(button: UIButton) {
+    func select(button: UIButton, label: UILabel) {
         let insets: CGFloat = 5
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-            button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            button.backgroundColor = self.colorForSelectedUI
-            button.imageEdgeInsets = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
+        
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            
+            button.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
             button.tintColor = .white
-        }) { (_) in }
+            button.backgroundColor = Keys.sharedInstance.trimColor
+            button.imageEdgeInsets = UIEdgeInsetsMake(insets, insets, insets, insets)
+            
+            label.transform = CGAffineTransform(translationX: 0, y: 10)
+        }, completion: nil)
     }
     
-    func deselect(button: UIButton) {
-        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+    func deselect(button: UIButton, label: UILabel) {
+        
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            
             button.transform = CGAffineTransform.identity
+            button.tintColor = Keys.sharedInstance.trimColor
             button.backgroundColor = .clear
-            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            button.tintColor = self.colorForUnselectedUI
-        }) { (_) in }
+            button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+            label.transform = CGAffineTransform.identity
+
+        }, completion: nil)
+        
     }
 }
 
@@ -378,7 +347,7 @@ extension AddContactsViewController: UITextFieldDelegate {
     }
     
     func popUp(label: UILabel, constraint: NSLayoutConstraint) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [], animations: {
             label.isHidden = false
             constraint.constant = 1
             self.view.layoutIfNeeded()
@@ -410,7 +379,7 @@ extension AddContactsViewController: UITextFieldDelegate {
     }
     
     func popDown(label: UILabel, constraint: NSLayoutConstraint) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseInOut], animations: {
             constraint.constant = -14
             self.view.layoutIfNeeded()
             label.alpha = 0
