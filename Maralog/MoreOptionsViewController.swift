@@ -13,28 +13,39 @@ class MoreOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
         
         let name = UserController.sharedInstance.getName()
-
-        nameChangeTextField.text = name
-        saveNameButton.ghostButton()
-        nameChangeTextField.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
-        nameChangeTextField.delegate = self
+        let nameArray = [name]
+        
+        
+        
+        settings = SettingsController.sharedInstance.settings
+        
+        groups = [nameArray, settings]
+        
     }
     
     
+    let section = ["Change Name", "Change Default Settings"]
+    
+    var groups = [[]]
+    
+    var settings: [Settings] = []
+    
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-        descriptionTextView.text = "Tap the icons above for more information"
-        nameChangeTextField.text = UserController.sharedInstance.getName()
         
     }
     
     
     override func viewDidDisappear(_ animated: Bool) {
-        cellSelected = false
-        collectionView.reloadData()
+        
     }
     
     
@@ -42,99 +53,125 @@ class MoreOptionsViewController: UIViewController {
     // MARK: - Outlets
     
     
-    
-    @IBOutlet var yourNameLabel: UILabel!
-    
-    @IBOutlet var nameChangeTextField: UITextField!
-    
-    @IBOutlet var saveNameButton: UIButton!
-    
-    @IBOutlet var collectionView: UICollectionView!
-    
-    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var tableView: UITableView!
     
     
     
     // MARK: - Actions
-    @IBAction func saveNameButtonTapped(_ sender: Any) {
-        let color = Keys.sharedInstance.tabBarSelected
-        if let newName = nameChangeTextField.text, !newName.isEmpty {
-            UserController.sharedInstance.saveUserName(name: nameChangeTextField.text)
-            UIView.animate(withDuration: 1, animations: {
-                self.saveNameButton.backgroundColor = color
-                self.saveNameButton.setTitleColor(.white, for: .normal)
-                self.saveNameButton.setTitle("Saved!", for: .normal)
-            }) { (_) in
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.saveNameButton.backgroundColor = .clear
-                    self.saveNameButton.setTitleColor(color, for: .normal)
-                    self.saveNameButton.setTitle("Save", for: .normal)
-                })
+    
+    
+    
+}
+
+
+
+extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return groups.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.section[section]
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as? UITableViewHeaderFooterView
+        header?.contentView.backgroundColor = #colorLiteral(red: 0.9514792195, green: 0.9514792195, blue: 0.9514792195, alpha: 1)
+        header?.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)
+        header?.textLabel?.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    }
+ 
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        let footer = view as? UITableViewHeaderFooterView
+        footer?.contentView.backgroundColor = #colorLiteral(red: 0.9514792195, green: 0.9514792195, blue: 0.9514792195, alpha: 1)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 70
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return groups[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
+        
+        switch indexPath.section {
+        case 0:
+            if let name = groups[indexPath.section][indexPath.row] as? String {
+                cell.textLabel?.text = " \(name)"
+                cell.detailTextLabel?.text = ""
+            }
+           
+        default:
+            if let setting = groups[indexPath.section][indexPath.row] as? Settings {
+                cell.textLabel?.text = setting.name
+                cell.imageView?.image = setting.icon
+                cell.detailTextLabel?.text = ""
             }
         }
-    }
-    
-    
-    var cellSelected = Bool()
-}
-
-
-
-extension MoreOptionsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SettingsController.sharedInstance.settings.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "settingCell", for: indexPath) as? SettingsCollectionViewCell
-        let setting = SettingsController.sharedInstance.settings[indexPath.row]
-        cell?.setting = setting
-        cell?.delegate = self
-        return cell ?? UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let setting = SettingsController.sharedInstance.settings[indexPath.row]
-        let cell = collectionView.cellForItem(at: indexPath)
         
-        descriptionTextView.text = setting.description
-        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
-            cell?.transform = CGAffineTransform(scaleX: 1.11, y: 1.11)
-        }) { (_) in
-            UIView.animate(withDuration: 0.2, animations: {
-                cell?.transform = CGAffineTransform.identity
+        return cell
+    }
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.section) {
+        case 0:
+            var nameTextField: UITextField?
+            let alertController = UIAlertController(title: "Change your name",
+                                                    message: "Your name will appear on Auto-Text messages to newly added contacts",
+                                                    preferredStyle: .alert)
+            
+            
+            alertController.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "enter here"
+                textField.keyboardType = .default
+                nameTextField = textField
             })
+            
+            let okayAction = UIAlertAction(title: "Save Name", style: .default, handler: { (_) in
+                if let newName = nameTextField?.text, !newName.isEmpty {
+                    UserController.sharedInstance.saveUserName(name: newName)
+
+                }
+            })
+
+            let nvmAction = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
+            
+            alertController.addAction(okayAction)
+            alertController.addAction(nvmAction)
+            self.present(alertController, animated: true, completion: { 
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+            
+        default:
+            break
         }
     }
     
     
-    
-
-    
 }
 
-extension MoreOptionsViewController: SwitchSettingsDelegate {
-    func captureDefaultSettingFor(cell: SettingsCollectionViewCell, selected: Bool) {
-        if let setting = cell.setting, let indexPath = collectionView.indexPath(for: cell) {
-            setting.isOn = selected
-            collectionView.reloadItems(at: [indexPath])
-            SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
-        }
-    }
-}
+//extension MoreOptionsViewController: SwitchSettingsDelegate {
+//    func captureDefaultSettingFor(cell: SettingsCollectionViewCell, selected: Bool) {
+//        if let setting = cell.setting, let indexPath = collectionView.indexPath(for: cell) {
+//            setting.isOn = selected
+//            collectionView.reloadItems(at: [indexPath])
+//            SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
+//        }
+//    }
+//}
 
-extension MoreOptionsViewController: UITextFieldDelegate {
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
+
 
 
 
