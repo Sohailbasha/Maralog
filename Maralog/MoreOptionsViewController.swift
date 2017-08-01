@@ -21,11 +21,14 @@ class MoreOptionsViewController: UIViewController {
         let name = UserController.sharedInstance.getName()
         let nameArray = [name]
         
-        
-        
-        settings = SettingsController.sharedInstance.settings
+        let settings = SettingsController.sharedInstance.settings
         
         groups = [nameArray, settings]
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
@@ -34,12 +37,6 @@ class MoreOptionsViewController: UIViewController {
     
     var groups = [[]]
     
-    var settings: [Settings] = []
-    
-    
-    
-    
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSettingControlls" {
@@ -51,7 +48,6 @@ class MoreOptionsViewController: UIViewController {
                         self.changeNameAlert()
                         
                     default:
-                                            //removing [indexPath.section]
                         if let setting = groups[indexPath.section][indexPath.row] as? Settings {
                             destinationVC.setting = setting
                         }
@@ -111,24 +107,27 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
-        
         switch indexPath.section {
         case 0:
             if let name = groups[indexPath.section][indexPath.row] as? String {
                 cell.textLabel?.text = " \(name)"
                 cell.detailTextLabel?.text = ""
             }
-           
         default:
             if let setting = groups[indexPath.section][indexPath.row] as? Settings {
                 cell.textLabel?.text = setting.name
                 cell.imageView?.image = setting.icon
-                cell.detailTextLabel?.text = ""
+                
+                if (setting.isOn) {
+                    cell.detailTextLabel?.text = "On"
+                } else {
+                    cell.detailTextLabel?.text = "Off"
+                }
             }
         }
-        
         return cell
     }
+    
     
     
     func changeNameAlert() {
@@ -161,67 +160,16 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
             }
         })
     }
-    
-    
-    /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch (indexPath.section) {
-        case 0:
-            var nameTextField: UITextField?
-            let alertController = UIAlertController(title: "Change your name",
-                                                    message: "Your name will appear on Auto-Text messages to newly added contacts",
-                                                    preferredStyle: .alert)
-            
-            
-            alertController.addTextField(configurationHandler: { (textField) in
-                textField.placeholder = "enter here"
-                textField.keyboardType = .default
-                nameTextField = textField
-            })
-            
-            let okayAction = UIAlertAction(title: "Save Name", style: .default, handler: { (_) in
-                if let newName = nameTextField?.text, !newName.isEmpty {
-                    UserController.sharedInstance.saveUserName(name: newName)
-
-                }
-            })
-
-            let nvmAction = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
-            
-            alertController.addAction(okayAction)
-            alertController.addAction(nvmAction)
-            self.present(alertController, animated: true, completion: { 
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            })
-            
-        default:
-            let segue = UIStoryboardSegue(identifier: "toSettingsControlls", source: , destination: )
-            self.prepare(for: UIStoryboardSegue(), sender: self)
-        }
-    }
-    */
-    
-    
-    
 }
 
 
 extension MoreOptionsViewController: SwitchSettingsDelegate {
     
-    
+    func captureDefaultSettingFor(setting: Settings, selected: Bool) {
+        SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
+        tableView.reloadData()
+    }
 }
-
-//extension MoreOptionsViewController: SwitchSettingsDelegate {
-//    func captureDefaultSettingFor(cell: SettingsCollectionViewCell, selected: Bool) {
-//        if let setting = cell.setting, let indexPath = collectionView.indexPath(for: cell) {
-//            setting.isOn = selected
-//            collectionView.reloadItems(at: [indexPath])
-//            SettingsController.sharedInstance.saveAsDefault(setting: setting, value: selected)
-//        }
-//    }
-//}
 
 
 

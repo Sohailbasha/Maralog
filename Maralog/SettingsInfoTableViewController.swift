@@ -19,6 +19,12 @@ class SettingsInfoTableViewController: UITableViewController {
         self.title = setting.name
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
     
     var setting: Settings?
     var delegate: SwitchSettingsDelegate?
