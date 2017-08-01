@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class SettingsInfoTableViewController: UITableViewController {
 
@@ -14,7 +15,29 @@ class SettingsInfoTableViewController: UITableViewController {
         super.viewDidLoad()
         
     }
+    
+
+
+    func updateDetailWith(_ setting: Settings) {
+    
+            imageView.image = setting.icon
+            textView.text = setting.description
 
     
+    }
     
+    
+    // MARK: - Outlets
+    
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var textView: UITextView!
+    @IBOutlet var settingSwitch: UISwitch!
+    
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func switchTapped(_ sender: Any) {
+        print("Hello World")
+    }
 }

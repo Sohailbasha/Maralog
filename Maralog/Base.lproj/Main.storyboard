@@ -476,14 +476,14 @@
         <scene sceneID="ZV5-lU-QDi">
             <objects>
                 <tableViewController id="yhC-WK-fOm" customClass="SettingsInfoTableViewController" customModule="Maralog" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dOL-7D-aE3">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dOL-7D-aE3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="" id="Cax-yM-Ui5">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="99" id="KG3-lq-8nf">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="99" id="KG3-lq-8nf">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KG3-lq-8nf" id="Rxv-3E-y4J">
@@ -501,6 +501,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0b8-Y0-7f1">
                                                     <rect key="frame" x="310" y="29" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchTapped:" destination="yhC-WK-fOm" eventType="valueChanged" id="FJy-7P-Yke"/>
+                                                    </connections>
                                                 </switch>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ojd-NQ-gXa">
                                                     <rect key="frame" x="16" y="22" width="45" height="45"/>
@@ -585,6 +588,11 @@
                             <outlet property="delegate" destination="yhC-WK-fOm" id="sYM-7Z-J9u"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="imageView" destination="Ojd-NQ-gXa" id="POQ-AX-Xog"/>
+                        <outlet property="settingSwitch" destination="0b8-Y0-7f1" id="7Wl-MY-H0K"/>
+                        <outlet property="textView" destination="qhh-ce-PjX" id="06I-YK-c0w"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bw-EE-ujR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

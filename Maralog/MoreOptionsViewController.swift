@@ -52,13 +52,15 @@ class MoreOptionsViewController: UIViewController {
         if segue.identifier == "toSettingControlls" {
             if let destinationVC = segue.destination as? SettingsInfoTableViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
+                    
                     switch indexPath.section {
                     case 0:
-                        return
+                        self.changeNameAlert()
+                        
                     default:
-                        let setting = groups[indexPath.section][indexPath.row]
-                        
-                        
+                        if let setting = groups[indexPath.section][indexPath.row] as? Settings {
+                            destinationVC.updateDetailWith(setting)
+                        }
                     }
                 }
             }
@@ -137,10 +139,39 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     
+    func changeNameAlert() {
+        var nameTextField: UITextField?
+        let alertController = UIAlertController(title: "Change your name",
+                                                message: "Your name will appear on Auto-Text messages to newly added contacts",
+                                                preferredStyle: .alert)
+        
+        
+        alertController.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "enter here"
+            textField.keyboardType = .default
+            nameTextField = textField
+        })
+        
+        let okayAction = UIAlertAction(title: "Save Name", style: .default, handler: { (_) in
+            if let newName = nameTextField?.text, !newName.isEmpty {
+                UserController.sharedInstance.saveUserName(name: newName)
+                
+            }
+        })
+        
+        let nvmAction = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
+        
+        alertController.addAction(okayAction)
+        alertController.addAction(nvmAction)
+        self.present(alertController, animated: true, completion: {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
     
     
-    
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section) {
         case 0:
@@ -174,11 +205,12 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
             })
             
         default:
-            if let setting = groups[indexPath.section][indexPath.row] as? Settings {
-                
-            }
+            let segue = UIStoryboardSegue(identifier: "toSettingsControlls", source: , destination: )
+            self.prepare(for: UIStoryboardSegue(), sender: self)
         }
     }
+    */
+    
     
     
 }
