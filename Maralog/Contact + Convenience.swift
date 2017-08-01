@@ -25,6 +25,7 @@ extension Contact {
         return sectionHeader
     }
     
+    
     var fullName: String {
         guard let firstName = firstName?.trimmingCharacters(in: .whitespaces),
             let lastName = lastName?.trimmingCharacters(in: .whitespaces) else {
@@ -34,3 +35,23 @@ extension Contact {
         return full
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

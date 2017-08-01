@@ -242,10 +242,12 @@ extension AddContactsViewController {
                     guard let city = pm.locality,
                         let state = pm.administrativeArea,
                         let street = pm.thoroughfare,
+                        let streetNumber = pm.subThoroughfare,
                         let zipcode = pm.postalCode else {
                             return }
                     
-                    self.address.street = street
+                    
+                    self.address.street = "\(streetNumber) \(street)"
                     self.address.city = city
                     self.address.state = state
                     self.address.postalCode = zipcode
