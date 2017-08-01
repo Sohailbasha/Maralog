@@ -20,6 +20,7 @@
 		FD324B141EDE71510091A665 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD324B131EDE71510091A665 /* AddContactsViewController.swift */; };
 		FD3B14981E4A83C900506CC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14971E4A83C900506CC1 /* CoreLocation.framework */; };
 		FD3B149A1E4AE01100506CC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3B14991E4AE01100506CC1 /* MapKit.framework */; };
+		FD4C1A821F3113CB009A4ED2 /* SettingsInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C1A811F3113CB009A4ED2 /* SettingsInfoTableViewController.swift */; };
 		FD5C98DB1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */; };
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
@@ -55,6 +56,7 @@
 		FD324B131EDE71510091A665 /* AddContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		FD3B14971E4A83C900506CC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FD3B14991E4AE01100506CC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FD4C1A811F3113CB009A4ED2 /* SettingsInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInfoTableViewController.swift; sourceTree = "<group>"; };
 		FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				FD324B131EDE71510091A665 /* AddContactsViewController.swift */,
 				FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */,
 				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
+				FD4C1A811F3113CB009A4ED2 /* SettingsInfoTableViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				FDD9C2F11ECE45FD00573F00 /* SettingsController.swift in Sources */,
 				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
+				FD4C1A821F3113CB009A4ED2 /* SettingsInfoTableViewController.swift in Sources */,
 				FDE28F981ED0D80D0057E102 /* Page.swift in Sources */,
 				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,
 				FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */,

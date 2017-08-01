@@ -253,6 +253,7 @@ extension RecentlyAddedViewController {
     }
     
     func noNewContactslabel() {
+        
         noContactsLabel.center.x = self.view.center.x
         contactsIsEmpty == true ? self.view.addSubview(noContactsLabel) : noContactsLabel.removeFromSuperview()
     }

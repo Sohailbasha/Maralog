@@ -48,6 +48,24 @@ class MoreOptionsViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSettingControlls" {
+            if let destinationVC = segue.destination as? SettingsInfoTableViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    switch indexPath.section {
+                    case 0:
+                        return
+                    default:
+                        let setting = groups[indexPath.section][indexPath.row]
+                        
+                        
+                    }
+                }
+            }
+        }
+        
+        
+    }
     
     
     // MARK: - Outlets
@@ -121,6 +139,8 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
     
     
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section) {
         case 0:
@@ -154,7 +174,9 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
             })
             
         default:
-            break
+            if let setting = groups[indexPath.section][indexPath.row] as? Settings {
+                
+            }
         }
     }
     
