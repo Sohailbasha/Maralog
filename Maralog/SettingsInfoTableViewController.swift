@@ -14,16 +14,20 @@ class SettingsInfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let setting = self.setting else { return }
+        self.updateDetailWith(setting)
+        self.title = setting.name
     }
     
-
+    
+    var setting: Settings?
+    var delegate: SwitchSettingsDelegate?
+    
 
     func updateDetailWith(_ setting: Settings) {
-    
-            imageView.image = setting.icon
-            textView.text = setting.description
-
-    
+        imageView.image = setting.icon
+        textView.text = setting.description
+        settingSwitch.isOn = setting.isOn
     }
     
     
@@ -38,6 +42,15 @@ class SettingsInfoTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func switchTapped(_ sender: Any) {
-        print("Hello World")
+        if let setting = self.setting {
+            delegate?.captureDefaultSettingFor(setting: setting, selected: settingSwitch.isOn)
+        }
     }
+}
+
+
+
+protocol SwitchSettingsDelegate: class {
+    
+    func captureDefaultSettingFor(setting: Settings, selected: Bool)
 }

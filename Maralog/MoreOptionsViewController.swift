@@ -39,14 +39,7 @@ class MoreOptionsViewController: UIViewController {
     
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSettingControlls" {
@@ -58,15 +51,14 @@ class MoreOptionsViewController: UIViewController {
                         self.changeNameAlert()
                         
                     default:
+                                            //removing [indexPath.section]
                         if let setting = groups[indexPath.section][indexPath.row] as? Settings {
-                            destinationVC.updateDetailWith(setting)
+                            destinationVC.setting = setting
                         }
                     }
                 }
             }
         }
-        
-        
     }
     
     
@@ -211,6 +203,12 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     */
     
+    
+    
+}
+
+
+extension MoreOptionsViewController: SwitchSettingsDelegate {
     
     
 }

@@ -23,19 +23,19 @@ class SettingsCollectionViewCell: UICollectionViewCell {
     
     
     
-    var delegate: SwitchSettingsDelegate?
+//    var delegate: SwitchSettingsDelegate?
     
     @IBOutlet var settingSwitch: UISwitch!
     @IBOutlet var settingIcon: UIImageView!
     @IBOutlet var settingName: UILabel!
     
     @IBAction func settingSwitchTapped(_ sender: Any) {
-        delegate?.captureDefaultSettingFor(cell: self, selected: settingSwitch.isOn)
+//        delegate?.captureDefaultSettingFor(cell: self, selected: settingSwitch.isOn)
     }
 }
 
-
-protocol SwitchSettingsDelegate: class {
-    
-    func captureDefaultSettingFor(cell: SettingsCollectionViewCell, selected: Bool)
-}
+//
+//protocol SwitchSettingsDelegate: class {
+//    
+//    func captureDefaultSettingFor(cell: SettingsCollectionViewCell, selected: Bool)
+//}
