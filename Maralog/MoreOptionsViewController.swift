@@ -51,11 +51,38 @@ class MoreOptionsViewController: UIViewController {
     func checkSettings() {
         isAutoTextEnabled = SettingsController.sharedInstance.getTextSetting()
         isLocationServicesEnabled = SettingsController.sharedInstance.getLocationSetting()
-
-        
-        
     }
     
+    
+    func changeNameAlert(completion: @escaping ((String) -> Void)) {
+        var nameTextField: UITextField?
+        let alertController = UIAlertController(title: "Change your name",
+                                                message: "Your name will appear on Auto-Text messages to newly added contacts",
+                                                preferredStyle: .alert)
+        
+        
+        alertController.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "enter here"
+            textField.keyboardType = .default
+            nameTextField = textField
+        })
+        
+        let okayAction = UIAlertAction(title: "Save Name", style: .default, handler: { (_) in
+            if let newName = nameTextField?.text, !newName.isEmpty {
+                UserController.sharedInstance.saveUserName(name: newName)
+                completion(newName)
+            }
+        })
+        
+        let nvmAction = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
+        
+        alertController.addAction(okayAction)
+        alertController.addAction(nvmAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+
     
     // MARK: - Segue
     
@@ -66,7 +93,10 @@ class MoreOptionsViewController: UIViewController {
                     
                     switch indexPath.section {
                     case 0:
-                        self.changeNameAlert()
+                        self.changeNameAlert(completion: { (newName) in
+                            self.groups[indexPath.section][indexPath.row] = newName
+                            self.tableView.reloadData()
+                        })
                         
                     default:
                         if let setting = groups[indexPath.section][indexPath.row] as? Settings {
@@ -80,12 +110,11 @@ class MoreOptionsViewController: UIViewController {
     
     
     
+    
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
     
-    
-    // MARK: - Actions
     
     
 }
@@ -116,7 +145,7 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 70
+        return 50
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,6 +160,7 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.textLabel?.text = " \(name)"
                 cell.detailTextLabel?.text = ""
             }
+            
         default:
             if let setting = groups[indexPath.section][indexPath.row] as? Settings {
                 cell.textLabel?.text = setting.name
@@ -146,38 +176,6 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    
-    
-    func changeNameAlert() {
-        var nameTextField: UITextField?
-        let alertController = UIAlertController(title: "Change your name",
-                                                message: "Your name will appear on Auto-Text messages to newly added contacts",
-                                                preferredStyle: .alert)
-        
-        
-        alertController.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "enter here"
-            textField.keyboardType = .default
-            nameTextField = textField
-        })
-        
-        let okayAction = UIAlertAction(title: "Save Name", style: .default, handler: { (_) in
-            if let newName = nameTextField?.text, !newName.isEmpty {
-                UserController.sharedInstance.saveUserName(name: newName)
-                
-            }
-        })
-        
-        let nvmAction = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
-        
-        alertController.addAction(okayAction)
-        alertController.addAction(nvmAction)
-        self.present(alertController, animated: true, completion: {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }
 }
 
 /*
