@@ -53,6 +53,7 @@ class MoreOptionsViewController: UIViewController {
         isLocationServicesEnabled = SettingsController.sharedInstance.getLocationSetting()
 
         
+        
     }
     
     

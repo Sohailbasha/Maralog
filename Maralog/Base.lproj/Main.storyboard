@@ -499,7 +499,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0b8-Y0-7f1">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0b8-Y0-7f1">
                                                     <rect key="frame" x="310" y="29" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switchTapped:" destination="yhC-WK-fOm" eventType="valueChanged" id="FJy-7P-Yke"/>

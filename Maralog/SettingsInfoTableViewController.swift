@@ -14,16 +14,23 @@ class SettingsInfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let setting = self.setting else { return }
+        guard let setting = self.setting else {
+            return }
+        
         self.updateDetailWith(setting)
         self.title = setting.name
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(true)
         
-        guard let setting = self.setting else { return }
+        guard let setting = self.setting else {
+            return }
+        self.updateDetailWith(setting)
         settingSwitch.isOn = setting.isOn
+        self.tableView.reloadData()
+    
     }
     
     
@@ -33,6 +40,8 @@ class SettingsInfoTableViewController: UITableViewController {
     var setting: Settings?
     
     var delegate: SwitchSettingsDelegate?
+    
+    var switchStatus = Bool()
     
 
     func updateDetailWith(_ setting: Settings) {
@@ -57,10 +66,10 @@ class SettingsInfoTableViewController: UITableViewController {
     
     @IBAction func switchTapped(_ sender: UISwitch) {
         if let setting = self.setting {
-            
+            setting.isOn = sender.isOn
             SettingsController.sharedInstance.saveAsDefault(setting: setting, value: sender.isOn)
             
-//            delegate?.captureDefaultSettingFor(setting: setting, selected: settingSwitch.isOn)
+            self.tableView.reloadData()
         }
     }
 }
