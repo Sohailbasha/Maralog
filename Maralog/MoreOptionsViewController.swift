@@ -25,18 +25,38 @@ class MoreOptionsViewController: UIViewController {
         
         groups = [nameArray, settings]
         
+        self.checkSettings()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.checkSettings()
+        tableView.reloadData()
     }
     
+    
+    // MARK: - Properties
+    
+    var isAutoTextEnabled = Bool()
+    
+    var isLocationServicesEnabled = Bool()
     
     let section = ["Change Name", "Change Default Settings"]
     
     var groups = [[]]
     
+    
+    func checkSettings() {
+        isAutoTextEnabled = SettingsController.sharedInstance.getTextSetting()
+        isLocationServicesEnabled = SettingsController.sharedInstance.getLocationSetting()
+
+        
+    }
+    
+    
+    // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSettingControlls" {
@@ -58,19 +78,16 @@ class MoreOptionsViewController: UIViewController {
     }
     
     
+    
     // MARK: - Outlets
     
-    
     @IBOutlet var tableView: UITableView!
-    
     
     
     // MARK: - Actions
     
     
-    
 }
-
 
 
 extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -162,7 +179,7 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-
+/*
 extension MoreOptionsViewController: SwitchSettingsDelegate {
     
     func captureDefaultSettingFor(setting: Settings, selected: Bool) {
@@ -170,8 +187,7 @@ extension MoreOptionsViewController: SwitchSettingsDelegate {
         tableView.reloadData()
     }
 }
-
-
+*/
 
 
 

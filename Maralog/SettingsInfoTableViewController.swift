@@ -22,11 +22,16 @@ class SettingsInfoTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        guard let setting = self.setting else { return }
+        settingSwitch.isOn = setting.isOn
     }
     
     
+    
+    
+    
     var setting: Settings?
+    
     var delegate: SwitchSettingsDelegate?
     
 
@@ -36,6 +41,9 @@ class SettingsInfoTableViewController: UITableViewController {
         settingSwitch.isOn = setting.isOn
     }
     
+    func checkSettings() {
+        
+    }
     
     // MARK: - Outlets
     
@@ -47,9 +55,12 @@ class SettingsInfoTableViewController: UITableViewController {
     
     // MARK: - Actions
     
-    @IBAction func switchTapped(_ sender: Any) {
+    @IBAction func switchTapped(_ sender: UISwitch) {
         if let setting = self.setting {
-            delegate?.captureDefaultSettingFor(setting: setting, selected: settingSwitch.isOn)
+            
+            SettingsController.sharedInstance.saveAsDefault(setting: setting, value: sender.isOn)
+            
+//            delegate?.captureDefaultSettingFor(setting: setting, selected: settingSwitch.isOn)
         }
     }
 }
