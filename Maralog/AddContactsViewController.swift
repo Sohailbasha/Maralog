@@ -240,6 +240,34 @@ extension AddContactsViewController {
             if let placemarks = placemarks {
                 if placemarks.count > 0 {
                     let pm = placemarks[0] as CLPlacemark
+                    
+//                    if let city = pm.locality {
+//                        self.address.city = city
+//                    }
+//                    
+//                    if let state = pm.administrativeArea {
+//                        self.address.state = state
+//                    }
+//                    
+//                    
+//                    if let zipcode = pm.postalCode {
+//                        self.address.postalCode = zipcode
+//                    }
+//                    
+//                    var streetString = ""
+//                    
+//                    if let streetNumber = pm.subThoroughfare {
+//                        streetString += "\(streetNumber) "
+//                    }
+//                    
+//                    if let street = pm.thoroughfare {
+//                        streetString += street
+//                    }
+//                    
+//                    self.address.street = streetString
+
+                    
+                    
                     guard let city = pm.locality,
                         let state = pm.administrativeArea,
                         let street = pm.thoroughfare,
@@ -248,7 +276,10 @@ extension AddContactsViewController {
                             return }
                     
                     
-                    self.address.street = "\(streetNumber) \(street)"
+//                    self.address.street = "\(streetNumber) \(street)"
+                    
+                    self.address.street = street
+
                     self.address.city = city
                     self.address.state = state
                     self.address.postalCode = zipcode

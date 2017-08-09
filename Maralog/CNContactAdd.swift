@@ -36,7 +36,6 @@ class CNContactAdd {
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added With Maralog"
-
         
 //        let store = CNContactStore()
         let saveRequest = CNSaveRequest()
@@ -64,6 +63,8 @@ class CNContactAdd {
         dateAdded.year = Calendar.current.component(.year, from: Date())
         dateAdded.day = Calendar.current.component(.day, from: Date())
         let date = CNLabeledValue(label: "Date Added", value: dateAdded)
+        
+        
         contact.dates = [date]
         
         
