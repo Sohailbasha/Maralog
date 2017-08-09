@@ -22,6 +22,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
+        
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
@@ -241,48 +242,48 @@ extension AddContactsViewController {
                 if placemarks.count > 0 {
                     let pm = placemarks[0] as CLPlacemark
                     
-//                    if let city = pm.locality {
-//                        self.address.city = city
-//                    }
-//                    
-//                    if let state = pm.administrativeArea {
-//                        self.address.state = state
-//                    }
-//                    
-//                    
-//                    if let zipcode = pm.postalCode {
-//                        self.address.postalCode = zipcode
-//                    }
-//                    
-//                    var streetString = ""
-//                    
-//                    if let streetNumber = pm.subThoroughfare {
-//                        streetString += "\(streetNumber) "
-//                    }
-//                    
-//                    if let street = pm.thoroughfare {
-//                        streetString += street
-//                    }
-//                    
-//                    self.address.street = streetString
+                    if let city = pm.locality {
+                        self.address.city = city
+                    }
+                    
+                    if let state = pm.administrativeArea {
+                        self.address.state = state
+                    }
+                    
+                    
+                    if let zipcode = pm.postalCode {
+                        self.address.postalCode = zipcode
+                    }
+                    
+                    var streetString = ""
+                    
+                    if let streetNumber = pm.subThoroughfare {
+                        streetString += "\(streetNumber) "
+                    }
+                    
+                    if let street = pm.thoroughfare {
+                        streetString += street
+                    }
+                    
+                    self.address.street = streetString
+                    
 
-                    
-                    
-                    guard let city = pm.locality,
-                        let state = pm.administrativeArea,
-                        let street = pm.thoroughfare,
-                        let streetNumber = pm.subThoroughfare,
-                        let zipcode = pm.postalCode else {
-                            return }
-                    
                     
 //                    self.address.street = "\(streetNumber) \(street)"
-                    
-                    self.address.street = street
-
-                    self.address.city = city
-                    self.address.state = state
-                    self.address.postalCode = zipcode
+//                    guard let city = pm.locality,
+//                        let state = pm.administrativeArea,
+//                        let street = pm.thoroughfare,
+//                        let streetNumber = pm.subThoroughfare,
+//                        let zipcode = pm.postalCode else {
+//                            return }
+//                    
+//                    
+//
+//                    self.address.street = street
+//
+//                    self.address.city = city
+//                    self.address.state = state
+//                    self.address.postalCode = zipcode
                 }
             }
         }
