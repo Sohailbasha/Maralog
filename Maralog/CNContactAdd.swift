@@ -15,9 +15,12 @@ class CNContactAdd {
     static let sharedInstance = CNContactAdd()
     
     let calendar = Calendar.current
-    let store = CNContactStore()
+//    let store = CNContactStore()
+    
     
     func checkAuthorization() {
+        let store = CNContactStore()
+
         if CNContactStore.authorizationStatus(for: .contacts) != .authorized {
             store.requestAccess(for: .contacts, completionHandler: { (success, error) in
                 if (success) {
@@ -27,25 +30,33 @@ class CNContactAdd {
         }
     }
     
+    
     func addContactWithoutAddress(contact: Contact) {
+        let store = CNContactStore()
+
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName else { return }
 
+        
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added With Maralog"
         
-//        let store = CNContactStore()
+        
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
     }
     
+    
     func addToCNContacts(contact: Contact, address: CNMutablePostalAddress) {
+        let store = CNContactStore()
+
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName, let timeStamp = contact.timeStamp else { return }
+        
         
         let hour = calendar.component(.hour, from: timeStamp as Date)
         let minutes = calendar.component(.minute, from: timeStamp as Date)
@@ -76,15 +87,9 @@ class CNContactAdd {
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         
         
-        
         do {try? store.execute(saveRequest)}
         
     }
-    
-
-    
-    
-    
  
     
 }
