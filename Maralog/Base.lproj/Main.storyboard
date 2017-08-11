@@ -228,7 +228,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="252" id="hSV-9p-7ed">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="252" id="hSV-9p-7ed" customClass="NewContactTableViewCell" customModule="Maralog" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hSV-9p-7ed" id="vLm-SF-cd9">
@@ -258,6 +258,11 @@
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="firstNameTextField" destination="cKD-LI-Hh5" id="tYV-ev-VqM"/>
+                                            <outlet property="lastNameTextField" destination="2v5-0x-4O4" id="5bX-ZB-5IB"/>
+                                            <outlet property="phoneNumberTextField" destination="79c-aP-Fd7" id="AFj-wG-20e"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -268,10 +273,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="zoM-ke-Wci" id="tBw-Jy-gsa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yc-0a-hcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756" y="2387.8560719640182"/>
+            <point key="canvasLocation" x="4756" y="2300"/>
         </scene>
         <!--Recently Added View Controller-->
         <scene sceneID="YIp-uL-QsM">
