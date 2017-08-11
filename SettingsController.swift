@@ -22,21 +22,17 @@ class SettingsController {
     let locationKey = "locationKey"
     let textKey = "textKey"
     
-    let locationServiceDescription = "Location Services: Saves your general location, and the time when you add a new contact. Must activate before adding a contact."
+    let locationServiceDescription = "Location Services: Saves when and where you add new contact."
     
-    let autoTextDescription = "Auto-Text: You enter their name/number and Maralog will generate a text for you to send immidiately using the name you've at the start of the app. Must activate before adding a contact."
+    let autoTextDescription = "Auto-Text: Automatically sends a text to your newly added contact."
     
     
     init() {
         let locationIsOn = getLocationSetting()
         let textIsOn = getTextSetting()
         
-        
-
         let locationSetting: Settings = Settings(name: locationSettingName, isOn: locationIsOn, icon: #imageLiteral(resourceName: "locationServicesIcon"), description: locationServiceDescription)
-        
         let autoTextSetting = Settings(name: textingSettingName, isOn: textIsOn, icon: #imageLiteral(resourceName: "autoTextIcon"), description: autoTextDescription)
-        
         settings = [locationSetting, autoTextSetting]
     }
     
@@ -46,13 +42,24 @@ class SettingsController {
         
         let userDefaults = UserDefaults.standard
         
-        if setting.name == locationSettingName {
+        switch setting.name {
+        case locationSettingName:
             userDefaults.set(value, forKey: locationKey)
-        }
-        
-        if setting.name == textingSettingName {
+            
+        case textingSettingName:
             userDefaults.set(value, forKey: textKey)
+            
+        default:
+            return
         }
+//
+//        if setting.name == locationSettingName {
+//            userDefaults.set(value, forKey: locationKey)
+//        }
+//
+//        if setting.name == textingSettingName {
+//            userDefaults.set(value, forKey: textKey)
+//        }
     }
     
     //load
