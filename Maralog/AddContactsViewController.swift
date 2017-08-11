@@ -111,8 +111,60 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         guard let card = sender.view else { return }
         let point = sender.translation(in: view)
-        card.center = CGPoint(x: view..x, y: point.y)
+        let xFromCenter = card.center.x - view.center.x
+        let scale = min(100 / abs(xFromCenter), 1)
         
+        if xFromCenter > 0 {
+            // do something
+            
+        } else {
+            // do something
+        }
+        
+        
+        card.center = (CGPoint(x: view.center.x + point.x, y: view.center.y))
+        card.transform = CGAffineTransform(scaleX: scale, y: scale)
+        
+        
+        if sender.state == UIGestureRecognizerState.ended {
+            
+            if card.center.x < 75 {
+                // move off to the left side of the screen
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    card.center = CGPoint(x: card.center.x - 200, y: card.center.y + 75)
+                    card.alpha = 0
+                }, completion: { (_) in
+                    self.hideLabelsAndText()
+                    self.resetCard()
+                })
+                return
+            } else if card.center.x > (view.frame.width - 75) {
+                // move off to the right side
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
+                    card.alpha = 0
+                }, completion: { (_) in
+                    self.resetCard()
+                })
+                return
+            }
+            
+            
+            UIView.animate(withDuration: 0.2) {
+                self.resetCard()
+            }
+        }
+        
+    }
+    
+    func resetCard() {
+        UIView.animate(withDuration: 0.1) {
+            self.card.center = self.view.center
+            self.card.alpha = 1
+            self.card.transform = CGAffineTransform.identity
+        }
     }
     
     
