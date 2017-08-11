@@ -106,7 +106,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
+    @IBOutlet var card: UIView!
     
+    @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
+        guard let card = sender.view else { return }
+        let point = sender.translation(in: view)
+        card.center = CGPoint(x: view..x, y: point.y)
+        
+    }
     
     
     

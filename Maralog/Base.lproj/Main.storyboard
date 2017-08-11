@@ -82,6 +82,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96773446053548329" green="0.97731598984771573" blue="0.97731598984771573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="h4X-hF-4Uv" firstAttribute="top" secondItem="XA5-Iy-YNO" secondAttribute="bottom" constant="-13" id="1hO-PY-0hE"/>
                                     <constraint firstItem="64J-SE-xPZ" firstAttribute="top" secondItem="cOF-8y-242" secondAttribute="bottom" constant="-13" id="7FJ-qt-cYc"/>
@@ -99,6 +100,9 @@
                                     <constraint firstAttribute="leadingMargin" secondItem="cOF-8y-242" secondAttribute="leading" id="ovB-uw-ckC"/>
                                     <constraint firstAttribute="trailing" secondItem="h4X-hF-4Uv" secondAttribute="trailing" constant="9" id="zei-wc-dhT"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="d4o-gR-qEp" appends="YES" id="BHJ-2p-9pg"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0T-k7-CcE">
                                 <rect key="frame" x="16" y="517" width="90" height="45"/>
@@ -195,6 +199,7 @@
                     <connections>
                         <outlet property="atButtonOutlet" destination="OSI-hW-ZrV" id="YPz-KP-hQj"/>
                         <outlet property="autoTextLabel" destination="EKX-Pf-c2R" id="r1n-EQ-EA3"/>
+                        <outlet property="card" destination="aSK-iC-qum" id="HtB-42-6sx"/>
                         <outlet property="fNameVerticalConst" destination="YfF-ne-P7a" id="J2o-NY-XlI"/>
                         <outlet property="firstNameTextField" destination="ANx-2R-crX" id="osQ-Z1-MVZ"/>
                         <outlet property="lNameVerticalConst" destination="1hO-PY-0hE" id="1uc-p9-4D0"/>
@@ -210,6 +215,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="d4o-gR-qEp">
+                    <connections>
+                        <action selector="panCard:" destination="aFt-A3-DSS" id="7bB-1A-sBf"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4756" y="1611.5442278860571"/>
         </scene>
