@@ -16,7 +16,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     let noContactsLabel: UILabel = {
         let label = UILabel()
         label.text = "You have no new contacts"
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightRegular)
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular)
         label.textColor = Keys.sharedInstance.mainColor
         label.frame = CGRect(x: 100, y: 100, width: 300, height: 150)
         label.adjustsFontSizeToFitWidth = true
@@ -97,11 +97,11 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell.textLabel?.text = contact.fullName
         cell.textLabel?.textColor = .black
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightSemibold)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)
         
         cell.detailTextLabel?.text = "added \(dateString)"
         cell.detailTextLabel?.textColor = .black
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightSemibold)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.semibold)
         
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
@@ -127,7 +127,7 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightSemibold)
+        header.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.semibold)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -220,7 +220,8 @@ extension RecentlyAddedViewController {
     func showDetailsFor(_ contact: Contact) {
         guard let name = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         
-        let number: CNPhoneNumber = CNPhoneNumber(stringValue: phoneNumber)
+        
+        guard let number: CNPhoneNumber = CNPhoneNumber(stringValue: phoneNumber) else { return }
         
         
         let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)

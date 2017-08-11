@@ -53,7 +53,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
         return button
     }()
     
-    func skip() {
+    @objc func skip() {
         pageControl.currentPage = pages.count - 1
         nextPage()
     }
@@ -66,7 +66,7 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
         return button
     }()
     
-    func nextPage() {
+    @objc func nextPage() {
         // last page
         if pageControl.currentPage == pages.count {
             return
@@ -121,13 +121,13 @@ class SignInViewController: UIViewController, UICollectionViewDataSource, UIColl
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
     }
     
-    func keyboardHide() {
+    @objc func keyboardHide() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
     }
     
-    func keyboardShow() {
+    @objc func keyboardShow() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)

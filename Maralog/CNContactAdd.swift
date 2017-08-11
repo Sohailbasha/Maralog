@@ -34,7 +34,8 @@ class CNContactAdd {
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        guard let number = CNPhoneNumber(stringValue: phoneNumber) else { return }
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: number)]
         contact.note = "Added With Maralog"
 
         
@@ -55,7 +56,8 @@ class CNContactAdd {
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+        guard let number = CNPhoneNumber(stringValue: phoneNumber) else { return }
+        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: number)]
         contact.note = "Added With Maralog. \nOn \(hour):\(minutes)"
         
         

@@ -41,7 +41,7 @@ class LoginCell: UICollectionViewCell {
     weak var delegate: CustomCellDelegate?
     
     
-    func handleLogin() {
+    @objc func handleLogin() {
         if let userName = enterUsernameTextField.text, !userName.isEmpty {
             UserController.sharedInstance.saveUserName(name: userName)
             delegate?.finishSigningIn()
