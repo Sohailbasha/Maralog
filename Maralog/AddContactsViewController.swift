@@ -14,11 +14,14 @@ import Contacts
 class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
-    let contactSavedLabel = UILabel()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            
+        } else {
+            // Fallback on earlier versions
+        }
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
@@ -100,6 +103,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
     @IBOutlet var fNameVerticalConst: NSLayoutConstraint!
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
+    
+    
+    
+    
     
     
     
