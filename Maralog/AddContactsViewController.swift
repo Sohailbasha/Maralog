@@ -78,7 +78,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let colorForSelectedUI = Keys.sharedInstance.trimColor
     let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
     
- 
+    
     
     // MARK: - Outlets
     @IBOutlet var collectionView: UICollectionView!
@@ -168,7 +168,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    
     @IBAction func buttonTapped(_ sender: UIButton) {
         switch sender {
         case atButtonOutlet:
@@ -193,14 +192,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                     deselect(button: lsButtonOutlet, label: locationSaveLabel)
                 }
             }
-            
         default:
             return
         }
     }
     
-    
-
     // MARK: - Action
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
@@ -241,15 +237,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    
-    
-    
     func select(button: UIButton, label: UILabel) {
         let insets: CGFloat = 5
         
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-            
             button.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
             button.tintColor = .white
             button.backgroundColor = Keys.sharedInstance.randomColor()
@@ -260,18 +251,16 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func deselect(button: UIButton, label: UILabel) {
-        
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             
             button.transform = CGAffineTransform.identity
             button.tintColor = self.colorForUnselectedUI
-
+            
             button.backgroundColor = .clear
             button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
             label.transform = CGAffineTransform.identity
-
+            
         }, completion: nil)
-        
     }
 }
 
@@ -295,60 +284,44 @@ extension AddContactsViewController {
     }
     
     func getCurrentLocationForCNContact() {
-        let geocoder = CLGeocoder()
-        guard let currentLocation = currentLocation else {
-            return }
-        geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
-            if let error = error {
-                print("error reverse geocoding: \(error)")
-            }
-            
-            if let placemarks = placemarks {
-                if placemarks.count > 0 {
-                    let pm = placemarks[0] as CLPlacemark
-                    
-                    if let city = pm.locality {
-                        self.address.city = city
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            permissionsAlert(title: "Location Services Are Off", message: "Enabel Access When In Use")
+        } else {
+            let geocoder = CLGeocoder()
+            guard let currentLocation = currentLocation else { return }
+            geocoder.reverseGeocodeLocation(currentLocation) { (placemarks, error) in
+                if let error = error {
+                    print("error reverse geocoding: \(error)")
+                }
+                
+                if let placemarks = placemarks {
+                    if placemarks.count > 0 {
+                        let pm = placemarks[0] as CLPlacemark
+                        
+                        if let city = pm.locality {
+                            self.address.city = city
+                        }
+                        
+                        if let state = pm.administrativeArea {
+                            self.address.state = state
+                        }
+                        
+                        if let zipcode = pm.postalCode {
+                            self.address.postalCode = zipcode
+                        }
+                        
+                        var streetString = ""
+                        
+                        if let streetNumber = pm.subThoroughfare {
+                            streetString += "\(streetNumber) "
+                        }
+                        
+                        if let street = pm.thoroughfare {
+                            streetString += street
+                        }
+                        
+                        self.address.street = streetString
                     }
-                    
-                    if let state = pm.administrativeArea {
-                        self.address.state = state
-                    }
-                    
-                    
-                    if let zipcode = pm.postalCode {
-                        self.address.postalCode = zipcode
-                    }
-                    
-                    var streetString = ""
-                    
-                    if let streetNumber = pm.subThoroughfare {
-                        streetString += "\(streetNumber) "
-                    }
-                    
-                    if let street = pm.thoroughfare {
-                        streetString += street
-                    }
-                    
-                    self.address.street = streetString
-                    
-
-                    
-//                    self.address.street = "\(streetNumber) \(street)"
-//                    guard let city = pm.locality,
-//                        let state = pm.administrativeArea,
-//                        let street = pm.thoroughfare,
-//                        let streetNumber = pm.subThoroughfare,
-//                        let zipcode = pm.postalCode else {
-//                            return }
-//                    
-//                    
-//
-//                    self.address.street = street
-//
-//                    self.address.city = city
-//                    self.address.state = state
-//                    self.address.postalCode = zipcode
                 }
             }
         }
@@ -375,11 +348,11 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
         if let setting = cell.setting?.isOn {
             if setting == true {
                 cell.setting?.isOn = false
-                cell.updateCellInterfaceWith(color1: #colorLiteral(red: 0.9750187789, green: 0.9846724302, blue: 0.9846724302, alpha: 1), color2: UIColor.black)
+                cell.updateCellContents()
+                
             } else if setting == false {
                 cell.setting?.isOn = true
-                
-                cell.updateCellInterfaceWith(color1: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), color2: UIColor.white)
+                cell.updateCellContents()
             }
             
             if let name = cell.setting?.name {
@@ -388,13 +361,14 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
                     autoTextToggled = setting
                 case SettingsController.sharedInstance.locationSettingName:
                     locationToggled = setting
+                    setting == true ? getCurrentLocationForCNContact() : ()
+                    
                 default:
                     return
                 }
             }
         }
     }
-    
 }
 
 
@@ -529,12 +503,9 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
     }
     
-    
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
