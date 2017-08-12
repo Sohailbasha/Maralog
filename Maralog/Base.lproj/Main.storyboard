@@ -81,36 +81,29 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cif-he-Dbi">
-                                        <rect key="frame" x="8" y="169" width="240" height="79"/>
+                                        <rect key="frame" x="8" y="169" width="327" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cnj-PH-038">
-                                            <size key="itemSize" width="65" height="65"/>
+                                            <size key="itemSize" width="93" height="70"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5tP-Uf-C65" customClass="ACFeaturesCollectionViewCell" customModule="Maralog" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="setting" id="5tP-Uf-C65" customClass="ACFeaturesCollectionViewCell" customModule="Maralog" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="0.0" width="93" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="93" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huk-b7-wE2">
-                                                            <rect key="frame" x="17" y="18" width="30" height="30"/>
+                                                            <rect key="frame" x="31" y="7" width="30" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-5o-ZCI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="enabled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bX-zW-0nd">
-                                                            <rect key="frame" x="0.0" y="47" width="65" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-5o-ZCI">
+                                                            <rect key="frame" x="0.0" y="38" width="93" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                             <nil key="textColor"/>
@@ -119,7 +112,6 @@
                                                     </subviews>
                                                 </view>
                                                 <connections>
-                                                    <outlet property="isEnabledLabel" destination="1bX-zW-0nd" id="c1y-mR-fyc"/>
                                                     <outlet property="settingIcon" destination="huk-b7-wE2" id="x1O-dL-Ble"/>
                                                     <outlet property="settingNameLabel" destination="qMX-5o-ZCI" id="2P2-DR-oCu"/>
                                                 </connections>
@@ -198,20 +190,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0T-k7-CcE">
-                                <rect key="frame" x="16" y="553" width="90" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="52k-jC-qGG"/>
-                                    <constraint firstAttribute="height" constant="45" id="Mbl-kz-jTA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="mBV-oI-c0b"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-6s-B9e">
                                 <rect key="frame" x="239" y="553" width="120" height="45"/>
                                 <constraints>
@@ -230,13 +208,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="LpY-6s-B9e" secondAttribute="trailing" id="0y9-tZ-a4r"/>
-                            <constraint firstItem="B0T-k7-CcE" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="5Cl-ME-Nc4"/>
                             <constraint firstItem="oj5-n1-55E" firstAttribute="top" secondItem="LpY-6s-B9e" secondAttribute="bottom" multiplier="1.1" id="ANq-uj-ngw"/>
                             <constraint firstItem="2Dw-G3-xbC" firstAttribute="top" secondItem="zK5-XO-I6X" secondAttribute="bottom" constant="8" id="At8-Tp-57z"/>
                             <constraint firstItem="EKX-Pf-c2R" firstAttribute="centerX" secondItem="OSI-hW-ZrV" secondAttribute="centerX" id="HFM-5G-4cs"/>
                             <constraint firstItem="aSK-iC-qum" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" id="JbB-Tl-b0G"/>
                             <constraint firstItem="2Dw-G3-xbC" firstAttribute="centerX" secondItem="zK5-XO-I6X" secondAttribute="centerX" id="RGF-Zq-COl"/>
-                            <constraint firstItem="oj5-n1-55E" firstAttribute="top" secondItem="B0T-k7-CcE" secondAttribute="bottom" multiplier="1.1" id="bRE-f9-zUK"/>
                             <constraint firstItem="zK5-XO-I6X" firstAttribute="leading" secondItem="DQO-nK-wO3" secondAttribute="leadingMargin" multiplier="3" id="gko-dQ-8xQ"/>
                             <constraint firstItem="EKX-Pf-c2R" firstAttribute="top" secondItem="OSI-hW-ZrV" secondAttribute="bottom" constant="8" id="q90-sl-a1L"/>
                             <constraint firstItem="OSI-hW-ZrV" firstAttribute="leading" secondItem="zK5-XO-I6X" secondAttribute="trailing" multiplier="2" id="r3w-RT-L95"/>

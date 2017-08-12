@@ -10,16 +10,23 @@ import UIKit
 
 class ACFeaturesCollectionViewCell: UICollectionViewCell {
     
+    var setting: Settings? {
+        didSet {
+            guard let setting = setting else { return }
+            settingNameLabel.text = setting.name
+            settingIcon.image = setting.icon
+            
+        }
+    }
     
-    func updateWith(setting: Settings) {
-        settingNameLabel.text = setting.name
-        settingIcon.image = setting.icon
-        
+    func updateCellInterfaceWith(color1: UIColor, color2: UIColor) {
+        self.backgroundColor = color1
+        settingIcon.tintColor = color2
+        settingNameLabel.textColor = color2
     }
     
     @IBOutlet var settingNameLabel: UILabel!
     @IBOutlet var settingIcon: UIImageView!
-    @IBOutlet var isEnabledLabel: UILabel!
     
     
 }

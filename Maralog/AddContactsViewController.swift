@@ -241,9 +241,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.hideLabelsAndText()
-    }
+    
+    
+    
     
     func select(button: UIButton, label: UILabel) {
         let insets: CGFloat = 5
@@ -363,11 +363,37 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
         return SettingsController.sharedInstance.settings.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        <#code#>
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "setting", for: indexPath) as? ACFeaturesCollectionViewCell
+        let setting = SettingsController.sharedInstance.settings[indexPath.row]
+        cell?.setting = setting
+        return cell ?? UICollectionViewCell()
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
+        if let setting = cell.setting?.isOn {
+            if setting == true {
+                cell.setting?.isOn = false
+                cell.updateCellInterfaceWith(color1: #colorLiteral(red: 0.9750187789, green: 0.9846724302, blue: 0.9846724302, alpha: 1), color2: UIColor.black)
+            } else if setting == false {
+                cell.setting?.isOn = true
+                
+                cell.updateCellInterfaceWith(color1: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), color2: UIColor.white)
+            }
+            
+            if let name = cell.setting?.name {
+                switch (name) {
+                case SettingsController.sharedInstance.textingSettingName:
+                    autoTextToggled = setting
+                case SettingsController.sharedInstance.locationSettingName:
+                    locationToggled = setting
+                default:
+                    return
+                }
+            }
+        }
+    }
     
 }
 

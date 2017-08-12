@@ -16,8 +16,8 @@ class SettingsController {
     
     var settings: [Settings] = []
     
-    let locationSettingName = "Location Services"
-    let textingSettingName = "Autotext"
+    let locationSettingName = "Location Save"
+    let textingSettingName = "Auto Text"
     
     let locationKey = "locationKey"
     let textKey = "textKey"
