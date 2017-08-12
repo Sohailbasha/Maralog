@@ -29,6 +29,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         self.hideLabelsAndText()
         
         phoneNumberTextField.delegate = self
@@ -78,6 +81,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
  
     
     // MARK: - Outlets
+    @IBOutlet var collectionView: UICollectionView!
     
     // Text Fields
     @IBOutlet var phoneNumberTextField: UITextField!
@@ -132,16 +136,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 // move off to the left side of the screen
                 
                 UIView.animate(withDuration: 0.3, animations: {
-                    card.center = CGPoint(x: card.center.x - 200, y: card.center.y + 75)
-                    card.alpha = 0
-                }, completion: { (_) in
                     self.hideLabelsAndText()
+                }, completion: { (_) in
                     self.resetCard()
                 })
                 return
             } else if card.center.x > (view.frame.width - 75) {
                 // move off to the right side
-                
                 UIView.animate(withDuration: 0.3, animations: {
                     card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
                     card.alpha = 0
@@ -150,7 +151,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 })
                 return
             }
-            
             
             UIView.animate(withDuration: 0.2) {
                 self.resetCard()
@@ -198,7 +198,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
     }
-    
     
     
 
@@ -354,6 +353,22 @@ extension AddContactsViewController {
             }
         }
     }
+}
+
+
+extension AddContactsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return SettingsController.sharedInstance.settings.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
+    
+    
 }
 
 
