@@ -66,7 +66,7 @@ class CustomTabView: UIView {
         let selectedButton = buttons[selected]
         
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-            selectedButton.layer.transform = CATransform3DMakeScale(1.10, 1.10, 1.10)
+            selectedButton.layer.transform = CATransform3DMakeScale(1.05, 1.05, 1.05)
             selectedButton.tintColor = Keys.sharedInstance.tabBarSelected
         }, completion: nil)
         

@@ -290,31 +290,29 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
         
-        if let setting = cell.setting?.isOn {
-            if setting == true {
-                cell.changeCellAsthetic(color1: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), color2: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), radius: 0, isOnValue: !setting)
-            } else if setting == false {
-                cell.changeCellAsthetic(color1: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), color2: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), radius: CGFloat(10), isOnValue: !setting)
-            }
-            
-            if let name = cell.setting?.name {
-                switch (name) {
-                case SettingsController.sharedInstance.textingSettingName:
-                    autoTextToggled = setting
-                    print("\(name) \(setting)")
-                    print("autotextToggled: \(autoTextToggled)")
-                case SettingsController.sharedInstance.locationSettingName:
-                    locationToggled = setting
-                    setting == true ? getCurrentLocationForCNContact() : ()
-                    print("\(name) \(setting)")
-                    print("locationToggled: \(locationToggled)")
-                    
-                default:
-                    return
-                }
-            }
-        }
+        print(cell.change)
+        
+        
     }
+    
+    
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
+//
+//        if let name = cell.setting?.name {
+//            switch (name) {
+//            case SettingsController.sharedInstance.textingSettingName:
+//                cell.change = !cell.change
+//                autoTextToggled = !cell.change
+//
+//            case SettingsController.sharedInstance.locationSettingName:
+//                cell.change = !cell.change
+//                locationToggled = !cell.change
+//            default:
+//                return
+//            }
+//        }
+//    }
     
     
     
