@@ -15,7 +15,7 @@ class ACFeaturesCollectionViewCell: UICollectionViewCell {
             guard let setting = setting else { return }
             settingNameLabel.text = setting.name
             settingButton.imageView?.image = setting.icon
-            
+            settingButton.isSelected = setting.isOn
         }
     }
     
@@ -46,8 +46,9 @@ class ACFeaturesCollectionViewCell: UICollectionViewCell {
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {
         if let setting = setting {
+            setting.isOn = sender.isSelected
+            delegate?.settingSelected(setting: setting, selected: sender.isSelected)
             
-//            delegate.settingSelected(setting: setting, selected:)
             
         }
     }
