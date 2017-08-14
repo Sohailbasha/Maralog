@@ -100,22 +100,30 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l26-hB-6Tm">
-                                                            <rect key="frame" x="18" y="9" width="45" height="45"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l26-hB-6Tm">
+                                                            <rect key="frame" x="15" y="0.0" width="51" height="51"/>
                                                             <connections>
                                                                 <action selector="settingButtonTapped:" destination="5tP-Uf-C65" eventType="touchUpInside" id="e1k-xb-7MF"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-5o-ZCI">
-                                                            <rect key="frame" x="0.0" y="57" width="80" height="16"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-5o-ZCI">
+                                                            <rect key="frame" x="0.0" y="68" width="80" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstItem="l26-hB-6Tm" firstAttribute="leading" secondItem="5tP-Uf-C65" secondAttribute="leading" constant="15" id="00P-Ub-k8s"/>
+                                                    <constraint firstItem="l26-hB-6Tm" firstAttribute="top" secondItem="5tP-Uf-C65" secondAttribute="top" id="9Vy-ZA-gb0"/>
+                                                    <constraint firstAttribute="trailing" secondItem="l26-hB-6Tm" secondAttribute="trailing" constant="14" id="MKs-3L-GDI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qMX-5o-ZCI" secondAttribute="trailing" id="SsF-Qr-ja7"/>
+                                                    <constraint firstItem="l26-hB-6Tm" firstAttribute="centerX" secondItem="5tP-Uf-C65" secondAttribute="centerX" id="V58-Mp-syp"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qMX-5o-ZCI" secondAttribute="bottom" id="sbf-4M-SRJ"/>
+                                                    <constraint firstItem="qMX-5o-ZCI" firstAttribute="top" secondItem="l26-hB-6Tm" secondAttribute="bottom" constant="17" id="vbe-6n-OuD"/>
+                                                    <constraint firstItem="qMX-5o-ZCI" firstAttribute="leading" secondItem="5tP-Uf-C65" secondAttribute="leading" id="yuJ-fc-d7V"/>
+                                                </constraints>
                                                 <connections>
                                                     <outlet property="settingButton" destination="l26-hB-6Tm" id="hUH-zR-OHU"/>
                                                     <outlet property="settingNameLabel" destination="qMX-5o-ZCI" id="2P2-DR-oCu"/>

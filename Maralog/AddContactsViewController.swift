@@ -11,7 +11,7 @@ import CoreLocation
 import Contacts
 
 
-class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
+class AddContactsViewController: UIViewController, CLLocationManagerDelegate, SettingsButtonSelected {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,19 +41,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    func textFieldSetUp() {
-        phoneNumberTextField.delegate = self
-        firstNameTextField.delegate = self
-        lastNameTextField.delegate = self
-        
-        phoneNumberTextField.layer.cornerRadius = 20
-        firstNameTextField.layer.cornerRadius = 20
-        lastNameTextField.layer.cornerRadius = 20
-        
-        phoneNumberTextField.setLeftPaddingPoints(15)
-        firstNameTextField.setLeftPaddingPoints(15)
-        lastNameTextField.setLeftPaddingPoints(15)
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -66,13 +53,21 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         checkSettings()
     }
     
+    
+    var delegate = ACFeaturesCollectionViewCell()
+    
+    func settingSelected(cell: ACFeaturesCollectionViewCell, selected: Bool) {
+        if let setting = cell.setting, let cellIndexPath = collectionView.indexPath(for: cell) {
+            setting.isOn = selected
+            collectionView.reloadItems(at: [cellIndexPath])
+            print(selected)
+        }
+    }
+    
+  
     func checkSettings() {
         autoTextToggled = SettingsController.sharedInstance.getTextSetting()
         locationToggled = SettingsController.sharedInstance.getLocationSetting()
-        
-        
-        
-        
     }
     
     
@@ -88,6 +83,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationToggled = Bool()
     var autoTextToggled = Bool()
+    
+    
     
     let colorForSelectedUI = Keys.sharedInstance.trimColor
     let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
@@ -287,6 +284,7 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
         let setting = SettingsController.sharedInstance.settings[indexPath.row]
         
         cell?.setting = setting
+        cell?.delegate = self
         
         return cell ?? UICollectionViewCell()
     }
@@ -381,6 +379,20 @@ extension AddContactsViewController {
 // MARK: - TEXTFIELD DELEGATE METHODS
 
 extension AddContactsViewController: UITextFieldDelegate {
+    
+    func textFieldSetUp() {
+        phoneNumberTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        
+        phoneNumberTextField.layer.cornerRadius = 20
+        firstNameTextField.layer.cornerRadius = 20
+        lastNameTextField.layer.cornerRadius = 20
+        
+        phoneNumberTextField.setLeftPaddingPoints(15)
+        firstNameTextField.setLeftPaddingPoints(15)
+        lastNameTextField.setLeftPaddingPoints(15)
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
