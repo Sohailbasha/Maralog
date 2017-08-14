@@ -34,12 +34,25 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         self.hideLabelsAndText()
         
+        textFieldSetUp()
+        
+        CNContactAdd.sharedInstance.checkAuthorization()
+        checkSettings()
+    }
+    
+    
+    func textFieldSetUp() {
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         
-        CNContactAdd.sharedInstance.checkAuthorization()
-        checkSettings()
+        phoneNumberTextField.layer.cornerRadius = 20
+        firstNameTextField.layer.cornerRadius = 20
+        lastNameTextField.layer.cornerRadius = 20
+        
+        phoneNumberTextField.setLeftPaddingPoints(15)
+        firstNameTextField.setLeftPaddingPoints(15)
+        lastNameTextField.setLeftPaddingPoints(15)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -302,6 +315,9 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
             }
         }
     }
+    
+    
+    
 }
 
 
