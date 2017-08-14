@@ -82,30 +82,33 @@
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cif-he-Dbi">
-                                        <rect key="frame" x="8" y="187" width="327" height="80"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cif-he-Dbi">
+                                        <rect key="frame" x="8" y="220" width="327" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cnj-PH-038">
-                                            <size key="itemSize" width="93" height="70"/>
+                                            <size key="itemSize" width="80" height="80"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="setting" id="5tP-Uf-C65" customClass="ACFeaturesCollectionViewCell" customModule="Maralog" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="0.0" width="93" height="70"/>
+                                                <rect key="frame" x="10" y="0.0" width="80" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="93" height="70"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huk-b7-wE2">
-                                                            <rect key="frame" x="31" y="7" width="30" height="30"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l26-hB-6Tm">
+                                                            <rect key="frame" x="18" y="9" width="45" height="45"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
+                                                            <connections>
+                                                                <action selector="settingButtonTapped:" destination="5tP-Uf-C65" eventType="touchUpInside" id="e1k-xb-7MF"/>
+                                                            </connections>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMX-5o-ZCI">
-                                                            <rect key="frame" x="0.0" y="38" width="93" height="32"/>
+                                                            <rect key="frame" x="0.0" y="57" width="80" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                             <nil key="textColor"/>
@@ -114,7 +117,7 @@
                                                     </subviews>
                                                 </view>
                                                 <connections>
-                                                    <outlet property="settingIcon" destination="huk-b7-wE2" id="x1O-dL-Ble"/>
+                                                    <outlet property="settingButton" destination="l26-hB-6Tm" id="hUH-zR-OHU"/>
                                                     <outlet property="settingNameLabel" destination="qMX-5o-ZCI" id="2P2-DR-oCu"/>
                                                 </connections>
                                             </collectionViewCell>

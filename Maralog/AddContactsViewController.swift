@@ -31,6 +31,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.allowsMultipleSelection = true
         
         self.hideLabelsAndText()
         
@@ -69,6 +70,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     func checkSettings() {
         autoTextToggled = SettingsController.sharedInstance.getTextSetting()
         locationToggled = SettingsController.sharedInstance.getLocationSetting()
+        
+        
+        
         
     }
     
@@ -169,7 +173,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: - Action
-    
     
     
     
@@ -283,39 +286,46 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "setting", for: indexPath) as? ACFeaturesCollectionViewCell
         let setting = SettingsController.sharedInstance.settings[indexPath.row]
+        
         cell?.setting = setting
+        
         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
+        let setting = SettingsController.sharedInstance.settings[indexPath.row]
         
-        print(cell.change)
+        cell.isSelected = setting.isOn
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
         
+        switch indexPath.row {
+        case 0:
+            locationToggled = cell.isSelected
+            print("location save \(locationToggled)")
+        default:
+            autoTextToggled = cell.isSelected
+            print("autotext: \(autoTextToggled)")
+        }
         
     }
     
-    
 //    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
 //        guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
+//        let setting = SettingsController.sharedInstance.settings[indexPath.row]
 //
-//        if let name = cell.setting?.name {
-//            switch (name) {
-//            case SettingsController.sharedInstance.textingSettingName:
-//                cell.change = !cell.change
-//                autoTextToggled = !cell.change
+//        cell.isSelected = false
+//        collectionView.deselectItem(at: indexPath, animated: false)
 //
-//            case SettingsController.sharedInstance.locationSettingName:
-//                cell.change = !cell.change
-//                locationToggled = !cell.change
-//            default:
-//                return
-//            }
+//        switch indexPath.row {
+//        case 0:
+//            locationToggled = cell.isSelected
+//            print("location save \(locationToggled)")
+//        default:
+//            autoTextToggled = cell.isSelected
+//            print("autotext: \(autoTextToggled)")
 //        }
 //    }
-    
-    
-    
 }
 
 

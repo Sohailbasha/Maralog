@@ -14,27 +14,55 @@ class ACFeaturesCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let setting = setting else { return }
             settingNameLabel.text = setting.name
-            settingIcon.image = setting.icon
-            change = setting.isOn
+            settingButton.imageView?.image = setting.icon
+            
         }
     }
+    
+    
+    weak var delegate: SettingsButtonSelected?
     
     
     // gives the cell its initial value.
-    var change: Bool? {
-        didSet {
-            guard let change = change else { return }
-            self.backgroundColor = change ? UIColor.red : UIColor.white
-            self.layer.cornerRadius = change ? 10 : 0
-            settingIcon.tintColor = change ? UIColor.white : UIColor.black
-            settingNameLabel.textColor = change ? UIColor.white : UIColor.black
+//    override var isSelected: Bool {
+//        didSet {
+//            if isSelected {
+//                self.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+//                self.layer.cornerRadius = 10
+//                self.settingIcon.tintColor = UIColor.white
+//                self.settingNameLabel.textColor = UIColor.white
+//            } else {
+//                self.backgroundColor = UIColor.white
+//                self.layer.cornerRadius = 0
+//                self.settingIcon.tintColor = UIColor.black
+//                self.settingNameLabel.textColor = UIColor.black
+//            }
+//        }
+//    }
+    
+    @IBOutlet var settingNameLabel: UILabel!
+    @IBOutlet var settingButton: UIButton!
+    
+    
+    @IBAction func settingButtonTapped(_ sender: UIButton) {
+        if let setting = setting {
+            
+//            delegate.settingSelected(setting: setting, selected:)
+            
         }
     }
     
-    
-    
-    @IBOutlet var settingNameLabel: UILabel!
-    @IBOutlet var settingIcon: UIImageView!
-    
-    
 }
+
+protocol SettingsButtonSelected: class {
+    func settingSelected(setting: Settings, selected: Bool)
+}
+
+
+
+
+
+
+
+
+
