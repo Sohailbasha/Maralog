@@ -12,7 +12,6 @@ import UIKit
 
 extension AddContactsViewController: UITextFieldDelegate {
     
-    
     func textFieldSetUp() {
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
@@ -26,6 +25,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         firstNameTextField.setLeftPaddingPoints(15)
         lastNameTextField.setLeftPaddingPoints(15)
     }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
@@ -41,6 +41,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
     }
     
+    
     func popUp(label: UILabel, constraint: NSLayoutConstraint) {
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [], animations: {
             label.isHidden = false
@@ -48,6 +49,7 @@ extension AddContactsViewController: UITextFieldDelegate {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
+    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let fNameText = firstNameTextField.text else { return }
@@ -73,6 +75,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         
     }
     
+    
     func popDown(label: UILabel, constraint: NSLayoutConstraint) {
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseInOut], animations: {
             constraint.constant = -14
@@ -84,9 +87,11 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

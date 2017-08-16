@@ -278,7 +278,6 @@ extension AddContactsViewController {
 
 extension AddContactsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return SettingsController.sharedInstance.settings.count
     }
@@ -287,12 +286,11 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "setting", for: indexPath) as? ACFeaturesCollectionViewCell
         let setting = SettingsController.sharedInstance.settings[indexPath.row]
         
-        cell?.setting = setting
         cell?.delegate = self
+        cell?.setting = setting
         
         return cell ?? UICollectionViewCell()
     }
-    
     
 }
 

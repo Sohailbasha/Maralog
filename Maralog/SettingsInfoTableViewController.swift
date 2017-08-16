@@ -31,16 +31,10 @@ class SettingsInfoTableViewController: UITableViewController {
     func updateDetailWith(_ setting: Settings) {
         imageView.image = setting.icon
         textView.text = setting.description
+        settingSwitch.isOn = setting.isOn
         
         
-        switch setting.name {
-        case SettingsController.sharedInstance.textingSettingName:
-            settingSwitch.isOn = SettingsController.sharedInstance.getTextSetting()
-        case SettingsController.sharedInstance.locationSettingName:
-            settingSwitch.isOn = SettingsController.sharedInstance.getLocationSetting()
-        default:
-            return
-        }
+        
     }
     
     
@@ -63,3 +57,16 @@ class SettingsInfoTableViewController: UITableViewController {
 }
 
 
+
+
+
+
+
+//        switch setting.name {
+//        case SettingsController.sharedInstance.textingSettingName:
+//            settingSwitch.isOn = SettingsController.sharedInstance.getTextSetting()
+//        case SettingsController.sharedInstance.locationSettingName:
+//            settingSwitch.isOn = SettingsController.sharedInstance.getLocationSetting()
+//        default:
+//            return
+//        }

@@ -26,6 +26,7 @@
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDA6F0621F44FE9900D97FCF /* ExtACVCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA6F0611F44FE9900D97FCF /* ExtACVCTextField.swift */; };
+		FDA6F0651F4500E300D97FCF /* ExtMOVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA6F0641F4500E300D97FCF /* ExtMOVCTableView.swift */; };
 		FDB278DB1F069C580091E3FB /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB278DA1F069C580091E3FB /* SettingsCollectionViewCell.swift */; };
 		FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2801ED210D20027A3BA /* Keys.swift */; };
 		FDBDA2831ED258BA0027A3BA /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */; };
@@ -64,6 +65,7 @@
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDA6F0611F44FE9900D97FCF /* ExtACVCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtACVCTextField.swift; sourceTree = "<group>"; };
+		FDA6F0641F4500E300D97FCF /* ExtMOVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtMOVCTableView.swift; sourceTree = "<group>"; };
 		FDB278DA1F069C580091E3FB /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDBDA2801ED210D20027A3BA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +110,7 @@
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
 				FDA6F0601F44FE6B00D97FCF /* Add Contacts View Controller */,
 				FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */,
-				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
+				FDA6F0631F4500B600D97FCF /* More Options View Controller */,
 				FD4C1A811F3113CB009A4ED2 /* SettingsInfoTableViewController.swift */,
 			);
 			name = "View Controller";
@@ -198,6 +200,15 @@
 				FDA6F0611F44FE9900D97FCF /* ExtACVCTextField.swift */,
 			);
 			name = "Add Contacts View Controller";
+			sourceTree = "<group>";
+		};
+		FDA6F0631F4500B600D97FCF /* More Options View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
+				FDA6F0641F4500E300D97FCF /* ExtMOVCTableView.swift */,
+			);
+			name = "More Options View Controller";
 			sourceTree = "<group>";
 		};
 		FDCB3ACE1E7AE49F00BBF8D3 /* View */ = {
@@ -333,6 +344,7 @@
 				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,
 				FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
+				FDA6F0651F4500E300D97FCF /* ExtMOVCTableView.swift in Sources */,
 				FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */,
 				FD16C9961E490F6100237631 /* ContactController.swift in Sources */,
 				FD39DF841F3EADC800502B1E /* ACFeaturesCollectionViewCell.swift in Sources */,
