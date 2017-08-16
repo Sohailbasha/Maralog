@@ -23,8 +23,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
         }
         
         
-        
-        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         
@@ -67,6 +65,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     
     var delegate = ACFeaturesCollectionViewCell()
     
+    
     func settingSelected(cell: ACFeaturesCollectionViewCell, selected: Bool) {
         if let setting = cell.setting, let cellIndexPath = collectionView.indexPath(for: cell) {
             setting.isOn = !selected
@@ -95,10 +94,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     var locationToggled = Bool()
     var autoTextToggled = Bool()
     
-    
-    
-    let colorForSelectedUI = Keys.sharedInstance.trimColor
-    let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
     
     
     
@@ -181,8 +176,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     
     // MARK: - Action
     
-    
-    
     func saving() {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty else { return }
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
@@ -193,7 +186,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
             switch (locationToggled, autoTextToggled) {
             case (true, true):
-                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
@@ -237,6 +229,7 @@ extension AddContactsViewController {
         }
         coreLocationManager.stopUpdatingLocation()
     }
+    
     
     func getCurrentLocationForCNContact() {
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
@@ -300,41 +293,7 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
         return cell ?? UICollectionViewCell()
     }
     
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
-//        let setting = SettingsController.sharedInstance.settings[indexPath.row]
-//
-//        cell.isSelected = setting.isOn
-//        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
-//
-//        switch indexPath.row {
-//        case 0:
-//            locationToggled = cell.isSelected
-//            print("location save \(locationToggled)")
-//        default:
-//            autoTextToggled = cell.isSelected
-//            print("autotext: \(autoTextToggled)")
-//        }
-//
-//    }
-//
-////    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-////        guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
-////        let setting = SettingsController.sharedInstance.settings[indexPath.row]
-////
-////        cell.isSelected = false
-////        collectionView.deselectItem(at: indexPath, animated: false)
-////
-////        switch indexPath.row {
-////        case 0:
-////            locationToggled = cell.isSelected
-////            print("location save \(locationToggled)")
-////        default:
-////            autoTextToggled = cell.isSelected
-////            print("autotext: \(autoTextToggled)")
-////        }
-////    }
+    
 }
 
 
@@ -406,7 +365,7 @@ extension AddContactsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+    
         switch textField {
         case firstNameTextField:
             self.popUp(label: labelOfFirstName, constraint: fNameVerticalConst)
@@ -472,6 +431,44 @@ extension AddContactsViewController: UITextFieldDelegate {
     }
 }
 
+
+
+
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
+//        let setting = SettingsController.sharedInstance.settings[indexPath.row]
+//
+//        cell.isSelected = setting.isOn
+//        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+//
+//        switch indexPath.row {
+//        case 0:
+//            locationToggled = cell.isSelected
+//            print("location save \(locationToggled)")
+//        default:
+//            autoTextToggled = cell.isSelected
+//            print("autotext: \(autoTextToggled)")
+//        }
+//
+//    }
+//
+////    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+////        guard let cell = collectionView.cellForItem(at: indexPath) as? ACFeaturesCollectionViewCell else { return }
+////        let setting = SettingsController.sharedInstance.settings[indexPath.row]
+////
+////        cell.isSelected = false
+////        collectionView.deselectItem(at: indexPath, animated: false)
+////
+////        switch indexPath.row {
+////        case 0:
+////            locationToggled = cell.isSelected
+////            print("location save \(locationToggled)")
+////        default:
+////            autoTextToggled = cell.isSelected
+////            print("autotext: \(autoTextToggled)")
+////        }
+////    }
 
 
 

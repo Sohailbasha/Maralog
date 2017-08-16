@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
-				FD324B131EDE71510091A665 /* AddContactsViewController.swift */,
+				FDA6F0601F44FE6B00D97FCF /* New Group */,
 				FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */,
 				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
 				FD4C1A811F3113CB009A4ED2 /* SettingsInfoTableViewController.swift */,
@@ -187,6 +187,14 @@
 				FDBDA2801ED210D20027A3BA /* Keys.swift */,
 			);
 			name = Tools;
+			sourceTree = "<group>";
+		};
+		FDA6F0601F44FE6B00D97FCF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				FD324B131EDE71510091A665 /* AddContactsViewController.swift */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		FDCB3ACE1E7AE49F00BBF8D3 /* View */ = {
