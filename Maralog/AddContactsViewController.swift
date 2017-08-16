@@ -22,6 +22,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
             // Fallback on earlier versions
         }
         
+        
+        
+        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         
@@ -38,9 +41,17 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
         
         CNContactAdd.sharedInstance.checkAuthorization()
         checkSettings()
+        cardViewShadow()
     }
     
-    
+    func cardViewShadow() {
+        card.layer.cornerRadius = 10
+        let color = #colorLiteral(red: 0.5817933058, green: 0.5817933058, blue: 0.5817933058, alpha: 1)
+        card.layer.shadowColor = color.cgColor
+        card.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        card.layer.shadowRadius = 10
+        card.layer.shadowOpacity = 0.2
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -58,9 +69,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     
     func settingSelected(cell: ACFeaturesCollectionViewCell, selected: Bool) {
         if let setting = cell.setting, let cellIndexPath = collectionView.indexPath(for: cell) {
-            setting.isOn = selected
+            setting.isOn = !selected
             collectionView.reloadItems(at: [cellIndexPath])
-            print(selected)
+            print(!selected)
         }
     }
     

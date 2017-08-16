@@ -100,8 +100,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l26-hB-6Tm">
+                                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l26-hB-6Tm">
                                                             <rect key="frame" x="15" y="0.0" width="51" height="51"/>
+                                                            <color key="backgroundColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                                             <connections>
                                                                 <action selector="settingButtonTapped:" destination="5tP-Uf-C65" eventType="touchUpInside" id="e1k-xb-7MF"/>
                                                             </connections>
