@@ -22,7 +22,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
             // Fallback on earlier versions
         }
         
-        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         
@@ -42,21 +41,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = true
-        
-    }
-    
-    func cardViewShadow() {
-        card.layer.cornerRadius = 10
-        let color = #colorLiteral(red: 0.5817933058, green: 0.5817933058, blue: 0.5817933058, alpha: 1)
-        card.layer.shadowColor = color.cgColor
-        card.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        card.layer.shadowRadius = 10
-        card.layer.shadowOpacity = 0.2
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         checkSettings()
+        collectionView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -64,6 +54,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
         self.hideLabelsAndText()
         checkSettings()
     }
+    
     
     
     var delegate = ACFeaturesCollectionViewCell()
@@ -171,7 +162,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
                 })
                 return
             }
-            
+
             UIView.animate(withDuration: 0.2) {
                 self.resetCard()
             }

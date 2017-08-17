@@ -13,6 +13,7 @@ import Contacts
 // CARD Functions
 extension AddContactsViewController {
     
+    
     // Moving the card back to its original position
     
     func resetCard() {
@@ -21,6 +22,18 @@ extension AddContactsViewController {
             self.card.alpha = 1
             self.card.transform = CGAffineTransform.identity
         }
+    }
+    
+    
+    // Cards shadow
+    
+    func cardViewShadow() {
+        card.layer.cornerRadius = 10
+        let color = #colorLiteral(red: 0.5817933058, green: 0.5817933058, blue: 0.5817933058, alpha: 1)
+        card.layer.shadowColor = color.cgColor
+        card.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        card.layer.shadowRadius = 10
+        card.layer.shadowOpacity = 0.2
     }
     
     

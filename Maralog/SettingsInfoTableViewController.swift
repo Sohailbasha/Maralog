@@ -25,13 +25,14 @@ class SettingsInfoTableViewController: UITableViewController {
     
     var setting: Settings?
     
-    var switchStatus = Bool()
+// var delegate: UpdateFeatureCellDelagate?
     
     func updateDetailWith(_ setting: Settings) {
         imageView.image = setting.icon
         textView.text = setting.description
         settingSwitch.isOn = setting.isOn
     }
+    
     
     // MARK: - Outlets
     
@@ -43,11 +44,13 @@ class SettingsInfoTableViewController: UITableViewController {
     
     @IBAction func switchTapped(_ sender: UISwitch) {
         if let setting = self.setting {
-//            setting.isOn = !sender.isOn
+            setting.isOn = sender.isOn
             SettingsController.sharedInstance.saveAsDefault(setting: setting, value: sender.isOn)
+
         }
     }
 }
+
 
 
 
