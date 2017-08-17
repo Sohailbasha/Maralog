@@ -29,9 +29,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.allowsMultipleSelection = true
         
         self.hideLabelsAndText()
         
@@ -40,6 +37,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
         CNContactAdd.sharedInstance.checkAuthorization()
         checkSettings()
         cardViewShadow()
+        
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.allowsMultipleSelection = true
+        
     }
     
     func cardViewShadow() {
@@ -54,7 +57,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         checkSettings()
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -68,24 +70,20 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     
     
     func settingSelected(cell: ACFeaturesCollectionViewCell, selected: Bool) {
-        if let setting = cell.setting, let cellIndexPath = collectionView.indexPath(for: cell) {
-//            setting.isOn = !selected
+        
+        if let cellIndexPath = collectionView.indexPath(for: cell) {
             
             switch cellIndexPath.row {
             case 0:
-                locationToggled = selected
+                locationToggled = cell.isTapped
                 print("location \(selected)")
                 print(locationToggled)
             case 1:
-                autoTextToggled = selected
+                autoTextToggled = cell.isTapped
                 print("autoText \(selected)")
                 print(autoTextToggled)
             default:
                 return
-            }
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadItems(at: [cellIndexPath])
             }
         }
     }
@@ -320,6 +318,8 @@ extension AddContactsViewController {
     }
     
 }
+
+
 
 
 

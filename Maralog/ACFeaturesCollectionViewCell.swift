@@ -13,9 +13,9 @@ class ACFeaturesCollectionViewCell: UICollectionViewCell {
     var setting: Settings? {
         didSet {
             guard let setting = setting else { return }
-            
             settingNameLabel.text = setting.name
             settingButton.imageView?.image = setting.icon
+            settingButton.backgroundColor = setting.isOn ? UIColor.cyan : UIColor.lightGray
         }
     }
     
@@ -28,7 +28,7 @@ class ACFeaturesCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {
-        
+
         switch isTapped {
         case true:
             isTapped = false

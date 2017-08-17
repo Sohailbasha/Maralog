@@ -43,9 +43,8 @@ class SettingsInfoTableViewController: UITableViewController {
     
     @IBAction func switchTapped(_ sender: UISwitch) {
         if let setting = self.setting {
-            setting.isOn = sender.isOn
+//            setting.isOn = !sender.isOn
             SettingsController.sharedInstance.saveAsDefault(setting: setting, value: sender.isOn)
-            
         }
     }
 }
