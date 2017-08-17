@@ -68,9 +68,23 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     
     func settingSelected(cell: ACFeaturesCollectionViewCell, selected: Bool) {
         if let setting = cell.setting, let cellIndexPath = collectionView.indexPath(for: cell) {
-            setting.isOn = !selected
+//            setting.isOn = !selected
+            
+            switch cellIndexPath.row {
+            case 0:
+                locationToggled = selected
+                print("location \(selected)")
+                print(locationToggled)
+            case 1:
+                autoTextToggled = selected
+                print("autoText \(selected)")
+                print(autoTextToggled)
+            default:
+                return
+            }
+            
             collectionView.reloadItems(at: [cellIndexPath])
-            print(!selected)
+            
         }
     }
     
@@ -115,7 +129,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
     @IBOutlet var fNameVerticalConst: NSLayoutConstraint!
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
-    
     
     
     @IBOutlet var card: UIView!
@@ -163,52 +176,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
                 self.resetCard()
             }
         }
-        
     }
-    
-    func resetCard() {
-        UIView.animate(withDuration: 0.1) {
-            self.card.center = self.view.center
-            self.card.alpha = 1
-            self.card.transform = CGAffineTransform.identity
-        }
-    }
-    
-    // MARK: - Action
-    
-    func saving() {
-        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty else { return }
-        guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
-        guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized else { return }
-        
-        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-        
-        if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-            switch (locationToggled, autoTextToggled) {
-            case (true, true):
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-                })
-            case (false, false):
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-            case (true, false):
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-            case (false, true):
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-                })
-            }
-        } else {
-            self.permissionsAlert(title: "Unable to access Contacts",
-                                  message: "Maralog requires access to your contacts in order to save new ones there. Please enabel them.")
-        }
-    }
+
 }
 
 
@@ -288,6 +257,13 @@ extension AddContactsViewController: UICollectionViewDataSource, UICollectionVie
         
         cell?.delegate = self
         cell?.setting = setting
+        
+        switch indexPath.row {
+        case 0:
+            cell?.isTapped = locationToggled
+        default:
+            cell?.isTapped = autoTextToggled
+        }
         
         return cell ?? UICollectionViewCell()
     }

@@ -27,6 +27,7 @@
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
 		FDA6F0621F44FE9900D97FCF /* ExtACVCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA6F0611F44FE9900D97FCF /* ExtACVCTextField.swift */; };
 		FDA6F0651F4500E300D97FCF /* ExtMOVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA6F0641F4500E300D97FCF /* ExtMOVCTableView.swift */; };
+		FDA6F0671F4523FD00D97FCF /* ExtACVCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA6F0661F4523FD00D97FCF /* ExtACVCCard.swift */; };
 		FDB278DB1F069C580091E3FB /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB278DA1F069C580091E3FB /* SettingsCollectionViewCell.swift */; };
 		FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2801ED210D20027A3BA /* Keys.swift */; };
 		FDBDA2831ED258BA0027A3BA /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */; };
@@ -66,6 +67,7 @@
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
 		FDA6F0611F44FE9900D97FCF /* ExtACVCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtACVCTextField.swift; sourceTree = "<group>"; };
 		FDA6F0641F4500E300D97FCF /* ExtMOVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtMOVCTableView.swift; sourceTree = "<group>"; };
+		FDA6F0661F4523FD00D97FCF /* ExtACVCCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtACVCCard.swift; sourceTree = "<group>"; };
 		FDB278DA1F069C580091E3FB /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDBDA2801ED210D20027A3BA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				FD324B131EDE71510091A665 /* AddContactsViewController.swift */,
 				FDA6F0611F44FE9900D97FCF /* ExtACVCTextField.swift */,
+				FDA6F0661F4523FD00D97FCF /* ExtACVCCard.swift */,
 			);
 			name = "Add Contacts View Controller";
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				FDE28FA01ED0DA550057E102 /* LoginCell.swift in Sources */,
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,
 				FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */,
+				FDA6F0671F4523FD00D97FCF /* ExtACVCCard.swift in Sources */,
 				FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */,
 				FD16C9921E490C6600237631 /* CoreDataStack.swift in Sources */,
 				FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */,

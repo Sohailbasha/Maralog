@@ -27,24 +27,17 @@ class SettingsInfoTableViewController: UITableViewController {
     
     var switchStatus = Bool()
     
-    
     func updateDetailWith(_ setting: Settings) {
         imageView.image = setting.icon
         textView.text = setting.description
         settingSwitch.isOn = setting.isOn
-        
-        
-        
     }
-    
     
     // MARK: - Outlets
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var textView: UITextView!
     @IBOutlet var settingSwitch: UISwitch!
-    
-    
     
     // MARK: - Actions
     
@@ -56,17 +49,3 @@ class SettingsInfoTableViewController: UITableViewController {
     }
 }
 
-
-
-
-
-
-
-//        switch setting.name {
-//        case SettingsController.sharedInstance.textingSettingName:
-//            settingSwitch.isOn = SettingsController.sharedInstance.getTextSetting()
-//        case SettingsController.sharedInstance.locationSettingName:
-//            settingSwitch.isOn = SettingsController.sharedInstance.getLocationSetting()
-//        default:
-//            return
-//        }

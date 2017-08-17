@@ -16,17 +16,12 @@ class ACFeaturesCollectionViewCell: UICollectionViewCell {
             
             settingNameLabel.text = setting.name
             settingButton.imageView?.image = setting.icon
-            settingButton.isSelected = setting.isOn
-            
-            backgroundColor = setting.isOn ? UIColor.cyan : UIColor.lightGray
         }
     }
     
+    lazy var isTapped = Bool()
     
     var delegate: SettingsButtonSelected?
-    
-    
-    
     
     @IBOutlet var settingNameLabel: UILabel!
     @IBOutlet var settingButton: UIButton!
@@ -34,10 +29,17 @@ class ACFeaturesCollectionViewCell: UICollectionViewCell {
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {
         
-        delegate?.settingSelected(cell: self, selected: sender.isSelected)
-        backgroundColor = settingButton.isSelected ? UIColor.cyan : UIColor.lightGray
+        switch isTapped {
+        case true:
+            isTapped = false
+            settingButton.backgroundColor = .lightGray
+            delegate?.settingSelected(cell: self, selected: false)
+        case false:
+            isTapped = true
+            settingButton.backgroundColor = .cyan
+            delegate?.settingSelected(cell: self, selected: true)
+        }
     }
-    
 }
 
 protocol SettingsButtonSelected: class {
