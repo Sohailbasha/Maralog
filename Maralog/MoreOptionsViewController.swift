@@ -77,9 +77,6 @@ class MoreOptionsViewController: UIViewController {
         }
     }
     
-    
-    
-    
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
@@ -89,7 +86,6 @@ class MoreOptionsViewController: UIViewController {
 
 
 extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return groups.count
@@ -123,7 +119,6 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
         }
         return cell
     }
-    
 }
 
 /*

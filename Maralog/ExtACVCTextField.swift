@@ -28,7 +28,6 @@ extension AddContactsViewController: UITextFieldDelegate {
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         switch textField {
         case firstNameTextField:
             self.popUp(label: labelOfFirstName, constraint: fNameVerticalConst)
@@ -72,7 +71,6 @@ extension AddContactsViewController: UITextFieldDelegate {
         default:
             break
         }
-        
     }
     
     

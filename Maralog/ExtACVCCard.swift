@@ -13,7 +13,6 @@ import Contacts
 // CARD Functions
 extension AddContactsViewController {
     
-    
     // Moving the card back to its original position
     
     func resetCard() {
@@ -23,7 +22,6 @@ extension AddContactsViewController {
             self.card.transform = CGAffineTransform.identity
         }
     }
-    
     
     
     // Saving the information on the card
@@ -61,6 +59,5 @@ extension AddContactsViewController {
                                   message: "Maralog requires access to your contacts in order to save new ones there. Please enabel them.")
         }
     }
-    
     
 }

@@ -45,7 +45,23 @@ class SettingsInfoTableViewController: UITableViewController {
         if let setting = self.setting {
             setting.isOn = sender.isOn
             SettingsController.sharedInstance.saveAsDefault(setting: setting, value: sender.isOn)
+            
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

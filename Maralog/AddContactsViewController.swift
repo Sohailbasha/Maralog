@@ -54,6 +54,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         checkSettings()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -83,8 +84,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate, Se
                 return
             }
             
-            collectionView.reloadItems(at: [cellIndexPath])
-            
+            DispatchQueue.main.async {
+                self.collectionView.reloadItems(at: [cellIndexPath])
+            }
         }
     }
     
