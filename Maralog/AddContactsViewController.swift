@@ -81,6 +81,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
  
     
     // MARK: - Outlets
+    @IBOutlet var card: UIView!
     
     // Text Fields
     @IBOutlet var phoneNumberTextField: UITextField!
@@ -106,6 +107,114 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
     @IBOutlet var fNameVerticalConst: NSLayoutConstraint!
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
+    
+    
+    
+    
+    
+    
+    
+    
+    func resetCard() {
+        UIView.animate(withDuration: 0.1) {
+            self.card.center = self.view.center
+            self.card.alpha = 1
+            self.card.transform = CGAffineTransform.identity
+            
+        }
+    }
+
+    
+    @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
+        guard let card = sender.view else { return }
+        let point = sender.translation(in: view)
+        let xFromCenter = card.center.x - view.center.x
+        let scale = min(100 / abs(xFromCenter), 1)
+
+        if xFromCenter > 0 {
+            // do something
+            
+            
+        } else {
+            // do something
+        }
+        
+        card.center = (CGPoint(x: view.center.x + point.x, y: view.center.y))
+        card.transform = CGAffineTransform(scaleX: scale, y: scale)
+        
+        
+        if sender.state == UIGestureRecognizerState.ended {
+            if card.center.x < 75 {
+                // move off to the left side of the screen
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.hideLabelsAndText()
+                }, completion: { (_) in
+                    self.resetCard()
+                })
+                return
+            } else if card.center.x > (view.frame.width - 75) && firstNameTextField.text?.isEmpty == false && phoneNumberTextField.text?.isEmpty == false {
+                // move off to the right side
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
+                    card.alpha = 0
+                }, completion: { (_) in
+                    
+                    self.swipeCard(completion: { (success, contact) in
+                        if (success) {
+                            if let contact = contact {
+                                DispatchQueue.main.async {
+                                    self.sendMessageTo(contact: contact)
+                                }
+                            }
+                        }
+                    })
+                    self.resetCard()
+                    self.hideLabelsAndText()
+                })
+                return
+            }
+            UIView.animate(withDuration: 0.3) {
+                self.resetCard()
+//                self.firstNameTextField.shake()
+//                self.phoneNumberTextField.shake()
+            }
+        }
+        
+    }
+    
+    
+    
+    func swipeCard(completion: (Bool, Contact?) -> Void) {
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty else { return }
+        guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
+        guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized else { return }
+        
+        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+        
+        if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
+            switch (locationToggled, autoTextToggled) {
+            case (true, true):
+                ContactController.sharedInstance.addContact(contact: contact)
+                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
+                completion(true, contact)
+                
+            case (false, false):
+                ContactController.sharedInstance.addContact(contact: contact)
+                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
+                completion(false, nil)
+            case (true, false):
+                ContactController.sharedInstance.addContact(contact: contact)
+                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
+                completion(false, nil)
+            case (false, true):
+                ContactController.sharedInstance.addContact(contact: contact)
+                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
+                completion(true, contact)
+            }
+        }
+    }
+    
     
     
     
@@ -140,54 +249,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-  
-    
-    
     
 
     // MARK: - Action
-    
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
-        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty,
-            let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized,
-            let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
-        
-        let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
-        
-        if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-            switch (locationToggled, autoTextToggled) {
-            case (true, true):
-                
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-                })
-            case (false, false):
-                
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-            case (true, false):
-                
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
-            case (false, true):
-                
-                ContactController.sharedInstance.addContact(contact: contact)
-                CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
-                })
-            }
-        } else {
-            self.permissionsAlert(title: "Unable to access Contacts",
-                                  message: "Maralog requires access to your contacts in order to save new ones there. Please enabel them.")
-        }
-    }
-    
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.hideLabelsAndText()
-    }
+
     
     func select(button: UIButton, label: UILabel) {
         let insets: CGFloat = 5
@@ -288,7 +353,11 @@ extension AddContactsViewController {
 
 extension AddContactsViewController {
     
-    func sendAutoTextTo(phoneNumber: String, firstName: String) {
+    func sendMessageTo(contact: Contact) {
+        guard let phoneNumber = contact.phoneNumber else { return }
+        guard let firstName = contact.firstName else { return }
+        
+
         if(MessageSender.sharedInstance.canSendText()) {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(self.yourName)"

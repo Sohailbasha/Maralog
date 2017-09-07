@@ -179,12 +179,16 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="ole-4J-9li" firstAttribute="leading" secondItem="yxA-WF-yge" secondAttribute="leadingMargin" id="VeP-h6-9qb"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="ole-4J-9li" secondAttribute="bottom" id="Vqz-Mm-2ZA"/>
                                     <constraint firstItem="ole-4J-9li" firstAttribute="top" secondItem="yxA-WF-yge" secondAttribute="topMargin" id="YYh-kY-KlO"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="ole-4J-9li" secondAttribute="trailing" id="fYt-0D-syH"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="GOS-FK-oGB" appends="YES" id="HmC-im-Kf1"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -200,6 +204,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="atButtonOutlet" destination="OSI-hW-ZrV" id="YPz-KP-hQj"/>
+                        <outlet property="card" destination="yxA-WF-yge" id="it1-dG-N1b"/>
                         <outlet property="firstNameTextField" destination="vqV-bV-pvN" id="slv-K5-a7g"/>
                         <outlet property="labelOfFirstName" destination="LCN-lc-7Nh" id="C48-55-UDa"/>
                         <outlet property="labelOfLastName" destination="Jwt-Rs-d8G" id="ukG-SH-ICt"/>
@@ -210,6 +215,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="GOS-FK-oGB">
+                    <connections>
+                        <action selector="panCard:" destination="aFt-A3-DSS" id="RpM-uc-sws"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4756" y="1613.3433283358322"/>
         </scene>
