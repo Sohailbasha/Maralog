@@ -249,16 +249,19 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     func select(button: UIButton, label: UILabel) {
         let insets: CGFloat = 5
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+        
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: { 
             
             button.layer.cornerRadius = 0.5 * button.layer.bounds.height
             button.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
             button.tintColor = .white
             button.backgroundColor = Keys.sharedInstance.randomColor()
             button.imageEdgeInsets = UIEdgeInsetsMake(insets, insets, insets, insets)
-            
             label.transform = CGAffineTransform(translationX: 0, y: 10)
-        }, completion: nil)
+            
+        }) { (_) in
+            self.getCurrentLocationForCNContact()
+        }
     }
     
     func deselect(button: UIButton, label: UILabel) {

@@ -180,13 +180,13 @@
 			isa = PBXGroup;
 			children = (
 				FDF8F9181EDBCC990047500B /* CNContactAdd.swift */,
-				FDE28F9A1ED0D8E80057E102 /* Extensions.swift */,
 				FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */,
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
 				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
 				FDBDA2801ED210D20027A3BA /* Keys.swift */,
 				FD6D31781F61EDF000E38C04 /* CardViewDelegate.swift */,
 				FDF6DE581F61F574007457B4 /* Fadeable.swift */,
+				FDE28F9A1ED0D8E80057E102 /* Extensions.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";

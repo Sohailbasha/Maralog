@@ -17,6 +17,7 @@ class CNContactAdd {
     let calendar = Calendar.current
     let store = CNContactStore()
     
+    
     func checkAuthorization() {
         if CNContactStore.authorizationStatus(for: .contacts) != .authorized {
             store.requestAccess(for: .contacts, completionHandler: { (success, error) in
@@ -27,6 +28,7 @@ class CNContactAdd {
         }
     }
     
+    
     func addContactWithoutAddress(contact: Contact) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName else { return }
@@ -35,14 +37,12 @@ class CNContactAdd {
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
-        contact.note = "Added With Maralog"
-
-        
-//        let store = CNContactStore()
+    
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
     }
+    
     
     func addToCNContacts(contact: Contact, address: CNMutablePostalAddress) {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
@@ -67,7 +67,7 @@ class CNContactAdd {
         contact.dates = [date]
         
         
-        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Location Added", value: address)
+        let locationMet = CNLabeledValue<CNPostalAddress>(label: "Added near", value: address)
         contact.postalAddresses = [locationMet]
         
 
@@ -79,11 +79,5 @@ class CNContactAdd {
         do {try? store.execute(saveRequest)}
         
     }
-    
-
-    
-    
-    
- 
     
 }
