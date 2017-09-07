@@ -29,31 +29,28 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.requestWhenInUseAuthorization()
         
         
-        
         phoneNumberTextField.layer.cornerRadius = 20
         firstNameTextField.layer.cornerRadius = 20
         lastNameTextField.layer.cornerRadius = 20
         
-//        self.hideLabelsAndText()
-//        
-//        phoneNumberTextField.delegate = self
-//        firstNameTextField.delegate = self
-//        lastNameTextField.delegate = self
-//        
-//        saveButton.ghostButton()
-//        CNContactAdd.sharedInstance.checkAuthorization()
-//        checkSettings()
+        self.hideLabelsAndText()
+
+        phoneNumberTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+
+        CNContactAdd.sharedInstance.checkAuthorization()
+        checkSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        checkSettings()
+        checkSettings()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-//        self.hideLabelsAndText()
-//        checkSettings()
+        self.hideLabelsAndText()
     }
     
     func checkSettings() {
@@ -109,12 +106,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
     @IBOutlet var fNameVerticalConst: NSLayoutConstraint!
     @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
-    
-    
-    
-    
-    
-    
     
     
     func resetCard() {
@@ -258,9 +249,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     func select(button: UIButton, label: UILabel) {
         let insets: CGFloat = 5
-        
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             
+            button.layer.cornerRadius = 0.5 * button.layer.bounds.height
             button.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
             button.tintColor = .white
             button.backgroundColor = Keys.sharedInstance.randomColor()
@@ -271,7 +262,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func deselect(button: UIButton, label: UILabel) {
-        
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             
             button.transform = CGAffineTransform.identity
@@ -397,9 +387,9 @@ extension AddContactsViewController {
         self.phoneNumberTextField.text = ""
         self.firstNameTextField.text = ""
         self.lastNameTextField.text = ""
-        self.labelOfPhoneNumber.isHidden = true
-        self.labelOfFirstName.isHidden = true
-        self.labelOfLastName.isHidden = true
+        self.labelOfPhoneNumber.fadeOut()
+        self.labelOfFirstName.fadeOut()
+        self.labelOfLastName.fadeOut()
     }
     
 }
@@ -413,23 +403,20 @@ extension AddContactsViewController: UITextFieldDelegate {
         
         switch textField {
         case firstNameTextField:
-            self.popUp(label: labelOfFirstName, constraint: fNameVerticalConst)
+            labelOfFirstName.fadeIn()
+
         case lastNameTextField:
-            self.popUp(label: labelOfLastName, constraint: lNameVerticalConst)
+            labelOfLastName.fadeIn()
+
         case phoneNumberTextField:
-            self.popUp(label: labelOfPhoneNumber, constraint: pNumVerticalConst)
+            labelOfPhoneNumber.fadeIn()
         default:
             break
         }
     }
     
-    func popUp(label: UILabel, constraint: NSLayoutConstraint) {
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [], animations: {
-            label.isHidden = false
-            constraint.constant = 1
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
+    
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let fNameText = firstNameTextField.text else { return }
@@ -439,33 +426,24 @@ extension AddContactsViewController: UITextFieldDelegate {
         switch textField {
         case firstNameTextField:
             if fNameText.isEmpty {
-                popDown(label: labelOfFirstName, constraint: fNameVerticalConst)
+                labelOfFirstName.fadeOut()
+
             }
         case lastNameTextField:
             if lNameText.isEmpty {
-                popDown(label: labelOfLastName, constraint: lNameVerticalConst)
+                labelOfLastName.fadeOut()
+
             }
         case phoneNumberTextField:
             if pNumberText.isEmpty {
-                popDown(label: labelOfPhoneNumber, constraint: pNumVerticalConst)
+                labelOfPhoneNumber.fadeOut()
+
             }
         default:
             break
         }
         
     }
-    
-    func popDown(label: UILabel, constraint: NSLayoutConstraint) {
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseInOut], animations: {
-            constraint.constant = -14
-            self.view.layoutIfNeeded()
-            label.alpha = 0
-        }) { (_) in
-            label.alpha = 1
-            label.isHidden = true
-        }
-    }
-    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -479,8 +457,7 @@ extension AddContactsViewController: UITextFieldDelegate {
     }
 }
 
-extension UIView: CardViewDelegate {}
-
+extension UIView: CardViewDelegate, Fadeable {}
 
 
 

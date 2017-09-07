@@ -28,39 +28,14 @@ class CustomTabBarController: UITabBarController, CustomTabBarViewDelegate {
         tabView.delegate = self
         view.addSubview(tabView)
         self.tabBarButtonTapped(at: 1)
-        
-        colorArray.append((color1: Keys.sharedInstance.k1, color2: Keys.sharedInstance.k2))
-        colorArray.append((color1: Keys.sharedInstance.k3, color2: Keys.sharedInstance.k4))
-        colorArray.append((color1: Keys.sharedInstance.k5, color2: Keys.sharedInstance.k6))
-        
-        animateGradient()
     }
 
     // MARK: Outlets + Properties
     @IBOutlet var tabView: CustomTabView!
 
-    @IBOutlet var colorLine: ColorView!
-    
-    var colorArray: [(color1: UIColor, color2: UIColor)] = []
-    var currentColorArrayIndex = -1
-    
-
-    
+   
     func tabBarButtonTapped(at index: Int) {
         selectedIndex = index
     }
-    
-    
-    
-    func animateGradient() {
-        currentColorArrayIndex = currentColorArrayIndex == (colorArray.count - 1) ? 0 : currentColorArrayIndex + 1
-        UIView.transition(with: colorLine, duration: 0.75, options: [.transitionCrossDissolve], animations: {
-            self.colorLine.firstColor = self.colorArray[self.currentColorArrayIndex].color1
-            self.colorLine.secondColor = self.colorArray[self.currentColorArrayIndex].color2
-            
-        }) { (success) in
-            self.animateGradient()
-        }
-    }
-    
+
 }

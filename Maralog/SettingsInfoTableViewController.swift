@@ -42,7 +42,7 @@ class SettingsInfoTableViewController: UITableViewController {
     @IBOutlet var settingSwitch: UISwitch!
     
     
-    
+
     // MARK: - Actions
     
     @IBAction func switchTapped(_ sender: UISwitch) {

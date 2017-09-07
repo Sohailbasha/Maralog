@@ -29,7 +29,6 @@
 		FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2801ED210D20027A3BA /* Keys.swift */; };
 		FDBDA2831ED258BA0027A3BA /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */; };
 		FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */; };
-		FDD5C0E41F1EF7B400E331E6 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5C0E31F1EF7B400E331E6 /* ColorView.swift */; };
 		FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2EE1ECE45B600573F00 /* Settings.swift */; };
 		FDD9C2F11ECE45FD00573F00 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9C2F01ECE45FD00573F00 /* SettingsController.swift */; };
 		FDE28F941ED0D7360057E102 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F931ED0D7360057E102 /* SignInViewController.swift */; };
@@ -37,6 +36,7 @@
 		FDE28F9B1ED0D8E80057E102 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9A1ED0D8E80057E102 /* Extensions.swift */; };
 		FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9C1ED0D94B0057E102 /* PageCell.swift */; };
 		FDE28FA01ED0DA550057E102 /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE28F9F1ED0DA550057E102 /* LoginCell.swift */; };
+		FDF6DE591F61F574007457B4 /* Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF6DE581F61F574007457B4 /* Fadeable.swift */; };
 		FDF8F9191EDBCC990047500B /* CNContactAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF8F9181EDBCC990047500B /* CNContactAdd.swift */; };
 		FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */; };
 /* End PBXBuildFile section */
@@ -66,7 +66,6 @@
 		FDBDA2801ED210D20027A3BA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
 		FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberLabelFormatter.swift; sourceTree = "<group>"; };
-		FDD5C0E31F1EF7B400E331E6 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		FDD9C2EE1ECE45B600573F00 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FDD9C2F01ECE45FD00573F00 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = ../SettingsController.swift; sourceTree = "<group>"; };
 		FDE28F931ED0D7360057E102 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		FDE28F9A1ED0D8E80057E102 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FDE28F9C1ED0D94B0057E102 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		FDE28F9F1ED0DA550057E102 /* LoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
+		FDF6DE581F61F574007457B4 /* Fadeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fadeable.swift; sourceTree = "<group>"; };
 		FDF8F9181EDBCC990047500B /* CNContactAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNContactAdd.swift; sourceTree = "<group>"; };
 		FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +186,7 @@
 				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
 				FDBDA2801ED210D20027A3BA /* Keys.swift */,
 				FD6D31781F61EDF000E38C04 /* CardViewDelegate.swift */,
+				FDF6DE581F61F574007457B4 /* Fadeable.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -195,7 +196,6 @@
 			children = (
 				FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */,
 				FDB278DA1F069C580091E3FB /* SettingsCollectionViewCell.swift */,
-				FDD5C0E31F1EF7B400E331E6 /* ColorView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -318,6 +318,7 @@
 				FD6D31791F61EDF000E38C04 /* CardViewDelegate.swift in Sources */,
 				FD4C1A821F3113CB009A4ED2 /* SettingsInfoTableViewController.swift in Sources */,
 				FDE28F981ED0D80D0057E102 /* Page.swift in Sources */,
+				FDF6DE591F61F574007457B4 /* Fadeable.swift in Sources */,
 				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,
 				FDE28F9D1ED0D94B0057E102 /* PageCell.swift in Sources */,
 				FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */,
@@ -329,7 +330,6 @@
 				FDF8F9191EDBCC990047500B /* CNContactAdd.swift in Sources */,
 				FD324B141EDE71510091A665 /* AddContactsViewController.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
-				FDD5C0E41F1EF7B400E331E6 /* ColorView.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
 				FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */,
 				FDB278DB1F069C580091E3FB /* SettingsCollectionViewCell.swift in Sources */,

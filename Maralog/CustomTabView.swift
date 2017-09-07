@@ -51,10 +51,15 @@ class CustomTabView: UIView {
         switch index {
         case 0:
             shift(selected: index, current: currentIndex, buttons: buttons)
+            self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         case 1:
             shift(selected: index, current: currentIndex, buttons: buttons)
+            self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
         default:
             shift(selected: index, current: currentIndex, buttons: buttons)
+            self.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
+
         }
         
     }
