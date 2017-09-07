@@ -26,26 +26,32 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-        self.hideLabelsAndText()
         
-        phoneNumberTextField.delegate = self
-        firstNameTextField.delegate = self
-        lastNameTextField.delegate = self
         
-        saveButton.ghostButton()
-        CNContactAdd.sharedInstance.checkAuthorization()
-        checkSettings()
+        phoneNumberTextField.layer.cornerRadius = 20
+        firstNameTextField.layer.cornerRadius = 20
+        lastNameTextField.layer.cornerRadius = 20
+        
+//        self.hideLabelsAndText()
+//        
+//        phoneNumberTextField.delegate = self
+//        firstNameTextField.delegate = self
+//        lastNameTextField.delegate = self
+//        
+//        saveButton.ghostButton()
+//        CNContactAdd.sharedInstance.checkAuthorization()
+//        checkSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        checkSettings()
+//        checkSettings()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        self.hideLabelsAndText()
-        checkSettings()
+//        self.hideLabelsAndText()
+//        checkSettings()
     }
     
     func checkSettings() {
@@ -92,7 +98,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     // Button
-    @IBOutlet var saveButton: UIButton!
+    
     @IBOutlet var atButtonOutlet: UIButton!
     @IBOutlet var lsButtonOutlet: UIButton!
     
@@ -134,6 +140,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
+  
+    
+    
     
 
     // MARK: - Action
@@ -148,22 +157,22 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
             switch (locationToggled, autoTextToggled) {
             case (true, true):
-                saveButton.tappedAnimation()
+                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     self.sendAutoTextTo(phoneNumber: phoneNumber, firstName: firstName)
                 })
             case (false, false):
-                saveButton.tappedAnimation()
+                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
             case (true, false):
-                saveButton.tappedAnimation()
+                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
             case (false, true):
-                saveButton.tappedAnimation()
+                
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
@@ -266,29 +275,13 @@ extension AddContactsViewController {
                     }
                     
                     self.address.street = streetString
-                    
 
-                    
-//                    self.address.street = "\(streetNumber) \(street)"
-//                    guard let city = pm.locality,
-//                        let state = pm.administrativeArea,
-//                        let street = pm.thoroughfare,
-//                        let streetNumber = pm.subThoroughfare,
-//                        let zipcode = pm.postalCode else {
-//                            return }
-//                    
-//                    
-//
-//                    self.address.street = street
-//
-//                    self.address.city = city
-//                    self.address.state = state
-//                    self.address.postalCode = zipcode
                 }
             }
         }
     }
 }
+
 
 
 // MARK: - HELPER METHODS
@@ -328,26 +321,6 @@ extension AddContactsViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func saveButtonAnimation() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.saveButton.backgroundColor = Keys.sharedInstance.tabBarSelected
-            self.saveButton.setTitle("Saved!", for: .normal)
-            self.saveButton.setTitleColor(Keys.sharedInstance.randomColor(), for: .normal)
-            self.hideLabelsAndText()
-        }) { (_) in
-            self.saveButtonReturnToDefault()
-        }
-    }
-    
-    func saveButtonReturnToDefault() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.saveButton.backgroundColor = .clear
-            self.saveButton.setTitle("Save", for: .normal)
-            let color = Keys.sharedInstance.tabBarSelected
-            self.saveButton.setTitleColor(color, for: .normal)
-        }, completion: nil)
-        
-    }
     
     func hideLabelsAndText() {
         self.phoneNumberTextField.text = ""
