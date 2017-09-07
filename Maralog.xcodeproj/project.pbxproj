@@ -24,6 +24,7 @@
 		FD5C98DB1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */; };
 		FD5F256F1E74D5FE001D2B68 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5F256E1E74D5FE001D2B68 /* UserController.swift */; };
 		FD631D861E4E7E6200CA9B11 /* FormattingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */; };
+		FD6D31791F61EDF000E38C04 /* CardViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D31781F61EDF000E38C04 /* CardViewDelegate.swift */; };
 		FDB278DB1F069C580091E3FB /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB278DA1F069C580091E3FB /* SettingsCollectionViewCell.swift */; };
 		FDBDA2811ED210D20027A3BA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2801ED210D20027A3BA /* Keys.swift */; };
 		FDBDA2831ED258BA0027A3BA /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */; };
@@ -60,6 +61,7 @@
 		FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentlyAddedViewController.swift; sourceTree = "<group>"; };
 		FD5F256E1E74D5FE001D2B68 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		FD631D851E4E7E6200CA9B11 /* FormattingDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormattingDate.swift; path = ../FormattingDate.swift; sourceTree = "<group>"; };
+		FD6D31781F61EDF000E38C04 /* CardViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewDelegate.swift; sourceTree = "<group>"; };
 		FDB278DA1F069C580091E3FB /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDBDA2801ED210D20027A3BA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				FDF9D12B1E6E14B200B6DA3A /* MessageSender.swift */,
 				FDCB3ACF1E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift */,
 				FDBDA2801ED210D20027A3BA /* Keys.swift */,
+				FD6D31781F61EDF000E38C04 /* CardViewDelegate.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			files = (
 				FDD9C2F11ECE45FD00573F00 /* SettingsController.swift in Sources */,
 				FD16C98F1E490AEB00237631 /* Maralog.xcdatamodeld in Sources */,
+				FD6D31791F61EDF000E38C04 /* CardViewDelegate.swift in Sources */,
 				FD4C1A821F3113CB009A4ED2 /* SettingsInfoTableViewController.swift in Sources */,
 				FDE28F981ED0D80D0057E102 /* Page.swift in Sources */,
 				FDD9C2EF1ECE45B600573F00 /* Settings.swift in Sources */,

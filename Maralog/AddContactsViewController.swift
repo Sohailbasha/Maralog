@@ -20,6 +20,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        card.setShadow()
+        
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         
@@ -476,6 +478,8 @@ extension AddContactsViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension UIView: CardViewDelegate {}
 
 
 
