@@ -135,7 +135,7 @@ extension MoreOptionsViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as? UITableViewHeaderFooterView
         header?.contentView.backgroundColor = #colorLiteral(red: 0.9514792195, green: 0.9514792195, blue: 0.9514792195, alpha: 1)
-        header?.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)
+        header?.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)
         header?.textLabel?.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     }
  

@@ -16,7 +16,7 @@ extension Contact {
         self.firstName = firstName
         self.lastName = lastName
         self.phoneNumber = phoneNumber
-        self.timeStamp = timeStamp as NSDate
+        self.timeStamp = timeStamp
     }
     
     var firstLetter: String {
