@@ -57,8 +57,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     func checkSettings() {
         autoTextToggled = SettingsController.sharedInstance.getTextSetting()
         locationToggled = SettingsController.sharedInstance.getLocationSetting()
-        autoTextToggled == true ? select(button: atButtonOutlet, label: autoTextLabel) : deselect(button: atButtonOutlet, label: autoTextLabel)
-        locationToggled == true ? select(button: lsButtonOutlet, label: locationSaveLabel) : deselect(button: lsButtonOutlet, label: locationSaveLabel)
+        
+//        autoTextToggled == true ? select(button: atButtonOutlet, label: autoTextLabel) : deselect(button: atButtonOutlet, label: autoTextLabel)
+//        locationToggled == true ? select(button: lsButtonOutlet, label: locationSaveLabel) : deselect(button: lsButtonOutlet, label: locationSaveLabel)
     }
     
     
@@ -221,7 +222,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 if locationToggled == false {
                     locationToggled = true
                     getCurrentLocationForCNContact()
-                    select(button: lsButtonOutlet, label: locationSaveLabel)
                     lsButtonOutlet.customSelect(completion: {
                         self.getCurrentLocationForCNContact()
                     })
@@ -237,6 +237,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
     }
+    
 }
 
 
@@ -302,7 +303,6 @@ extension AddContactsViewController {
 }
 
 
-
 // MARK: - HELPER METHODS
 
 extension AddContactsViewController {
@@ -358,7 +358,6 @@ extension AddContactsViewController {
 extension AddContactsViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         switch textField {
         case firstNameTextField:
             labelOfFirstName.fadeIn()
