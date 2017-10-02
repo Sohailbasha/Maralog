@@ -7,3 +7,31 @@
 //
 
 import Foundation
+import UIKit
+
+protocol Selectable {}
+
+extension Selectable where Self: UIButton {
+    func customSelect(completion: () -> Void) {
+        let inset: CGFloat = 4
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            self.layer.cornerRadius = 0.5 * self.layer.bounds.width
+            self.backgroundColor = Keys.sharedInstance.k2
+            self.tintColor = .white
+            self.transform = CGAffineTransform(scaleX: 1.18, y: 1.18)
+            self.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
+        }, completion: nil)
+    }
+    
+    func customDeselect() {
+        let inset: CGFloat = 8
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [], animations: {
+            self.backgroundColor = .clear
+            self.layer.cornerRadius = 0
+            self.tintColor = Keys.sharedInstance.tabBarDefault
+            self.transform = CGAffineTransform.identity
+            self.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
+        }, completion: nil)
+    }
+
+}

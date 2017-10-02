@@ -33,11 +33,12 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         firstNameTextField.layer.cornerRadius = 20
         lastNameTextField.layer.cornerRadius = 20
         
-        self.hideLabelsAndText()
-
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
+        
+        self.hideLabelsAndText()
+
 
         CNContactAdd.sharedInstance.checkAuthorization()
         checkSettings()
@@ -101,19 +102,13 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet var atButtonOutlet: UIButton!
     @IBOutlet var lsButtonOutlet: UIButton!
-    
-    // Constraints
-    @IBOutlet var pNumVerticalConst: NSLayoutConstraint!
-    @IBOutlet var fNameVerticalConst: NSLayoutConstraint!
-    @IBOutlet var lNameVerticalConst: NSLayoutConstraint!
-    
+
     
     func resetCard() {
         UIView.animate(withDuration: 0.1) {
             self.card.center = self.view.center
             self.card.alpha = 1
             self.card.transform = CGAffineTransform.identity
-            
         }
     }
 
@@ -190,7 +185,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addToCNContacts(contact: contact, address: address)
                 completion(true, contact)
-                
             case (false, false):
                 ContactController.sharedInstance.addContact(contact: contact)
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
@@ -207,18 +201,17 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    
-    
     @IBAction func buttonTapped(_ sender: UIButton) {
         switch sender {
         case atButtonOutlet:
             if autoTextToggled == false {
                 autoTextToggled = true
-                select(button: atButtonOutlet, label: autoTextLabel)
+                atButtonOutlet.customSelect {}
+                autoTextLabel.text = "On"
             } else {
                 autoTextToggled = false
-                deselect(button: atButtonOutlet, label: autoTextLabel)
+                atButtonOutlet.customDeselect()
+                autoTextLabel.text = "Auto Text"
             }
             
         case lsButtonOutlet:
@@ -229,53 +222,20 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                     locationToggled = true
                     getCurrentLocationForCNContact()
                     select(button: lsButtonOutlet, label: locationSaveLabel)
+                    lsButtonOutlet.customSelect(completion: {
+                        self.getCurrentLocationForCNContact()
+                    })
+                    locationSaveLabel.text = "On"
                 } else {
                     locationToggled = false
-                    deselect(button: lsButtonOutlet, label: locationSaveLabel)
+                    lsButtonOutlet.customDeselect()
+                    locationSaveLabel.text = "Location Save"
                 }
             }
             
         default:
             return
         }
-    }
-    
-    
-    
-
-    // MARK: - Action
-
-    
-    func select(button: UIButton, label: UILabel) {
-        let insets: CGFloat = 2
-        
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: { 
-            
-            button.layer.cornerRadius = 0.5 * button.layer.bounds.height
-            button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            button.tintColor = .white
-            button.backgroundColor = Keys.sharedInstance.k2
-            button.imageEdgeInsets = UIEdgeInsetsMake(insets, insets, insets, insets)
-            label.transform = CGAffineTransform(translationX: 0, y: 10)
-            
-        }) { (_) in
-            self.getCurrentLocationForCNContact()
-        }
-    }
-    
-    func deselect(button: UIButton, label: UILabel) {
-        let insets: CGFloat = 8
-
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
-            
-            button.transform = CGAffineTransform.identity
-            button.tintColor = self.colorForUnselectedUI
-            button.backgroundColor = .clear
-            button.imageEdgeInsets = UIEdgeInsetsMake(insets, insets, insets, insets)
-            label.transform = CGAffineTransform.identity
-
-        }, completion: nil)
-        
     }
 }
 
@@ -335,7 +295,6 @@ extension AddContactsViewController {
                     }
                     
                     self.address.street = streetString
-
                 }
             }
         }
@@ -351,18 +310,15 @@ extension AddContactsViewController {
     func sendMessageTo(contact: Contact) {
         guard let phoneNumber = contact.phoneNumber else { return }
         guard let firstName = contact.firstName else { return }
-        
-
+    
         if(MessageSender.sharedInstance.canSendText()) {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(self.yourName)"
             let messageComposerVC = MessageSender.sharedInstance.configuredMessageComposeViewController()
             
-            
             self.present(messageComposerVC, animated: true, completion: {
                 self.hideLabelsAndText()
             })
-            
         } else {
             let alert = UIAlertController(title: "Error", message: "Phone unable to send messages.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
@@ -384,7 +340,6 @@ extension AddContactsViewController {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-    
     
     func hideLabelsAndText() {
         self.phoneNumberTextField.text = ""
@@ -427,17 +382,14 @@ extension AddContactsViewController: UITextFieldDelegate {
         case firstNameTextField:
             if fNameText.isEmpty {
                 labelOfFirstName.fadeOut()
-
             }
         case lastNameTextField:
             if lNameText.isEmpty {
                 labelOfLastName.fadeOut()
-
             }
         case phoneNumberTextField:
             if pNumberText.isEmpty {
                 labelOfPhoneNumber.fadeOut()
-
             }
         default:
             break
@@ -449,7 +401,6 @@ extension AddContactsViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -501,8 +452,7 @@ extension AddContactsViewController: UITextFieldDelegate {
 }
 
 extension UIView: CardViewDelegate, Fadeable {}
-
-
+extension UIButton: Selectable {}
 
 
 
