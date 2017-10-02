@@ -169,8 +169,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             }
             UIView.animate(withDuration: 0.3) {
                 self.resetCard()
-//                self.firstNameTextField.shake()
-//                self.phoneNumberTextField.shake()
+
             }
         }
         
@@ -248,14 +247,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
 
     
     func select(button: UIButton, label: UILabel) {
-        let insets: CGFloat = 5
+        let insets: CGFloat = 2
         
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: { 
             
             button.layer.cornerRadius = 0.5 * button.layer.bounds.height
-            button.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+            button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             button.tintColor = .white
-            button.backgroundColor = Keys.sharedInstance.randomColor()
+            button.backgroundColor = Keys.sharedInstance.k2
             button.imageEdgeInsets = UIEdgeInsetsMake(insets, insets, insets, insets)
             label.transform = CGAffineTransform(translationX: 0, y: 10)
             
@@ -265,13 +264,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func deselect(button: UIButton, label: UILabel) {
+        let insets: CGFloat = 8
+
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             
             button.transform = CGAffineTransform.identity
             button.tintColor = self.colorForUnselectedUI
-
             button.backgroundColor = .clear
-            button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+            button.imageEdgeInsets = UIEdgeInsetsMake(insets, insets, insets, insets)
             label.transform = CGAffineTransform.identity
 
         }, completion: nil)
@@ -418,9 +418,6 @@ extension AddContactsViewController: UITextFieldDelegate {
         }
     }
     
-    
-
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let fNameText = firstNameTextField.text else { return }
         guard let lNameText = lastNameTextField.text else { return }
@@ -457,6 +454,49 @@ extension AddContactsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == phoneNumberTextField {
+            let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            let components = (newString as NSString).components(separatedBy: NSCharacterSet.decimalDigits.inverted)
+            
+            let decimalString = components.joined(separator: "") as NSString
+            let length = decimalString.length
+            let hasLeadingOne = length > 0 && decimalString.character(at: 0) == (1 as unichar)
+            
+            if length == 0 || (length > 10 && !hasLeadingOne) || length > 11 {
+                let newLength = (textField.text! as NSString).length + (string as NSString).length - range.length as Int
+                
+                return (newLength > 10) ? false : true
+            }
+            var index = 0 as Int
+            let formattedString = NSMutableString()
+            
+            if hasLeadingOne {
+                formattedString.append("1 ")
+                index += 1
+            }
+            if (length - index) > 3 {
+                let areaCode = decimalString.substring(with: NSMakeRange(index, 3))
+                formattedString.appendFormat("(%@)", areaCode)
+                index += 3
+            }
+            if length - index > 3 {
+                let prefix = decimalString.substring(with: NSMakeRange(index, 3))
+                formattedString.appendFormat("%@-", prefix)
+                index += 3
+            }
+            
+            let remainder = decimalString.substring(from: index)
+            formattedString.append(remainder)
+            textField.text = formattedString as String
+            return false
+            
+        } else {
+            return true
+        }
+
     }
 }
 

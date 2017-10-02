@@ -48,6 +48,7 @@ class CNContactAdd {
         guard let firstName = contact.firstName, let phoneNumber = contact.phoneNumber else { return }
         guard let lastName = contact.lastName, let timeStamp = contact.timeStamp else { return }
         
+        
         let hour = calendar.component(.hour, from: timeStamp as Date)
         let minutes = calendar.component(.minute, from: timeStamp as Date)
         
@@ -65,6 +66,7 @@ class CNContactAdd {
         dateAdded.day = Calendar.current.component(.day, from: Date())
         let date = CNLabeledValue(label: "Date Added", value: dateAdded)
         contact.dates = [date]
+    
         
         
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Added near", value: address)

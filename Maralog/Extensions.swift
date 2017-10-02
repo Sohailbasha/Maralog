@@ -74,7 +74,7 @@ extension UIButton {
     
     func tappedAnimation() {
         UIView.animate(withDuration: 0.4, animations: {
-            self.backgroundColor = Keys.sharedInstance.randomColor()
+            self.backgroundColor = Keys.sharedInstance.k2
             self.setTitle("Saved!", for: .normal)
             self.setTitleColor(.white, for: .normal)
         }) { (_) in
