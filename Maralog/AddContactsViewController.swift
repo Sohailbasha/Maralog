@@ -58,8 +58,28 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         autoTextToggled = SettingsController.sharedInstance.getTextSetting()
         locationToggled = SettingsController.sharedInstance.getLocationSetting()
         
-//        autoTextToggled == true ? select(button: atButtonOutlet, label: autoTextLabel) : deselect(button: atButtonOutlet, label: autoTextLabel)
-//        locationToggled == true ? select(button: lsButtonOutlet, label: locationSaveLabel) : deselect(button: lsButtonOutlet, label: locationSaveLabel)
+        if (autoTextToggled) {
+            atButtonOutlet.customSelect {}
+            autoTextLabel.fadeOut()
+            autoTextLabel.fadeIn()
+            autoTextLabel.text = "On"
+        } else {
+            atButtonOutlet.customDeselect()
+            autoTextLabel.fadeOut()
+            autoTextLabel.fadeIn()
+            autoTextLabel.text = "Auto Text"
+        }
+        
+        if (locationToggled) {
+            lsButtonOutlet.customSelect {
+                self.getCurrentLocationForCNContact()
+            }
+            locationSaveLabel.text = "On"
+        } else {
+            lsButtonOutlet.customDeselect()
+            locationSaveLabel.text = "Location Save"
+        }
+        
     }
     
     
@@ -256,6 +276,7 @@ extension AddContactsViewController {
             currentLocation = CLLocation(latitude: location.coordinate.latitude,
                                          longitude: location.coordinate.longitude)
         }
+//        self.getCurrentLocationForCNContact()
         coreLocationManager.stopUpdatingLocation()
     }
     
@@ -279,7 +300,6 @@ extension AddContactsViewController {
                     if let state = pm.administrativeArea {
                         self.address.state = state
                     }
-                    
                     
                     if let zipcode = pm.postalCode {
                         self.address.postalCode = zipcode

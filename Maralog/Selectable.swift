@@ -13,8 +13,8 @@ protocol Selectable {}
 
 extension Selectable where Self: UIButton {
     func customSelect(completion: () -> Void) {
-        let inset: CGFloat = 4
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+        let inset: CGFloat = 2
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: [], animations: {
             self.layer.cornerRadius = 0.5 * self.layer.bounds.width
             self.backgroundColor = Keys.sharedInstance.k2
             self.tintColor = .white
@@ -24,7 +24,7 @@ extension Selectable where Self: UIButton {
     }
     
     func customDeselect() {
-        let inset: CGFloat = 8
+        let inset: CGFloat = 6
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [], animations: {
             self.backgroundColor = .clear
             self.layer.cornerRadius = 0
