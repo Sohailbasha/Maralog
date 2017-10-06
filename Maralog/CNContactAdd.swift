@@ -52,13 +52,11 @@ class CNContactAdd {
         let hour = calendar.component(.hour, from: timeStamp as Date)
         let minutes = calendar.component(.minute, from: timeStamp as Date)
         
-        
         let contact = CNMutableContact()
         contact.givenName = firstName.capitalized
         contact.familyName = lastName.capitalized
         contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
         contact.note = "Added With Maralog. \nOn \(hour):\(minutes)"
-        
         
         let dateAdded = NSDateComponents()
         dateAdded.month = Calendar.current.component(.month, from: Date())
@@ -67,16 +65,11 @@ class CNContactAdd {
         let date = CNLabeledValue(label: "Date Added", value: dateAdded)
         contact.dates = [date]
     
-        
-        
         let locationMet = CNLabeledValue<CNPostalAddress>(label: "Added near", value: address)
         contact.postalAddresses = [locationMet]
         
-
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
-        
-        
         
         do {try? store.execute(saveRequest)}
         

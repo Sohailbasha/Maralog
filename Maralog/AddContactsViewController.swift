@@ -38,8 +38,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         lastNameTextField.delegate = self
         
         self.hideLabelsAndText()
-
-
+        
         CNContactAdd.sharedInstance.checkAuthorization()
         checkSettings()
     }
@@ -71,6 +70,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if (locationToggled) {
+            
             lsButtonOutlet.customSelect {
                 self.getCurrentLocationForCNContact()
             }
@@ -79,7 +79,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             lsButtonOutlet.customDeselect()
             locationSaveLabel.text = "Location Save"
         }
-        
     }
     
     
@@ -99,7 +98,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     let colorForSelectedUI = Keys.sharedInstance.trimColor
     let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
     
- 
+    
     
     // MARK: - Outlets
     @IBOutlet var card: UIView!
@@ -123,7 +122,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet var atButtonOutlet: UIButton!
     @IBOutlet var lsButtonOutlet: UIButton!
-
+    
     
     func resetCard() {
         UIView.animate(withDuration: 0.1) {
@@ -132,14 +131,14 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             self.card.transform = CGAffineTransform.identity
         }
     }
-
+    
     
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         guard let card = sender.view else { return }
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
         let scale = min(100 / abs(xFromCenter), 1)
-
+        
         if xFromCenter > 0 {
             // do something
             
@@ -169,7 +168,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                     card.alpha = 0
                 }, completion: { (_) in
                     
-                    self.swipeCard(completion: { (success, contact) in
+                    self.swipeCardRight(completion: { (success, contact) in
                         if (success) {
                             if let contact = contact {
                                 DispatchQueue.main.async {
@@ -177,15 +176,17 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                                 }
                             }
                         }
+                        
                     })
+                    
                     self.resetCard()
-                    self.hideLabelsAndText()
+//                    self.hideLabelsAndText()
                 })
                 return
             }
             UIView.animate(withDuration: 0.3) {
                 self.resetCard()
-
+                
             }
         }
         
@@ -193,7 +194,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
-    func swipeCard(completion: (Bool, Contact?) -> Void) {
+    func swipeCardRight(completion: (Bool, Contact?) -> Void) {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty else { return }
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
         guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized else { return }
@@ -219,6 +220,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 CNContactAdd.sharedInstance.addContactWithoutAddress(contact: contact)
                 completion(true, contact)
             }
+            hideLabelsAndText()
+        } else {
+            permissionsAlert(title: "Access To Contacts Are Disabled ", message: "Must Enable To Save")
         }
     }
     
@@ -234,10 +238,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                 atButtonOutlet.customDeselect()
                 autoTextLabel.text = "Auto Text"
             }
-            
         case lsButtonOutlet:
             if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-                permissionsAlert(title: "Location Services Are Off", message: "Enabel Access When In Use")
+                permissionsAlert(title: "Location Services Are Disabled", message: "Enable Access To Use This Feature")
             } else {
                 if locationToggled == false {
                     locationToggled = true
@@ -276,7 +279,7 @@ extension AddContactsViewController {
             currentLocation = CLLocation(latitude: location.coordinate.latitude,
                                          longitude: location.coordinate.longitude)
         }
-//        self.getCurrentLocationForCNContact()
+        //        self.getCurrentLocationForCNContact()
         coreLocationManager.stopUpdatingLocation()
     }
     
@@ -330,7 +333,7 @@ extension AddContactsViewController {
     func sendMessageTo(contact: Contact) {
         guard let phoneNumber = contact.phoneNumber else { return }
         guard let firstName = contact.firstName else { return }
-    
+        
         if(MessageSender.sharedInstance.canSendText()) {
             MessageSender.sharedInstance.recepients.append(phoneNumber)
             MessageSender.sharedInstance.textBody = "Hi \(firstName.capitalized), it's \(self.yourName)"
@@ -346,6 +349,7 @@ extension AddContactsViewController {
             present(alert, animated: true, completion: nil)
         }
     }
+    
     
     func permissionsAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -381,10 +385,10 @@ extension AddContactsViewController: UITextFieldDelegate {
         switch textField {
         case firstNameTextField:
             labelOfFirstName.fadeIn()
-
+            
         case lastNameTextField:
             labelOfLastName.fadeIn()
-
+            
         case phoneNumberTextField:
             labelOfPhoneNumber.fadeIn()
         default:
@@ -466,7 +470,7 @@ extension AddContactsViewController: UITextFieldDelegate {
         } else {
             return true
         }
-
+        
     }
 }
 
