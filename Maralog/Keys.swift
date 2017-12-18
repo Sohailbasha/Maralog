@@ -13,13 +13,8 @@ class Keys {
     // MARK: - COLOR KEYS
     static let sharedInstance = Keys()
     
-    
-    
     let trimColor = #colorLiteral(red: 0, green: 0.8470588235, blue: 0.6352941176, alpha: 1)
     let mainColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.9725490196, alpha: 1)
-    
-    
-    
     
     // *
     let tabBarDefault = #colorLiteral(red: 0.6641708968, green: 0.651147938, blue: 0.651147938, alpha: 1)

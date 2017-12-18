@@ -22,4 +22,17 @@ extension Fadeable where Self: UIView {
             self.alpha = 0
         }
     }
+    
+    func flash() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            self.alpha = 1.0
+        }) { (animationComplete) in
+            if (animationComplete) {
+                UIView.animate(withDuration: 0.3, delay: 2.0, options: .curveEaseOut, animations: {
+                    self.alpha = 0.0
+                }, completion: nil)
+            }
+        }
+    }
 }
+

@@ -24,7 +24,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
-        
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
@@ -142,7 +141,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         if xFromCenter > 0 {
             // do something
             
-            
         } else {
             // do something
         }
@@ -167,7 +165,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                     card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
                     card.alpha = 0
                 }, completion: { (_) in
-                    
                     self.swipeCardRight(completion: { (success, contact) in
                         if (success) {
                             if let contact = contact {
@@ -176,7 +173,6 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                                 }
                             }
                         }
-                        
                     })
                     
                     self.resetCard()
@@ -186,13 +182,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             }
             UIView.animate(withDuration: 0.3) {
                 self.resetCard()
-                
             }
         }
         
     }
-    
-    
     
     func swipeCardRight(completion: (Bool, Contact?) -> Void) {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty else { return }
@@ -244,7 +237,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             } else {
                 if locationToggled == false {
                     locationToggled = true
-                    getCurrentLocationForCNContact()
+//                    getCurrentLocationForCNContact()
                     lsButtonOutlet.customSelect(completion: {
                         self.getCurrentLocationForCNContact()
                     })
@@ -369,9 +362,10 @@ extension AddContactsViewController {
         self.phoneNumberTextField.text = ""
         self.firstNameTextField.text = ""
         self.lastNameTextField.text = ""
-        self.labelOfPhoneNumber.fadeOut()
-        self.labelOfFirstName.fadeOut()
+        
         self.labelOfLastName.fadeOut()
+        self.labelOfFirstName.fadeOut()
+        self.labelOfPhoneNumber.fadeOut()
     }
     
 }
@@ -388,9 +382,10 @@ extension AddContactsViewController: UITextFieldDelegate {
             
         case lastNameTextField:
             labelOfLastName.fadeIn()
-            
+
         case phoneNumberTextField:
             labelOfPhoneNumber.fadeIn()
+            
         default:
             break
         }
@@ -405,14 +400,17 @@ extension AddContactsViewController: UITextFieldDelegate {
         case firstNameTextField:
             if fNameText.isEmpty {
                 labelOfFirstName.fadeOut()
+                
             }
         case lastNameTextField:
             if lNameText.isEmpty {
                 labelOfLastName.fadeOut()
+                
             }
         case phoneNumberTextField:
             if pNumberText.isEmpty {
                 labelOfPhoneNumber.fadeOut()
+                
             }
         default:
             break
@@ -474,7 +472,7 @@ extension AddContactsViewController: UITextFieldDelegate {
     }
 }
 
-extension UIView: CardViewDelegate, Fadeable {}
+extension UIView: CardViewDelegate, Fadeable, Errorable {}
 extension UIButton: Selectable {}
 
 

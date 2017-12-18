@@ -13,7 +13,7 @@ extension String {
     var phoneNumberFormatterL: String {
         get {
             var s = self.replacingOccurrences(of: " ", with: "")
-            let count = s.characters.count
+            let count = s.count
             if count > 7 {
                 s.insert(" ", at: s.index(s.startIndex, offsetBy: 3))
                 s.insert(" ", at: s.index(s.startIndex, offsetBy: 7))
