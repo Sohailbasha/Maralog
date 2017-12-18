@@ -13,72 +13,54 @@ import Contacts
 
 class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
-    
-    let contactSavedLabel = UILabel()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        card.layer.cornerRadius = 10
         
-        card.setShadow()
+        lsButtonOutlet.layer.borderColor = #colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1)
+        lsButtonOutlet.layer.borderWidth = 1.0
+        lsButtonOutlet.layer.cornerRadius = 6
+        lsButtonOutlet.setTitleColor(#colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1), for: .normal)
+        
+        atButtonOutlet.layer.borderColor = #colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1)
+        atButtonOutlet.layer.borderWidth = 1.0
+        atButtonOutlet.layer.cornerRadius = 6
+        atButtonOutlet.setTitleColor(#colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1), for: .normal)
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
         coreLocationManager.startUpdatingLocation()
         coreLocationManager.requestWhenInUseAuthorization()
         
-        
-        phoneNumberTextField.layer.cornerRadius = 20
-        firstNameTextField.layer.cornerRadius = 20
-        lastNameTextField.layer.cornerRadius = 20
-        
         phoneNumberTextField.delegate = self
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         
+        addButton.layer.cornerRadius = 15
+        addButton.layer.shadowOpacity = 0.25
+        addButton.clipsToBounds = false
+        addButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        
         self.hideLabelsAndText()
         
+        fNameLabel.isHidden = true
+        lNameLabel.isHidden = true
+        pNumLabel.isHidden = true
+        
         CNContactAdd.sharedInstance.checkAuthorization()
-        checkSettings()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        checkSettings()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         self.hideLabelsAndText()
     }
-    
-    func checkSettings() {
-        autoTextToggled = SettingsController.sharedInstance.getTextSetting()
-        locationToggled = SettingsController.sharedInstance.getLocationSetting()
-        
-        if (autoTextToggled) {
-            atButtonOutlet.customSelect {}
-            autoTextLabel.fadeOut()
-            autoTextLabel.fadeIn()
-            autoTextLabel.text = "On"
-        } else {
-            atButtonOutlet.customDeselect()
-            autoTextLabel.fadeOut()
-            autoTextLabel.fadeIn()
-            autoTextLabel.text = "Auto Text"
-        }
-        
-        if (locationToggled) {
-            
-            lsButtonOutlet.customSelect {
-                self.getCurrentLocationForCNContact()
-            }
-            locationSaveLabel.text = "On"
-        } else {
-            lsButtonOutlet.customDeselect()
-            locationSaveLabel.text = "Location Save"
-        }
-    }
+
     
     
     // MARK: - Properties
@@ -107,85 +89,21 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     
-    // Labels for each Text Field
-    @IBOutlet var labelOfPhoneNumber: UILabel!
-    @IBOutlet var labelOfFirstName: UILabel!
-    @IBOutlet var labelOfLastName: UILabel!
-    
-    // Labels for features
-    @IBOutlet var locationSaveLabel: UILabel!
-    @IBOutlet var autoTextLabel: UILabel!
-    
-    
     // Button
     
     @IBOutlet var atButtonOutlet: UIButton!
     @IBOutlet var lsButtonOutlet: UIButton!
     
+    @IBOutlet var pNumLabel: UILabel!
+    @IBOutlet var fNameLabel: UILabel!
+    @IBOutlet var lNameLabel: UILabel!
     
-    func resetCard() {
-        UIView.animate(withDuration: 0.1) {
-            self.card.center = self.view.center
-            self.card.alpha = 1
-            self.card.transform = CGAffineTransform.identity
-        }
-    }
+    @IBOutlet var topStack: UIStackView!
+    @IBOutlet var middleStack: UIStackView!
+    @IBOutlet var bottomStack: UIStackView!
     
+    @IBOutlet var addButton: UIButton!
     
-    @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
-        guard let card = sender.view else { return }
-        let point = sender.translation(in: view)
-        let xFromCenter = card.center.x - view.center.x
-        let scale = min(100 / abs(xFromCenter), 1)
-        
-        if xFromCenter > 0 {
-            // do something
-            
-        } else {
-            // do something
-        }
-        
-        card.center = (CGPoint(x: view.center.x + point.x, y: view.center.y))
-        card.transform = CGAffineTransform(scaleX: scale, y: scale)
-        
-        
-        if sender.state == UIGestureRecognizerState.ended {
-            if card.center.x < 75 {
-                // move off to the left side of the screen
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.hideLabelsAndText()
-                }, completion: { (_) in
-                    self.resetCard()
-                })
-                return
-            } else if card.center.x > (view.frame.width - 75) && firstNameTextField.text?.isEmpty == false && phoneNumberTextField.text?.isEmpty == false {
-                // move off to the right side
-                
-                UIView.animate(withDuration: 0.3, animations: {
-                    card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
-                    card.alpha = 0
-                }, completion: { (_) in
-                    self.swipeCardRight(completion: { (success, contact) in
-                        if (success) {
-                            if let contact = contact {
-                                DispatchQueue.main.async {
-                                    self.sendMessageTo(contact: contact)
-                                }
-                            }
-                        }
-                    })
-                    
-                    self.resetCard()
-//                    self.hideLabelsAndText()
-                })
-                return
-            }
-            UIView.animate(withDuration: 0.3) {
-                self.resetCard()
-            }
-        }
-        
-    }
     
     func swipeCardRight(completion: (Bool, Contact?) -> Void) {
         guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty else { return }
@@ -225,11 +143,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
             if autoTextToggled == false {
                 autoTextToggled = true
                 atButtonOutlet.customSelect {}
-                autoTextLabel.text = "On"
+//                autoTextLabel.text = "On"
             } else {
                 autoTextToggled = false
                 atButtonOutlet.customDeselect()
-                autoTextLabel.text = "Auto Text"
+//                autoTextLabel.text = "Auto Text"
             }
         case lsButtonOutlet:
             if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
@@ -241,11 +159,11 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
                     lsButtonOutlet.customSelect(completion: {
                         self.getCurrentLocationForCNContact()
                     })
-                    locationSaveLabel.text = "On"
+//                    locationSaveLabel.text = "On"
                 } else {
                     locationToggled = false
                     lsButtonOutlet.customDeselect()
-                    locationSaveLabel.text = "Location Save"
+//                    locationSaveLabel.text = "Location Save"
                 }
             }
             
@@ -362,10 +280,7 @@ extension AddContactsViewController {
         self.phoneNumberTextField.text = ""
         self.firstNameTextField.text = ""
         self.lastNameTextField.text = ""
-        
-        self.labelOfLastName.fadeOut()
-        self.labelOfFirstName.fadeOut()
-        self.labelOfPhoneNumber.fadeOut()
+
     }
     
 }
@@ -378,13 +293,25 @@ extension AddContactsViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case firstNameTextField:
-            labelOfFirstName.fadeIn()
+            print("fName editing")
+            UIView.animate(withDuration: 0.3, animations: {
+                self.fNameLabel.isHidden = false
+                self.middleStack.layoutIfNeeded()
+            })
             
         case lastNameTextField:
-            labelOfLastName.fadeIn()
+            print("lNameEditing")
+            UIView.animate(withDuration: 0.3, animations: {
+                self.lNameLabel.isHidden = false
+                self.bottomStack.layoutIfNeeded()
+            })
 
         case phoneNumberTextField:
-            labelOfPhoneNumber.fadeIn()
+            print("pNumEditing")
+            UIView.animate(withDuration: 0.3, animations: {
+                self.pNumLabel.isHidden = false
+                self.topStack.layoutIfNeeded()
+            })
             
         default:
             break
@@ -399,18 +326,24 @@ extension AddContactsViewController: UITextFieldDelegate {
         switch textField {
         case firstNameTextField:
             if fNameText.isEmpty {
-                labelOfFirstName.fadeOut()
-                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.fNameLabel.isHidden = true
+                    self.middleStack.layoutIfNeeded()
+                })
             }
         case lastNameTextField:
             if lNameText.isEmpty {
-                labelOfLastName.fadeOut()
-                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.lNameLabel.isHidden = true
+                    self.bottomStack.layoutIfNeeded()
+                })
             }
         case phoneNumberTextField:
             if pNumberText.isEmpty {
-                labelOfPhoneNumber.fadeOut()
-                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.pNumLabel.isHidden = true
+                    self.topStack.layoutIfNeeded()
+                })
             }
         default:
             break
