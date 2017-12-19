@@ -42,9 +42,9 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         lastNameTextField.delegate = self
         
         addButton.layer.cornerRadius = 15
-        addButton.layer.shadowOpacity = 0.25
+        addButton.layer.shadowOpacity = 0.15
         addButton.clipsToBounds = false
-        addButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        addButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         
         self.hideLabelsAndText()
     
@@ -327,29 +327,26 @@ extension AddContactsViewController: UITextFieldDelegate {
         switch textField {
         case firstNameTextField:
             if fNameText.isEmpty {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.fNameLabel.isHidden = true
-                    self.middleStack.layoutIfNeeded()
-                })
+               self.animateLabel(label: fNameLabel, in: middleStack, hidden: true)
             }
         case lastNameTextField:
             if lNameText.isEmpty {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.lNameLabel.isHidden = true
-                    self.bottomStack.layoutIfNeeded()
-                })
+                self.animateLabel(label: lNameLabel, in: bottomStack, hidden: true)
             }
         case phoneNumberTextField:
             if pNumberText.isEmpty {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.pNumLabel.isHidden = true
-                    self.topStack.layoutIfNeeded()
-                })
+                self.animateLabel(label: pNumLabel, in: topStack, hidden: true)
             }
         default:
             break
         }
-        
+    }
+    
+    func animateLabel(label: UILabel, in stack: UIStackView, hidden: Bool) {
+        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
+            label.isHidden = hidden
+            stack.layoutIfNeeded()
+        }, completion: nil)
     }
     
     

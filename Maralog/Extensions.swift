@@ -64,33 +64,6 @@ extension UIApplication {
 }
 
 
-extension UIButton {
-    func ghostButton() {
-        self.backgroundColor = UIColor.clear
-        self.setTitleColor(Keys.sharedInstance.tabBarSelected, for: .normal)
-        self.layer.borderWidth = 1
-        self.layer.borderColor = Keys.sharedInstance.tabBarSelected.cgColor
-    }
-    
-    func tappedAnimation() {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.backgroundColor = Keys.sharedInstance.k2
-            self.setTitle("Saved!", for: .normal)
-            self.setTitleColor(.white, for: .normal)
-        }) { (_) in
-            self.tapAnimationDidFinish()
-        }
-    }
-    
-    
-    func tapAnimationDidFinish() {
-        UIView.animate(withDuration: 0.4, animations: { 
-            self.ghostButton()
-            self.setTitle("Save", for: .normal)
-        }, completion: nil)
-    }
-}
-
 
 
 

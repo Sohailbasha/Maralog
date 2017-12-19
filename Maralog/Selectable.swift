@@ -31,7 +31,6 @@ extension Selectable where Self: UIButton {
 
 
 protocol Errorable{}
-
 extension Errorable where Self: UIView {
     func jitter() {
         let animation = CABasicAnimation(keyPath: "position")
