@@ -12,7 +12,6 @@
 		FD16C9941E490C9500237631 /* Contact + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9931E490C9500237631 /* Contact + Convenience.swift */; };
 		FD16C9961E490F6100237631 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16C9951E490F6100237631 /* ContactController.swift */; };
 		FD1AAB021EA2C8E30094EF57 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */; };
-		FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */; };
 		FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD30BFF51E43FFA100759ECB /* AppDelegate.swift */; };
 		FD30BFFB1E43FFA100759ECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFF91E43FFA100759ECB /* Main.storyboard */; };
 		FD30BFFD1E43FFA100759ECB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD30BFFC1E43FFA100759ECB /* Assets.xcassets */; };
@@ -46,7 +45,6 @@
 		FD16C9931E490C9500237631 /* Contact + Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact + Convenience.swift"; sourceTree = "<group>"; };
 		FD16C9951E490F6100237631 /* ContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		FD1AAB011EA2C8E30094EF57 /* CustomTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
-		FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		FD30BFF21E43FFA100759ECB /* Maralog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maralog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD30BFF51E43FFA100759ECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD30BFFA1E43FFA100759ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 		FD16C98C1E490AD500237631 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FD1AAB031EA2D4200094EF57 /* CustomTabBarController.swift */,
 				FD324B131EDE71510091A665 /* AddContactsViewController.swift */,
 				FD5C98DA1ED7E6E70089A2C0 /* RecentlyAddedViewController.swift */,
 				FDBDA2821ED258BA0027A3BA /* MoreOptionsViewController.swift */,
@@ -327,7 +324,6 @@
 				FD324B141EDE71510091A665 /* AddContactsViewController.swift in Sources */,
 				FD30BFF61E43FFA100759ECB /* AppDelegate.swift in Sources */,
 				FDCB3AD01E7BB42C00BBF8D3 /* PhoneNumberLabelFormatter.swift in Sources */,
-				FD1AAB041EA2D4200094EF57 /* CustomTabBarController.swift in Sources */,
 				FDB278DB1F069C580091E3FB /* SettingsCollectionViewCell.swift in Sources */,
 				FDE28FA01ED0DA550057E102 /* LoginCell.swift in Sources */,
 				FDF9D12C1E6E14B200B6DA3A /* MessageSender.swift in Sources */,

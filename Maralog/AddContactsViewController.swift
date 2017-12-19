@@ -41,7 +41,7 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         
-        addButton.layer.cornerRadius = 15
+        addButton.layer.cornerRadius = 20
         addButton.layer.shadowOpacity = 0.15
         addButton.clipsToBounds = false
         addButton.layer.shadowOffset = CGSize(width: 0, height: 2)
