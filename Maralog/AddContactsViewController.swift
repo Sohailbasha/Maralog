@@ -15,17 +15,22 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+    }
+    
+    func setupButton(_ button: UIButton) {
+        button.layer.borderColor = #colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1)
+        button.layer.borderWidth = 1.0
+        button.layer.cornerRadius = 6
+        button.setTitleColor(#colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1), for: .normal)
+    }
+    
+    func setupViews() {
         card.layer.cornerRadius = 10
         
-        lsButtonOutlet.layer.borderColor = #colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1)
-        lsButtonOutlet.layer.borderWidth = 1.0
-        lsButtonOutlet.layer.cornerRadius = 6
-        lsButtonOutlet.setTitleColor(#colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1), for: .normal)
-        
-        atButtonOutlet.layer.borderColor = #colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1)
-        atButtonOutlet.layer.borderWidth = 1.0
-        atButtonOutlet.layer.cornerRadius = 6
-        atButtonOutlet.setTitleColor(#colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1), for: .normal)
+        self.setupButton(lsButtonOutlet)
+        self.setupButton(atButtonOutlet)
+   
         
         coreLocationManager = CLLocationManager()
         coreLocationManager.delegate = self
@@ -42,13 +47,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         addButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         
         self.hideLabelsAndText()
-        
-        fNameLabel.isHidden = true
-        lNameLabel.isHidden = true
-        pNumLabel.isHidden = true
-        
+    
         CNContactAdd.sharedInstance.checkAuthorization()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,8 +73,8 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     let yourName = UserController.sharedInstance.getName()
     
-    var locationToggled = Bool()
-    var autoTextToggled = Bool()
+    var locationToggled = false
+    var autoTextToggled = false
     
     let colorForSelectedUI = Keys.sharedInstance.trimColor
     let colorForUnselectedUI = Keys.sharedInstance.tabBarDefault
@@ -104,11 +104,22 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet var addButton: UIButton!
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        addContact { (success, contact) in
+            if(success) {
+                DispatchQueue.main.async {
+                    guard let contact = contact else { return }
+                    self.sendMessageTo(contact: contact)
+                }
+            }
+        }
+    }
     
-    func swipeCardRight(completion: (Bool, Contact?) -> Void) {
-        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized, !firstName.isEmpty else { return }
+    
+    func addContact(completion: (Bool, Contact?) -> Void) {
+        guard let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespaces), !firstName.isEmpty else { return }
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty else { return }
-        guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces).capitalized else { return }
+        guard let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
         let contact = Contact(firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
         
@@ -137,40 +148,28 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func buttonTapped(_ sender: UIButton) {
-        switch sender {
-        case atButtonOutlet:
-            if autoTextToggled == false {
-                autoTextToggled = true
-                atButtonOutlet.customSelect {}
-//                autoTextLabel.text = "On"
-            } else {
-                autoTextToggled = false
-                atButtonOutlet.customDeselect()
-//                autoTextLabel.text = "Auto Text"
-            }
-        case lsButtonOutlet:
-            if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
-                permissionsAlert(title: "Location Services Are Disabled", message: "Enable Access To Use This Feature")
-            } else {
-                if locationToggled == false {
-                    locationToggled = true
-//                    getCurrentLocationForCNContact()
-                    lsButtonOutlet.customSelect(completion: {
-                        self.getCurrentLocationForCNContact()
-                    })
-//                    locationSaveLabel.text = "On"
-                } else {
-                    locationToggled = false
-                    lsButtonOutlet.customDeselect()
-//                    locationSaveLabel.text = "Location Save"
-                }
-            }
-            
-        default:
-            return
+    @IBAction func saveLocationTapped(_ sender: Any) {
+        if locationToggled == false {
+            lsButtonOutlet.select()
+            self.getCurrentLocationForCNContact()
+            locationToggled = true
+        } else {
+            lsButtonOutlet.deselect()
+            locationToggled = false
         }
     }
+    
+    @IBAction func autoTextTapped(_ sender: Any) {
+        if autoTextToggled == false {
+            atButtonOutlet.select()
+            
+            autoTextToggled = true
+        } else {
+            atButtonOutlet.deselect()
+            autoTextToggled = false
+        }
+    }
+    
     
 }
 
@@ -190,7 +189,6 @@ extension AddContactsViewController {
             currentLocation = CLLocation(latitude: location.coordinate.latitude,
                                          longitude: location.coordinate.longitude)
         }
-        //        self.getCurrentLocationForCNContact()
         coreLocationManager.stopUpdatingLocation()
     }
     
@@ -281,6 +279,9 @@ extension AddContactsViewController {
         self.firstNameTextField.text = ""
         self.lastNameTextField.text = ""
 
+        fNameLabel.isHidden = true
+        lNameLabel.isHidden = true
+        pNumLabel.isHidden = true
     }
     
 }
@@ -405,7 +406,6 @@ extension AddContactsViewController: UITextFieldDelegate {
     }
 }
 
-extension UIView: CardViewDelegate, Fadeable, Errorable {}
 extension UIButton: Selectable {}
 
 

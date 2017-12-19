@@ -25,8 +25,8 @@ class Keys {
     let errorColor = UIColor(red: 255/255, green: 101/255, blue: 98/255, alpha: 1)
     
     
-    let k1 = #colorLiteral(red: 0.3921568627, green: 0.7882352941, blue: 1, alpha: 1)
-    let k2 = #colorLiteral(red: 0.4392156863, green: 0.6705882353, blue: 0.9960784314, alpha: 1)
+    let k1 = UIColor.clear
+    let k2 = #colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1)
 
 
 }

@@ -12,25 +12,19 @@ import UIKit
 protocol Selectable {}
 
 extension Selectable where Self: UIButton {
-    func customSelect(completion: () -> Void) {
-        let inset: CGFloat = 2
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: [], animations: {
-            self.layer.cornerRadius = 0.5 * self.layer.bounds.width
-            self.backgroundColor = Keys.sharedInstance.k2
-            self.tintColor = .white
-            self.transform = CGAffineTransform(scaleX: 1.18, y: 1.18)
-            self.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
+    func select() {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1.0, options: [], animations: {
+            self.backgroundColor = #colorLiteral(red: 0.9991653562, green: 0.5283692479, blue: 0.591578424, alpha: 1)
+            self.setTitleColor(UIColor.white ,for: .normal)
+            self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }, completion: nil)
     }
     
-    func customDeselect() {
-        let inset: CGFloat = 6
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [], animations: {
-            self.backgroundColor = .clear
-            self.layer.cornerRadius = 0
-            self.tintColor = Keys.sharedInstance.tabBarDefault
+    func deselect() {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1.0, options: [], animations: {
+            self.backgroundColor = UIColor.white
             self.transform = CGAffineTransform.identity
-            self.imageEdgeInsets = UIEdgeInsetsMake(inset, inset, inset, inset)
+            self.setTitleColor(Keys.sharedInstance.k2, for: .normal)
         }, completion: nil)
     }
 }

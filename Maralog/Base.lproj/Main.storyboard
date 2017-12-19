@@ -27,8 +27,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxA-WF-yge">
                                 <rect key="frame" x="16" y="145" width="343" height="377"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6l7-8w-kEA">
-                                        <rect key="frame" x="8" y="27" width="208" height="26"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6l7-8w-kEA">
+                                        <rect key="frame" x="15" y="27" width="214" height="26"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK5-XO-I6X">
                                                 <rect key="frame" x="0.0" y="0.0" width="99" height="26"/>
@@ -40,11 +40,11 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="PpL-ho-4tG"/>
+                                                    <action selector="saveLocationTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="zU9-3b-o7N"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSI-hW-ZrV">
-                                                <rect key="frame" x="109" y="0.0" width="99" height="26"/>
+                                                <rect key="frame" x="115" y="0.0" width="99" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="OSI-hW-ZrV" secondAttribute="height" multiplier="80:21" id="5o5-Pg-6NO"/>
                                                 </constraints>
@@ -53,7 +53,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="buttonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="JYX-g9-AWg"/>
+                                                    <action selector="autoTextTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="Rts-Gq-b8o"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -74,7 +74,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="e8H-hh-avN"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                         </subviews>
@@ -95,7 +95,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="FMO-bA-zFP"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -116,7 +116,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="ftj-Ue-V8h"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -128,6 +128,9 @@
                                         <state key="normal" title="Add to Contacts">
                                             <color key="titleColor" red="0.98823529409999999" green="0.43529411759999997" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addButtonTapped:" destination="aFt-A3-DSS" eventType="touchUpInside" id="HVi-kH-ua8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,7 +139,7 @@
                                     <constraint firstItem="JRi-YO-d9n" firstAttribute="leading" secondItem="yxA-WF-yge" secondAttribute="leading" constant="13" id="5Km-ZB-Wad"/>
                                     <constraint firstItem="AsO-fC-Gc3" firstAttribute="leading" secondItem="yxA-WF-yge" secondAttribute="leading" constant="13" id="7Wk-2C-rwj"/>
                                     <constraint firstItem="Jd8-Pd-ebf" firstAttribute="leading" secondItem="yxA-WF-yge" secondAttribute="leading" constant="13" id="BYS-Ui-p86"/>
-                                    <constraint firstItem="6l7-8w-kEA" firstAttribute="leading" secondItem="yxA-WF-yge" secondAttribute="leading" constant="8" id="DCi-Pd-9dr"/>
+                                    <constraint firstItem="6l7-8w-kEA" firstAttribute="leading" secondItem="yxA-WF-yge" secondAttribute="leading" constant="15" id="DCi-Pd-9dr"/>
                                     <constraint firstItem="Jd8-Pd-ebf" firstAttribute="top" secondItem="6l7-8w-kEA" secondAttribute="bottom" constant="36" id="FB1-fT-q8S"/>
                                     <constraint firstAttribute="trailing" secondItem="JRi-YO-d9n" secondAttribute="trailing" constant="13" id="fYq-ZN-2fh"/>
                                     <constraint firstItem="6l7-8w-kEA" firstAttribute="top" secondItem="yxA-WF-yge" secondAttribute="top" constant="27" id="jI1-5T-vE3"/>
@@ -176,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOo-LG-99C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756" y="1613.3433283358322"/>
+            <point key="canvasLocation" x="6135" y="23"/>
         </scene>
         <!--Recently Added View Controller-->
         <scene sceneID="YIp-uL-QsM">
