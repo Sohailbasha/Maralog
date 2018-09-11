@@ -27,6 +27,11 @@ class RecentlyAddedViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.title = "Recently Added"
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         fetchedResultsController.delegate = self
         do { try fetchedResultsController.performFetch() }
         catch { print("Error starting fetched results controller: \(error)") }

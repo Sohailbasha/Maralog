@@ -11,6 +11,10 @@ class AddContactsViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Add New Contact"
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         card.setShadow()
         

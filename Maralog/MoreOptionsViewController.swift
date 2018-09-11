@@ -12,7 +12,11 @@ class MoreOptionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Options"
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -114,9 +118,6 @@ class MoreOptionsViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet var tableView: UITableView!
-    
-    
-    
 }
 
 

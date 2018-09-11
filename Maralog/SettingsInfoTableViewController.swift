@@ -18,6 +18,10 @@ class SettingsInfoTableViewController: UITableViewController {
             self.updateDetailWith(setting)
             self.title = setting.name
         }
+        
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     
