@@ -1,10 +1,3 @@
-//
-//  MessageSender.swift
-//  Maralog
-//
-//  Created by Ilias Basha on 3/6/17.
-//  Copyright © 2017 Sohail. All rights reserved.
-//
 
 import Foundation
 import MessageUI

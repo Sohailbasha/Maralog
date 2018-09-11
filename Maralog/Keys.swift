@@ -1,11 +1,3 @@
-//
-//  Keys.swift
-//  Maralog
-//
-//  Created by Ilias Basha on 5/21/17.
-//  Copyright © 2017 Sohail. All rights reserved.
-//
-
 import UIKit
 
 class Keys {
@@ -17,8 +9,6 @@ class Keys {
     
     let trimColor = #colorLiteral(red: 0, green: 0.8470588235, blue: 0.6352941176, alpha: 1)
     let mainColor = #colorLiteral(red: 0.2588235294, green: 0.5450980392, blue: 0.9725490196, alpha: 1)
-    
-    
     
     
     // *

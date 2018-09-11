@@ -1,11 +1,3 @@
-//
-//  UserController.swift
-//  Maralog
-//
-//  Created by Ilias Basha on 3/11/17.
-//  Copyright © 2017 Sohail. All rights reserved.
-//
-
 import Foundation
 
 class UserController {
@@ -32,7 +24,4 @@ class UserController {
         guard let tOrF = UserDefaults.standard.value(forKey: kPopUp) as? Bool else { return false }
         return tOrF
     }
-
-    
-    
 }

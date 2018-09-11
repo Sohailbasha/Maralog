@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        /*
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
@@ -35,21 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationBarAppearance = UINavigationBar.appearance()
         
+       
         navigationBarAppearance.backgroundColor = .clear
         let color = Keys.sharedInstance.mainColor
-        
-//        UIApplication.shared.statusBarStyle = .lightContent
-//        UIApplication.shared.statusBarView?.backgroundColor = Keys.sharedInstance.barColor
-        
-//        navigationBarAppearance.barTintColor = UIColor.white
-//        navigationBarAppearance.tintColor = UIColor.white
-        
         navigationBarAppearance.barTintColor = color
         navigationBarAppearance.tintColor = color
-
         navigationBarAppearance.shadowImage = UIImage()
         navigationBarAppearance.setBackgroundImage(UIImage(), for: .default)
-
+        */
+        
         return true
     }
     

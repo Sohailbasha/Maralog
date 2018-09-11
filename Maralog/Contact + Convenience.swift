@@ -1,11 +1,3 @@
-//
-//  Contact + Convenience.swift
-//  Maralog
-//
-//  Created by Ilias Basha on 2/6/17.
-//  Copyright © 2017 Sohail. All rights reserved.
-//
-
 import Foundation
 import CoreData
 

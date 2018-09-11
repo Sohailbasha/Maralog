@@ -1,11 +1,3 @@
-//
-//  CardViewDelegate.swift
-//  Maralog
-//
-//  Created by Ilias Basha on 9/7/17.
-//  Copyright © 2017 Sohail. All rights reserved.
-//
-
 import UIKit
 
 protocol CardViewDelegate { }
